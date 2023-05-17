@@ -21,6 +21,18 @@ jobs:
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
 
+      - name: Setup elixir
+        id: beam
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: 1.14.x
+          otp-version: 25.x
+
+      - name: Setup protoc-gen-elixir
+        id: protobuf
+        run: |
+          mix escript.install hex protobuf
+
       - name: Get latest versions and update protocol buffers
         id: get-and-update
         run: |
