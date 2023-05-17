@@ -1,0 +1,33 @@
+name: Update Sources
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Get latest versions and update protocol buffers
+        id: get-and-update
+        run: |
+          make init
+          make src/versions/GOOGLE_PROTOBUF_TAG
+          make src/versions/TEMPORALIO_API_TAG
+          make
+
+      - name: Commit & Push changes
+        id: commit-and-push
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
