@@ -25,7 +25,7 @@ src/versions/GOOGLE_PROTOBUF_TAG: FORCE
 
 src/protobuf: 
 	REF=`cat src/versions/GOOGLE_PROTOBUF_TAG`; \
-	git clone --branch $${REF} "git@github.com:protocolbuffers/protobuf.git" src/protobuf
+	git clone --branch $${REF} "https://github.com/protocolbuffers/protobuf.git" src/protobuf
 
 .SILENT: src/protobuf/src/google/protobuf/*.proto
 .PRECIOUS: src/protobuf/src/google/protobuf/%.proto
@@ -50,7 +50,7 @@ src/versions/TEMPORALIO_API_TAG: FORCE
 .SILENT: src/temporalio_api
 src/temporalio_api: 
 	REF=`cat src/versions/TEMPORALIO_API_TAG`; \
-	git clone --branch $${REF} "git@github.com:temporalio/api.git" src/temporalio_api
+	git clone --branch $${REF} "https://github.com/temporalio/api.git" src/temporalio_api
 
 .SILENT: src/temporalio_api/temporal/api/*/*/*.proto
 .PRECIOUS: src/temporalio_api/temporal/%.proto
