@@ -18,6 +18,9 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+
       - name: Get latest versions and update protocol buffers
         id: get-and-update
         run: |
