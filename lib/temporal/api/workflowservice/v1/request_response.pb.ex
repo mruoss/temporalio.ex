@@ -219,11 +219,6 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest do
   field :last_completion_result, 19,
     type: Temporal.Api.Common.V1.Payloads,
     json_name: "lastCompletionResult"
-
-  field :workflow_start_delay, 20,
-    type: Google.Protobuf.Duration,
-    json_name: "workflowStartDelay",
-    deprecated: false
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do
@@ -720,7 +715,6 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWorkflowExecutionRequest do
   field :request_id, 6, type: :string, json_name: "requestId"
   field :control, 7, type: :string
   field :header, 8, type: Temporal.Api.Common.V1.Header
-  field :skip_generate_workflow_task, 9, type: :bool, json_name: "skipGenerateWorkflowTask"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.SignalWorkflowExecutionResponse do
@@ -775,13 +769,6 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionReques
     json_name: "searchAttributes"
 
   field :header, 19, type: Temporal.Api.Common.V1.Header
-
-  field :workflow_start_delay, 20,
-    type: Google.Protobuf.Duration,
-    json_name: "workflowStartDelay",
-    deprecated: false
-
-  field :skip_generate_workflow_task, 21, type: :bool, json_name: "skipGenerateWorkflowTask"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionResponse do
@@ -1408,7 +1395,7 @@ defmodule Temporal.Api.Workflowservice.V1.ListSchedulesResponse do
   field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
 end
 
-defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRequest.AddNewCompatibleVersion do
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatabilityRequest.AddNewCompatibleVersion do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
@@ -1418,7 +1405,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityReques
   field :make_set_default, 3, type: :bool, json_name: "makeSetDefault"
 end
 
-defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRequest do
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatabilityRequest do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
@@ -1435,7 +1422,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityReques
 
   field :add_new_compatible_build_id, 4,
     type:
-      Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRequest.AddNewCompatibleVersion,
+      Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatabilityRequest.AddNewCompatibleVersion,
     json_name: "addNewCompatibleBuildId",
     oneof: 0
 
@@ -1447,7 +1434,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityReques
     oneof: 0
 end
 
-defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityResponse do
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatabilityResponse do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
@@ -1455,7 +1442,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRespon
   field :version_set_id, 1, type: :string, json_name: "versionSetId"
 end
 
-defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityRequest do
+defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatabilityRequest do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
@@ -1464,10 +1451,10 @@ defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityRequest d
   field :task_queue, 2, type: :string, json_name: "taskQueue"
   field :max_sets, 3, type: :int32, json_name: "maxSets"
   field :include_retirement_candidates, 4, type: :bool, json_name: "includeRetirementCandidates"
-  field :include_poller_compatibility, 5, type: :bool, json_name: "includePollerCompatibility"
+  field :include_poller_compatability, 5, type: :bool, json_name: "includePollerCompatability"
 end
 
-defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse.RetirementCandidate do
+defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatabilityResponse.RetirementCandidate do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
@@ -1477,7 +1464,7 @@ defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse.
   field :pollers, 3, repeated: true, type: Temporal.Api.Taskqueue.V1.PollerInfo
 end
 
-defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse.VersionsWithCompatiblePollers do
+defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatabilityResponse.VersionsWithCompatiblePollers do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
@@ -1486,7 +1473,7 @@ defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse.
   field :pollers, 2, repeated: true, type: Temporal.Api.Taskqueue.V1.PollerInfo
 end
 
-defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse do
+defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatabilityResponse do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
@@ -1499,13 +1486,13 @@ defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse 
   field :retirement_candidates, 2,
     repeated: true,
     type:
-      Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse.RetirementCandidate,
+      Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatabilityResponse.RetirementCandidate,
     json_name: "retirementCandidates"
 
   field :active_versions_and_pollers, 3,
     repeated: true,
     type:
-      Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse.VersionsWithCompatiblePollers,
+      Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatabilityResponse.VersionsWithCompatiblePollers,
     json_name: "activeVersionsAndPollers"
 end
 
@@ -1642,23 +1629,4 @@ defmodule Temporal.Api.Workflowservice.V1.ListBatchOperationsResponse do
     json_name: "operationInfo"
 
   field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
-end
-
-defmodule Temporal.Api.Workflowservice.V1.PollWorkflowExecutionUpdateRequest do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field :namespace, 1, type: :string
-  field :update_ref, 2, type: Temporal.Api.Update.V1.UpdateRef, json_name: "updateRef"
-  field :identity, 3, type: :string
-  field :wait_policy, 4, type: Temporal.Api.Update.V1.WaitPolicy, json_name: "waitPolicy"
-end
-
-defmodule Temporal.Api.Workflowservice.V1.PollWorkflowExecutionUpdateResponse do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field :outcome, 1, type: Temporal.Api.Update.V1.Outcome
 end
