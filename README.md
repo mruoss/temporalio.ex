@@ -13,7 +13,6 @@ gonna need `google_protos`:
 def deps do
   [
     {:temporalio, github: "mruoss/temporalio.ex", tag: "v1.20.0"},
-    # You're conna need gootle-protos and grpc.
     {:google_protos, "~> 0.3.0"},
   ]
 end
