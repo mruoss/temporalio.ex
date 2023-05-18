@@ -472,6 +472,7 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionSignaledEventAttributes do
   field :input, 2, type: Temporal.Api.Common.V1.Payloads
   field :identity, 3, type: :string
   field :header, 4, type: Temporal.Api.Common.V1.Header
+  field :skip_generate_workflow_task, 5, type: :bool, json_name: "skipGenerateWorkflowTask"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionTerminatedEventAttributes do
