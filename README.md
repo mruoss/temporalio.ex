@@ -1,21 +1,28 @@
 # Temporalio
 
-**TODO: Add description**
+Elixir files generated from Temporal.io's protobuf files using protobuf-elixir.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `temporalio` to your list of dependencies in `mix.exs`:
+This library is currently not published on hex.pm. You can use it
+by adding `temporalio` to your list of dependencies in `mix.exs`
+referencing the github repo. Additionally to `temporalio`, you're
+gonna need `google_protos`:
 
 ```elixir
 def deps do
   [
-    {:temporalio, "~> 0.1.0"}
+    {:temporalio, github: "mruoss/temporalio.ex", tag: "v1.20.0"},
+    # You're conna need gootle-protos and grpc.
+    {:google_protos, "~> 0.3.0"},
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/temporalio>.
+## Usage Example
 
+```elixir
+{:ok, channel} = GRPC.Stub.connect("localhost:7233")
+list_ns_req = %Temporal.Api.Workflowservice.V1.ListNamespacesRequest{}
+Temporal.Api.Workflowservice.V1.WorkflowService.Stub.list_namespaces(channel, list_ns_req)
+```
