@@ -24,6 +24,3 @@ temporalio-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
-
-/src/temporalio_api
-/src/protobuf
