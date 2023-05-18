@@ -1,0 +1,40 @@
+name: Create Release
+
+permissions:
+  contents: write
+  
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'release')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          submodules: true
+
+      - name: get latest tags
+        id: tags
+        run: echo "new_tag=$(cd src/temporalio_api && git describe --abbrev=0 --tags)" >> "$GITHUB_OUTPUT"
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.tags.outputs.new_tag }}
+          release_name: Release ${{ steps.tags.outputs.new_tag }}
+          body: |
+            See [upstream release notes][1]: 
+
+            [1]: https://github.com/temporalio/api/releases/tag/${{steps.tags.outputs.new_tag}}
+          draft: false
+          prerelease: false

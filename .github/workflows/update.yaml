@@ -64,3 +64,6 @@ jobs:
             
             [1]: https://github.com/temporalio/api
           draft: false
+          labels: |
+            release
+
