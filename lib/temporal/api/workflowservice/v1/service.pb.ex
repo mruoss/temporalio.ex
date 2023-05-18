@@ -197,17 +197,21 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.ListSchedulesRequest,
       Temporal.Api.Workflowservice.V1.ListSchedulesResponse
 
-  rpc :UpdateWorkerBuildIdCompatability,
-      Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatabilityRequest,
-      Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatabilityResponse
+  rpc :UpdateWorkerBuildIdCompatibility,
+      Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRequest,
+      Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityResponse
 
-  rpc :GetWorkerBuildIdCompatability,
-      Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatabilityRequest,
-      Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatabilityResponse
+  rpc :GetWorkerBuildIdCompatibility,
+      Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityRequest,
+      Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse
 
   rpc :UpdateWorkflowExecution,
       Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionRequest,
       Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionResponse
+
+  rpc :PollWorkflowExecutionUpdate,
+      Temporal.Api.Workflowservice.V1.PollWorkflowExecutionUpdateRequest,
+      Temporal.Api.Workflowservice.V1.PollWorkflowExecutionUpdateResponse
 
   rpc :StartBatchOperation,
       Temporal.Api.Workflowservice.V1.StartBatchOperationRequest,
