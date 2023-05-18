@@ -4,8 +4,7 @@ temporalio_api_src := $(patsubst src/temporalio_api/temporal/%.proto,lib/tempora
 
 .PHONY: init
 init: 
-	REF=`cd src/temporalio_api && git describe --abbrev=0 --tags`; \
-	git submodule update --init; \
+	REF=$$(cd src/temporalio_api && git describe --tags `git rev-list --tags --max-count=1`); \
 	(cd src/temporalio_api && git checkout $${REF})
 
 .PHONY: all
