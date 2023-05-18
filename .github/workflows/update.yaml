@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   update:
@@ -39,15 +40,34 @@ jobs:
         with:
           fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
 
-
       - name: Get latest versions and update protocol buffers
         id: get-and-update
         run: |
           make init
           make
+          echo "current_tag=`git describe --abbrev=0 --tags`" >> "$GITHUB_OUTPUT"
+          echo "new_tag=`(cd src/temporalio_api && git describe --abbrev=0 --tags)`" >> "$GITHUB_OUTPUT"
 
       - name: Commit & Push changes
+        if: ${{ steps.get-and-update.outputs.current_tag != steps.get-and-update.outputs.new_tag }}
         id: commit-and-push
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: release-${{ steps.get-and-update.outputs.new_tag }}
+
+      - name: Create Pull Request
+        if: ${{ steps.get-and-update.outputs.current_tag != steps.get-and-update.outputs.new_tag }}
+        uses: peter-evans/create-pull-request@v5
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: release-${{ steps.get-and-update.outputs.new_tag }}
+          base: main
+          delete-branch: true
+          title: 'New Upstream Version'
+          assignees: mruoss
+          body: |
+            There is a new tag ${{ steps.get-and-update.outputs.new_tag }} in the [upstream repository][1] 
+            
+            [1]: https://github.com/temporalio/api
+          draft: false
