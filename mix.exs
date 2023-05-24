@@ -1,13 +1,19 @@
 defmodule Temporalio.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/mruoss/temporalio.ex"
+  @version System.get_env("TEMPORALIO_VERSION", "0.1.0")
+
   def project do
     [
       app: :temporalio,
-      version: "0.1.0",
+      description:
+        "Elixir files generated from Temporal.io's protobuf files using protobuf-elixir.",
+      version: @version,
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      package: package()
     ]
   end
 
@@ -22,7 +28,20 @@ defmodule Temporalio.MixProject do
   defp deps do
     [
       {:protobuf, "~> 0.12.0"},
-      {:grpc, "~> 0.5.0"}
+      {:grpc, "~> 0.5.0"},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+    ]
+  end
+
+  defp package do
+    [
+      name: :temporalio,
+      maintainers: ["Michael Ruoss"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => @source_url
+      },
+      files: ["lib", "mix.exs", "README*", "LICENSE*"]
     ]
   end
 end

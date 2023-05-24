@@ -22,7 +22,10 @@ jobs:
 
       - name: get latest tags
         id: tags
-        run: echo "new_tag=$(cd src/temporalio_api && git describe --abbrev=0 --tags)" >> "$GITHUB_OUTPUT"
+        run: |
+          TAG=$(cd src/temporalio_api && git describe --abbrev=0 --tags)
+          echo "new_tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
 
       - name: Create Release
         id: create_release
@@ -38,3 +41,9 @@ jobs:
             [1]: https://github.com/temporalio/api/releases/tag/${{steps.tags.outputs.new_tag}}
           draft: false
           prerelease: false
+
+      - name: Publish to Hex.pm
+        uses: erlangpack/github-action@v3
+        env:
+          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
+          TEMPORALIO_VERSION: ${{ steps.tags.outputs.version }}
