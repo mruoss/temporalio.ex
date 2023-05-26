@@ -437,10 +437,6 @@ defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskFailedRequest do
   field :binary_checksum, 5, type: :string, json_name: "binaryChecksum"
   field :namespace, 6, type: :string
   field :messages, 7, repeated: true, type: Temporal.Api.Protocol.V1.Message
-
-  field :worker_version, 8,
-    type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskFailedResponse do
@@ -573,10 +569,6 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCompletedRequest do
   field :result, 2, type: Temporal.Api.Common.V1.Payloads
   field :identity, 3, type: :string
   field :namespace, 4, type: :string
-
-  field :worker_version, 5,
-    type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCompletedResponse do
@@ -617,10 +609,6 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedRequest do
   field :last_heartbeat_details, 5,
     type: Temporal.Api.Common.V1.Payloads,
     json_name: "lastHeartbeatDetails"
-
-  field :worker_version, 6,
-    type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedResponse do
@@ -665,10 +653,6 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCanceledRequest do
   field :details, 2, type: Temporal.Api.Common.V1.Payloads
   field :identity, 3, type: :string
   field :namespace, 4, type: :string
-
-  field :worker_version, 5,
-    type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCanceledResponse do
@@ -1479,6 +1463,27 @@ defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityRequest d
   field :namespace, 1, type: :string
   field :task_queue, 2, type: :string, json_name: "taskQueue"
   field :max_sets, 3, type: :int32, json_name: "maxSets"
+  field :include_retirement_candidates, 4, type: :bool, json_name: "includeRetirementCandidates"
+  field :include_poller_compatibility, 5, type: :bool, json_name: "includePollerCompatibility"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse.RetirementCandidate do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field :build_id, 1, type: :string, json_name: "buildId"
+  field :all_workflows_are_archived, 2, type: :bool, json_name: "allWorkflowsAreArchived"
+  field :pollers, 3, repeated: true, type: Temporal.Api.Taskqueue.V1.PollerInfo
+end
+
+defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse.VersionsWithCompatiblePollers do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field :most_recent_build_id, 1, type: :string, json_name: "mostRecentBuildId"
+  field :pollers, 2, repeated: true, type: Temporal.Api.Taskqueue.V1.PollerInfo
 end
 
 defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse do
@@ -1490,28 +1495,18 @@ defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse 
     repeated: true,
     type: Temporal.Api.Taskqueue.V1.CompatibleVersionSet,
     json_name: "majorVersionSets"
-end
 
-defmodule Temporal.Api.Workflowservice.V1.GetWorkerTaskReachabilityRequest do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field :namespace, 1, type: :string
-  field :build_ids, 2, repeated: true, type: :string, json_name: "buildIds"
-  field :task_queues, 3, repeated: true, type: :string, json_name: "taskQueues"
-  field :reachability, 4, type: Temporal.Api.Enums.V1.TaskReachability, enum: true
-end
-
-defmodule Temporal.Api.Workflowservice.V1.GetWorkerTaskReachabilityResponse do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field :build_id_reachability, 1,
+  field :retirement_candidates, 2,
     repeated: true,
-    type: Temporal.Api.Taskqueue.V1.BuildIdReachability,
-    json_name: "buildIdReachability"
+    type:
+      Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse.RetirementCandidate,
+    json_name: "retirementCandidates"
+
+  field :active_versions_and_pollers, 3,
+    repeated: true,
+    type:
+      Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse.VersionsWithCompatiblePollers,
+    json_name: "activeVersionsAndPollers"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionRequest do
@@ -1570,11 +1565,6 @@ defmodule Temporal.Api.Workflowservice.V1.StartBatchOperationRequest do
   field :deletion_operation, 13,
     type: Temporal.Api.Batch.V1.BatchOperationDeletion,
     json_name: "deletionOperation",
-    oneof: 0
-
-  field :reset_operation, 14,
-    type: Temporal.Api.Batch.V1.BatchOperationReset,
-    json_name: "resetOperation",
     oneof: 0
 end
 
