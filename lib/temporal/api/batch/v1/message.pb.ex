@@ -44,3 +44,18 @@ defmodule Temporal.Api.Batch.V1.BatchOperationDeletion do
 
   field :identity, 1, type: :string
 end
+
+defmodule Temporal.Api.Batch.V1.BatchOperationReset do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field :reset_type, 1, type: Temporal.Api.Enums.V1.ResetType, json_name: "resetType", enum: true
+
+  field :reset_reapply_type, 2,
+    type: Temporal.Api.Enums.V1.ResetReapplyType,
+    json_name: "resetReapplyType",
+    enum: true
+
+  field :identity, 3, type: :string
+end
