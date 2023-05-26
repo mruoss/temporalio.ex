@@ -44,6 +44,9 @@ jobs:
         run: |
           echo "current_tag=$(git describe --abbrev=0 --tags)" >> "$GITHUB_OUTPUT"
           echo "new_tag=$(cd src/temporalio_api && git describe --tags `git rev-list --tags --max-count=1`)" >> "$GITHUB_OUTPUT"
+          NEW_TAG=$(cd src/temporalio_api && git describe --abbrev=0 --tags)
+          echo "new_tag=$NEW_TAG" >> "$GITHUB_OUTPUT"
+          echo "version=${NEW_TAG#v}" >> "$GITHUB_OUTPUT"
 
       - name: Get latest versions and update protocol buffers
         id: get-and-update
@@ -52,7 +55,8 @@ jobs:
 
       - name: Update version in mix.exs
         run: |
-          sed -i 's/0,@version\s.*/@version "${{ steps.tags.outputs.new_tag }}"/g' mix.exs
+          sed -i 's/@version .*/@version "${{ steps.tags.outputs.version }}"/g' mix.exs
+          cat mix.exs
 
       - name: Create Pull Request
         if: ${{ steps.tags.outputs.current_tag != steps.tags.outputs.new_tag }}
@@ -61,7 +65,7 @@ jobs:
           branch: upgrade-on-upstream
           base: main
           delete-branch: true
-          title: 'New Upstream Version'
+          title: 'New Upstream Version ${{ steps.tags.outputs.new_tag }}'
           assignees: mruoss
           body: |
             There is a new tag ${{ steps.tags.outputs.new_tag }} in the [upstream repository][1] 

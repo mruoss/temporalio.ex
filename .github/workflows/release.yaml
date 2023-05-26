@@ -24,9 +24,7 @@ jobs:
       - name: get latest tags
         id: tags
         run: |
-          TAG=$(cd src/temporalio_api && git describe --abbrev=0 --tags)
-          echo "new_tag=$TAG" >> "$GITHUB_OUTPUT"
-          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+          echo "new_tag=$(cd src/temporalio_api && git describe --abbrev=0 --tags)" >> "$GITHUB_OUTPUT"
 
       - name: Setup elixir
         id: beam
@@ -38,7 +36,6 @@ jobs:
       - name: Publish to Hex.pm
         env:
           HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
-          TEMPORALIO_VERSION: ${{ steps.tags.outputs.version }}
         run: |
           mix deps.get
           mix hex.publish --yes
