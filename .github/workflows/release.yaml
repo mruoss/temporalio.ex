@@ -27,6 +27,21 @@ jobs:
           echo "new_tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
 
+
+      - name: Setup elixir
+        id: beam
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: 1.14.x
+          otp-version: 25.x
+
+      - name: Publish to Hex.pm
+        env:
+          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
+          TEMPORALIO_VERSION: ${{ steps.tags.outputs.version }}
+        run: |
+          mix hex.publish --yes
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -41,9 +56,3 @@ jobs:
             [1]: https://github.com/temporalio/api/releases/tag/${{steps.tags.outputs.new_tag}}
           draft: false
           prerelease: false
-
-      - name: Publish to Hex.pm
-        uses: erlangpack/github-action@v3
-        env:
-          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
-          TEMPORALIO_VERSION: ${{ steps.tags.outputs.version }}
