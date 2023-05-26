@@ -4,13 +4,14 @@ permissions:
   contents: write
   
 on:
+  workflow_dispatch:
   pull_request:
     types:
       - closed
 
 jobs:
   release:
-    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'release')
+    if: (github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'release')) || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,7 +27,6 @@ jobs:
           TAG=$(cd src/temporalio_api && git describe --abbrev=0 --tags)
           echo "new_tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
-
 
       - name: Setup elixir
         id: beam
