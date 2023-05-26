@@ -50,6 +50,10 @@ jobs:
         if: ${{ steps.tags.outputs.current_tag != steps.tags.outputs.new_tag }}
         run: make
 
+      - name: Update version in mix.exs
+        run: |
+          sed -i 's/0,@version\s.*/@version "${{ steps.tags.outputs.new_tag }}"/g' mix.exs
+
       - name: Create Pull Request
         if: ${{ steps.tags.outputs.current_tag != steps.tags.outputs.new_tag }}
         uses: peter-evans/create-pull-request@v5
