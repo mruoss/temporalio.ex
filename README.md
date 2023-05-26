@@ -1,6 +1,6 @@
 # Temporalio
 
-Elixir files generated from Temporal.io's protobuf files using protobuf-elixir.
+Elixir files generated from [Temporal.io's protobuf files](https://github.com/temporalio/api) using [protobuf-elixir](https://github.com/elixir-protobuf/protobuf).
 
 [![Module Version](https://img.shields.io/hexpm/v/temporalio.svg)](https://hex.pm/packages/temporalio)
 [![Last Updated](https://img.shields.io/github/last-commit/mruoss/temporalio.ex.svg)](https://github.com/mruoss/temporalio.ex/commits/main)
