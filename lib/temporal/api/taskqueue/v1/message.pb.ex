@@ -5,7 +5,6 @@ defmodule Temporal.Api.Taskqueue.V1.TaskQueue do
 
   field :name, 1, type: :string
   field :kind, 2, type: Temporal.Api.Enums.V1.TaskQueueKind, enum: true
-  field :normal_name, 3, type: :string, json_name: "normalName"
 end
 
 defmodule Temporal.Api.Taskqueue.V1.TaskQueueMetadata do
@@ -86,27 +85,6 @@ defmodule Temporal.Api.Taskqueue.V1.CompatibleVersionSet do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field :build_ids, 1, repeated: true, type: :string, json_name: "buildIds"
-end
-
-defmodule Temporal.Api.Taskqueue.V1.TaskQueueReachability do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field :task_queue, 1, type: :string, json_name: "taskQueue"
-  field :reachability, 2, repeated: true, type: Temporal.Api.Enums.V1.TaskReachability, enum: true
-end
-
-defmodule Temporal.Api.Taskqueue.V1.BuildIdReachability do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field :build_id, 1, type: :string, json_name: "buildId"
-
-  field :task_queue_reachability, 2,
-    repeated: true,
-    type: Temporal.Api.Taskqueue.V1.TaskQueueReachability,
-    json_name: "taskQueueReachability"
+  field :version_set_id, 1, type: :string, json_name: "versionSetId"
+  field :build_ids, 2, repeated: true, type: :string, json_name: "buildIds"
 end

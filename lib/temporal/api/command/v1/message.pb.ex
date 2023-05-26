@@ -31,7 +31,6 @@ defmodule Temporal.Api.Command.V1.ScheduleActivityTaskCommandAttributes do
 
   field :retry_policy, 11, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
   field :request_eager_execution, 12, type: :bool, json_name: "requestEagerExecution"
-  field :use_compatible_version, 13, type: :bool, json_name: "useCompatibleVersion"
 end
 
 defmodule Temporal.Api.Command.V1.RequestCancelActivityTaskCommandAttributes do
@@ -196,8 +195,6 @@ defmodule Temporal.Api.Command.V1.ContinueAsNewWorkflowExecutionCommandAttribute
   field :search_attributes, 14,
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
-
-  field :use_compatible_version, 15, type: :bool, json_name: "useCompatibleVersion"
 end
 
 defmodule Temporal.Api.Command.V1.StartChildWorkflowExecutionCommandAttributes do
@@ -246,8 +243,6 @@ defmodule Temporal.Api.Command.V1.StartChildWorkflowExecutionCommandAttributes d
   field :search_attributes, 16,
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
-
-  field :use_compatible_version, 17, type: :bool, json_name: "useCompatibleVersion"
 end
 
 defmodule Temporal.Api.Command.V1.ProtocolMessageCommandAttributes do

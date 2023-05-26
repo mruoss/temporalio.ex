@@ -122,11 +122,3 @@ defmodule Temporal.Api.Errordetails.V1.WorkflowNotReadyFailure do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 end
-
-defmodule Temporal.Api.Errordetails.V1.NewerBuildExistsFailure do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field :default_build_id, 1, type: :string, json_name: "defaultBuildId"
-end

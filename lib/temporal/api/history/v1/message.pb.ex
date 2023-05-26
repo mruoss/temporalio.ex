@@ -74,12 +74,6 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
   field :parent_initiated_event_version, 26,
     type: :int64,
     json_name: "parentInitiatedEventVersion"
-
-  field :workflow_id, 28, type: :string, json_name: "workflowId"
-
-  field :source_version_stamp, 29,
-    type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "sourceVersionStamp"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do
@@ -170,8 +164,6 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionContinuedAsNewEventAttributes
   field :search_attributes, 14,
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
-
-  field :use_compatible_version, 15, type: :bool, json_name: "useCompatibleVersion"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowTaskScheduledEventAttributes do
@@ -252,10 +244,6 @@ defmodule Temporal.Api.History.V1.WorkflowTaskFailedEventAttributes do
   field :new_run_id, 7, type: :string, json_name: "newRunId"
   field :fork_event_version, 8, type: :int64, json_name: "forkEventVersion"
   field :binary_checksum, 9, type: :string, json_name: "binaryChecksum"
-
-  field :worker_version, 10,
-    type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskScheduledEventAttributes do
@@ -294,7 +282,6 @@ defmodule Temporal.Api.History.V1.ActivityTaskScheduledEventAttributes do
     json_name: "workflowTaskCompletedEventId"
 
   field :retry_policy, 12, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
-  field :use_compatible_version, 13, type: :bool, json_name: "useCompatibleVersion"
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskStartedEventAttributes do
@@ -318,10 +305,6 @@ defmodule Temporal.Api.History.V1.ActivityTaskCompletedEventAttributes do
   field :scheduled_event_id, 2, type: :int64, json_name: "scheduledEventId"
   field :started_event_id, 3, type: :int64, json_name: "startedEventId"
   field :identity, 4, type: :string
-
-  field :worker_version, 5,
-    type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskFailedEventAttributes do
@@ -338,10 +321,6 @@ defmodule Temporal.Api.History.V1.ActivityTaskFailedEventAttributes do
     type: Temporal.Api.Enums.V1.RetryState,
     json_name: "retryState",
     enum: true
-
-  field :worker_version, 6,
-    type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskTimedOutEventAttributes do
@@ -385,10 +364,6 @@ defmodule Temporal.Api.History.V1.ActivityTaskCanceledEventAttributes do
   field :scheduled_event_id, 3, type: :int64, json_name: "scheduledEventId"
   field :started_event_id, 4, type: :int64, json_name: "startedEventId"
   field :identity, 5, type: :string
-
-  field :worker_version, 6,
-    type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
 end
 
 defmodule Temporal.Api.History.V1.TimerStartedEventAttributes do
@@ -709,8 +684,6 @@ defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionInitiatedEventAttri
   field :search_attributes, 17,
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
-
-  field :use_compatible_version, 19, type: :bool, json_name: "useCompatibleVersion"
 end
 
 defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionFailedEventAttributes do
