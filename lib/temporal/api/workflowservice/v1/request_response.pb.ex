@@ -1434,6 +1434,15 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityReques
   field :make_set_default, 3, type: :bool, json_name: "makeSetDefault"
 end
 
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRequest.MergeSets do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field :primary_set_build_id, 1, type: :string, json_name: "primarySetBuildId"
+  field :secondary_set_build_id, 2, type: :string, json_name: "secondarySetBuildId"
+end
+
 defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRequest do
   @moduledoc false
 
@@ -1460,6 +1469,11 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityReques
   field :promote_build_id_within_set, 6,
     type: :string,
     json_name: "promoteBuildIdWithinSet",
+    oneof: 0
+
+  field :merge_sets, 7,
+    type: Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRequest.MergeSets,
+    json_name: "mergeSets",
     oneof: 0
 end
 
