@@ -54,6 +54,7 @@ jobs:
         run: make
 
       - name: Update version in mix.exs
+        if: ${{ steps.tags.outputs.current_tag != steps.tags.outputs.new_tag }}
         run: |
           sed -i 's/@version .*/@version "${{ steps.tags.outputs.version }}"/g' mix.exs
           cat mix.exs
