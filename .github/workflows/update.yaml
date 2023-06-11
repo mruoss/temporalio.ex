@@ -28,7 +28,7 @@ jobs:
         uses: erlef/setup-beam@v1
         with:
           elixir-version: 1.14.x
-          otp-version: 25.x
+          otp-version: 26.x
 
       - name: Setup protoc-gen-elixir
         id: protobuf
