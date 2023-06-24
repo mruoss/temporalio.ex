@@ -21,7 +21,7 @@ gonna need `google_protos`:
 def deps do
   [
     {:temporalio, "~> 1.21"},
-    {:google_protos, "~> 0.3.0"},
+    {:google_protos, "~> 0.3.0"}
   ]
 end
 ```
