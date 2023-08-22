@@ -11,4 +11,4 @@ init:
 all: ${temporalio_api_src}
 
 lib/temporal/%.pb.ex: src/temporalio_api/temporal/%.proto
-	protoc --proto_path=./src/temporalio_api --elixir_out=plugins=grpc:./lib $<
+	ERL_AFLAGS='-kernel standard_io_encoding latin1' protoc --proto_path=./src/temporalio_api --elixir_out=plugins=grpc:./lib $<
