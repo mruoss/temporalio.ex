@@ -8,7 +8,7 @@ init:
 	(cd src/temporalio_api && git checkout $${REF})
 
 .PHONY: all
-all: ${temporalio_api_src}
+all: ${temporalio_api_src} 
 
 lib/temporal/%.pb.ex: src/temporalio_api/temporal/%.proto
-	ERL_AFLAGS='-kernel standard_io_encoding latin1' protoc --proto_path=./src/temporalio_api --elixir_out=plugins=grpc:./lib $<
+	ERL_AFLAGS='-kernel standard_io_encoding latin1' protoc --proto_path=./src/temporalio_api --proto_path=./src/googleapis --elixir_out=plugins=grpc:./lib $<
