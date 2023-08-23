@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Enums.V1.WorkflowTaskFailedCause do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :WORKFLOW_TASK_FAILED_CAUSE_UNSPECIFIED, 0
   field :WORKFLOW_TASK_FAILED_CAUSE_UNHANDLED_COMMAND, 1
@@ -40,7 +40,7 @@ end
 defmodule Temporal.Api.Enums.V1.StartChildWorkflowExecutionFailedCause do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :START_CHILD_WORKFLOW_EXECUTION_FAILED_CAUSE_UNSPECIFIED, 0
   field :START_CHILD_WORKFLOW_EXECUTION_FAILED_CAUSE_WORKFLOW_ALREADY_EXISTS, 1
@@ -50,7 +50,7 @@ end
 defmodule Temporal.Api.Enums.V1.CancelExternalWorkflowExecutionFailedCause do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :CANCEL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_UNSPECIFIED, 0
   field :CANCEL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_EXTERNAL_WORKFLOW_EXECUTION_NOT_FOUND, 1
@@ -60,7 +60,7 @@ end
 defmodule Temporal.Api.Enums.V1.SignalExternalWorkflowExecutionFailedCause do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_UNSPECIFIED, 0
   field :SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_EXTERNAL_WORKFLOW_EXECUTION_NOT_FOUND, 1
@@ -71,7 +71,7 @@ end
 defmodule Temporal.Api.Enums.V1.ResourceExhaustedCause do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :RESOURCE_EXHAUSTED_CAUSE_UNSPECIFIED, 0
   field :RESOURCE_EXHAUSTED_CAUSE_RPS_LIMIT, 1
@@ -79,4 +79,5 @@ defmodule Temporal.Api.Enums.V1.ResourceExhaustedCause do
   field :RESOURCE_EXHAUSTED_CAUSE_SYSTEM_OVERLOADED, 3
   field :RESOURCE_EXHAUSTED_CAUSE_PERSISTENCE_LIMIT, 4
   field :RESOURCE_EXHAUSTED_CAUSE_BUSY_WORKFLOW, 5
+  field :RESOURCE_EXHAUSTED_CAUSE_APS_LIMIT, 6
 end

@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Batch.V1.BatchOperationInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :job_id, 1, type: :string, json_name: "jobId"
   field :state, 2, type: Temporal.Api.Enums.V1.BatchOperationState, enum: true
@@ -12,7 +12,7 @@ end
 defmodule Temporal.Api.Batch.V1.BatchOperationTermination do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :details, 1, type: Temporal.Api.Common.V1.Payloads
   field :identity, 2, type: :string
@@ -21,7 +21,7 @@ end
 defmodule Temporal.Api.Batch.V1.BatchOperationSignal do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :signal, 1, type: :string
   field :input, 2, type: Temporal.Api.Common.V1.Payloads
@@ -32,7 +32,7 @@ end
 defmodule Temporal.Api.Batch.V1.BatchOperationCancellation do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :identity, 1, type: :string
 end
@@ -40,7 +40,7 @@ end
 defmodule Temporal.Api.Batch.V1.BatchOperationDeletion do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :identity, 1, type: :string
 end
@@ -48,7 +48,7 @@ end
 defmodule Temporal.Api.Batch.V1.BatchOperationReset do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :reset_type, 1, type: Temporal.Api.Enums.V1.ResetType, json_name: "resetType", enum: true
 
