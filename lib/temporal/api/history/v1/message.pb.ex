@@ -1,7 +1,7 @@
 defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :workflow_type, 1, type: Temporal.Api.Common.V1.WorkflowType, json_name: "workflowType"
   field :parent_workflow_namespace, 2, type: :string, json_name: "parentWorkflowNamespace"
@@ -85,7 +85,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :result, 1, type: Temporal.Api.Common.V1.Payloads
 
@@ -99,7 +99,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowExecutionFailedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :failure, 1, type: Temporal.Api.Failure.V1.Failure
 
@@ -118,7 +118,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowExecutionTimedOutEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :retry_state, 1,
     type: Temporal.Api.Enums.V1.RetryState,
@@ -131,7 +131,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowExecutionContinuedAsNewEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :new_execution_run_id, 1, type: :string, json_name: "newExecutionRunId"
   field :workflow_type, 2, type: Temporal.Api.Common.V1.WorkflowType, json_name: "workflowType"
@@ -177,7 +177,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowTaskScheduledEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :task_queue, 1, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
 
@@ -192,7 +192,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowTaskStartedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :identity, 2, type: :string
@@ -204,7 +204,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowTaskCompletedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :started_event_id, 2, type: :int64, json_name: "startedEventId"
@@ -227,7 +227,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowTaskTimedOutEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :started_event_id, 2, type: :int64, json_name: "startedEventId"
@@ -241,7 +241,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowTaskFailedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :started_event_id, 2, type: :int64, json_name: "startedEventId"
@@ -261,7 +261,7 @@ end
 defmodule Temporal.Api.History.V1.ActivityTaskScheduledEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :activity_id, 1, type: :string, json_name: "activityId"
   field :activity_type, 2, type: Temporal.Api.Common.V1.ActivityType, json_name: "activityType"
@@ -300,7 +300,7 @@ end
 defmodule Temporal.Api.History.V1.ActivityTaskStartedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :identity, 2, type: :string
@@ -312,7 +312,7 @@ end
 defmodule Temporal.Api.History.V1.ActivityTaskCompletedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :result, 1, type: Temporal.Api.Common.V1.Payloads
   field :scheduled_event_id, 2, type: :int64, json_name: "scheduledEventId"
@@ -327,7 +327,7 @@ end
 defmodule Temporal.Api.History.V1.ActivityTaskFailedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :failure, 1, type: Temporal.Api.Failure.V1.Failure
   field :scheduled_event_id, 2, type: :int64, json_name: "scheduledEventId"
@@ -347,7 +347,7 @@ end
 defmodule Temporal.Api.History.V1.ActivityTaskTimedOutEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :failure, 1, type: Temporal.Api.Failure.V1.Failure
   field :scheduled_event_id, 2, type: :int64, json_name: "scheduledEventId"
@@ -362,7 +362,7 @@ end
 defmodule Temporal.Api.History.V1.ActivityTaskCancelRequestedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
 
@@ -374,7 +374,7 @@ end
 defmodule Temporal.Api.History.V1.ActivityTaskCanceledEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :details, 1, type: Temporal.Api.Common.V1.Payloads
 
@@ -394,7 +394,7 @@ end
 defmodule Temporal.Api.History.V1.TimerStartedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :timer_id, 1, type: :string, json_name: "timerId"
 
@@ -411,7 +411,7 @@ end
 defmodule Temporal.Api.History.V1.TimerFiredEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :timer_id, 1, type: :string, json_name: "timerId"
   field :started_event_id, 2, type: :int64, json_name: "startedEventId"
@@ -420,7 +420,7 @@ end
 defmodule Temporal.Api.History.V1.TimerCanceledEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :timer_id, 1, type: :string, json_name: "timerId"
   field :started_event_id, 2, type: :int64, json_name: "startedEventId"
@@ -435,7 +435,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowExecutionCancelRequestedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :cause, 1, type: :string
   field :external_initiated_event_id, 2, type: :int64, json_name: "externalInitiatedEventId"
@@ -450,7 +450,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowExecutionCanceledEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :workflow_task_completed_event_id, 1,
     type: :int64,
@@ -462,7 +462,7 @@ end
 defmodule Temporal.Api.History.V1.MarkerRecordedEventAttributes.DetailsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Common.V1.Payloads
@@ -471,7 +471,7 @@ end
 defmodule Temporal.Api.History.V1.MarkerRecordedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :marker_name, 1, type: :string, json_name: "markerName"
 
@@ -491,7 +491,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowExecutionSignaledEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :signal_name, 1, type: :string, json_name: "signalName"
   field :input, 2, type: Temporal.Api.Common.V1.Payloads
@@ -503,7 +503,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowExecutionTerminatedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :reason, 1, type: :string
   field :details, 2, type: Temporal.Api.Common.V1.Payloads
@@ -513,7 +513,7 @@ end
 defmodule Temporal.Api.History.V1.RequestCancelExternalWorkflowExecutionInitiatedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :workflow_task_completed_event_id, 1,
     type: :int64,
@@ -534,7 +534,7 @@ end
 defmodule Temporal.Api.History.V1.RequestCancelExternalWorkflowExecutionFailedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :cause, 1,
     type: Temporal.Api.Enums.V1.CancelExternalWorkflowExecutionFailedCause,
@@ -558,7 +558,7 @@ end
 defmodule Temporal.Api.History.V1.ExternalWorkflowExecutionCancelRequestedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :initiated_event_id, 1, type: :int64, json_name: "initiatedEventId"
   field :namespace, 2, type: :string
@@ -572,7 +572,7 @@ end
 defmodule Temporal.Api.History.V1.SignalExternalWorkflowExecutionInitiatedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :workflow_task_completed_event_id, 1,
     type: :int64,
@@ -595,7 +595,7 @@ end
 defmodule Temporal.Api.History.V1.SignalExternalWorkflowExecutionFailedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :cause, 1,
     type: Temporal.Api.Enums.V1.SignalExternalWorkflowExecutionFailedCause,
@@ -619,7 +619,7 @@ end
 defmodule Temporal.Api.History.V1.ExternalWorkflowExecutionSignaledEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :initiated_event_id, 1, type: :int64, json_name: "initiatedEventId"
   field :namespace, 2, type: :string
@@ -635,7 +635,7 @@ end
 defmodule Temporal.Api.History.V1.UpsertWorkflowSearchAttributesEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :workflow_task_completed_event_id, 1,
     type: :int64,
@@ -649,7 +649,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowPropertiesModifiedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :workflow_task_completed_event_id, 1,
     type: :int64,
@@ -661,7 +661,7 @@ end
 defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionInitiatedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :namespace, 1, type: :string
   field :namespace_id, 18, type: :string, json_name: "namespaceId"
@@ -716,7 +716,7 @@ end
 defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionFailedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :namespace, 1, type: :string
   field :namespace_id, 8, type: :string, json_name: "namespaceId"
@@ -734,7 +734,7 @@ end
 defmodule Temporal.Api.History.V1.ChildWorkflowExecutionStartedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :namespace, 1, type: :string
   field :namespace_id, 6, type: :string, json_name: "namespaceId"
@@ -751,7 +751,7 @@ end
 defmodule Temporal.Api.History.V1.ChildWorkflowExecutionCompletedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :result, 1, type: Temporal.Api.Common.V1.Payloads
   field :namespace, 2, type: :string
@@ -769,7 +769,7 @@ end
 defmodule Temporal.Api.History.V1.ChildWorkflowExecutionFailedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :failure, 1, type: Temporal.Api.Failure.V1.Failure
   field :namespace, 2, type: :string
@@ -792,7 +792,7 @@ end
 defmodule Temporal.Api.History.V1.ChildWorkflowExecutionCanceledEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :details, 1, type: Temporal.Api.Common.V1.Payloads
   field :namespace, 2, type: :string
@@ -810,7 +810,7 @@ end
 defmodule Temporal.Api.History.V1.ChildWorkflowExecutionTimedOutEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :namespace, 1, type: :string
   field :namespace_id, 7, type: :string, json_name: "namespaceId"
@@ -832,7 +832,7 @@ end
 defmodule Temporal.Api.History.V1.ChildWorkflowExecutionTerminatedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :namespace, 1, type: :string
   field :namespace_id, 6, type: :string, json_name: "namespaceId"
@@ -849,7 +849,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowPropertiesModifiedExternallyEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :new_task_queue, 1, type: :string, json_name: "newTaskQueue"
 
@@ -874,7 +874,7 @@ end
 defmodule Temporal.Api.History.V1.ActivityPropertiesModifiedExternallyEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
 
@@ -886,7 +886,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowExecutionUpdateAcceptedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :protocol_instance_id, 1, type: :string, json_name: "protocolInstanceId"
   field :accepted_request_message_id, 2, type: :string, json_name: "acceptedRequestMessageId"
@@ -901,7 +901,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowExecutionUpdateCompletedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :meta, 1, type: Temporal.Api.Update.V1.Meta
   field :accepted_event_id, 3, type: :int64, json_name: "acceptedEventId"
@@ -911,7 +911,7 @@ end
 defmodule Temporal.Api.History.V1.WorkflowExecutionUpdateRejectedEventAttributes do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :protocol_instance_id, 1, type: :string, json_name: "protocolInstanceId"
   field :rejected_request_message_id, 2, type: :string, json_name: "rejectedRequestMessageId"
@@ -927,7 +927,7 @@ end
 defmodule Temporal.Api.History.V1.HistoryEvent do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   oneof :attributes, 0
 
@@ -1172,7 +1172,7 @@ end
 defmodule Temporal.Api.History.V1.History do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :events, 1, repeated: true, type: Temporal.Api.History.V1.HistoryEvent
 end

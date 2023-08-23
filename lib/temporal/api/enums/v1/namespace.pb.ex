@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Enums.V1.NamespaceState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :NAMESPACE_STATE_UNSPECIFIED, 0
   field :NAMESPACE_STATE_REGISTERED, 1
@@ -12,7 +12,7 @@ end
 defmodule Temporal.Api.Enums.V1.ArchivalState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :ARCHIVAL_STATE_UNSPECIFIED, 0
   field :ARCHIVAL_STATE_DISABLED, 1
@@ -22,7 +22,7 @@ end
 defmodule Temporal.Api.Enums.V1.ReplicationState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :REPLICATION_STATE_UNSPECIFIED, 0
   field :REPLICATION_STATE_NORMAL, 1

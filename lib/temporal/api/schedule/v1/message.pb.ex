@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Schedule.V1.CalendarSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :second, 1, type: :string
   field :minute, 2, type: :string
@@ -16,7 +16,7 @@ end
 defmodule Temporal.Api.Schedule.V1.Range do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :start, 1, type: :int32
   field :end, 2, type: :int32
@@ -26,7 +26,7 @@ end
 defmodule Temporal.Api.Schedule.V1.StructuredCalendarSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :second, 1, repeated: true, type: Temporal.Api.Schedule.V1.Range
   field :minute, 2, repeated: true, type: Temporal.Api.Schedule.V1.Range
@@ -51,7 +51,7 @@ end
 defmodule Temporal.Api.Schedule.V1.IntervalSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :interval, 1, type: Google.Protobuf.Duration, deprecated: false
   field :phase, 2, type: Google.Protobuf.Duration, deprecated: false
@@ -60,7 +60,7 @@ end
 defmodule Temporal.Api.Schedule.V1.ScheduleSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :structured_calendar, 7,
     repeated: true,
@@ -92,7 +92,7 @@ end
 defmodule Temporal.Api.Schedule.V1.SchedulePolicies do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :overlap_policy, 1,
     type: Temporal.Api.Enums.V1.ScheduleOverlapPolicy,
@@ -110,7 +110,7 @@ end
 defmodule Temporal.Api.Schedule.V1.ScheduleAction do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   oneof :action, 0
 
@@ -123,7 +123,7 @@ end
 defmodule Temporal.Api.Schedule.V1.ScheduleActionResult do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :schedule_time, 1,
     type: Google.Protobuf.Timestamp,
@@ -143,7 +143,7 @@ end
 defmodule Temporal.Api.Schedule.V1.ScheduleState do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :notes, 1, type: :string
   field :paused, 2, type: :bool
@@ -154,7 +154,7 @@ end
 defmodule Temporal.Api.Schedule.V1.TriggerImmediatelyRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :overlap_policy, 1,
     type: Temporal.Api.Enums.V1.ScheduleOverlapPolicy,
@@ -165,7 +165,7 @@ end
 defmodule Temporal.Api.Schedule.V1.BackfillRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :start_time, 1, type: Google.Protobuf.Timestamp, json_name: "startTime", deprecated: false
   field :end_time, 2, type: Google.Protobuf.Timestamp, json_name: "endTime", deprecated: false
@@ -179,7 +179,7 @@ end
 defmodule Temporal.Api.Schedule.V1.SchedulePatch do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :trigger_immediately, 1,
     type: Temporal.Api.Schedule.V1.TriggerImmediatelyRequest,
@@ -197,7 +197,7 @@ end
 defmodule Temporal.Api.Schedule.V1.ScheduleInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :action_count, 1, type: :int64, json_name: "actionCount"
   field :missed_catchup_window, 2, type: :int64, json_name: "missedCatchupWindow"
@@ -238,7 +238,7 @@ end
 defmodule Temporal.Api.Schedule.V1.Schedule do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :spec, 1, type: Temporal.Api.Schedule.V1.ScheduleSpec
   field :action, 2, type: Temporal.Api.Schedule.V1.ScheduleAction
@@ -249,7 +249,7 @@ end
 defmodule Temporal.Api.Schedule.V1.ScheduleListInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :spec, 1, type: Temporal.Api.Schedule.V1.ScheduleSpec
   field :workflow_type, 2, type: Temporal.Api.Common.V1.WorkflowType, json_name: "workflowType"
@@ -271,7 +271,7 @@ end
 defmodule Temporal.Api.Schedule.V1.ScheduleListEntry do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :schedule_id, 1, type: :string, json_name: "scheduleId"
   field :memo, 2, type: Temporal.Api.Common.V1.Memo

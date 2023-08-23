@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Enums.V1.EncodingType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :ENCODING_TYPE_UNSPECIFIED, 0
   field :ENCODING_TYPE_PROTO3, 1
@@ -11,7 +11,7 @@ end
 defmodule Temporal.Api.Enums.V1.IndexedValueType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :INDEXED_VALUE_TYPE_UNSPECIFIED, 0
   field :INDEXED_VALUE_TYPE_TEXT, 1
@@ -26,7 +26,7 @@ end
 defmodule Temporal.Api.Enums.V1.Severity do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :SEVERITY_UNSPECIFIED, 0
   field :SEVERITY_HIGH, 1
