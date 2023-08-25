@@ -6,7 +6,6 @@ Elixir files generated from [Temporal.io's protobuf files](https://github.com/te
 [![Last Updated](https://img.shields.io/github/last-commit/mruoss/temporalio.ex.svg)](https://github.com/mruoss/temporalio.ex/commits/main)
 
 [![Upstream Version Check](https://github.com/mruoss/temporalio.ex/actions/workflows/update.yaml/badge.svg)](https://github.com/mruoss/temporalio.ex/actions/workflows/update.yaml)
-[![Release Status](https://github.com/mruoss/temporalio.ex/actions/workflows/release.yaml/badge.svg)](https://github.com/mruoss/temporalio.ex/actions/workflows/release.yaml)
 
 [![License](https://img.shields.io/hexpm/l/temporalio.svg)](https://github.com/mruoss/temporalio/blob/main/LICENSE)
 
