@@ -28,7 +28,7 @@ defmodule Temporalio.MixProject do
   defp deps do
     [
       {:protobuf, "~> 0.12.0"},
-      {:grpc, "~> 0.6.0"},
+      {:grpc, "~> 0.7.0"},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
