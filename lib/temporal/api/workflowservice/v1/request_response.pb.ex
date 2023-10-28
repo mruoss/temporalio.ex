@@ -1584,6 +1584,7 @@ defmodule Temporal.Api.Workflowservice.V1.StartBatchOperationRequest do
   field :job_id, 3, type: :string, json_name: "jobId"
   field :reason, 4, type: :string
   field :executions, 5, repeated: true, type: Temporal.Api.Common.V1.WorkflowExecution
+  field :max_operations_per_second, 6, type: :float, json_name: "maxOperationsPerSecond"
 
   field :termination_operation, 10,
     type: Temporal.Api.Batch.V1.BatchOperationTermination,
