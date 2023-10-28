@@ -202,6 +202,8 @@ defmodule Temporal.Api.Schedule.V1.ScheduleInfo do
   field :action_count, 1, type: :int64, json_name: "actionCount"
   field :missed_catchup_window, 2, type: :int64, json_name: "missedCatchupWindow"
   field :overlap_skipped, 3, type: :int64, json_name: "overlapSkipped"
+  field :buffer_dropped, 10, type: :int64, json_name: "bufferDropped"
+  field :buffer_size, 11, type: :int64, json_name: "bufferSize"
 
   field :running_workflows, 9,
     repeated: true,

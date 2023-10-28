@@ -107,6 +107,7 @@ defmodule Temporal.Api.Operatorservice.V1.DeleteNamespaceRequest do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :namespace, 1, type: :string
+  field :namespace_id, 2, type: :string, json_name: "namespaceId"
 end
 
 defmodule Temporal.Api.Operatorservice.V1.DeleteNamespaceResponse do
