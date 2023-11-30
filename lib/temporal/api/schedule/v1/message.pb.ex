@@ -53,8 +53,8 @@ defmodule Temporal.Api.Schedule.V1.IntervalSpec do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
-  field :interval, 1, type: Google.Protobuf.Duration, deprecated: false
-  field :phase, 2, type: Google.Protobuf.Duration, deprecated: false
+  field :interval, 1, type: Google.Protobuf.Duration
+  field :phase, 2, type: Google.Protobuf.Duration
 end
 
 defmodule Temporal.Api.Schedule.V1.ScheduleSpec do
@@ -82,9 +82,9 @@ defmodule Temporal.Api.Schedule.V1.ScheduleSpec do
     type: Temporal.Api.Schedule.V1.StructuredCalendarSpec,
     json_name: "excludeStructuredCalendar"
 
-  field :start_time, 4, type: Google.Protobuf.Timestamp, json_name: "startTime", deprecated: false
-  field :end_time, 5, type: Google.Protobuf.Timestamp, json_name: "endTime", deprecated: false
-  field :jitter, 6, type: Google.Protobuf.Duration, deprecated: false
+  field :start_time, 4, type: Google.Protobuf.Timestamp, json_name: "startTime"
+  field :end_time, 5, type: Google.Protobuf.Timestamp, json_name: "endTime"
+  field :jitter, 6, type: Google.Protobuf.Duration
   field :timezone_name, 10, type: :string, json_name: "timezoneName"
   field :timezone_data, 11, type: :bytes, json_name: "timezoneData"
 end
@@ -99,11 +99,7 @@ defmodule Temporal.Api.Schedule.V1.SchedulePolicies do
     json_name: "overlapPolicy",
     enum: true
 
-  field :catchup_window, 2,
-    type: Google.Protobuf.Duration,
-    json_name: "catchupWindow",
-    deprecated: false
-
+  field :catchup_window, 2, type: Google.Protobuf.Duration, json_name: "catchupWindow"
   field :pause_on_failure, 3, type: :bool, json_name: "pauseOnFailure"
 end
 
@@ -125,15 +121,8 @@ defmodule Temporal.Api.Schedule.V1.ScheduleActionResult do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
-  field :schedule_time, 1,
-    type: Google.Protobuf.Timestamp,
-    json_name: "scheduleTime",
-    deprecated: false
-
-  field :actual_time, 2,
-    type: Google.Protobuf.Timestamp,
-    json_name: "actualTime",
-    deprecated: false
+  field :schedule_time, 1, type: Google.Protobuf.Timestamp, json_name: "scheduleTime"
+  field :actual_time, 2, type: Google.Protobuf.Timestamp, json_name: "actualTime"
 
   field :start_workflow_result, 11,
     type: Temporal.Api.Common.V1.WorkflowExecution,
@@ -167,8 +156,8 @@ defmodule Temporal.Api.Schedule.V1.BackfillRequest do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
-  field :start_time, 1, type: Google.Protobuf.Timestamp, json_name: "startTime", deprecated: false
-  field :end_time, 2, type: Google.Protobuf.Timestamp, json_name: "endTime", deprecated: false
+  field :start_time, 1, type: Google.Protobuf.Timestamp, json_name: "startTime"
+  field :end_time, 2, type: Google.Protobuf.Timestamp, json_name: "endTime"
 
   field :overlap_policy, 3,
     type: Temporal.Api.Enums.V1.ScheduleOverlapPolicy,
@@ -218,18 +207,10 @@ defmodule Temporal.Api.Schedule.V1.ScheduleInfo do
   field :future_action_times, 5,
     repeated: true,
     type: Google.Protobuf.Timestamp,
-    json_name: "futureActionTimes",
-    deprecated: false
+    json_name: "futureActionTimes"
 
-  field :create_time, 6,
-    type: Google.Protobuf.Timestamp,
-    json_name: "createTime",
-    deprecated: false
-
-  field :update_time, 7,
-    type: Google.Protobuf.Timestamp,
-    json_name: "updateTime",
-    deprecated: false
+  field :create_time, 6, type: Google.Protobuf.Timestamp, json_name: "createTime"
+  field :update_time, 7, type: Google.Protobuf.Timestamp, json_name: "updateTime"
 
   field :invalid_schedule_error, 8,
     type: :string,
@@ -266,8 +247,7 @@ defmodule Temporal.Api.Schedule.V1.ScheduleListInfo do
   field :future_action_times, 6,
     repeated: true,
     type: Google.Protobuf.Timestamp,
-    json_name: "futureActionTimes",
-    deprecated: false
+    json_name: "futureActionTimes"
 end
 
 defmodule Temporal.Api.Schedule.V1.ScheduleListEntry do

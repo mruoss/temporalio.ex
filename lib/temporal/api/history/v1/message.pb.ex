@@ -17,18 +17,13 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
 
   field :workflow_execution_timeout, 7,
     type: Google.Protobuf.Duration,
-    json_name: "workflowExecutionTimeout",
-    deprecated: false
+    json_name: "workflowExecutionTimeout"
 
-  field :workflow_run_timeout, 8,
-    type: Google.Protobuf.Duration,
-    json_name: "workflowRunTimeout",
-    deprecated: false
+  field :workflow_run_timeout, 8, type: Google.Protobuf.Duration, json_name: "workflowRunTimeout"
 
   field :workflow_task_timeout, 9,
     type: Google.Protobuf.Duration,
-    json_name: "workflowTaskTimeout",
-    deprecated: false
+    json_name: "workflowTaskTimeout"
 
   field :continued_execution_run_id, 10, type: :string, json_name: "continuedExecutionRunId"
   field :initiator, 11, type: Temporal.Api.Enums.V1.ContinueAsNewInitiator, enum: true
@@ -49,15 +44,13 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
 
   field :workflow_execution_expiration_time, 19,
     type: Google.Protobuf.Timestamp,
-    json_name: "workflowExecutionExpirationTime",
-    deprecated: false
+    json_name: "workflowExecutionExpirationTime"
 
   field :cron_schedule, 20, type: :string, json_name: "cronSchedule"
 
   field :first_workflow_task_backoff, 21,
     type: Google.Protobuf.Duration,
-    json_name: "firstWorkflowTaskBackoff",
-    deprecated: false
+    json_name: "firstWorkflowTaskBackoff"
 
   field :memo, 22, type: Temporal.Api.Common.V1.Memo
 
@@ -137,16 +130,11 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionContinuedAsNewEventAttributes
   field :workflow_type, 2, type: Temporal.Api.Common.V1.WorkflowType, json_name: "workflowType"
   field :task_queue, 3, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
   field :input, 4, type: Temporal.Api.Common.V1.Payloads
-
-  field :workflow_run_timeout, 5,
-    type: Google.Protobuf.Duration,
-    json_name: "workflowRunTimeout",
-    deprecated: false
+  field :workflow_run_timeout, 5, type: Google.Protobuf.Duration, json_name: "workflowRunTimeout"
 
   field :workflow_task_timeout, 6,
     type: Google.Protobuf.Duration,
-    json_name: "workflowTaskTimeout",
-    deprecated: false
+    json_name: "workflowTaskTimeout"
 
   field :workflow_task_completed_event_id, 7,
     type: :int64,
@@ -154,8 +142,7 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionContinuedAsNewEventAttributes
 
   field :backoff_start_interval, 8,
     type: Google.Protobuf.Duration,
-    json_name: "backoffStartInterval",
-    deprecated: false
+    json_name: "backoffStartInterval"
 
   field :initiator, 9, type: Temporal.Api.Enums.V1.ContinueAsNewInitiator, enum: true
   field :failure, 10, type: Temporal.Api.Failure.V1.Failure
@@ -183,8 +170,7 @@ defmodule Temporal.Api.History.V1.WorkflowTaskScheduledEventAttributes do
 
   field :start_to_close_timeout, 2,
     type: Google.Protobuf.Duration,
-    json_name: "startToCloseTimeout",
-    deprecated: false
+    json_name: "startToCloseTimeout"
 
   field :attempt, 3, type: :int32
 end
@@ -271,23 +257,17 @@ defmodule Temporal.Api.History.V1.ActivityTaskScheduledEventAttributes do
 
   field :schedule_to_close_timeout, 7,
     type: Google.Protobuf.Duration,
-    json_name: "scheduleToCloseTimeout",
-    deprecated: false
+    json_name: "scheduleToCloseTimeout"
 
   field :schedule_to_start_timeout, 8,
     type: Google.Protobuf.Duration,
-    json_name: "scheduleToStartTimeout",
-    deprecated: false
+    json_name: "scheduleToStartTimeout"
 
   field :start_to_close_timeout, 9,
     type: Google.Protobuf.Duration,
-    json_name: "startToCloseTimeout",
-    deprecated: false
+    json_name: "startToCloseTimeout"
 
-  field :heartbeat_timeout, 10,
-    type: Google.Protobuf.Duration,
-    json_name: "heartbeatTimeout",
-    deprecated: false
+  field :heartbeat_timeout, 10, type: Google.Protobuf.Duration, json_name: "heartbeatTimeout"
 
   field :workflow_task_completed_event_id, 11,
     type: :int64,
@@ -397,11 +377,7 @@ defmodule Temporal.Api.History.V1.TimerStartedEventAttributes do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :timer_id, 1, type: :string, json_name: "timerId"
-
-  field :start_to_fire_timeout, 2,
-    type: Google.Protobuf.Duration,
-    json_name: "startToFireTimeout",
-    deprecated: false
+  field :start_to_fire_timeout, 2, type: Google.Protobuf.Duration, json_name: "startToFireTimeout"
 
   field :workflow_task_completed_event_id, 3,
     type: :int64,
@@ -672,18 +648,13 @@ defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionInitiatedEventAttri
 
   field :workflow_execution_timeout, 6,
     type: Google.Protobuf.Duration,
-    json_name: "workflowExecutionTimeout",
-    deprecated: false
+    json_name: "workflowExecutionTimeout"
 
-  field :workflow_run_timeout, 7,
-    type: Google.Protobuf.Duration,
-    json_name: "workflowRunTimeout",
-    deprecated: false
+  field :workflow_run_timeout, 7, type: Google.Protobuf.Duration, json_name: "workflowRunTimeout"
 
   field :workflow_task_timeout, 8,
     type: Google.Protobuf.Duration,
-    json_name: "workflowTaskTimeout",
-    deprecated: false
+    json_name: "workflowTaskTimeout"
 
   field :parent_close_policy, 9,
     type: Temporal.Api.Enums.V1.ParentClosePolicy,
@@ -855,18 +826,15 @@ defmodule Temporal.Api.History.V1.WorkflowPropertiesModifiedExternallyEventAttri
 
   field :new_workflow_task_timeout, 2,
     type: Google.Protobuf.Duration,
-    json_name: "newWorkflowTaskTimeout",
-    deprecated: false
+    json_name: "newWorkflowTaskTimeout"
 
   field :new_workflow_run_timeout, 3,
     type: Google.Protobuf.Duration,
-    json_name: "newWorkflowRunTimeout",
-    deprecated: false
+    json_name: "newWorkflowRunTimeout"
 
   field :new_workflow_execution_timeout, 4,
     type: Google.Protobuf.Duration,
-    json_name: "newWorkflowExecutionTimeout",
-    deprecated: false
+    json_name: "newWorkflowExecutionTimeout"
 
   field :upserted_memo, 5, type: Temporal.Api.Common.V1.Memo, json_name: "upsertedMemo"
 end
@@ -932,7 +900,7 @@ defmodule Temporal.Api.History.V1.HistoryEvent do
   oneof :attributes, 0
 
   field :event_id, 1, type: :int64, json_name: "eventId"
-  field :event_time, 2, type: Google.Protobuf.Timestamp, json_name: "eventTime", deprecated: false
+  field :event_time, 2, type: Google.Protobuf.Timestamp, json_name: "eventTime"
   field :event_type, 3, type: Temporal.Api.Enums.V1.EventType, json_name: "eventType", enum: true
   field :version, 4, type: :int64
   field :task_id, 5, type: :int64, json_name: "taskId"

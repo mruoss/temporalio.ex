@@ -5,8 +5,8 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
 
   field :execution, 1, type: Temporal.Api.Common.V1.WorkflowExecution
   field :type, 2, type: Temporal.Api.Common.V1.WorkflowType
-  field :start_time, 3, type: Google.Protobuf.Timestamp, json_name: "startTime", deprecated: false
-  field :close_time, 4, type: Google.Protobuf.Timestamp, json_name: "closeTime", deprecated: false
+  field :start_time, 3, type: Google.Protobuf.Timestamp, json_name: "startTime"
+  field :close_time, 4, type: Google.Protobuf.Timestamp, json_name: "closeTime"
   field :status, 5, type: Temporal.Api.Enums.V1.WorkflowExecutionStatus, enum: true
   field :history_length, 6, type: :int64, json_name: "historyLength"
   field :parent_namespace_id, 7, type: :string, json_name: "parentNamespaceId"
@@ -15,11 +15,7 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
     type: Temporal.Api.Common.V1.WorkflowExecution,
     json_name: "parentExecution"
 
-  field :execution_time, 9,
-    type: Google.Protobuf.Timestamp,
-    json_name: "executionTime",
-    deprecated: false
-
+  field :execution_time, 9, type: Google.Protobuf.Timestamp, json_name: "executionTime"
   field :memo, 10, type: Temporal.Api.Common.V1.Memo
 
   field :search_attributes, 11,
@@ -48,18 +44,13 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionConfig do
 
   field :workflow_execution_timeout, 2,
     type: Google.Protobuf.Duration,
-    json_name: "workflowExecutionTimeout",
-    deprecated: false
+    json_name: "workflowExecutionTimeout"
 
-  field :workflow_run_timeout, 3,
-    type: Google.Protobuf.Duration,
-    json_name: "workflowRunTimeout",
-    deprecated: false
+  field :workflow_run_timeout, 3, type: Google.Protobuf.Duration, json_name: "workflowRunTimeout"
 
   field :default_workflow_task_timeout, 4,
     type: Google.Protobuf.Duration,
-    json_name: "defaultWorkflowTaskTimeout",
-    deprecated: false
+    json_name: "defaultWorkflowTaskTimeout"
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
@@ -75,29 +66,12 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
     type: Temporal.Api.Common.V1.Payloads,
     json_name: "heartbeatDetails"
 
-  field :last_heartbeat_time, 5,
-    type: Google.Protobuf.Timestamp,
-    json_name: "lastHeartbeatTime",
-    deprecated: false
-
-  field :last_started_time, 6,
-    type: Google.Protobuf.Timestamp,
-    json_name: "lastStartedTime",
-    deprecated: false
-
+  field :last_heartbeat_time, 5, type: Google.Protobuf.Timestamp, json_name: "lastHeartbeatTime"
+  field :last_started_time, 6, type: Google.Protobuf.Timestamp, json_name: "lastStartedTime"
   field :attempt, 7, type: :int32
   field :maximum_attempts, 8, type: :int32, json_name: "maximumAttempts"
-
-  field :scheduled_time, 9,
-    type: Google.Protobuf.Timestamp,
-    json_name: "scheduledTime",
-    deprecated: false
-
-  field :expiration_time, 10,
-    type: Google.Protobuf.Timestamp,
-    json_name: "expirationTime",
-    deprecated: false
-
+  field :scheduled_time, 9, type: Google.Protobuf.Timestamp, json_name: "scheduledTime"
+  field :expiration_time, 10, type: Google.Protobuf.Timestamp, json_name: "expirationTime"
   field :last_failure, 11, type: Temporal.Api.Failure.V1.Failure, json_name: "lastFailure"
   field :last_worker_identity, 12, type: :string, json_name: "lastWorkerIdentity"
 end
@@ -124,22 +98,13 @@ defmodule Temporal.Api.Workflow.V1.PendingWorkflowTaskInfo do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :state, 1, type: Temporal.Api.Enums.V1.PendingWorkflowTaskState, enum: true
-
-  field :scheduled_time, 2,
-    type: Google.Protobuf.Timestamp,
-    json_name: "scheduledTime",
-    deprecated: false
+  field :scheduled_time, 2, type: Google.Protobuf.Timestamp, json_name: "scheduledTime"
 
   field :original_scheduled_time, 3,
     type: Google.Protobuf.Timestamp,
-    json_name: "originalScheduledTime",
-    deprecated: false
+    json_name: "originalScheduledTime"
 
-  field :started_time, 4,
-    type: Google.Protobuf.Timestamp,
-    json_name: "startedTime",
-    deprecated: false
-
+  field :started_time, 4, type: Google.Protobuf.Timestamp, json_name: "startedTime"
   field :attempt, 5, type: :int32
 end
 
@@ -163,16 +128,8 @@ defmodule Temporal.Api.Workflow.V1.ResetPointInfo do
     type: :int64,
     json_name: "firstWorkflowTaskCompletedId"
 
-  field :create_time, 4,
-    type: Google.Protobuf.Timestamp,
-    json_name: "createTime",
-    deprecated: false
-
-  field :expire_time, 5,
-    type: Google.Protobuf.Timestamp,
-    json_name: "expireTime",
-    deprecated: false
-
+  field :create_time, 4, type: Google.Protobuf.Timestamp, json_name: "createTime"
+  field :expire_time, 5, type: Google.Protobuf.Timestamp, json_name: "expireTime"
   field :resettable, 6, type: :bool
 end
 
@@ -188,18 +145,13 @@ defmodule Temporal.Api.Workflow.V1.NewWorkflowExecutionInfo do
 
   field :workflow_execution_timeout, 5,
     type: Google.Protobuf.Duration,
-    json_name: "workflowExecutionTimeout",
-    deprecated: false
+    json_name: "workflowExecutionTimeout"
 
-  field :workflow_run_timeout, 6,
-    type: Google.Protobuf.Duration,
-    json_name: "workflowRunTimeout",
-    deprecated: false
+  field :workflow_run_timeout, 6, type: Google.Protobuf.Duration, json_name: "workflowRunTimeout"
 
   field :workflow_task_timeout, 7,
     type: Google.Protobuf.Duration,
-    json_name: "workflowTaskTimeout",
-    deprecated: false
+    json_name: "workflowTaskTimeout"
 
   field :workflow_id_reuse_policy, 8,
     type: Temporal.Api.Enums.V1.WorkflowIdReusePolicy,

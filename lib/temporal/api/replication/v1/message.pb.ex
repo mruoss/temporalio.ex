@@ -21,10 +21,6 @@ defmodule Temporal.Api.Replication.V1.FailoverStatus do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
-  field :failover_time, 1,
-    type: Google.Protobuf.Timestamp,
-    json_name: "failoverTime",
-    deprecated: false
-
+  field :failover_time, 1, type: Google.Protobuf.Timestamp, json_name: "failoverTime"
   field :failover_version, 2, type: :int64, json_name: "failoverVersion"
 end

@@ -20,15 +20,8 @@ defmodule Temporal.Api.Filter.V1.StartTimeFilter do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
-  field :earliest_time, 1,
-    type: Google.Protobuf.Timestamp,
-    json_name: "earliestTime",
-    deprecated: false
-
-  field :latest_time, 2,
-    type: Google.Protobuf.Timestamp,
-    json_name: "latestTime",
-    deprecated: false
+  field :earliest_time, 1, type: Google.Protobuf.Timestamp, json_name: "earliestTime"
+  field :latest_time, 2, type: Google.Protobuf.Timestamp, json_name: "latestTime"
 end
 
 defmodule Temporal.Api.Filter.V1.StatusFilter do

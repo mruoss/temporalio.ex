@@ -53,11 +53,7 @@ defmodule Temporal.Api.Taskqueue.V1.PollerInfo do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
-  field :last_access_time, 1,
-    type: Google.Protobuf.Timestamp,
-    json_name: "lastAccessTime",
-    deprecated: false
-
+  field :last_access_time, 1, type: Google.Protobuf.Timestamp, json_name: "lastAccessTime"
   field :identity, 2, type: :string
   field :rate_per_second, 3, type: :double, json_name: "ratePerSecond"
 
@@ -77,8 +73,7 @@ defmodule Temporal.Api.Taskqueue.V1.StickyExecutionAttributes do
 
   field :schedule_to_start_timeout, 2,
     type: Google.Protobuf.Duration,
-    json_name: "scheduleToStartTimeout",
-    deprecated: false
+    json_name: "scheduleToStartTimeout"
 end
 
 defmodule Temporal.Api.Taskqueue.V1.CompatibleVersionSet do

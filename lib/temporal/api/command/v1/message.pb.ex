@@ -11,24 +11,17 @@ defmodule Temporal.Api.Command.V1.ScheduleActivityTaskCommandAttributes do
 
   field :schedule_to_close_timeout, 7,
     type: Google.Protobuf.Duration,
-    json_name: "scheduleToCloseTimeout",
-    deprecated: false
+    json_name: "scheduleToCloseTimeout"
 
   field :schedule_to_start_timeout, 8,
     type: Google.Protobuf.Duration,
-    json_name: "scheduleToStartTimeout",
-    deprecated: false
+    json_name: "scheduleToStartTimeout"
 
   field :start_to_close_timeout, 9,
     type: Google.Protobuf.Duration,
-    json_name: "startToCloseTimeout",
-    deprecated: false
+    json_name: "startToCloseTimeout"
 
-  field :heartbeat_timeout, 10,
-    type: Google.Protobuf.Duration,
-    json_name: "heartbeatTimeout",
-    deprecated: false
-
+  field :heartbeat_timeout, 10, type: Google.Protobuf.Duration, json_name: "heartbeatTimeout"
   field :retry_policy, 11, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
   field :request_eager_execution, 12, type: :bool, json_name: "requestEagerExecution"
   field :use_compatible_version, 13, type: :bool, json_name: "useCompatibleVersion"
@@ -48,11 +41,7 @@ defmodule Temporal.Api.Command.V1.StartTimerCommandAttributes do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :timer_id, 1, type: :string, json_name: "timerId"
-
-  field :start_to_fire_timeout, 2,
-    type: Google.Protobuf.Duration,
-    json_name: "startToFireTimeout",
-    deprecated: false
+  field :start_to_fire_timeout, 2, type: Google.Protobuf.Duration, json_name: "startToFireTimeout"
 end
 
 defmodule Temporal.Api.Command.V1.CompleteWorkflowExecutionCommandAttributes do
@@ -165,21 +154,15 @@ defmodule Temporal.Api.Command.V1.ContinueAsNewWorkflowExecutionCommandAttribute
   field :workflow_type, 1, type: Temporal.Api.Common.V1.WorkflowType, json_name: "workflowType"
   field :task_queue, 2, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
   field :input, 3, type: Temporal.Api.Common.V1.Payloads
-
-  field :workflow_run_timeout, 4,
-    type: Google.Protobuf.Duration,
-    json_name: "workflowRunTimeout",
-    deprecated: false
+  field :workflow_run_timeout, 4, type: Google.Protobuf.Duration, json_name: "workflowRunTimeout"
 
   field :workflow_task_timeout, 5,
     type: Google.Protobuf.Duration,
-    json_name: "workflowTaskTimeout",
-    deprecated: false
+    json_name: "workflowTaskTimeout"
 
   field :backoff_start_interval, 6,
     type: Google.Protobuf.Duration,
-    json_name: "backoffStartInterval",
-    deprecated: false
+    json_name: "backoffStartInterval"
 
   field :retry_policy, 7, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
   field :initiator, 8, type: Temporal.Api.Enums.V1.ContinueAsNewInitiator, enum: true
@@ -213,18 +196,13 @@ defmodule Temporal.Api.Command.V1.StartChildWorkflowExecutionCommandAttributes d
 
   field :workflow_execution_timeout, 6,
     type: Google.Protobuf.Duration,
-    json_name: "workflowExecutionTimeout",
-    deprecated: false
+    json_name: "workflowExecutionTimeout"
 
-  field :workflow_run_timeout, 7,
-    type: Google.Protobuf.Duration,
-    json_name: "workflowRunTimeout",
-    deprecated: false
+  field :workflow_run_timeout, 7, type: Google.Protobuf.Duration, json_name: "workflowRunTimeout"
 
   field :workflow_task_timeout, 8,
     type: Google.Protobuf.Duration,
-    json_name: "workflowTaskTimeout",
-    deprecated: false
+    json_name: "workflowTaskTimeout"
 
   field :parent_close_policy, 9,
     type: Temporal.Api.Enums.V1.ParentClosePolicy,
