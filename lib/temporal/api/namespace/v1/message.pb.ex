@@ -42,8 +42,7 @@ defmodule Temporal.Api.Namespace.V1.NamespaceConfig do
 
   field :workflow_execution_retention_ttl, 1,
     type: Google.Protobuf.Duration,
-    json_name: "workflowExecutionRetentionTtl",
-    deprecated: false
+    json_name: "workflowExecutionRetentionTtl"
 
   field :bad_binaries, 2, type: Temporal.Api.Namespace.V1.BadBinaries, json_name: "badBinaries"
 
@@ -95,11 +94,7 @@ defmodule Temporal.Api.Namespace.V1.BadBinaryInfo do
 
   field :reason, 1, type: :string
   field :operator, 2, type: :string
-
-  field :create_time, 3,
-    type: Google.Protobuf.Timestamp,
-    json_name: "createTime",
-    deprecated: false
+  field :create_time, 3, type: Google.Protobuf.Timestamp, json_name: "createTime"
 end
 
 defmodule Temporal.Api.Namespace.V1.UpdateNamespaceInfo.DataEntry do
