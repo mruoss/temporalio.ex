@@ -11,10 +11,8 @@ Elixir files generated from [Temporal.io's protobuf files](https://github.com/te
 
 ## Installation
 
-This library is currently not published on hex.pm. You can use it
-by adding `temporalio` to your list of dependencies in `mix.exs`
-referencing the github repo. Additionally to `temporalio`, you're
-gonna need `google_protos`:
+Install by adding `temporalio` to your list of dependencies in `mix.exs`.
+Additionally to `temporalio`, you're gonna need `google_protos`:
 
 ```elixir
 def deps do
