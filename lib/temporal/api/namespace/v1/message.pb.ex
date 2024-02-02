@@ -7,6 +7,16 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo.DataEntry do
   field :value, 2, type: :string
 end
 
+defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :eager_workflow_start, 1, type: :bool, json_name: "eagerWorkflowStart"
+  field :sync_update, 2, type: :bool, json_name: "syncUpdate"
+  field :async_update, 3, type: :bool, json_name: "asyncUpdate"
+end
+
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo do
   @moduledoc false
 
@@ -23,6 +33,7 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo do
     map: true
 
   field :id, 6, type: :string
+  field :capabilities, 7, type: Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities
   field :supports_schedules, 100, type: :bool, json_name: "supportsSchedules"
 end
 

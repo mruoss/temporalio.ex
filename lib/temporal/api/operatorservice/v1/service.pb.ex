@@ -32,6 +32,22 @@ defmodule Temporal.Api.Operatorservice.V1.OperatorService.Service do
   rpc :ListClusters,
       Temporal.Api.Operatorservice.V1.ListClustersRequest,
       Temporal.Api.Operatorservice.V1.ListClustersResponse
+
+  rpc :GetNexusIncomingService,
+      Temporal.Api.Operatorservice.V1.GetNexusIncomingServiceRequest,
+      Temporal.Api.Operatorservice.V1.GetNexusIncomingServiceResponse
+
+  rpc :CreateOrUpdateNexusIncomingService,
+      Temporal.Api.Operatorservice.V1.CreateOrUpdateNexusIncomingServiceRequest,
+      Temporal.Api.Operatorservice.V1.CreateOrUpdateNexusIncomingServiceResponse
+
+  rpc :DeleteNexusIncomingService,
+      Temporal.Api.Operatorservice.V1.DeleteNexusIncomingServiceRequest,
+      Temporal.Api.Operatorservice.V1.DeleteNexusIncomingServiceResponse
+
+  rpc :ListNexusIncomingServices,
+      Temporal.Api.Operatorservice.V1.ListNexusIncomingServicesRequest,
+      Temporal.Api.Operatorservice.V1.ListNexusIncomingServicesResponse
 end
 
 defmodule Temporal.Api.Operatorservice.V1.OperatorService.Stub do

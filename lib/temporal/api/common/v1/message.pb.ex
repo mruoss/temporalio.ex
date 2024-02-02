@@ -165,3 +165,49 @@ defmodule Temporal.Api.Common.V1.WorkerVersionCapabilities do
   field :build_id, 1, type: :string, json_name: "buildId"
   field :use_versioning, 2, type: :bool, json_name: "useVersioning"
 end
+
+defmodule Temporal.Api.Common.V1.ResetOptions do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  oneof :target, 0
+
+  field :first_workflow_task, 1,
+    type: Google.Protobuf.Empty,
+    json_name: "firstWorkflowTask",
+    oneof: 0
+
+  field :last_workflow_task, 2,
+    type: Google.Protobuf.Empty,
+    json_name: "lastWorkflowTask",
+    oneof: 0
+
+  field :workflow_task_id, 3, type: :int64, json_name: "workflowTaskId", oneof: 0
+  field :build_id, 4, type: :string, json_name: "buildId", oneof: 0
+
+  field :reset_reapply_type, 10,
+    type: Temporal.Api.Enums.V1.ResetReapplyType,
+    json_name: "resetReapplyType",
+    enum: true
+
+  field :current_run_only, 11, type: :bool, json_name: "currentRunOnly"
+end
+
+defmodule Temporal.Api.Common.V1.Callback.Nexus do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :url, 1, type: :string
+end
+
+defmodule Temporal.Api.Common.V1.Callback do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  oneof :variant, 0
+
+  field :nexus, 2, type: Temporal.Api.Common.V1.Callback.Nexus, oneof: 0
+end

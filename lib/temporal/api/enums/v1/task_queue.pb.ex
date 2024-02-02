@@ -16,6 +16,7 @@ defmodule Temporal.Api.Enums.V1.TaskQueueType do
   field :TASK_QUEUE_TYPE_UNSPECIFIED, 0
   field :TASK_QUEUE_TYPE_WORKFLOW, 1
   field :TASK_QUEUE_TYPE_ACTIVITY, 2
+  field :TASK_QUEUE_TYPE_NEXUS, 3
 end
 
 defmodule Temporal.Api.Enums.V1.TaskReachability do

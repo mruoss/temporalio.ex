@@ -215,6 +215,11 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest do
     json_name: "lastCompletionResult"
 
   field :workflow_start_delay, 20, type: Google.Protobuf.Duration, json_name: "workflowStartDelay"
+
+  field :completion_callbacks, 21,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Callback,
+    json_name: "completionCallbacks"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do
@@ -787,6 +792,12 @@ defmodule Temporal.Api.Workflowservice.V1.ResetWorkflowExecutionRequest do
     type: Temporal.Api.Enums.V1.ResetReapplyType,
     json_name: "resetReapplyType",
     enum: true
+
+  field :reset_reapply_exclude_types, 7,
+    repeated: true,
+    type: Temporal.Api.Enums.V1.ResetReapplyExcludeType,
+    json_name: "resetReapplyExcludeTypes",
+    enum: true
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ResetWorkflowExecutionResponse do
@@ -1130,6 +1141,8 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeWorkflowExecutionResponse do
   field :pending_workflow_task, 5,
     type: Temporal.Api.Workflow.V1.PendingWorkflowTaskInfo,
     json_name: "pendingWorkflowTask"
+
+  field :callbacks, 6, repeated: true, type: Temporal.Api.Workflow.V1.CallbackInfo
 end
 
 defmodule Temporal.Api.Workflowservice.V1.DescribeTaskQueueRequest do
@@ -1664,4 +1677,61 @@ defmodule Temporal.Api.Workflowservice.V1.PollWorkflowExecutionUpdateResponse do
   field :outcome, 1, type: Temporal.Api.Update.V1.Outcome
   field :stage, 2, type: Temporal.Api.Enums.V1.UpdateWorkflowExecutionLifecycleStage, enum: true
   field :update_ref, 3, type: Temporal.Api.Update.V1.UpdateRef, json_name: "updateRef"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :namespace, 1, type: :string
+  field :identity, 2, type: :string
+  field :task_queue, 3, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
+
+  field :worker_version_capabilities, 4,
+    type: Temporal.Api.Common.V1.WorkerVersionCapabilities,
+    json_name: "workerVersionCapabilities"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :task_token, 1, type: :bytes, json_name: "taskToken"
+  field :request, 2, type: Temporal.Api.Nexus.V1.Request
+end
+
+defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskCompletedRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :namespace, 1, type: :string
+  field :identity, 2, type: :string
+  field :task_token, 3, type: :bytes, json_name: "taskToken"
+  field :response, 4, type: Temporal.Api.Nexus.V1.Response
+end
+
+defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskCompletedResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :namespace, 1, type: :string
+  field :identity, 2, type: :string
+  field :task_token, 3, type: :bytes, json_name: "taskToken"
+  field :error, 4, type: Temporal.Api.Nexus.V1.HandlerError
+end
+
+defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 end
