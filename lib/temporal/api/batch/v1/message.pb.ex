@@ -50,12 +50,12 @@ defmodule Temporal.Api.Batch.V1.BatchOperationReset do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
+  field :identity, 3, type: :string
+  field :options, 4, type: Temporal.Api.Common.V1.ResetOptions
   field :reset_type, 1, type: Temporal.Api.Enums.V1.ResetType, json_name: "resetType", enum: true
 
   field :reset_reapply_type, 2,
     type: Temporal.Api.Enums.V1.ResetReapplyType,
     json_name: "resetReapplyType",
     enum: true
-
-  field :identity, 3, type: :string
 end

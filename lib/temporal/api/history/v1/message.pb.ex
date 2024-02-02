@@ -73,6 +73,11 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
   field :source_version_stamp, 29,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
     json_name: "sourceVersionStamp"
+
+  field :completion_callbacks, 30,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Callback,
+    json_name: "completionCallbacks"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do
@@ -474,6 +479,10 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionSignaledEventAttributes do
   field :identity, 3, type: :string
   field :header, 4, type: Temporal.Api.Common.V1.Header
   field :skip_generate_workflow_task, 5, type: :bool, json_name: "skipGenerateWorkflowTask"
+
+  field :external_workflow_execution, 6,
+    type: Temporal.Api.Common.V1.WorkflowExecution,
+    json_name: "externalWorkflowExecution"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionTerminatedEventAttributes do
@@ -892,6 +901,15 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionUpdateRejectedEventAttributes
   field :failure, 5, type: Temporal.Api.Failure.V1.Failure
 end
 
+defmodule Temporal.Api.History.V1.WorkflowExecutionUpdateRequestedEventAttributes do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :request, 1, type: Temporal.Api.Update.V1.Request
+  field :origin, 2, type: Temporal.Api.Enums.V1.UpdateRequestedEventOrigin, enum: true
+end
+
 defmodule Temporal.Api.History.V1.HistoryEvent do
   @moduledoc false
 
@@ -1134,6 +1152,11 @@ defmodule Temporal.Api.History.V1.HistoryEvent do
   field :workflow_properties_modified_event_attributes, 51,
     type: Temporal.Api.History.V1.WorkflowPropertiesModifiedEventAttributes,
     json_name: "workflowPropertiesModifiedEventAttributes",
+    oneof: 0
+
+  field :workflow_execution_update_requested_event_attributes, 52,
+    type: Temporal.Api.History.V1.WorkflowExecutionUpdateRequestedEventAttributes,
+    json_name: "workflowExecutionUpdateRequestedEventAttributes",
     oneof: 0
 end
 

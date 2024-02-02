@@ -121,6 +121,7 @@ defmodule Temporal.Api.Workflow.V1.ResetPointInfo do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
+  field :build_id, 7, type: :string, json_name: "buildId"
   field :binary_checksum, 1, type: :string, json_name: "binaryChecksum"
   field :run_id, 2, type: :string, json_name: "runId"
 
@@ -167,4 +168,47 @@ defmodule Temporal.Api.Workflow.V1.NewWorkflowExecutionInfo do
     json_name: "searchAttributes"
 
   field :header, 13, type: Temporal.Api.Common.V1.Header
+end
+
+defmodule Temporal.Api.Workflow.V1.CallbackInfo.WorkflowClosed do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+end
+
+defmodule Temporal.Api.Workflow.V1.CallbackInfo.Trigger do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  oneof :variant, 0
+
+  field :workflow_closed, 1,
+    type: Temporal.Api.Workflow.V1.CallbackInfo.WorkflowClosed,
+    json_name: "workflowClosed",
+    oneof: 0
+end
+
+defmodule Temporal.Api.Workflow.V1.CallbackInfo do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :callback, 1, type: Temporal.Api.Common.V1.Callback
+  field :trigger, 2, type: Temporal.Api.Workflow.V1.CallbackInfo.Trigger
+  field :registration_time, 3, type: Google.Protobuf.Timestamp, json_name: "registrationTime"
+  field :state, 4, type: Temporal.Api.Enums.V1.CallbackState, enum: true
+  field :attempt, 5, type: :int32
+
+  field :last_attempt_complete_time, 6,
+    type: Google.Protobuf.Timestamp,
+    json_name: "lastAttemptCompleteTime"
+
+  field :last_attempt_failure, 7,
+    type: Temporal.Api.Failure.V1.Failure,
+    json_name: "lastAttemptFailure"
+
+  field :next_attempt_schedule_time, 8,
+    type: Google.Protobuf.Timestamp,
+    json_name: "nextAttemptScheduleTime"
 end

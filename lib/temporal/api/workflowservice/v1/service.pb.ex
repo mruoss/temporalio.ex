@@ -232,6 +232,18 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :ListBatchOperations,
       Temporal.Api.Workflowservice.V1.ListBatchOperationsRequest,
       Temporal.Api.Workflowservice.V1.ListBatchOperationsResponse
+
+  rpc :PollNexusTaskQueue,
+      Temporal.Api.Workflowservice.V1.PollNexusTaskQueueRequest,
+      Temporal.Api.Workflowservice.V1.PollNexusTaskQueueResponse
+
+  rpc :RespondNexusTaskCompleted,
+      Temporal.Api.Workflowservice.V1.RespondNexusTaskCompletedRequest,
+      Temporal.Api.Workflowservice.V1.RespondNexusTaskCompletedResponse
+
+  rpc :RespondNexusTaskFailed,
+      Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedRequest,
+      Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do
