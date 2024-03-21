@@ -39,7 +39,8 @@ defmodule Temporalio.MixProject do
       maintainers: ["Michael Ruoss"],
       licenses: ["MIT"],
       links: %{
-        "GitHub" => @source_url
+        "GitHub" => @source_url,
+        "Sponsor" => "https://github.com/sponsors/mruoss"
       },
       files: ["lib", "mix.exs", "README*", "LICENSE*"]
     ]
