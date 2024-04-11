@@ -18,6 +18,50 @@ defmodule Temporal.Api.Taskqueue.V1.TaskQueueMetadata do
     json_name: "maxTasksPerSecond"
 end
 
+defmodule Temporal.Api.Taskqueue.V1.TaskQueueVersionSelection do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :build_ids, 1, repeated: true, type: :string, json_name: "buildIds"
+  field :unversioned, 2, type: :bool
+  field :all_active, 3, type: :bool, json_name: "allActive"
+end
+
+defmodule Temporal.Api.Taskqueue.V1.TaskQueueVersionInfo.TypesInfoEntry do
+  @moduledoc false
+
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :key, 1, type: :int32
+  field :value, 2, type: Temporal.Api.Taskqueue.V1.TaskQueueTypeInfo
+end
+
+defmodule Temporal.Api.Taskqueue.V1.TaskQueueVersionInfo do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :types_info, 1,
+    repeated: true,
+    type: Temporal.Api.Taskqueue.V1.TaskQueueVersionInfo.TypesInfoEntry,
+    json_name: "typesInfo",
+    map: true
+
+  field :task_reachability, 2,
+    type: Temporal.Api.Enums.V1.BuildIdTaskReachability,
+    json_name: "taskReachability",
+    enum: true
+end
+
+defmodule Temporal.Api.Taskqueue.V1.TaskQueueTypeInfo do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :pollers, 1, repeated: true, type: Temporal.Api.Taskqueue.V1.PollerInfo
+end
+
 defmodule Temporal.Api.Taskqueue.V1.TaskQueueStatus do
   @moduledoc false
 
@@ -104,4 +148,54 @@ defmodule Temporal.Api.Taskqueue.V1.BuildIdReachability do
     repeated: true,
     type: Temporal.Api.Taskqueue.V1.TaskQueueReachability,
     json_name: "taskQueueReachability"
+end
+
+defmodule Temporal.Api.Taskqueue.V1.RampByPercentage do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :ramp_percentage, 1, type: :float, json_name: "rampPercentage"
+end
+
+defmodule Temporal.Api.Taskqueue.V1.BuildIdAssignmentRule do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  oneof :ramp, 0
+
+  field :target_build_id, 1, type: :string, json_name: "targetBuildId"
+
+  field :percentage_ramp, 3,
+    type: Temporal.Api.Taskqueue.V1.RampByPercentage,
+    json_name: "percentageRamp",
+    oneof: 0
+end
+
+defmodule Temporal.Api.Taskqueue.V1.CompatibleBuildIdRedirectRule do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :source_build_id, 1, type: :string, json_name: "sourceBuildId"
+  field :target_build_id, 2, type: :string, json_name: "targetBuildId"
+end
+
+defmodule Temporal.Api.Taskqueue.V1.TimestampedBuildIdAssignmentRule do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :rule, 1, type: Temporal.Api.Taskqueue.V1.BuildIdAssignmentRule
+  field :create_time, 2, type: Google.Protobuf.Timestamp, json_name: "createTime"
+end
+
+defmodule Temporal.Api.Taskqueue.V1.TimestampedCompatibleBuildIdRedirectRule do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :rule, 1, type: Temporal.Api.Taskqueue.V1.CompatibleBuildIdRedirectRule
+  field :create_time, 2, type: Google.Protobuf.Timestamp, json_name: "createTime"
 end

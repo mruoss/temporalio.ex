@@ -81,3 +81,13 @@ defmodule Temporal.Api.Enums.V1.ResourceExhaustedCause do
   field :RESOURCE_EXHAUSTED_CAUSE_BUSY_WORKFLOW, 5
   field :RESOURCE_EXHAUSTED_CAUSE_APS_LIMIT, 6
 end
+
+defmodule Temporal.Api.Enums.V1.ResourceExhaustedScope do
+  @moduledoc false
+
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :RESOURCE_EXHAUSTED_SCOPE_UNSPECIFIED, 0
+  field :RESOURCE_EXHAUSTED_SCOPE_NAMESPACE, 1
+  field :RESOURCE_EXHAUSTED_SCOPE_SYSTEM, 2
+end

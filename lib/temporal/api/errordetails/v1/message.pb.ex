@@ -103,6 +103,7 @@ defmodule Temporal.Api.Errordetails.V1.ResourceExhaustedFailure do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :cause, 1, type: Temporal.Api.Enums.V1.ResourceExhaustedCause, enum: true
+  field :scope, 2, type: Temporal.Api.Enums.V1.ResourceExhaustedScope, enum: true
 end
 
 defmodule Temporal.Api.Errordetails.V1.SystemWorkflowFailure do

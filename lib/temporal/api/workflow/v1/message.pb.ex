@@ -33,6 +33,15 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
   field :most_recent_worker_version_stamp, 16,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
     json_name: "mostRecentWorkerVersionStamp"
+
+  field :execution_duration, 17, type: Google.Protobuf.Duration, json_name: "executionDuration"
+
+  field :root_execution, 18,
+    type: Temporal.Api.Common.V1.WorkflowExecution,
+    json_name: "rootExecution"
+
+  field :assigned_build_id, 19, type: :string, json_name: "assignedBuildId"
+  field :inherited_build_id, 20, type: :string, json_name: "inheritedBuildId"
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionConfig do
@@ -58,6 +67,8 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
+  oneof :assigned_build_id, 0
+
   field :activity_id, 1, type: :string, json_name: "activityId"
   field :activity_type, 2, type: Temporal.Api.Common.V1.ActivityType, json_name: "activityType"
   field :state, 3, type: Temporal.Api.Enums.V1.PendingActivityState, enum: true
@@ -74,6 +85,20 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
   field :expiration_time, 10, type: Google.Protobuf.Timestamp, json_name: "expirationTime"
   field :last_failure, 11, type: Temporal.Api.Failure.V1.Failure, json_name: "lastFailure"
   field :last_worker_identity, 12, type: :string, json_name: "lastWorkerIdentity"
+
+  field :use_workflow_build_id, 13,
+    type: Google.Protobuf.Empty,
+    json_name: "useWorkflowBuildId",
+    oneof: 0
+
+  field :last_independently_assigned_build_id, 14,
+    type: :string,
+    json_name: "lastIndependentlyAssignedBuildId",
+    oneof: 0
+
+  field :last_worker_version_stamp, 15,
+    type: Temporal.Api.Common.V1.WorkerVersionStamp,
+    json_name: "lastWorkerVersionStamp"
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingChildExecutionInfo do

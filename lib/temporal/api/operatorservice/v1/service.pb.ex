@@ -37,9 +37,13 @@ defmodule Temporal.Api.Operatorservice.V1.OperatorService.Service do
       Temporal.Api.Operatorservice.V1.GetNexusIncomingServiceRequest,
       Temporal.Api.Operatorservice.V1.GetNexusIncomingServiceResponse
 
-  rpc :CreateOrUpdateNexusIncomingService,
-      Temporal.Api.Operatorservice.V1.CreateOrUpdateNexusIncomingServiceRequest,
-      Temporal.Api.Operatorservice.V1.CreateOrUpdateNexusIncomingServiceResponse
+  rpc :CreateNexusIncomingService,
+      Temporal.Api.Operatorservice.V1.CreateNexusIncomingServiceRequest,
+      Temporal.Api.Operatorservice.V1.CreateNexusIncomingServiceResponse
+
+  rpc :UpdateNexusIncomingService,
+      Temporal.Api.Operatorservice.V1.UpdateNexusIncomingServiceRequest,
+      Temporal.Api.Operatorservice.V1.UpdateNexusIncomingServiceResponse
 
   rpc :DeleteNexusIncomingService,
       Temporal.Api.Operatorservice.V1.DeleteNexusIncomingServiceRequest,
@@ -48,6 +52,26 @@ defmodule Temporal.Api.Operatorservice.V1.OperatorService.Service do
   rpc :ListNexusIncomingServices,
       Temporal.Api.Operatorservice.V1.ListNexusIncomingServicesRequest,
       Temporal.Api.Operatorservice.V1.ListNexusIncomingServicesResponse
+
+  rpc :GetNexusOutgoingService,
+      Temporal.Api.Operatorservice.V1.GetNexusOutgoingServiceRequest,
+      Temporal.Api.Operatorservice.V1.GetNexusOutgoingServiceResponse
+
+  rpc :CreateNexusOutgoingService,
+      Temporal.Api.Operatorservice.V1.CreateNexusOutgoingServiceRequest,
+      Temporal.Api.Operatorservice.V1.CreateNexusOutgoingServiceResponse
+
+  rpc :UpdateNexusOutgoingService,
+      Temporal.Api.Operatorservice.V1.UpdateNexusOutgoingServiceRequest,
+      Temporal.Api.Operatorservice.V1.UpdateNexusOutgoingServiceResponse
+
+  rpc :DeleteNexusOutgoingService,
+      Temporal.Api.Operatorservice.V1.DeleteNexusOutgoingServiceRequest,
+      Temporal.Api.Operatorservice.V1.DeleteNexusOutgoingServiceResponse
+
+  rpc :ListNexusOutgoingServices,
+      Temporal.Api.Operatorservice.V1.ListNexusOutgoingServicesRequest,
+      Temporal.Api.Operatorservice.V1.ListNexusOutgoingServicesResponse
 end
 
 defmodule Temporal.Api.Operatorservice.V1.OperatorService.Stub do

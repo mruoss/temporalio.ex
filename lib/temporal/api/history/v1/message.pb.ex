@@ -78,6 +78,12 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
     repeated: true,
     type: Temporal.Api.Common.V1.Callback,
     json_name: "completionCallbacks"
+
+  field :root_workflow_execution, 31,
+    type: Temporal.Api.Common.V1.WorkflowExecution,
+    json_name: "rootWorkflowExecution"
+
+  field :inherited_build_id, 32, type: :string, json_name: "inheritedBuildId"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do
@@ -163,7 +169,7 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionContinuedAsNewEventAttributes
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
 
-  field :use_compatible_version, 15, type: :bool, json_name: "useCompatibleVersion"
+  field :inherit_build_id, 15, type: :bool, json_name: "inheritBuildId"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowTaskScheduledEventAttributes do
@@ -190,6 +196,12 @@ defmodule Temporal.Api.History.V1.WorkflowTaskStartedEventAttributes do
   field :request_id, 3, type: :string, json_name: "requestId"
   field :suggest_continue_as_new, 4, type: :bool, json_name: "suggestContinueAsNew"
   field :history_size_bytes, 5, type: :int64, json_name: "historySizeBytes"
+
+  field :worker_version, 6,
+    type: Temporal.Api.Common.V1.WorkerVersionStamp,
+    json_name: "workerVersion"
+
+  field :build_id_redirect_counter, 7, type: :int64, json_name: "buildIdRedirectCounter"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowTaskCompletedEventAttributes do
@@ -279,7 +291,7 @@ defmodule Temporal.Api.History.V1.ActivityTaskScheduledEventAttributes do
     json_name: "workflowTaskCompletedEventId"
 
   field :retry_policy, 12, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
-  field :use_compatible_version, 13, type: :bool, json_name: "useCompatibleVersion"
+  field :use_workflow_build_id, 13, type: :bool, json_name: "useWorkflowBuildId"
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskStartedEventAttributes do
@@ -292,6 +304,12 @@ defmodule Temporal.Api.History.V1.ActivityTaskStartedEventAttributes do
   field :request_id, 3, type: :string, json_name: "requestId"
   field :attempt, 4, type: :int32
   field :last_failure, 5, type: Temporal.Api.Failure.V1.Failure, json_name: "lastFailure"
+
+  field :worker_version, 6,
+    type: Temporal.Api.Common.V1.WorkerVersionStamp,
+    json_name: "workerVersion"
+
+  field :build_id_redirect_counter, 7, type: :int64, json_name: "buildIdRedirectCounter"
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskCompletedEventAttributes do
@@ -690,7 +708,7 @@ defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionInitiatedEventAttri
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
 
-  field :use_compatible_version, 19, type: :bool, json_name: "useCompatibleVersion"
+  field :inherit_build_id, 19, type: :bool, json_name: "inheritBuildId"
 end
 
 defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionFailedEventAttributes do
@@ -901,13 +919,13 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionUpdateRejectedEventAttributes
   field :failure, 5, type: Temporal.Api.Failure.V1.Failure
 end
 
-defmodule Temporal.Api.History.V1.WorkflowExecutionUpdateRequestedEventAttributes do
+defmodule Temporal.Api.History.V1.WorkflowExecutionUpdateAdmittedEventAttributes do
   @moduledoc false
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :request, 1, type: Temporal.Api.Update.V1.Request
-  field :origin, 2, type: Temporal.Api.Enums.V1.UpdateRequestedEventOrigin, enum: true
+  field :origin, 2, type: Temporal.Api.Enums.V1.UpdateAdmittedEventOrigin, enum: true
 end
 
 defmodule Temporal.Api.History.V1.HistoryEvent do
@@ -1154,9 +1172,9 @@ defmodule Temporal.Api.History.V1.HistoryEvent do
     json_name: "workflowPropertiesModifiedEventAttributes",
     oneof: 0
 
-  field :workflow_execution_update_requested_event_attributes, 52,
-    type: Temporal.Api.History.V1.WorkflowExecutionUpdateRequestedEventAttributes,
-    json_name: "workflowExecutionUpdateRequestedEventAttributes",
+  field :workflow_execution_update_admitted_event_attributes, 52,
+    type: Temporal.Api.History.V1.WorkflowExecutionUpdateAdmittedEventAttributes,
+    json_name: "workflowExecutionUpdateAdmittedEventAttributes",
     oneof: 0
 end
 

@@ -30,3 +30,23 @@ defmodule Temporal.Api.Enums.V1.TaskReachability do
   field :TASK_REACHABILITY_OPEN_WORKFLOWS, 3
   field :TASK_REACHABILITY_CLOSED_WORKFLOWS, 4
 end
+
+defmodule Temporal.Api.Enums.V1.BuildIdTaskReachability do
+  @moduledoc false
+
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :BUILD_ID_TASK_REACHABILITY_UNSPECIFIED, 0
+  field :BUILD_ID_TASK_REACHABILITY_REACHABLE, 1
+  field :BUILD_ID_TASK_REACHABILITY_CLOSED_WORKFLOWS_ONLY, 2
+  field :BUILD_ID_TASK_REACHABILITY_UNREACHABLE, 3
+end
+
+defmodule Temporal.Api.Enums.V1.DescribeTaskQueueMode do
+  @moduledoc false
+
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :DESCRIBE_TASK_QUEUE_MODE_UNSPECIFIED, 0
+  field :DESCRIBE_TASK_QUEUE_MODE_ENHANCED, 1
+end
