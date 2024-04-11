@@ -101,6 +101,7 @@ defmodule Temporal.Api.Schedule.V1.SchedulePolicies do
 
   field :catchup_window, 2, type: Google.Protobuf.Duration, json_name: "catchupWindow"
   field :pause_on_failure, 3, type: :bool, json_name: "pauseOnFailure"
+  field :keep_original_workflow_id, 4, type: :bool, json_name: "keepOriginalWorkflowId"
 end
 
 defmodule Temporal.Api.Schedule.V1.ScheduleAction do

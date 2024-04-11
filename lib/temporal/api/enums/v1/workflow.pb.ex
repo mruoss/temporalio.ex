@@ -10,6 +10,17 @@ defmodule Temporal.Api.Enums.V1.WorkflowIdReusePolicy do
   field :WORKFLOW_ID_REUSE_POLICY_TERMINATE_IF_RUNNING, 4
 end
 
+defmodule Temporal.Api.Enums.V1.WorkflowIdConflictPolicy do
+  @moduledoc false
+
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :WORKFLOW_ID_CONFLICT_POLICY_UNSPECIFIED, 0
+  field :WORKFLOW_ID_CONFLICT_POLICY_FAIL, 1
+  field :WORKFLOW_ID_CONFLICT_POLICY_USE_EXISTING, 2
+  field :WORKFLOW_ID_CONFLICT_POLICY_TERMINATE_EXISTING, 3
+end
+
 defmodule Temporal.Api.Enums.V1.ParentClosePolicy do
   @moduledoc false
 

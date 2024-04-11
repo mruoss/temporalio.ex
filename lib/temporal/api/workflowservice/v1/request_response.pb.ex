@@ -195,6 +195,11 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest do
     json_name: "workflowIdReusePolicy",
     enum: true
 
+  field :workflow_id_conflict_policy, 22,
+    type: Temporal.Api.Enums.V1.WorkflowIdConflictPolicy,
+    json_name: "workflowIdConflictPolicy",
+    enum: true
+
   field :retry_policy, 12, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
   field :cron_schedule, 13, type: :string, json_name: "cronSchedule"
   field :memo, 14, type: Temporal.Api.Common.V1.Memo
@@ -228,6 +233,7 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :run_id, 1, type: :string, json_name: "runId"
+  field :started, 3, type: :bool
 
   field :eager_workflow_task, 2,
     type: Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueResponse,
@@ -749,6 +755,11 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionReques
     json_name: "workflowIdReusePolicy",
     enum: true
 
+  field :workflow_id_conflict_policy, 22,
+    type: Temporal.Api.Enums.V1.WorkflowIdConflictPolicy,
+    json_name: "workflowIdConflictPolicy",
+    enum: true
+
   field :signal_name, 12, type: :string, json_name: "signalName"
   field :signal_input, 13, type: Temporal.Api.Common.V1.Payloads, json_name: "signalInput"
   field :control, 14, type: :string
@@ -771,6 +782,7 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionRespon
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :run_id, 1, type: :string, json_name: "runId"
+  field :started, 2, type: :bool
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ResetWorkflowExecutionRequest do
@@ -1159,6 +1171,31 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeTaskQueueRequest do
     enum: true
 
   field :include_task_queue_status, 4, type: :bool, json_name: "includeTaskQueueStatus"
+
+  field :api_mode, 5,
+    type: Temporal.Api.Enums.V1.DescribeTaskQueueMode,
+    json_name: "apiMode",
+    enum: true
+
+  field :versions, 6, type: Temporal.Api.Taskqueue.V1.TaskQueueVersionSelection
+
+  field :task_queue_types, 7,
+    repeated: true,
+    type: Temporal.Api.Enums.V1.TaskQueueType,
+    json_name: "taskQueueTypes",
+    enum: true
+
+  field :report_pollers, 9, type: :bool, json_name: "reportPollers"
+  field :report_task_reachability, 10, type: :bool, json_name: "reportTaskReachability"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DescribeTaskQueueResponse.VersionsInfoEntry do
+  @moduledoc false
+
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :key, 1, type: :string
+  field :value, 2, type: Temporal.Api.Taskqueue.V1.TaskQueueVersionInfo
 end
 
 defmodule Temporal.Api.Workflowservice.V1.DescribeTaskQueueResponse do
@@ -1171,6 +1208,12 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeTaskQueueResponse do
   field :task_queue_status, 2,
     type: Temporal.Api.Taskqueue.V1.TaskQueueStatus,
     json_name: "taskQueueStatus"
+
+  field :versions_info, 3,
+    repeated: true,
+    type: Temporal.Api.Workflowservice.V1.DescribeTaskQueueResponse.VersionsInfoEntry,
+    json_name: "versionsInfo",
+    map: true
 end
 
 defmodule Temporal.Api.Workflowservice.V1.GetClusterInfoRequest do
@@ -1403,6 +1446,7 @@ defmodule Temporal.Api.Workflowservice.V1.ListSchedulesRequest do
   field :namespace, 1, type: :string
   field :maximum_page_size, 2, type: :int32, json_name: "maximumPageSize"
   field :next_page_token, 3, type: :bytes, json_name: "nextPageToken"
+  field :query, 4, type: :string
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ListSchedulesResponse do
@@ -1492,6 +1536,165 @@ defmodule Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse 
     repeated: true,
     type: Temporal.Api.Taskqueue.V1.CompatibleVersionSet,
     json_name: "majorVersionSets"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.InsertBuildIdAssignmentRule do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :rule_index, 1, type: :int32, json_name: "ruleIndex"
+  field :rule, 2, type: Temporal.Api.Taskqueue.V1.BuildIdAssignmentRule
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.ReplaceBuildIdAssignmentRule do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :rule_index, 1, type: :int32, json_name: "ruleIndex"
+  field :rule, 2, type: Temporal.Api.Taskqueue.V1.BuildIdAssignmentRule
+  field :force, 3, type: :bool
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.DeleteBuildIdAssignmentRule do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :rule_index, 1, type: :int32, json_name: "ruleIndex"
+  field :force, 2, type: :bool
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.AddCompatibleBuildIdRedirectRule do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :rule, 1, type: Temporal.Api.Taskqueue.V1.CompatibleBuildIdRedirectRule
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.ReplaceCompatibleBuildIdRedirectRule do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :rule, 1, type: Temporal.Api.Taskqueue.V1.CompatibleBuildIdRedirectRule
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.DeleteCompatibleBuildIdRedirectRule do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :source_build_id, 1, type: :string, json_name: "sourceBuildId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.CommitBuildId do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :target_build_id, 1, type: :string, json_name: "targetBuildId"
+  field :force, 2, type: :bool
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  oneof :operation, 0
+
+  field :namespace, 1, type: :string
+  field :task_queue, 2, type: :string, json_name: "taskQueue"
+  field :conflict_token, 3, type: :bytes, json_name: "conflictToken"
+
+  field :insert_assignment_rule, 4,
+    type:
+      Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.InsertBuildIdAssignmentRule,
+    json_name: "insertAssignmentRule",
+    oneof: 0
+
+  field :replace_assignment_rule, 5,
+    type:
+      Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.ReplaceBuildIdAssignmentRule,
+    json_name: "replaceAssignmentRule",
+    oneof: 0
+
+  field :delete_assignment_rule, 6,
+    type:
+      Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.DeleteBuildIdAssignmentRule,
+    json_name: "deleteAssignmentRule",
+    oneof: 0
+
+  field :add_compatible_redirect_rule, 7,
+    type:
+      Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.AddCompatibleBuildIdRedirectRule,
+    json_name: "addCompatibleRedirectRule",
+    oneof: 0
+
+  field :replace_compatible_redirect_rule, 8,
+    type:
+      Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.ReplaceCompatibleBuildIdRedirectRule,
+    json_name: "replaceCompatibleRedirectRule",
+    oneof: 0
+
+  field :delete_compatible_redirect_rule, 9,
+    type:
+      Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.DeleteCompatibleBuildIdRedirectRule,
+    json_name: "deleteCompatibleRedirectRule",
+    oneof: 0
+
+  field :commit_build_id, 10,
+    type: Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest.CommitBuildId,
+    json_name: "commitBuildId",
+    oneof: 0
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :assignment_rules, 1,
+    repeated: true,
+    type: Temporal.Api.Taskqueue.V1.TimestampedBuildIdAssignmentRule,
+    json_name: "assignmentRules"
+
+  field :compatible_redirect_rules, 2,
+    repeated: true,
+    type: Temporal.Api.Taskqueue.V1.TimestampedCompatibleBuildIdRedirectRule,
+    json_name: "compatibleRedirectRules"
+
+  field :conflict_token, 3, type: :bytes, json_name: "conflictToken"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.GetWorkerVersioningRulesRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :namespace, 1, type: :string
+  field :task_queue, 2, type: :string, json_name: "taskQueue"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.GetWorkerVersioningRulesResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :assignment_rules, 1,
+    repeated: true,
+    type: Temporal.Api.Taskqueue.V1.TimestampedBuildIdAssignmentRule,
+    json_name: "assignmentRules"
+
+  field :compatible_redirect_rules, 2,
+    repeated: true,
+    type: Temporal.Api.Taskqueue.V1.TimestampedCompatibleBuildIdRedirectRule,
+    json_name: "compatibleRedirectRules"
+
+  field :conflict_token, 3, type: :bytes, json_name: "conflictToken"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.GetWorkerTaskReachabilityRequest do

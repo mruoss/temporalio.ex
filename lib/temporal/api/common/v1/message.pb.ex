@@ -153,7 +153,6 @@ defmodule Temporal.Api.Common.V1.WorkerVersionStamp do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :build_id, 1, type: :string, json_name: "buildId"
-  field :bundle_id, 2, type: :string, json_name: "bundleId"
   field :use_versioning, 3, type: :bool, json_name: "useVersioning"
 end
 

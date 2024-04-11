@@ -147,7 +147,20 @@ defmodule Temporal.Api.Nexus.V1.Response do
     oneof: 0
 end
 
-defmodule Temporal.Api.Nexus.V1.IncomingService.MetadataEntry do
+defmodule Temporal.Api.Nexus.V1.IncomingService do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :version, 1, type: :int64
+  field :id, 2, type: :string
+  field :spec, 3, type: Temporal.Api.Nexus.V1.IncomingServiceSpec
+  field :created_time, 4, type: Google.Protobuf.Timestamp, json_name: "createdTime"
+  field :last_modified_time, 5, type: Google.Protobuf.Timestamp, json_name: "lastModifiedTime"
+  field :url_prefix, 6, type: :string, json_name: "urlPrefix"
+end
+
+defmodule Temporal.Api.Nexus.V1.IncomingServiceSpec.MetadataEntry do
   @moduledoc false
 
   use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
@@ -156,18 +169,37 @@ defmodule Temporal.Api.Nexus.V1.IncomingService.MetadataEntry do
   field :value, 2, type: Google.Protobuf.Any
 end
 
-defmodule Temporal.Api.Nexus.V1.IncomingService do
+defmodule Temporal.Api.Nexus.V1.IncomingServiceSpec do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :name, 1, type: :string
+  field :namespace, 2, type: :string
+  field :task_queue, 3, type: :string, json_name: "taskQueue"
+
+  field :metadata, 4,
+    repeated: true,
+    type: Temporal.Api.Nexus.V1.IncomingServiceSpec.MetadataEntry,
+    map: true
+end
+
+defmodule Temporal.Api.Nexus.V1.OutgoingService do
   @moduledoc false
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :version, 1, type: :int64
   field :name, 2, type: :string
-  field :namespace, 3, type: :string
-  field :task_queue, 4, type: :string, json_name: "taskQueue"
+  field :spec, 3, type: Temporal.Api.Nexus.V1.OutgoingServiceSpec
+  field :created_time, 4, type: Google.Protobuf.Timestamp, json_name: "createdTime"
+  field :last_modified_time, 5, type: Google.Protobuf.Timestamp, json_name: "lastModifiedTime"
+end
 
-  field :metadata, 5,
-    repeated: true,
-    type: Temporal.Api.Nexus.V1.IncomingService.MetadataEntry,
-    map: true
+defmodule Temporal.Api.Nexus.V1.OutgoingServiceSpec do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :url, 1, type: :string
 end

@@ -132,6 +132,8 @@ defmodule Temporal.Api.Operatorservice.V1.AddOrUpdateRemoteClusterRequest do
   field :enable_remote_cluster_connection, 2,
     type: :bool,
     json_name: "enableRemoteClusterConnection"
+
+  field :frontend_http_address, 3, type: :string, json_name: "frontendHttpAddress"
 end
 
 defmodule Temporal.Api.Operatorservice.V1.AddOrUpdateRemoteClusterResponse do
@@ -180,6 +182,7 @@ defmodule Temporal.Api.Operatorservice.V1.ClusterMetadata do
   field :cluster_name, 1, type: :string, json_name: "clusterName"
   field :cluster_id, 2, type: :string, json_name: "clusterId"
   field :address, 3, type: :string
+  field :http_address, 7, type: :string, json_name: "httpAddress"
   field :initial_failover_version, 4, type: :int64, json_name: "initialFailoverVersion"
   field :history_shard_count, 5, type: :int32, json_name: "historyShardCount"
   field :is_connection_enabled, 6, type: :bool, json_name: "isConnectionEnabled"
@@ -190,7 +193,7 @@ defmodule Temporal.Api.Operatorservice.V1.GetNexusIncomingServiceRequest do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
-  field :name, 1, type: :string
+  field :id, 1, type: :string
 end
 
 defmodule Temporal.Api.Operatorservice.V1.GetNexusIncomingServiceResponse do
@@ -201,7 +204,15 @@ defmodule Temporal.Api.Operatorservice.V1.GetNexusIncomingServiceResponse do
   field :service, 1, type: Temporal.Api.Nexus.V1.IncomingService
 end
 
-defmodule Temporal.Api.Operatorservice.V1.CreateOrUpdateNexusIncomingServiceRequest do
+defmodule Temporal.Api.Operatorservice.V1.CreateNexusIncomingServiceRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :spec, 1, type: Temporal.Api.Nexus.V1.IncomingServiceSpec
+end
+
+defmodule Temporal.Api.Operatorservice.V1.CreateNexusIncomingServiceResponse do
   @moduledoc false
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
@@ -209,7 +220,17 @@ defmodule Temporal.Api.Operatorservice.V1.CreateOrUpdateNexusIncomingServiceRequ
   field :service, 1, type: Temporal.Api.Nexus.V1.IncomingService
 end
 
-defmodule Temporal.Api.Operatorservice.V1.CreateOrUpdateNexusIncomingServiceResponse do
+defmodule Temporal.Api.Operatorservice.V1.UpdateNexusIncomingServiceRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :id, 1, type: :string
+  field :version, 2, type: :int64
+  field :spec, 3, type: Temporal.Api.Nexus.V1.IncomingServiceSpec
+end
+
+defmodule Temporal.Api.Operatorservice.V1.UpdateNexusIncomingServiceResponse do
   @moduledoc false
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
@@ -222,7 +243,8 @@ defmodule Temporal.Api.Operatorservice.V1.DeleteNexusIncomingServiceRequest do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
-  field :name, 1, type: :string
+  field :id, 1, type: :string
+  field :version, 2, type: :int64
 end
 
 defmodule Temporal.Api.Operatorservice.V1.DeleteNexusIncomingServiceResponse do
@@ -238,6 +260,7 @@ defmodule Temporal.Api.Operatorservice.V1.ListNexusIncomingServicesRequest do
 
   field :page_size, 1, type: :int32, json_name: "pageSize"
   field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
+  field :name, 3, type: :string
 end
 
 defmodule Temporal.Api.Operatorservice.V1.ListNexusIncomingServicesResponse do
@@ -247,4 +270,92 @@ defmodule Temporal.Api.Operatorservice.V1.ListNexusIncomingServicesResponse do
 
   field :next_page_token, 1, type: :bytes, json_name: "nextPageToken"
   field :services, 2, repeated: true, type: Temporal.Api.Nexus.V1.IncomingService
+end
+
+defmodule Temporal.Api.Operatorservice.V1.GetNexusOutgoingServiceRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :namespace, 1, type: :string
+  field :name, 2, type: :string
+end
+
+defmodule Temporal.Api.Operatorservice.V1.GetNexusOutgoingServiceResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :service, 1, type: Temporal.Api.Nexus.V1.OutgoingService
+end
+
+defmodule Temporal.Api.Operatorservice.V1.CreateNexusOutgoingServiceRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :namespace, 1, type: :string
+  field :name, 2, type: :string
+  field :spec, 3, type: Temporal.Api.Nexus.V1.OutgoingServiceSpec
+end
+
+defmodule Temporal.Api.Operatorservice.V1.CreateNexusOutgoingServiceResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :service, 1, type: Temporal.Api.Nexus.V1.OutgoingService
+end
+
+defmodule Temporal.Api.Operatorservice.V1.UpdateNexusOutgoingServiceRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :namespace, 1, type: :string
+  field :name, 2, type: :string
+  field :version, 3, type: :int64
+  field :spec, 4, type: Temporal.Api.Nexus.V1.OutgoingServiceSpec
+end
+
+defmodule Temporal.Api.Operatorservice.V1.UpdateNexusOutgoingServiceResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :service, 1, type: Temporal.Api.Nexus.V1.OutgoingService
+end
+
+defmodule Temporal.Api.Operatorservice.V1.DeleteNexusOutgoingServiceRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :namespace, 1, type: :string
+  field :name, 2, type: :string
+end
+
+defmodule Temporal.Api.Operatorservice.V1.DeleteNexusOutgoingServiceResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+end
+
+defmodule Temporal.Api.Operatorservice.V1.ListNexusOutgoingServicesRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :namespace, 1, type: :string
+  field :page_size, 2, type: :int32, json_name: "pageSize"
+  field :page_token, 3, type: :bytes, json_name: "pageToken"
+end
+
+defmodule Temporal.Api.Operatorservice.V1.ListNexusOutgoingServicesResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :services, 1, repeated: true, type: Temporal.Api.Nexus.V1.OutgoingService
+  field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
 end

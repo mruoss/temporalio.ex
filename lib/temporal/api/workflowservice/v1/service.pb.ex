@@ -205,6 +205,14 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityRequest,
       Temporal.Api.Workflowservice.V1.GetWorkerBuildIdCompatibilityResponse
 
+  rpc :UpdateWorkerVersioningRules,
+      Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesRequest,
+      Temporal.Api.Workflowservice.V1.UpdateWorkerVersioningRulesResponse
+
+  rpc :GetWorkerVersioningRules,
+      Temporal.Api.Workflowservice.V1.GetWorkerVersioningRulesRequest,
+      Temporal.Api.Workflowservice.V1.GetWorkerVersioningRulesResponse
+
   rpc :GetWorkerTaskReachability,
       Temporal.Api.Workflowservice.V1.GetWorkerTaskReachabilityRequest,
       Temporal.Api.Workflowservice.V1.GetWorkerTaskReachabilityResponse
