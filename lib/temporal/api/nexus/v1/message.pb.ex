@@ -14,7 +14,7 @@ defmodule Temporal.Api.Nexus.V1.Failure do
 
   field :message, 1, type: :string
   field :metadata, 2, repeated: true, type: Temporal.Api.Nexus.V1.Failure.MetadataEntry, map: true
-  field :details, 3, type: Google.Protobuf.Value
+  field :details, 3, type: :bytes
 end
 
 defmodule Temporal.Api.Nexus.V1.HandlerError do
@@ -35,15 +35,31 @@ defmodule Temporal.Api.Nexus.V1.UnsuccessfulOperationError do
   field :failure, 2, type: Temporal.Api.Nexus.V1.Failure
 end
 
+defmodule Temporal.Api.Nexus.V1.StartOperationRequest.CallbackHeaderEntry do
+  @moduledoc false
+
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
 defmodule Temporal.Api.Nexus.V1.StartOperationRequest do
   @moduledoc false
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
-  field :operation, 1, type: :string
-  field :request_id, 2, type: :string, json_name: "requestId"
-  field :callback, 3, type: :string
-  field :payload, 4, type: Temporal.Api.Common.V1.Payload
+  field :service, 1, type: :string
+  field :operation, 2, type: :string
+  field :request_id, 3, type: :string, json_name: "requestId"
+  field :callback, 4, type: :string
+  field :payload, 5, type: Temporal.Api.Common.V1.Payload
+
+  field :callback_header, 6,
+    repeated: true,
+    type: Temporal.Api.Nexus.V1.StartOperationRequest.CallbackHeaderEntry,
+    json_name: "callbackHeader",
+    map: true
 end
 
 defmodule Temporal.Api.Nexus.V1.CancelOperationRequest do
@@ -51,8 +67,9 @@ defmodule Temporal.Api.Nexus.V1.CancelOperationRequest do
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
-  field :operation, 1, type: :string
-  field :operation_id, 2, type: :string, json_name: "operationId"
+  field :service, 1, type: :string
+  field :operation, 2, type: :string
+  field :operation_id, 3, type: :string, json_name: "operationId"
 end
 
 defmodule Temporal.Api.Nexus.V1.Request.HeaderEntry do
@@ -72,13 +89,14 @@ defmodule Temporal.Api.Nexus.V1.Request do
   oneof :variant, 0
 
   field :header, 1, repeated: true, type: Temporal.Api.Nexus.V1.Request.HeaderEntry, map: true
+  field :scheduled_time, 2, type: Google.Protobuf.Timestamp, json_name: "scheduledTime"
 
-  field :start_operation, 2,
+  field :start_operation, 3,
     type: Temporal.Api.Nexus.V1.StartOperationRequest,
     json_name: "startOperation",
     oneof: 0
 
-  field :cancel_operation, 3,
+  field :cancel_operation, 4,
     type: Temporal.Api.Nexus.V1.CancelOperationRequest,
     json_name: "cancelOperation",
     oneof: 0
@@ -147,59 +165,53 @@ defmodule Temporal.Api.Nexus.V1.Response do
     oneof: 0
 end
 
-defmodule Temporal.Api.Nexus.V1.IncomingService do
+defmodule Temporal.Api.Nexus.V1.Endpoint do
   @moduledoc false
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :version, 1, type: :int64
   field :id, 2, type: :string
-  field :spec, 3, type: Temporal.Api.Nexus.V1.IncomingServiceSpec
+  field :spec, 3, type: Temporal.Api.Nexus.V1.EndpointSpec
   field :created_time, 4, type: Google.Protobuf.Timestamp, json_name: "createdTime"
   field :last_modified_time, 5, type: Google.Protobuf.Timestamp, json_name: "lastModifiedTime"
   field :url_prefix, 6, type: :string, json_name: "urlPrefix"
 end
 
-defmodule Temporal.Api.Nexus.V1.IncomingServiceSpec.MetadataEntry do
-  @moduledoc false
-
-  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
-
-  field :key, 1, type: :string
-  field :value, 2, type: Google.Protobuf.Any
-end
-
-defmodule Temporal.Api.Nexus.V1.IncomingServiceSpec do
+defmodule Temporal.Api.Nexus.V1.EndpointSpec do
   @moduledoc false
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :name, 1, type: :string
-  field :namespace, 2, type: :string
-  field :task_queue, 3, type: :string, json_name: "taskQueue"
-
-  field :metadata, 4,
-    repeated: true,
-    type: Temporal.Api.Nexus.V1.IncomingServiceSpec.MetadataEntry,
-    map: true
+  field :description, 2, type: Temporal.Api.Common.V1.Payload
+  field :target, 3, type: Temporal.Api.Nexus.V1.EndpointTarget
 end
 
-defmodule Temporal.Api.Nexus.V1.OutgoingService do
+defmodule Temporal.Api.Nexus.V1.EndpointTarget.Worker do
   @moduledoc false
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
-  field :version, 1, type: :int64
-  field :name, 2, type: :string
-  field :spec, 3, type: Temporal.Api.Nexus.V1.OutgoingServiceSpec
-  field :created_time, 4, type: Google.Protobuf.Timestamp, json_name: "createdTime"
-  field :last_modified_time, 5, type: Google.Protobuf.Timestamp, json_name: "lastModifiedTime"
+  field :namespace, 1, type: :string
+  field :task_queue, 2, type: :string, json_name: "taskQueue"
 end
 
-defmodule Temporal.Api.Nexus.V1.OutgoingServiceSpec do
+defmodule Temporal.Api.Nexus.V1.EndpointTarget.External do
   @moduledoc false
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :url, 1, type: :string
+end
+
+defmodule Temporal.Api.Nexus.V1.EndpointTarget do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  oneof :variant, 0
+
+  field :worker, 1, type: Temporal.Api.Nexus.V1.EndpointTarget.Worker, oneof: 0
+  field :external, 2, type: Temporal.Api.Nexus.V1.EndpointTarget.External, oneof: 0
 end

@@ -237,3 +237,60 @@ defmodule Temporal.Api.Workflow.V1.CallbackInfo do
     type: Google.Protobuf.Timestamp,
     json_name: "nextAttemptScheduleTime"
 end
+
+defmodule Temporal.Api.Workflow.V1.PendingNexusOperationInfo do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :endpoint, 1, type: :string
+  field :service, 2, type: :string
+  field :operation, 3, type: :string
+  field :operation_id, 4, type: :string, json_name: "operationId"
+
+  field :schedule_to_close_timeout, 5,
+    type: Google.Protobuf.Duration,
+    json_name: "scheduleToCloseTimeout"
+
+  field :scheduled_time, 6, type: Google.Protobuf.Timestamp, json_name: "scheduledTime"
+  field :state, 7, type: Temporal.Api.Enums.V1.PendingNexusOperationState, enum: true
+  field :attempt, 8, type: :int32
+
+  field :last_attempt_complete_time, 9,
+    type: Google.Protobuf.Timestamp,
+    json_name: "lastAttemptCompleteTime"
+
+  field :last_attempt_failure, 10,
+    type: Temporal.Api.Failure.V1.Failure,
+    json_name: "lastAttemptFailure"
+
+  field :next_attempt_schedule_time, 11,
+    type: Google.Protobuf.Timestamp,
+    json_name: "nextAttemptScheduleTime"
+
+  field :cancellation_info, 12,
+    type: Temporal.Api.Workflow.V1.NexusOperationCancellationInfo,
+    json_name: "cancellationInfo"
+end
+
+defmodule Temporal.Api.Workflow.V1.NexusOperationCancellationInfo do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :requested_time, 1, type: Google.Protobuf.Timestamp, json_name: "requestedTime"
+  field :state, 2, type: Temporal.Api.Enums.V1.NexusOperationCancellationState, enum: true
+  field :attempt, 3, type: :int32
+
+  field :last_attempt_complete_time, 4,
+    type: Google.Protobuf.Timestamp,
+    json_name: "lastAttemptCompleteTime"
+
+  field :last_attempt_failure, 5,
+    type: Temporal.Api.Failure.V1.Failure,
+    json_name: "lastAttemptFailure"
+
+  field :next_attempt_schedule_time, 6,
+    type: Google.Protobuf.Timestamp,
+    json_name: "nextAttemptScheduleTime"
+end

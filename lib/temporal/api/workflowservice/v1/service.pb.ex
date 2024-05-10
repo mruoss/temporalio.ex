@@ -29,6 +29,10 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest,
       Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse
 
+  rpc :ExecuteMultiOperation,
+      Temporal.Api.Workflowservice.V1.ExecuteMultiOperationRequest,
+      Temporal.Api.Workflowservice.V1.ExecuteMultiOperationResponse
+
   rpc :GetWorkflowExecutionHistory,
       Temporal.Api.Workflowservice.V1.GetWorkflowExecutionHistoryRequest,
       Temporal.Api.Workflowservice.V1.GetWorkflowExecutionHistoryResponse

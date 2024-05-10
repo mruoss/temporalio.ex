@@ -94,6 +94,18 @@ defmodule Temporal.Api.Failure.V1.ChildWorkflowExecutionFailureInfo do
     enum: true
 end
 
+defmodule Temporal.Api.Failure.V1.NexusOperationFailureInfo do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
+  field :endpoint, 2, type: :string
+  field :service, 3, type: :string
+  field :operation, 4, type: :string
+  field :operation_id, 5, type: :string, json_name: "operationId"
+end
+
 defmodule Temporal.Api.Failure.V1.Failure do
   @moduledoc false
 
@@ -150,4 +162,15 @@ defmodule Temporal.Api.Failure.V1.Failure do
     type: Temporal.Api.Failure.V1.ChildWorkflowExecutionFailureInfo,
     json_name: "childWorkflowExecutionFailureInfo",
     oneof: 0
+
+  field :nexus_operation_execution_failure_info, 13,
+    type: Temporal.Api.Failure.V1.NexusOperationFailureInfo,
+    json_name: "nexusOperationExecutionFailureInfo",
+    oneof: 0
+end
+
+defmodule Temporal.Api.Failure.V1.MultiOperationExecutionAborted do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 end
