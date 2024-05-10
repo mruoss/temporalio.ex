@@ -131,3 +131,23 @@ defmodule Temporal.Api.Errordetails.V1.NewerBuildExistsFailure do
 
   field :default_build_id, 1, type: :string, json_name: "defaultBuildId"
 end
+
+defmodule Temporal.Api.Errordetails.V1.MultiOperationExecutionFailure.OperationStatus do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :code, 1, type: :int32
+  field :message, 2, type: :string
+  field :details, 3, repeated: true, type: Google.Protobuf.Any
+end
+
+defmodule Temporal.Api.Errordetails.V1.MultiOperationExecutionFailure do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :statuses, 1,
+    repeated: true,
+    type: Temporal.Api.Errordetails.V1.MultiOperationExecutionFailure.OperationStatus
+end

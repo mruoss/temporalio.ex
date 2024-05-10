@@ -191,6 +191,21 @@ defmodule Temporal.Api.Common.V1.ResetOptions do
     enum: true
 
   field :current_run_only, 11, type: :bool, json_name: "currentRunOnly"
+
+  field :reset_reapply_exclude_types, 12,
+    repeated: true,
+    type: Temporal.Api.Enums.V1.ResetReapplyExcludeType,
+    json_name: "resetReapplyExcludeTypes",
+    enum: true
+end
+
+defmodule Temporal.Api.Common.V1.Callback.Nexus.HeaderEntry do
+  @moduledoc false
+
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
 end
 
 defmodule Temporal.Api.Common.V1.Callback.Nexus do
@@ -199,6 +214,11 @@ defmodule Temporal.Api.Common.V1.Callback.Nexus do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :url, 1, type: :string
+
+  field :header, 2,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Callback.Nexus.HeaderEntry,
+    map: true
 end
 
 defmodule Temporal.Api.Common.V1.Callback do

@@ -1155,6 +1155,11 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeWorkflowExecutionResponse do
     json_name: "pendingWorkflowTask"
 
   field :callbacks, 6, repeated: true, type: Temporal.Api.Workflow.V1.CallbackInfo
+
+  field :pending_nexus_operations, 7,
+    repeated: true,
+    type: Temporal.Api.Workflow.V1.PendingNexusOperationInfo,
+    json_name: "pendingNexusOperations"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.DescribeTaskQueueRequest do
@@ -1377,6 +1382,10 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateScheduleRequest do
   field :conflict_token, 4, type: :bytes, json_name: "conflictToken"
   field :identity, 5, type: :string
   field :request_id, 6, type: :string, json_name: "requestId"
+
+  field :search_attributes, 7,
+    type: Temporal.Api.Common.V1.SearchAttributes,
+    json_name: "searchAttributes"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateScheduleResponse do
@@ -1937,4 +1946,62 @@ defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedResponse do
   @moduledoc false
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ExecuteMultiOperationRequest.Operation do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  oneof :operation, 0
+
+  field :start_workflow, 1,
+    type: Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest,
+    json_name: "startWorkflow",
+    oneof: 0
+
+  field :update_workflow, 2,
+    type: Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionRequest,
+    json_name: "updateWorkflow",
+    oneof: 0
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ExecuteMultiOperationRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :namespace, 1, type: :string
+
+  field :operations, 2,
+    repeated: true,
+    type: Temporal.Api.Workflowservice.V1.ExecuteMultiOperationRequest.Operation
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ExecuteMultiOperationResponse.Response do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  oneof :response, 0
+
+  field :start_workflow, 1,
+    type: Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse,
+    json_name: "startWorkflow",
+    oneof: 0
+
+  field :update_workflow, 2,
+    type: Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionResponse,
+    json_name: "updateWorkflow",
+    oneof: 0
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ExecuteMultiOperationResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :responses, 1,
+    repeated: true,
+    type: Temporal.Api.Workflowservice.V1.ExecuteMultiOperationResponse.Response
 end

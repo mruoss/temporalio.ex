@@ -46,3 +46,27 @@ defmodule Temporal.Api.Enums.V1.CallbackState do
   field :CALLBACK_STATE_FAILED, 4
   field :CALLBACK_STATE_SUCCEEDED, 5
 end
+
+defmodule Temporal.Api.Enums.V1.PendingNexusOperationState do
+  @moduledoc false
+
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :PENDING_NEXUS_OPERATION_STATE_UNSPECIFIED, 0
+  field :PENDING_NEXUS_OPERATION_STATE_SCHEDULED, 1
+  field :PENDING_NEXUS_OPERATION_STATE_BACKING_OFF, 2
+  field :PENDING_NEXUS_OPERATION_STATE_STARTED, 3
+end
+
+defmodule Temporal.Api.Enums.V1.NexusOperationCancellationState do
+  @moduledoc false
+
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :NEXUS_OPERATION_CANCELLATION_STATE_UNSPECIFIED, 0
+  field :NEXUS_OPERATION_CANCELLATION_STATE_SCHEDULED, 1
+  field :NEXUS_OPERATION_CANCELLATION_STATE_BACKING_OFF, 2
+  field :NEXUS_OPERATION_CANCELLATION_STATE_SUCCEEDED, 3
+  field :NEXUS_OPERATION_CANCELLATION_STATE_FAILED, 4
+  field :NEXUS_OPERATION_CANCELLATION_STATE_TIMED_OUT, 5
+end

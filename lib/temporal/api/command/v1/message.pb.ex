@@ -236,6 +236,44 @@ defmodule Temporal.Api.Command.V1.ProtocolMessageCommandAttributes do
   field :message_id, 1, type: :string, json_name: "messageId"
 end
 
+defmodule Temporal.Api.Command.V1.ScheduleNexusOperationCommandAttributes.NexusHeaderEntry do
+  @moduledoc false
+
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
+defmodule Temporal.Api.Command.V1.ScheduleNexusOperationCommandAttributes do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :endpoint, 1, type: :string
+  field :service, 2, type: :string
+  field :operation, 3, type: :string
+  field :input, 4, type: Temporal.Api.Common.V1.Payload
+
+  field :schedule_to_close_timeout, 5,
+    type: Google.Protobuf.Duration,
+    json_name: "scheduleToCloseTimeout"
+
+  field :nexus_header, 6,
+    repeated: true,
+    type: Temporal.Api.Command.V1.ScheduleNexusOperationCommandAttributes.NexusHeaderEntry,
+    json_name: "nexusHeader",
+    map: true
+end
+
+defmodule Temporal.Api.Command.V1.RequestCancelNexusOperationCommandAttributes do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
+end
+
 defmodule Temporal.Api.Command.V1.Command do
   @moduledoc false
 
@@ -321,5 +359,15 @@ defmodule Temporal.Api.Command.V1.Command do
   field :modify_workflow_properties_command_attributes, 17,
     type: Temporal.Api.Command.V1.ModifyWorkflowPropertiesCommandAttributes,
     json_name: "modifyWorkflowPropertiesCommandAttributes",
+    oneof: 0
+
+  field :schedule_nexus_operation_command_attributes, 18,
+    type: Temporal.Api.Command.V1.ScheduleNexusOperationCommandAttributes,
+    json_name: "scheduleNexusOperationCommandAttributes",
+    oneof: 0
+
+  field :request_cancel_nexus_operation_command_attributes, 19,
+    type: Temporal.Api.Command.V1.RequestCancelNexusOperationCommandAttributes,
+    json_name: "requestCancelNexusOperationCommandAttributes",
     oneof: 0
 end
