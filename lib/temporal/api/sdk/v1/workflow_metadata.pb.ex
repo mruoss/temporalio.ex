@@ -4,6 +4,7 @@ defmodule Temporal.Api.Sdk.V1.WorkflowMetadata do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :definition, 1, type: Temporal.Api.Sdk.V1.WorkflowDefinition
+  field :current_details, 2, type: :string, json_name: "currentDetails"
 end
 
 defmodule Temporal.Api.Sdk.V1.WorkflowDefinition do
@@ -12,19 +13,18 @@ defmodule Temporal.Api.Sdk.V1.WorkflowDefinition do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :type, 1, type: :string
-  field :description, 2, type: :string
 
-  field :query_definitions, 3,
+  field :query_definitions, 2,
     repeated: true,
     type: Temporal.Api.Sdk.V1.WorkflowInteractionDefinition,
     json_name: "queryDefinitions"
 
-  field :signal_definitions, 4,
+  field :signal_definitions, 3,
     repeated: true,
     type: Temporal.Api.Sdk.V1.WorkflowInteractionDefinition,
     json_name: "signalDefinitions"
 
-  field :update_definitions, 5,
+  field :update_definitions, 4,
     repeated: true,
     type: Temporal.Api.Sdk.V1.WorkflowInteractionDefinition,
     json_name: "updateDefinitions"

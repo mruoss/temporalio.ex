@@ -286,6 +286,8 @@ defmodule Temporal.Api.Command.V1.Command do
     json_name: "commandType",
     enum: true
 
+  field :user_metadata, 301, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
+
   field :schedule_activity_task_command_attributes, 2,
     type: Temporal.Api.Command.V1.ScheduleActivityTaskCommandAttributes,
     json_name: "scheduleActivityTaskCommandAttributes",

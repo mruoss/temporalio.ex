@@ -60,6 +60,8 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionConfig do
   field :default_workflow_task_timeout, 4,
     type: Google.Protobuf.Duration,
     json_name: "defaultWorkflowTaskTimeout"
+
+  field :user_metadata, 5, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
@@ -193,6 +195,7 @@ defmodule Temporal.Api.Workflow.V1.NewWorkflowExecutionInfo do
     json_name: "searchAttributes"
 
   field :header, 13, type: Temporal.Api.Common.V1.Header
+  field :user_metadata, 14, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
 end
 
 defmodule Temporal.Api.Workflow.V1.CallbackInfo.WorkflowClosed do
