@@ -225,6 +225,8 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest do
     repeated: true,
     type: Temporal.Api.Common.V1.Callback,
     json_name: "completionCallbacks"
+
+  field :user_metadata, 23, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do
@@ -774,6 +776,7 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionReques
   field :header, 19, type: Temporal.Api.Common.V1.Header
   field :workflow_start_delay, 20, type: Google.Protobuf.Duration, json_name: "workflowStartDelay"
   field :skip_generate_workflow_task, 21, type: :bool, json_name: "skipGenerateWorkflowTask"
+  field :user_metadata, 23, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionResponse do

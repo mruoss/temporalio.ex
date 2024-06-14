@@ -1034,6 +1034,7 @@ defmodule Temporal.Api.History.V1.HistoryEvent do
   field :version, 4, type: :int64
   field :task_id, 5, type: :int64, json_name: "taskId"
   field :worker_may_ignore, 300, type: :bool, json_name: "workerMayIgnore"
+  field :user_metadata, 301, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
 
   field :workflow_execution_started_event_attributes, 6,
     type: Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes,
