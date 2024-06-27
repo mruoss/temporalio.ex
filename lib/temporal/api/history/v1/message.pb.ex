@@ -962,6 +962,7 @@ defmodule Temporal.Api.History.V1.NexusOperationScheduledEventAttributes do
     json_name: "workflowTaskCompletedEventId"
 
   field :request_id, 8, type: :string, json_name: "requestId"
+  field :endpoint_id, 9, type: :string, json_name: "endpointId"
 end
 
 defmodule Temporal.Api.History.V1.NexusOperationStartedEventAttributes do
