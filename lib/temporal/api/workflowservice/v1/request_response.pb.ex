@@ -1193,6 +1193,7 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeTaskQueueRequest do
     json_name: "taskQueueTypes",
     enum: true
 
+  field :report_stats, 8, type: :bool, json_name: "reportStats"
   field :report_pollers, 9, type: :bool, json_name: "reportPollers"
   field :report_task_reachability, 10, type: :bool, json_name: "reportTaskReachability"
 end
@@ -1287,6 +1288,8 @@ defmodule Temporal.Api.Workflowservice.V1.GetSystemInfoResponse.Capabilities do
   field :count_group_by_execution_status, 10,
     type: :bool,
     json_name: "countGroupByExecutionStatus"
+
+  field :nexus, 11, type: :bool
 end
 
 defmodule Temporal.Api.Workflowservice.V1.GetSystemInfoResponse do

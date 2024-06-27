@@ -84,6 +84,7 @@ defmodule Temporal.Api.Enums.V1.ResourceExhaustedCause do
   field :RESOURCE_EXHAUSTED_CAUSE_PERSISTENCE_LIMIT, 4
   field :RESOURCE_EXHAUSTED_CAUSE_BUSY_WORKFLOW, 5
   field :RESOURCE_EXHAUSTED_CAUSE_APS_LIMIT, 6
+  field :RESOURCE_EXHAUSTED_CAUSE_PERSISTENCE_STORAGE_LIMIT, 7
 end
 
 defmodule Temporal.Api.Enums.V1.ResourceExhaustedScope do
