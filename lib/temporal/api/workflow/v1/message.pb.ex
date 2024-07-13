@@ -274,6 +274,8 @@ defmodule Temporal.Api.Workflow.V1.PendingNexusOperationInfo do
   field :cancellation_info, 12,
     type: Temporal.Api.Workflow.V1.NexusOperationCancellationInfo,
     json_name: "cancellationInfo"
+
+  field :scheduled_event_id, 13, type: :int64, json_name: "scheduledEventId"
 end
 
 defmodule Temporal.Api.Workflow.V1.NexusOperationCancellationInfo do
