@@ -972,6 +972,7 @@ defmodule Temporal.Api.History.V1.NexusOperationStartedEventAttributes do
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :operation_id, 3, type: :string, json_name: "operationId"
+  field :request_id, 4, type: :string, json_name: "requestId"
 end
 
 defmodule Temporal.Api.History.V1.NexusOperationCompletedEventAttributes do
@@ -981,6 +982,7 @@ defmodule Temporal.Api.History.V1.NexusOperationCompletedEventAttributes do
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :result, 2, type: Temporal.Api.Common.V1.Payload
+  field :request_id, 3, type: :string, json_name: "requestId"
 end
 
 defmodule Temporal.Api.History.V1.NexusOperationFailedEventAttributes do
@@ -990,6 +992,7 @@ defmodule Temporal.Api.History.V1.NexusOperationFailedEventAttributes do
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :failure, 2, type: Temporal.Api.Failure.V1.Failure
+  field :request_id, 3, type: :string, json_name: "requestId"
 end
 
 defmodule Temporal.Api.History.V1.NexusOperationTimedOutEventAttributes do
@@ -999,6 +1002,7 @@ defmodule Temporal.Api.History.V1.NexusOperationTimedOutEventAttributes do
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :failure, 2, type: Temporal.Api.Failure.V1.Failure
+  field :request_id, 3, type: :string, json_name: "requestId"
 end
 
 defmodule Temporal.Api.History.V1.NexusOperationCanceledEventAttributes do
@@ -1008,6 +1012,7 @@ defmodule Temporal.Api.History.V1.NexusOperationCanceledEventAttributes do
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :failure, 2, type: Temporal.Api.Failure.V1.Failure
+  field :request_id, 3, type: :string, json_name: "requestId"
 end
 
 defmodule Temporal.Api.History.V1.NexusOperationCancelRequestedEventAttributes do
