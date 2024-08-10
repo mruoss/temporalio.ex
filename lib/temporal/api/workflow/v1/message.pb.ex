@@ -42,6 +42,7 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
 
   field :assigned_build_id, 19, type: :string, json_name: "assignedBuildId"
   field :inherited_build_id, 20, type: :string, json_name: "inheritedBuildId"
+  field :first_run_id, 21, type: :string, json_name: "firstRunId"
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionConfig do
