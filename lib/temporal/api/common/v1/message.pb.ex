@@ -221,6 +221,14 @@ defmodule Temporal.Api.Common.V1.Callback.Nexus do
     map: true
 end
 
+defmodule Temporal.Api.Common.V1.Callback.Internal do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :data, 1, type: :bytes
+end
+
 defmodule Temporal.Api.Common.V1.Callback do
   @moduledoc false
 
@@ -229,4 +237,5 @@ defmodule Temporal.Api.Common.V1.Callback do
   oneof :variant, 0
 
   field :nexus, 2, type: Temporal.Api.Common.V1.Callback.Nexus, oneof: 0
+  field :internal, 3, type: Temporal.Api.Common.V1.Callback.Internal, oneof: 0
 end
