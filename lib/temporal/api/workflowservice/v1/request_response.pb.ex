@@ -227,6 +227,7 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest do
     json_name: "completionCallbacks"
 
   field :user_metadata, 23, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
+  field :links, 24, repeated: true, type: Temporal.Api.Common.V1.Link
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do

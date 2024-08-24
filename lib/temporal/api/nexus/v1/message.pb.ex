@@ -35,6 +35,15 @@ defmodule Temporal.Api.Nexus.V1.UnsuccessfulOperationError do
   field :failure, 2, type: Temporal.Api.Nexus.V1.Failure
 end
 
+defmodule Temporal.Api.Nexus.V1.Link do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :url, 1, type: :string
+  field :type, 2, type: :string
+end
+
 defmodule Temporal.Api.Nexus.V1.StartOperationRequest.CallbackHeaderEntry do
   @moduledoc false
 
@@ -60,6 +69,8 @@ defmodule Temporal.Api.Nexus.V1.StartOperationRequest do
     type: Temporal.Api.Nexus.V1.StartOperationRequest.CallbackHeaderEntry,
     json_name: "callbackHeader",
     map: true
+
+  field :links, 7, repeated: true, type: Temporal.Api.Nexus.V1.Link
 end
 
 defmodule Temporal.Api.Nexus.V1.CancelOperationRequest do
@@ -116,6 +127,7 @@ defmodule Temporal.Api.Nexus.V1.StartOperationResponse.Async do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field :operation_id, 1, type: :string, json_name: "operationId"
+  field :links, 2, repeated: true, type: Temporal.Api.Nexus.V1.Link
 end
 
 defmodule Temporal.Api.Nexus.V1.StartOperationResponse do

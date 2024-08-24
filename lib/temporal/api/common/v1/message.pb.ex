@@ -239,3 +239,42 @@ defmodule Temporal.Api.Common.V1.Callback do
   field :nexus, 2, type: Temporal.Api.Common.V1.Callback.Nexus, oneof: 0
   field :internal, 3, type: Temporal.Api.Common.V1.Callback.Internal, oneof: 0
 end
+
+defmodule Temporal.Api.Common.V1.Link.WorkflowEvent.EventReference do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  field :event_id, 1, type: :int64, json_name: "eventId"
+  field :event_type, 2, type: Temporal.Api.Enums.V1.EventType, json_name: "eventType", enum: true
+end
+
+defmodule Temporal.Api.Common.V1.Link.WorkflowEvent do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  oneof :reference, 0
+
+  field :namespace, 1, type: :string
+  field :workflow_id, 2, type: :string, json_name: "workflowId"
+  field :run_id, 3, type: :string, json_name: "runId"
+
+  field :event_ref, 100,
+    type: Temporal.Api.Common.V1.Link.WorkflowEvent.EventReference,
+    json_name: "eventRef",
+    oneof: 0
+end
+
+defmodule Temporal.Api.Common.V1.Link do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+
+  oneof :variant, 0
+
+  field :workflow_event, 1,
+    type: Temporal.Api.Common.V1.Link.WorkflowEvent,
+    json_name: "workflowEvent",
+    oneof: 0
+end
