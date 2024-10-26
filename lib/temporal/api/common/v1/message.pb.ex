@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Common.V1.DataBlob do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :encoding_type, 1,
     type: Temporal.Api.Enums.V1.EncodingType,
@@ -14,7 +14,7 @@ end
 defmodule Temporal.Api.Common.V1.Payloads do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :payloads, 1, repeated: true, type: Temporal.Api.Common.V1.Payload
 end
@@ -22,7 +22,7 @@ end
 defmodule Temporal.Api.Common.V1.Payload.MetadataEntry do
   @moduledoc false
 
-  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :key, 1, type: :string
   field :value, 2, type: :bytes
@@ -31,7 +31,7 @@ end
 defmodule Temporal.Api.Common.V1.Payload do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :metadata, 1,
     repeated: true,
@@ -44,7 +44,7 @@ end
 defmodule Temporal.Api.Common.V1.SearchAttributes.IndexedFieldsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Common.V1.Payload
@@ -53,7 +53,7 @@ end
 defmodule Temporal.Api.Common.V1.SearchAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :indexed_fields, 1,
     repeated: true,
@@ -65,7 +65,7 @@ end
 defmodule Temporal.Api.Common.V1.Memo.FieldsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Common.V1.Payload
@@ -74,7 +74,7 @@ end
 defmodule Temporal.Api.Common.V1.Memo do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :fields, 1, repeated: true, type: Temporal.Api.Common.V1.Memo.FieldsEntry, map: true
 end
@@ -82,7 +82,7 @@ end
 defmodule Temporal.Api.Common.V1.Header.FieldsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Common.V1.Payload
@@ -91,7 +91,7 @@ end
 defmodule Temporal.Api.Common.V1.Header do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :fields, 1, repeated: true, type: Temporal.Api.Common.V1.Header.FieldsEntry, map: true
 end
@@ -99,7 +99,7 @@ end
 defmodule Temporal.Api.Common.V1.WorkflowExecution do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :workflow_id, 1, type: :string, json_name: "workflowId"
   field :run_id, 2, type: :string, json_name: "runId"
@@ -108,7 +108,7 @@ end
 defmodule Temporal.Api.Common.V1.WorkflowType do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :name, 1, type: :string
 end
@@ -116,7 +116,7 @@ end
 defmodule Temporal.Api.Common.V1.ActivityType do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :name, 1, type: :string
 end
@@ -124,7 +124,7 @@ end
 defmodule Temporal.Api.Common.V1.RetryPolicy do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :initial_interval, 1, type: Google.Protobuf.Duration, json_name: "initialInterval"
   field :backoff_coefficient, 2, type: :double, json_name: "backoffCoefficient"
@@ -140,7 +140,7 @@ end
 defmodule Temporal.Api.Common.V1.MeteringMetadata do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :nonfirst_local_activity_execution_attempts, 13,
     type: :uint32,
@@ -150,7 +150,7 @@ end
 defmodule Temporal.Api.Common.V1.WorkerVersionStamp do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :build_id, 1, type: :string, json_name: "buildId"
   field :use_versioning, 3, type: :bool, json_name: "useVersioning"
@@ -159,7 +159,7 @@ end
 defmodule Temporal.Api.Common.V1.WorkerVersionCapabilities do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :build_id, 1, type: :string, json_name: "buildId"
   field :use_versioning, 2, type: :bool, json_name: "useVersioning"
@@ -168,7 +168,7 @@ end
 defmodule Temporal.Api.Common.V1.ResetOptions do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   oneof :target, 0
 
@@ -202,7 +202,7 @@ end
 defmodule Temporal.Api.Common.V1.Callback.Nexus.HeaderEntry do
   @moduledoc false
 
-  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -211,7 +211,7 @@ end
 defmodule Temporal.Api.Common.V1.Callback.Nexus do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :url, 1, type: :string
 
@@ -224,7 +224,7 @@ end
 defmodule Temporal.Api.Common.V1.Callback.Internal do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :data, 1, type: :bytes
 end
@@ -232,7 +232,7 @@ end
 defmodule Temporal.Api.Common.V1.Callback do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   oneof :variant, 0
 
@@ -243,7 +243,7 @@ end
 defmodule Temporal.Api.Common.V1.Link.WorkflowEvent.EventReference do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :event_id, 1, type: :int64, json_name: "eventId"
   field :event_type, 2, type: Temporal.Api.Enums.V1.EventType, json_name: "eventType", enum: true
@@ -252,7 +252,7 @@ end
 defmodule Temporal.Api.Common.V1.Link.WorkflowEvent do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   oneof :reference, 0
 
@@ -266,10 +266,18 @@ defmodule Temporal.Api.Common.V1.Link.WorkflowEvent do
     oneof: 0
 end
 
+defmodule Temporal.Api.Common.V1.Link.BatchJob do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :job_id, 1, type: :string, json_name: "jobId"
+end
+
 defmodule Temporal.Api.Common.V1.Link do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   oneof :variant, 0
 
@@ -277,4 +285,6 @@ defmodule Temporal.Api.Common.V1.Link do
     type: Temporal.Api.Common.V1.Link.WorkflowEvent,
     json_name: "workflowEvent",
     oneof: 0
+
+  field :batch_job, 2, type: Temporal.Api.Common.V1.Link.BatchJob, json_name: "batchJob", oneof: 0
 end

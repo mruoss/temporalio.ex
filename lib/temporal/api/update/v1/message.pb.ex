@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Update.V1.WaitPolicy do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :lifecycle_stage, 1,
     type: Temporal.Api.Enums.V1.UpdateWorkflowExecutionLifecycleStage,
@@ -12,7 +12,7 @@ end
 defmodule Temporal.Api.Update.V1.UpdateRef do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :workflow_execution, 1,
     type: Temporal.Api.Common.V1.WorkflowExecution,
@@ -24,7 +24,7 @@ end
 defmodule Temporal.Api.Update.V1.Outcome do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   oneof :value, 0
 
@@ -35,7 +35,7 @@ end
 defmodule Temporal.Api.Update.V1.Meta do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :update_id, 1, type: :string, json_name: "updateId"
   field :identity, 2, type: :string
@@ -44,7 +44,7 @@ end
 defmodule Temporal.Api.Update.V1.Input do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :header, 1, type: Temporal.Api.Common.V1.Header
   field :name, 2, type: :string
@@ -54,7 +54,7 @@ end
 defmodule Temporal.Api.Update.V1.Request do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :meta, 1, type: Temporal.Api.Update.V1.Meta
   field :input, 2, type: Temporal.Api.Update.V1.Input
@@ -63,7 +63,7 @@ end
 defmodule Temporal.Api.Update.V1.Rejection do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :rejected_request_message_id, 1, type: :string, json_name: "rejectedRequestMessageId"
 
@@ -78,7 +78,7 @@ end
 defmodule Temporal.Api.Update.V1.Acceptance do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :accepted_request_message_id, 1, type: :string, json_name: "acceptedRequestMessageId"
 
@@ -92,7 +92,7 @@ end
 defmodule Temporal.Api.Update.V1.Response do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :meta, 1, type: Temporal.Api.Update.V1.Meta
   field :outcome, 2, type: Temporal.Api.Update.V1.Outcome

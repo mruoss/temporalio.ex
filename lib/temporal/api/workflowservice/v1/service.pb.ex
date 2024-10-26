@@ -3,7 +3,7 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
 
   use GRPC.Service,
     name: "temporal.api.workflowservice.v1.WorkflowService",
-    protoc_gen_elixir_version: "0.12.0"
+    protoc_gen_elixir_version: "0.13.0"
 
   rpc :RegisterNamespace,
       Temporal.Api.Workflowservice.V1.RegisterNamespaceRequest,
@@ -149,6 +149,10 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.ResetStickyTaskQueueRequest,
       Temporal.Api.Workflowservice.V1.ResetStickyTaskQueueResponse
 
+  rpc :ShutdownWorker,
+      Temporal.Api.Workflowservice.V1.ShutdownWorkerRequest,
+      Temporal.Api.Workflowservice.V1.ShutdownWorkerResponse
+
   rpc :QueryWorkflow,
       Temporal.Api.Workflowservice.V1.QueryWorkflowRequest,
       Temporal.Api.Workflowservice.V1.QueryWorkflowResponse
@@ -256,6 +260,10 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :RespondNexusTaskFailed,
       Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedRequest,
       Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedResponse
+
+  rpc :UpdateActivityOptionsById,
+      Temporal.Api.Workflowservice.V1.UpdateActivityOptionsByIdRequest,
+      Temporal.Api.Workflowservice.V1.UpdateActivityOptionsByIdResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do
