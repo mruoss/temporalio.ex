@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Sdk.V1.WorkflowTaskCompletedMetadata do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :core_used_flags, 1, repeated: true, type: :uint32, json_name: "coreUsedFlags"
   field :lang_used_flags, 2, repeated: true, type: :uint32, json_name: "langUsedFlags"

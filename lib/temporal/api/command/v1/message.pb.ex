@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Command.V1.ScheduleActivityTaskCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :activity_id, 1, type: :string, json_name: "activityId"
   field :activity_type, 2, type: Temporal.Api.Common.V1.ActivityType, json_name: "activityType"
@@ -30,7 +30,7 @@ end
 defmodule Temporal.Api.Command.V1.RequestCancelActivityTaskCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
 end
@@ -38,7 +38,7 @@ end
 defmodule Temporal.Api.Command.V1.StartTimerCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :timer_id, 1, type: :string, json_name: "timerId"
   field :start_to_fire_timeout, 2, type: Google.Protobuf.Duration, json_name: "startToFireTimeout"
@@ -47,7 +47,7 @@ end
 defmodule Temporal.Api.Command.V1.CompleteWorkflowExecutionCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :result, 1, type: Temporal.Api.Common.V1.Payloads
 end
@@ -55,7 +55,7 @@ end
 defmodule Temporal.Api.Command.V1.FailWorkflowExecutionCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :failure, 1, type: Temporal.Api.Failure.V1.Failure
 end
@@ -63,7 +63,7 @@ end
 defmodule Temporal.Api.Command.V1.CancelTimerCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :timer_id, 1, type: :string, json_name: "timerId"
 end
@@ -71,7 +71,7 @@ end
 defmodule Temporal.Api.Command.V1.CancelWorkflowExecutionCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :details, 1, type: Temporal.Api.Common.V1.Payloads
 end
@@ -79,7 +79,7 @@ end
 defmodule Temporal.Api.Command.V1.RequestCancelExternalWorkflowExecutionCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :namespace, 1, type: :string
   field :workflow_id, 2, type: :string, json_name: "workflowId"
@@ -92,7 +92,7 @@ end
 defmodule Temporal.Api.Command.V1.SignalExternalWorkflowExecutionCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :namespace, 1, type: :string
   field :execution, 2, type: Temporal.Api.Common.V1.WorkflowExecution
@@ -106,7 +106,7 @@ end
 defmodule Temporal.Api.Command.V1.UpsertWorkflowSearchAttributesCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :search_attributes, 1,
     type: Temporal.Api.Common.V1.SearchAttributes,
@@ -116,7 +116,7 @@ end
 defmodule Temporal.Api.Command.V1.ModifyWorkflowPropertiesCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :upserted_memo, 1, type: Temporal.Api.Common.V1.Memo, json_name: "upsertedMemo"
 end
@@ -124,7 +124,7 @@ end
 defmodule Temporal.Api.Command.V1.RecordMarkerCommandAttributes.DetailsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Common.V1.Payloads
@@ -133,7 +133,7 @@ end
 defmodule Temporal.Api.Command.V1.RecordMarkerCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :marker_name, 1, type: :string, json_name: "markerName"
 
@@ -149,7 +149,7 @@ end
 defmodule Temporal.Api.Command.V1.ContinueAsNewWorkflowExecutionCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :workflow_type, 1, type: Temporal.Api.Common.V1.WorkflowType, json_name: "workflowType"
   field :task_queue, 2, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
@@ -186,7 +186,7 @@ end
 defmodule Temporal.Api.Command.V1.StartChildWorkflowExecutionCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :namespace, 1, type: :string
   field :workflow_id, 2, type: :string, json_name: "workflowId"
@@ -231,7 +231,7 @@ end
 defmodule Temporal.Api.Command.V1.ProtocolMessageCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :message_id, 1, type: :string, json_name: "messageId"
 end
@@ -239,7 +239,7 @@ end
 defmodule Temporal.Api.Command.V1.ScheduleNexusOperationCommandAttributes.NexusHeaderEntry do
   @moduledoc false
 
-  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -248,7 +248,7 @@ end
 defmodule Temporal.Api.Command.V1.ScheduleNexusOperationCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :endpoint, 1, type: :string
   field :service, 2, type: :string
@@ -269,7 +269,7 @@ end
 defmodule Temporal.Api.Command.V1.RequestCancelNexusOperationCommandAttributes do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
 end
@@ -277,7 +277,7 @@ end
 defmodule Temporal.Api.Command.V1.Command do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   oneof :attributes, 0
 

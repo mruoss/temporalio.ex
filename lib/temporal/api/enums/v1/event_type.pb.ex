@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Enums.V1.EventType do
   @moduledoc false
 
-  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :EVENT_TYPE_UNSPECIFIED, 0
   field :EVENT_TYPE_WORKFLOW_EXECUTION_STARTED, 1
