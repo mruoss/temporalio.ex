@@ -128,6 +128,11 @@ defmodule Temporal.Api.Schedule.V1.ScheduleActionResult do
   field :start_workflow_result, 11,
     type: Temporal.Api.Common.V1.WorkflowExecution,
     json_name: "startWorkflowResult"
+
+  field :start_workflow_status, 12,
+    type: Temporal.Api.Enums.V1.WorkflowExecutionStatus,
+    json_name: "startWorkflowStatus",
+    enum: true
 end
 
 defmodule Temporal.Api.Schedule.V1.ScheduleState do

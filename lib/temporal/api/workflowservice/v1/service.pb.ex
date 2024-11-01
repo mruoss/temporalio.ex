@@ -264,6 +264,18 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :UpdateActivityOptionsById,
       Temporal.Api.Workflowservice.V1.UpdateActivityOptionsByIdRequest,
       Temporal.Api.Workflowservice.V1.UpdateActivityOptionsByIdResponse
+
+  rpc :PauseActivityById,
+      Temporal.Api.Workflowservice.V1.PauseActivityByIdRequest,
+      Temporal.Api.Workflowservice.V1.PauseActivityByIdResponse
+
+  rpc :UnpauseActivityById,
+      Temporal.Api.Workflowservice.V1.UnpauseActivityByIdRequest,
+      Temporal.Api.Workflowservice.V1.UnpauseActivityByIdResponse
+
+  rpc :ResetActivityById,
+      Temporal.Api.Workflowservice.V1.ResetActivityByIdRequest,
+      Temporal.Api.Workflowservice.V1.ResetActivityByIdResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do

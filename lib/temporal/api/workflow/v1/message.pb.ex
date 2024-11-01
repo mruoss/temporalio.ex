@@ -114,6 +114,8 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
   field :next_attempt_schedule_time, 18,
     type: Google.Protobuf.Timestamp,
     json_name: "nextAttemptScheduleTime"
+
+  field :paused, 19, type: :bool
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingChildExecutionInfo do
