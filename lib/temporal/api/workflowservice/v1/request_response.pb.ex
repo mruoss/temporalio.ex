@@ -538,6 +538,7 @@ defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatResponse do
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 
   field :cancel_requested, 1, type: :bool, json_name: "cancelRequested"
+  field :activity_paused, 2, type: :bool, json_name: "activityPaused"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatByIdRequest do
@@ -2063,6 +2064,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateActivityOptionsByIdRequest do
     json_name: "activityOptions"
 
   field :update_mask, 7, type: Google.Protobuf.FieldMask, json_name: "updateMask"
+  field :request_id, 8, type: :string, json_name: "requestId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateActivityOptionsByIdResponse do
@@ -2073,4 +2075,90 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateActivityOptionsByIdResponse do
   field :activity_options, 1,
     type: Temporal.Api.Activity.V1.ActivityOptions,
     json_name: "activityOptions"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PauseActivityByIdRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :namespace, 1, type: :string
+  field :workflow_id, 2, type: :string, json_name: "workflowId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :activity_id, 4, type: :string, json_name: "activityId"
+  field :identity, 5, type: :string
+  field :request_id, 6, type: :string, json_name: "requestId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PauseActivityByIdResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UnpauseActivityByIdRequest.ResumeOperation do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :no_wait, 1, type: :bool, json_name: "noWait"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UnpauseActivityByIdRequest.ResetOperation do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :no_wait, 1, type: :bool, json_name: "noWait"
+  field :reset_heartbeat, 2, type: :bool, json_name: "resetHeartbeat"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UnpauseActivityByIdRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  oneof :operation, 0
+
+  field :namespace, 1, type: :string
+  field :workflow_id, 2, type: :string, json_name: "workflowId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :activity_id, 4, type: :string, json_name: "activityId"
+  field :identity, 5, type: :string
+  field :request_id, 6, type: :string, json_name: "requestId"
+
+  field :resume, 7,
+    type: Temporal.Api.Workflowservice.V1.UnpauseActivityByIdRequest.ResumeOperation,
+    oneof: 0
+
+  field :reset, 8,
+    type: Temporal.Api.Workflowservice.V1.UnpauseActivityByIdRequest.ResetOperation,
+    oneof: 0
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UnpauseActivityByIdResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ResetActivityByIdRequest do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :namespace, 1, type: :string
+  field :workflow_id, 2, type: :string, json_name: "workflowId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :activity_id, 4, type: :string, json_name: "activityId"
+  field :identity, 5, type: :string
+  field :request_id, 6, type: :string, json_name: "requestId"
+  field :no_wait, 7, type: :bool, json_name: "noWait"
+  field :reset_heartbeat, 8, type: :bool, json_name: "resetHeartbeat"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ResetActivityByIdResponse do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
 end
