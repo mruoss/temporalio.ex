@@ -45,6 +45,7 @@ defmodule Temporal.Api.Enums.V1.CallbackState do
   field :CALLBACK_STATE_BACKING_OFF, 3
   field :CALLBACK_STATE_FAILED, 4
   field :CALLBACK_STATE_SUCCEEDED, 5
+  field :CALLBACK_STATE_BLOCKED, 6
 end
 
 defmodule Temporal.Api.Enums.V1.PendingNexusOperationState do
@@ -56,6 +57,7 @@ defmodule Temporal.Api.Enums.V1.PendingNexusOperationState do
   field :PENDING_NEXUS_OPERATION_STATE_SCHEDULED, 1
   field :PENDING_NEXUS_OPERATION_STATE_BACKING_OFF, 2
   field :PENDING_NEXUS_OPERATION_STATE_STARTED, 3
+  field :PENDING_NEXUS_OPERATION_STATE_BLOCKED, 4
 end
 
 defmodule Temporal.Api.Enums.V1.NexusOperationCancellationState do
@@ -69,4 +71,5 @@ defmodule Temporal.Api.Enums.V1.NexusOperationCancellationState do
   field :NEXUS_OPERATION_CANCELLATION_STATE_SUCCEEDED, 3
   field :NEXUS_OPERATION_CANCELLATION_STATE_FAILED, 4
   field :NEXUS_OPERATION_CANCELLATION_STATE_TIMED_OUT, 5
+  field :NEXUS_OPERATION_CANCELLATION_STATE_BLOCKED, 6
 end

@@ -735,7 +735,6 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWorkflowExecutionRequest do
   field :request_id, 6, type: :string, json_name: "requestId"
   field :control, 7, type: :string
   field :header, 8, type: Temporal.Api.Common.V1.Header
-  field :skip_generate_workflow_task, 9, type: :bool, json_name: "skipGenerateWorkflowTask"
   field :links, 10, repeated: true, type: Temporal.Api.Common.V1.Link
 end
 
@@ -792,7 +791,6 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionReques
 
   field :header, 19, type: Temporal.Api.Common.V1.Header
   field :workflow_start_delay, 20, type: Google.Protobuf.Duration, json_name: "workflowStartDelay"
-  field :skip_generate_workflow_task, 21, type: :bool, json_name: "skipGenerateWorkflowTask"
   field :user_metadata, 23, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
   field :links, 24, repeated: true, type: Temporal.Api.Common.V1.Link
 end
