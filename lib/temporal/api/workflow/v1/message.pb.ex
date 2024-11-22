@@ -254,6 +254,8 @@ defmodule Temporal.Api.Workflow.V1.CallbackInfo do
   field :next_attempt_schedule_time, 8,
     type: Google.Protobuf.Timestamp,
     json_name: "nextAttemptScheduleTime"
+
+  field :blocked_reason, 9, type: :string, json_name: "blockedReason"
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingNexusOperationInfo do
@@ -291,6 +293,7 @@ defmodule Temporal.Api.Workflow.V1.PendingNexusOperationInfo do
     json_name: "cancellationInfo"
 
   field :scheduled_event_id, 13, type: :int64, json_name: "scheduledEventId"
+  field :blocked_reason, 14, type: :string, json_name: "blockedReason"
 end
 
 defmodule Temporal.Api.Workflow.V1.NexusOperationCancellationInfo do
@@ -313,4 +316,6 @@ defmodule Temporal.Api.Workflow.V1.NexusOperationCancellationInfo do
   field :next_attempt_schedule_time, 6,
     type: Google.Protobuf.Timestamp,
     json_name: "nextAttemptScheduleTime"
+
+  field :blocked_reason, 7, type: :string, json_name: "blockedReason"
 end
