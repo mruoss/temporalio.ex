@@ -115,3 +115,13 @@ defmodule Temporal.Api.Enums.V1.TimeoutType do
   field :TIMEOUT_TYPE_SCHEDULE_TO_CLOSE, 3
   field :TIMEOUT_TYPE_HEARTBEAT, 4
 end
+
+defmodule Temporal.Api.Enums.V1.VersioningBehavior do
+  @moduledoc false
+
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :VERSIONING_BEHAVIOR_UNSPECIFIED, 0
+  field :VERSIONING_BEHAVIOR_PINNED, 1
+  field :VERSIONING_BEHAVIOR_AUTO_UPGRADE, 2
+end

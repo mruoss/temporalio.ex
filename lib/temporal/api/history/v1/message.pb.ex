@@ -84,6 +84,10 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
     json_name: "rootWorkflowExecution"
 
   field :inherited_build_id, 32, type: :string, json_name: "inheritedBuildId"
+
+  field :versioning_override, 33,
+    type: Temporal.Api.Workflow.V1.VersioningOverride,
+    json_name: "versioningOverride"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do
@@ -225,6 +229,13 @@ defmodule Temporal.Api.History.V1.WorkflowTaskCompletedEventAttributes do
   field :metering_metadata, 13,
     type: Temporal.Api.Common.V1.MeteringMetadata,
     json_name: "meteringMetadata"
+
+  field :deployment, 7, type: Temporal.Api.Deployment.V1.Deployment
+
+  field :versioning_behavior, 8,
+    type: Temporal.Api.Enums.V1.VersioningBehavior,
+    json_name: "versioningBehavior",
+    enum: true
 end
 
 defmodule Temporal.Api.History.V1.WorkflowTaskTimedOutEventAttributes do
@@ -848,6 +859,16 @@ defmodule Temporal.Api.History.V1.ChildWorkflowExecutionTerminatedEventAttribute
   field :started_event_id, 5, type: :int64, json_name: "startedEventId"
 end
 
+defmodule Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :versioning_override, 1,
+    type: Temporal.Api.Workflow.V1.VersioningOverride,
+    json_name: "versioningOverride"
+end
+
 defmodule Temporal.Api.History.V1.WorkflowPropertiesModifiedExternallyEventAttributes do
   @moduledoc false
 
@@ -1315,6 +1336,11 @@ defmodule Temporal.Api.History.V1.HistoryEvent do
   field :nexus_operation_cancel_requested_event_attributes, 59,
     type: Temporal.Api.History.V1.NexusOperationCancelRequestedEventAttributes,
     json_name: "nexusOperationCancelRequestedEventAttributes",
+    oneof: 0
+
+  field :workflow_execution_options_updated_event_attributes, 60,
+    type: Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes,
+    json_name: "workflowExecutionOptionsUpdatedEventAttributes",
     oneof: 0
 end
 

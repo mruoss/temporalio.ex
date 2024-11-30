@@ -106,6 +106,14 @@ defmodule Temporal.Api.Failure.V1.NexusOperationFailureInfo do
   field :operation_id, 5, type: :string, json_name: "operationId"
 end
 
+defmodule Temporal.Api.Failure.V1.NexusHandlerFailureInfo do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :type, 1, type: :string
+end
+
 defmodule Temporal.Api.Failure.V1.Failure do
   @moduledoc false
 
@@ -166,6 +174,11 @@ defmodule Temporal.Api.Failure.V1.Failure do
   field :nexus_operation_execution_failure_info, 13,
     type: Temporal.Api.Failure.V1.NexusOperationFailureInfo,
     json_name: "nexusOperationExecutionFailureInfo",
+    oneof: 0
+
+  field :nexus_handler_failure_info, 14,
+    type: Temporal.Api.Failure.V1.NexusHandlerFailureInfo,
+    json_name: "nexusHandlerFailureInfo",
     oneof: 0
 end
 

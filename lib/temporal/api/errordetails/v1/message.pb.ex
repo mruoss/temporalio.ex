@@ -26,6 +26,14 @@ defmodule Temporal.Api.Errordetails.V1.NamespaceNotActiveFailure do
   field :active_cluster, 3, type: :string, json_name: "activeCluster"
 end
 
+defmodule Temporal.Api.Errordetails.V1.NamespaceUnavailableFailure do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :namespace, 1, type: :string
+end
+
 defmodule Temporal.Api.Errordetails.V1.NamespaceInvalidStateFailure do
   @moduledoc false
 

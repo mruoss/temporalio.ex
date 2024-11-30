@@ -163,6 +163,7 @@ defmodule Temporal.Api.Common.V1.WorkerVersionCapabilities do
 
   field :build_id, 1, type: :string, json_name: "buildId"
   field :use_versioning, 2, type: :bool, json_name: "useVersioning"
+  field :deployment_series_name, 4, type: :string, json_name: "deploymentSeriesName"
 end
 
 defmodule Temporal.Api.Common.V1.ResetOptions do
