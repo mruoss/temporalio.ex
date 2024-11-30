@@ -7,6 +7,7 @@ defmodule Temporal.Api.Enums.V1.ResetReapplyExcludeType do
   field :RESET_REAPPLY_EXCLUDE_TYPE_SIGNAL, 1
   field :RESET_REAPPLY_EXCLUDE_TYPE_UPDATE, 2
   field :RESET_REAPPLY_EXCLUDE_TYPE_NEXUS, 3
+  field :RESET_REAPPLY_EXCLUDE_TYPE_CANCEL_REQUEST, 4
 end
 
 defmodule Temporal.Api.Enums.V1.ResetReapplyType do

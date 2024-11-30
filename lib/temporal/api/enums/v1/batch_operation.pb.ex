@@ -9,6 +9,7 @@ defmodule Temporal.Api.Enums.V1.BatchOperationType do
   field :BATCH_OPERATION_TYPE_SIGNAL, 3
   field :BATCH_OPERATION_TYPE_DELETE, 4
   field :BATCH_OPERATION_TYPE_RESET, 5
+  field :BATCH_OPERATION_TYPE_UPDATE_EXECUTION_OPTIONS, 6
 end
 
 defmodule Temporal.Api.Enums.V1.BatchOperationState do

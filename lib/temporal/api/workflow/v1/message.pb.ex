@@ -43,6 +43,35 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
   field :assigned_build_id, 19, type: :string, json_name: "assignedBuildId"
   field :inherited_build_id, 20, type: :string, json_name: "inheritedBuildId"
   field :first_run_id, 21, type: :string, json_name: "firstRunId"
+
+  field :versioning_info, 22,
+    type: Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo,
+    json_name: "versioningInfo"
+end
+
+defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :behavior, 1, type: Temporal.Api.Enums.V1.VersioningBehavior, enum: true
+  field :deployment, 2, type: Temporal.Api.Deployment.V1.Deployment
+
+  field :versioning_override, 3,
+    type: Temporal.Api.Workflow.V1.VersioningOverride,
+    json_name: "versioningOverride"
+
+  field :deployment_transition, 4,
+    type: Temporal.Api.Workflow.V1.DeploymentTransition,
+    json_name: "deploymentTransition"
+end
+
+defmodule Temporal.Api.Workflow.V1.DeploymentTransition do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :deployment, 1, type: Temporal.Api.Deployment.V1.Deployment
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionConfig do
@@ -116,6 +145,10 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
     json_name: "nextAttemptScheduleTime"
 
   field :paused, 19, type: :bool
+
+  field :last_deployment, 20,
+    type: Temporal.Api.Deployment.V1.Deployment,
+    json_name: "lastDeployment"
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingChildExecutionInfo do
@@ -211,6 +244,10 @@ defmodule Temporal.Api.Workflow.V1.NewWorkflowExecutionInfo do
 
   field :header, 13, type: Temporal.Api.Common.V1.Header
   field :user_metadata, 14, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
+
+  field :versioning_override, 15,
+    type: Temporal.Api.Workflow.V1.VersioningOverride,
+    json_name: "versioningOverride"
 end
 
 defmodule Temporal.Api.Workflow.V1.CallbackInfo.WorkflowClosed do
@@ -318,4 +355,23 @@ defmodule Temporal.Api.Workflow.V1.NexusOperationCancellationInfo do
     json_name: "nextAttemptScheduleTime"
 
   field :blocked_reason, 7, type: :string, json_name: "blockedReason"
+end
+
+defmodule Temporal.Api.Workflow.V1.WorkflowExecutionOptions do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :versioning_override, 1,
+    type: Temporal.Api.Workflow.V1.VersioningOverride,
+    json_name: "versioningOverride"
+end
+
+defmodule Temporal.Api.Workflow.V1.VersioningOverride do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :behavior, 1, type: Temporal.Api.Enums.V1.VersioningBehavior, enum: true
+  field :deployment, 2, type: Temporal.Api.Deployment.V1.Deployment
 end

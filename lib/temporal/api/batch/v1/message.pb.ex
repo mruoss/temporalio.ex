@@ -59,3 +59,17 @@ defmodule Temporal.Api.Batch.V1.BatchOperationReset do
     json_name: "resetReapplyType",
     enum: true
 end
+
+defmodule Temporal.Api.Batch.V1.BatchOperationUpdateWorkflowExecutionOptions do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :identity, 1, type: :string
+
+  field :workflow_execution_options, 2,
+    type: Temporal.Api.Workflow.V1.WorkflowExecutionOptions,
+    json_name: "workflowExecutionOptions"
+
+  field :update_mask, 3, type: Google.Protobuf.FieldMask, json_name: "updateMask"
+end

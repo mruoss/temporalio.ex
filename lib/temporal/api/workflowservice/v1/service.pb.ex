@@ -225,6 +225,26 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.GetWorkerTaskReachabilityRequest,
       Temporal.Api.Workflowservice.V1.GetWorkerTaskReachabilityResponse
 
+  rpc :DescribeDeployment,
+      Temporal.Api.Workflowservice.V1.DescribeDeploymentRequest,
+      Temporal.Api.Workflowservice.V1.DescribeDeploymentResponse
+
+  rpc :ListDeployments,
+      Temporal.Api.Workflowservice.V1.ListDeploymentsRequest,
+      Temporal.Api.Workflowservice.V1.ListDeploymentsResponse
+
+  rpc :GetDeploymentReachability,
+      Temporal.Api.Workflowservice.V1.GetDeploymentReachabilityRequest,
+      Temporal.Api.Workflowservice.V1.GetDeploymentReachabilityResponse
+
+  rpc :GetCurrentDeployment,
+      Temporal.Api.Workflowservice.V1.GetCurrentDeploymentRequest,
+      Temporal.Api.Workflowservice.V1.GetCurrentDeploymentResponse
+
+  rpc :SetCurrentDeployment,
+      Temporal.Api.Workflowservice.V1.SetCurrentDeploymentRequest,
+      Temporal.Api.Workflowservice.V1.SetCurrentDeploymentResponse
+
   rpc :UpdateWorkflowExecution,
       Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionRequest,
       Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionResponse
@@ -264,6 +284,10 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :UpdateActivityOptionsById,
       Temporal.Api.Workflowservice.V1.UpdateActivityOptionsByIdRequest,
       Temporal.Api.Workflowservice.V1.UpdateActivityOptionsByIdResponse
+
+  rpc :UpdateWorkflowExecutionOptions,
+      Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionOptionsRequest,
+      Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionOptionsResponse
 
   rpc :PauseActivityById,
       Temporal.Api.Workflowservice.V1.PauseActivityByIdRequest,
