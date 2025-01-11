@@ -95,6 +95,8 @@ defmodule Temporal.Api.Errordetails.V1.QueryFailedFailure do
   @moduledoc false
 
   use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :failure, 1, type: Temporal.Api.Failure.V1.Failure
 end
 
 defmodule Temporal.Api.Errordetails.V1.PermissionDeniedFailure do

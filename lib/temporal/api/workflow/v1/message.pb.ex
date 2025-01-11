@@ -49,6 +49,21 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
     json_name: "versioningInfo"
 end
 
+defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo do
+  @moduledoc false
+
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+
+  field :execution_expiration_time, 1,
+    type: Google.Protobuf.Timestamp,
+    json_name: "executionExpirationTime"
+
+  field :run_expiration_time, 2, type: Google.Protobuf.Timestamp, json_name: "runExpirationTime"
+  field :cancel_requested, 3, type: :bool, json_name: "cancelRequested"
+  field :last_reset_time, 4, type: Google.Protobuf.Timestamp, json_name: "lastResetTime"
+  field :original_start_time, 5, type: Google.Protobuf.Timestamp, json_name: "originalStartTime"
+end
+
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do
   @moduledoc false
 

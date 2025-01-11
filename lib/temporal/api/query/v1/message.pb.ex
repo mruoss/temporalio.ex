@@ -20,6 +20,7 @@ defmodule Temporal.Api.Query.V1.WorkflowQueryResult do
 
   field :answer, 2, type: Temporal.Api.Common.V1.Payloads
   field :error_message, 3, type: :string, json_name: "errorMessage"
+  field :failure, 4, type: Temporal.Api.Failure.V1.Failure
 end
 
 defmodule Temporal.Api.Query.V1.QueryRejected do
