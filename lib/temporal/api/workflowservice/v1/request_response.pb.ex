@@ -1119,6 +1119,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondQueryTaskCompletedRequest do
   field :query_result, 3, type: Temporal.Api.Common.V1.Payloads, json_name: "queryResult"
   field :error_message, 4, type: :string, json_name: "errorMessage"
   field :namespace, 6, type: :string
+  field :failure, 7, type: Temporal.Api.Failure.V1.Failure
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondQueryTaskCompletedResponse do
@@ -1225,6 +1226,10 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeWorkflowExecutionResponse do
     repeated: true,
     type: Temporal.Api.Workflow.V1.PendingNexusOperationInfo,
     json_name: "pendingNexusOperations"
+
+  field :workflow_extended_info, 8,
+    type: Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo,
+    json_name: "workflowExtendedInfo"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.DescribeTaskQueueRequest do
