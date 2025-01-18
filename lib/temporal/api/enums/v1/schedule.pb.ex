@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Enums.V1.ScheduleOverlapPolicy do
   @moduledoc false
 
-  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
 
   field :SCHEDULE_OVERLAP_POLICY_UNSPECIFIED, 0
   field :SCHEDULE_OVERLAP_POLICY_SKIP, 1

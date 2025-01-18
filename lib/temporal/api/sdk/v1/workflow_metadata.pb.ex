@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Sdk.V1.WorkflowMetadata do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
 
   field :definition, 1, type: Temporal.Api.Sdk.V1.WorkflowDefinition
   field :current_details, 2, type: :string, json_name: "currentDetails"
@@ -10,7 +10,7 @@ end
 defmodule Temporal.Api.Sdk.V1.WorkflowDefinition do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
 
   field :type, 1, type: :string
 
@@ -33,7 +33,7 @@ end
 defmodule Temporal.Api.Sdk.V1.WorkflowInteractionDefinition do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.13.0"
+  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
 
   field :name, 1, type: :string
   field :description, 2, type: :string
