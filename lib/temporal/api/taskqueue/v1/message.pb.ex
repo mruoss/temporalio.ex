@@ -18,6 +18,17 @@ defmodule Temporal.Api.Taskqueue.V1.TaskQueueMetadata do
     json_name: "maxTasksPerSecond"
 end
 
+defmodule Temporal.Api.Taskqueue.V1.TaskQueueVersioningInfo do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+
+  field :current_version, 1, type: :string, json_name: "currentVersion"
+  field :ramping_version, 2, type: :string, json_name: "rampingVersion"
+  field :ramping_version_percentage, 3, type: :float, json_name: "rampingVersionPercentage"
+  field :update_time, 4, type: Google.Protobuf.Timestamp, json_name: "updateTime"
+end
+
 defmodule Temporal.Api.Taskqueue.V1.TaskQueueVersionSelection do
   @moduledoc false
 
@@ -119,7 +130,12 @@ defmodule Temporal.Api.Taskqueue.V1.PollerInfo do
 
   field :worker_version_capabilities, 4,
     type: Temporal.Api.Common.V1.WorkerVersionCapabilities,
-    json_name: "workerVersionCapabilities"
+    json_name: "workerVersionCapabilities",
+    deprecated: true
+
+  field :deployment_options, 5,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
+    json_name: "deploymentOptions"
 end
 
 defmodule Temporal.Api.Taskqueue.V1.StickyExecutionAttributes do

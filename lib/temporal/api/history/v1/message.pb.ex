@@ -88,6 +88,10 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
   field :versioning_override, 33,
     type: Temporal.Api.Workflow.V1.VersioningOverride,
     json_name: "versioningOverride"
+
+  field :parent_pinned_worker_deployment_version, 34,
+    type: :string,
+    json_name: "parentPinnedWorkerDeploymentVersion"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do
@@ -230,12 +234,15 @@ defmodule Temporal.Api.History.V1.WorkflowTaskCompletedEventAttributes do
     type: Temporal.Api.Common.V1.MeteringMetadata,
     json_name: "meteringMetadata"
 
-  field :deployment, 7, type: Temporal.Api.Deployment.V1.Deployment
+  field :deployment, 7, type: Temporal.Api.Deployment.V1.Deployment, deprecated: true
 
   field :versioning_behavior, 8,
     type: Temporal.Api.Enums.V1.VersioningBehavior,
     json_name: "versioningBehavior",
     enum: true
+
+  field :worker_deployment_version, 9, type: :string, json_name: "workerDeploymentVersion"
+  field :worker_deployment_name, 10, type: :string, json_name: "workerDeploymentName"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowTaskTimedOutEventAttributes do
@@ -867,6 +874,14 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes
   field :versioning_override, 1,
     type: Temporal.Api.Workflow.V1.VersioningOverride,
     json_name: "versioningOverride"
+
+  field :unset_versioning_override, 2, type: :bool, json_name: "unsetVersioningOverride"
+  field :attached_request_id, 3, type: :string, json_name: "attachedRequestId"
+
+  field :attached_completion_callbacks, 4,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Callback,
+    json_name: "attachedCompletionCallbacks"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowPropertiesModifiedExternallyEventAttributes do
@@ -998,6 +1013,7 @@ defmodule Temporal.Api.History.V1.NexusOperationStartedEventAttributes do
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :operation_id, 3, type: :string, json_name: "operationId"
   field :request_id, 4, type: :string, json_name: "requestId"
+  field :operation_token, 5, type: :string, json_name: "operationToken"
 end
 
 defmodule Temporal.Api.History.V1.NexusOperationCompletedEventAttributes do

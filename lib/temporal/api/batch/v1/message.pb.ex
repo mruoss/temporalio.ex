@@ -73,3 +73,18 @@ defmodule Temporal.Api.Batch.V1.BatchOperationUpdateWorkflowExecutionOptions do
 
   field :update_mask, 3, type: Google.Protobuf.FieldMask, json_name: "updateMask"
 end
+
+defmodule Temporal.Api.Batch.V1.BatchOperationUnpauseActivities do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+
+  oneof :activity, 0
+
+  field :identity, 1, type: :string
+  field :type, 2, type: :string, oneof: 0
+  field :match_all, 3, type: :bool, json_name: "matchAll", oneof: 0
+  field :reset_attempts, 4, type: :bool, json_name: "resetAttempts"
+  field :reset_heartbeat, 5, type: :bool, json_name: "resetHeartbeat"
+  field :jitter, 6, type: Google.Protobuf.Duration
+end

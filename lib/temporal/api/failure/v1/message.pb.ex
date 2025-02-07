@@ -104,6 +104,7 @@ defmodule Temporal.Api.Failure.V1.NexusOperationFailureInfo do
   field :service, 3, type: :string
   field :operation, 4, type: :string
   field :operation_id, 5, type: :string, json_name: "operationId"
+  field :operation_token, 6, type: :string, json_name: "operationToken"
 end
 
 defmodule Temporal.Api.Failure.V1.NexusHandlerFailureInfo do
@@ -112,6 +113,11 @@ defmodule Temporal.Api.Failure.V1.NexusHandlerFailureInfo do
   use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
 
   field :type, 1, type: :string
+
+  field :retry_behavior, 2,
+    type: Temporal.Api.Enums.V1.NexusHandlerErrorRetryBehavior,
+    json_name: "retryBehavior",
+    enum: true
 end
 
 defmodule Temporal.Api.Failure.V1.Failure do

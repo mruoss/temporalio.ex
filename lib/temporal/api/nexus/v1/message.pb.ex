@@ -24,6 +24,11 @@ defmodule Temporal.Api.Nexus.V1.HandlerError do
 
   field :error_type, 1, type: :string, json_name: "errorType"
   field :failure, 2, type: Temporal.Api.Nexus.V1.Failure
+
+  field :retry_behavior, 3,
+    type: Temporal.Api.Enums.V1.NexusHandlerErrorRetryBehavior,
+    json_name: "retryBehavior",
+    enum: true
 end
 
 defmodule Temporal.Api.Nexus.V1.UnsuccessfulOperationError do
@@ -81,6 +86,7 @@ defmodule Temporal.Api.Nexus.V1.CancelOperationRequest do
   field :service, 1, type: :string
   field :operation, 2, type: :string
   field :operation_id, 3, type: :string, json_name: "operationId"
+  field :operation_token, 4, type: :string, json_name: "operationToken"
 end
 
 defmodule Temporal.Api.Nexus.V1.Request.HeaderEntry do
@@ -129,6 +135,7 @@ defmodule Temporal.Api.Nexus.V1.StartOperationResponse.Async do
 
   field :operation_id, 1, type: :string, json_name: "operationId"
   field :links, 2, repeated: true, type: Temporal.Api.Nexus.V1.Link
+  field :operation_token, 3, type: :string, json_name: "operationToken"
 end
 
 defmodule Temporal.Api.Nexus.V1.StartOperationResponse do

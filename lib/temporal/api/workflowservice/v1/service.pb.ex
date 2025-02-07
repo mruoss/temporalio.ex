@@ -229,6 +229,10 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.DescribeDeploymentRequest,
       Temporal.Api.Workflowservice.V1.DescribeDeploymentResponse
 
+  rpc :DescribeWorkerDeploymentVersion,
+      Temporal.Api.Workflowservice.V1.DescribeWorkerDeploymentVersionRequest,
+      Temporal.Api.Workflowservice.V1.DescribeWorkerDeploymentVersionResponse
+
   rpc :ListDeployments,
       Temporal.Api.Workflowservice.V1.ListDeploymentsRequest,
       Temporal.Api.Workflowservice.V1.ListDeploymentsResponse
@@ -244,6 +248,34 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :SetCurrentDeployment,
       Temporal.Api.Workflowservice.V1.SetCurrentDeploymentRequest,
       Temporal.Api.Workflowservice.V1.SetCurrentDeploymentResponse
+
+  rpc :SetWorkerDeploymentCurrentVersion,
+      Temporal.Api.Workflowservice.V1.SetWorkerDeploymentCurrentVersionRequest,
+      Temporal.Api.Workflowservice.V1.SetWorkerDeploymentCurrentVersionResponse
+
+  rpc :DescribeWorkerDeployment,
+      Temporal.Api.Workflowservice.V1.DescribeWorkerDeploymentRequest,
+      Temporal.Api.Workflowservice.V1.DescribeWorkerDeploymentResponse
+
+  rpc :DeleteWorkerDeployment,
+      Temporal.Api.Workflowservice.V1.DeleteWorkerDeploymentRequest,
+      Temporal.Api.Workflowservice.V1.DeleteWorkerDeploymentResponse
+
+  rpc :DeleteWorkerDeploymentVersion,
+      Temporal.Api.Workflowservice.V1.DeleteWorkerDeploymentVersionRequest,
+      Temporal.Api.Workflowservice.V1.DeleteWorkerDeploymentVersionResponse
+
+  rpc :SetWorkerDeploymentRampingVersion,
+      Temporal.Api.Workflowservice.V1.SetWorkerDeploymentRampingVersionRequest,
+      Temporal.Api.Workflowservice.V1.SetWorkerDeploymentRampingVersionResponse
+
+  rpc :ListWorkerDeployments,
+      Temporal.Api.Workflowservice.V1.ListWorkerDeploymentsRequest,
+      Temporal.Api.Workflowservice.V1.ListWorkerDeploymentsResponse
+
+  rpc :UpdateWorkerDeploymentVersionMetadata,
+      Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionMetadataRequest,
+      Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionMetadataResponse
 
   rpc :UpdateWorkflowExecution,
       Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionRequest,
@@ -281,25 +313,25 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedRequest,
       Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedResponse
 
-  rpc :UpdateActivityOptionsById,
-      Temporal.Api.Workflowservice.V1.UpdateActivityOptionsByIdRequest,
-      Temporal.Api.Workflowservice.V1.UpdateActivityOptionsByIdResponse
+  rpc :UpdateActivityOptions,
+      Temporal.Api.Workflowservice.V1.UpdateActivityOptionsRequest,
+      Temporal.Api.Workflowservice.V1.UpdateActivityOptionsResponse
 
   rpc :UpdateWorkflowExecutionOptions,
       Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionOptionsRequest,
       Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionOptionsResponse
 
-  rpc :PauseActivityById,
-      Temporal.Api.Workflowservice.V1.PauseActivityByIdRequest,
-      Temporal.Api.Workflowservice.V1.PauseActivityByIdResponse
+  rpc :PauseActivity,
+      Temporal.Api.Workflowservice.V1.PauseActivityRequest,
+      Temporal.Api.Workflowservice.V1.PauseActivityResponse
 
-  rpc :UnpauseActivityById,
-      Temporal.Api.Workflowservice.V1.UnpauseActivityByIdRequest,
-      Temporal.Api.Workflowservice.V1.UnpauseActivityByIdResponse
+  rpc :UnpauseActivity,
+      Temporal.Api.Workflowservice.V1.UnpauseActivityRequest,
+      Temporal.Api.Workflowservice.V1.UnpauseActivityResponse
 
-  rpc :ResetActivityById,
-      Temporal.Api.Workflowservice.V1.ResetActivityByIdRequest,
-      Temporal.Api.Workflowservice.V1.ResetActivityByIdResponse
+  rpc :ResetActivity,
+      Temporal.Api.Workflowservice.V1.ResetActivityRequest,
+      Temporal.Api.Workflowservice.V1.ResetActivityResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do
