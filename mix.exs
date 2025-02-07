@@ -2,7 +2,7 @@ defmodule Temporalio.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/mruoss/temporalio.ex"
-  @version "1.43.2"
+  @version "1.44.0"
 
   def project do
     [

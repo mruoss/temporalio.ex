@@ -47,6 +47,8 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
   field :versioning_info, 22,
     type: Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo,
     json_name: "versioningInfo"
+
+  field :worker_deployment_name, 23, type: :string, json_name: "workerDeploymentName"
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo do
@@ -70,7 +72,8 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do
   use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
 
   field :behavior, 1, type: Temporal.Api.Enums.V1.VersioningBehavior, enum: true
-  field :deployment, 2, type: Temporal.Api.Deployment.V1.Deployment
+  field :deployment, 2, type: Temporal.Api.Deployment.V1.Deployment, deprecated: true
+  field :version, 5, type: :string
 
   field :versioning_override, 3,
     type: Temporal.Api.Workflow.V1.VersioningOverride,
@@ -78,7 +81,12 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do
 
   field :deployment_transition, 4,
     type: Temporal.Api.Workflow.V1.DeploymentTransition,
-    json_name: "deploymentTransition"
+    json_name: "deploymentTransition",
+    deprecated: true
+
+  field :version_transition, 6,
+    type: Temporal.Api.Workflow.V1.DeploymentVersionTransition,
+    json_name: "versionTransition"
 end
 
 defmodule Temporal.Api.Workflow.V1.DeploymentTransition do
@@ -87,6 +95,14 @@ defmodule Temporal.Api.Workflow.V1.DeploymentTransition do
   use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
 
   field :deployment, 1, type: Temporal.Api.Deployment.V1.Deployment
+end
+
+defmodule Temporal.Api.Workflow.V1.DeploymentVersionTransition do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+
+  field :version, 1, type: :string
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionConfig do
@@ -163,7 +179,12 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
 
   field :last_deployment, 20,
     type: Temporal.Api.Deployment.V1.Deployment,
-    json_name: "lastDeployment"
+    json_name: "lastDeployment",
+    deprecated: true
+
+  field :last_worker_deployment_version, 21,
+    type: :string,
+    json_name: "lastWorkerDeploymentVersion"
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingChildExecutionInfo do
@@ -346,6 +367,7 @@ defmodule Temporal.Api.Workflow.V1.PendingNexusOperationInfo do
 
   field :scheduled_event_id, 13, type: :int64, json_name: "scheduledEventId"
   field :blocked_reason, 14, type: :string, json_name: "blockedReason"
+  field :operation_token, 15, type: :string, json_name: "operationToken"
 end
 
 defmodule Temporal.Api.Workflow.V1.NexusOperationCancellationInfo do
@@ -388,5 +410,16 @@ defmodule Temporal.Api.Workflow.V1.VersioningOverride do
   use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
 
   field :behavior, 1, type: Temporal.Api.Enums.V1.VersioningBehavior, enum: true
-  field :deployment, 2, type: Temporal.Api.Deployment.V1.Deployment
+  field :deployment, 2, type: Temporal.Api.Deployment.V1.Deployment, deprecated: true
+  field :pinned_version, 9, type: :string, json_name: "pinnedVersion"
+end
+
+defmodule Temporal.Api.Workflow.V1.OnConflictOptions do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+
+  field :attach_request_id, 1, type: :bool, json_name: "attachRequestId"
+  field :attach_completion_callbacks, 2, type: :bool, json_name: "attachCompletionCallbacks"
+  field :attach_links, 3, type: :bool, json_name: "attachLinks"
 end
