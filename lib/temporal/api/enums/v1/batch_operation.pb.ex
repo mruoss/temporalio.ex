@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Enums.V1.BatchOperationType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :BATCH_OPERATION_TYPE_UNSPECIFIED, 0
   field :BATCH_OPERATION_TYPE_TERMINATE, 1
@@ -15,7 +15,7 @@ end
 defmodule Temporal.Api.Enums.V1.BatchOperationState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :BATCH_OPERATION_STATE_UNSPECIFIED, 0
   field :BATCH_OPERATION_STATE_RUNNING, 1

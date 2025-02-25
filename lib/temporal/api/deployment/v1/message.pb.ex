@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Deployment.V1.WorkerDeploymentOptions do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :deployment_name, 1, type: :string, json_name: "deploymentName"
   field :build_id, 2, type: :string, json_name: "buildId"
@@ -15,7 +15,7 @@ end
 defmodule Temporal.Api.Deployment.V1.Deployment do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :series_name, 1, type: :string, json_name: "seriesName"
   field :build_id, 2, type: :string, json_name: "buildId"
@@ -24,7 +24,7 @@ end
 defmodule Temporal.Api.Deployment.V1.DeploymentInfo.MetadataEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Common.V1.Payload
@@ -33,7 +33,7 @@ end
 defmodule Temporal.Api.Deployment.V1.DeploymentInfo.TaskQueueInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :name, 1, type: :string
   field :type, 2, type: Temporal.Api.Enums.V1.TaskQueueType, enum: true
@@ -43,7 +43,7 @@ end
 defmodule Temporal.Api.Deployment.V1.DeploymentInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :deployment, 1, type: Temporal.Api.Deployment.V1.Deployment
   field :create_time, 2, type: Google.Protobuf.Timestamp, json_name: "createTime"
@@ -64,7 +64,7 @@ end
 defmodule Temporal.Api.Deployment.V1.UpdateDeploymentMetadata.UpsertEntriesEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Common.V1.Payload
@@ -73,7 +73,7 @@ end
 defmodule Temporal.Api.Deployment.V1.UpdateDeploymentMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :upsert_entries, 1,
     repeated: true,
@@ -87,7 +87,7 @@ end
 defmodule Temporal.Api.Deployment.V1.DeploymentListInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :deployment, 1, type: Temporal.Api.Deployment.V1.Deployment
   field :create_time, 2, type: Google.Protobuf.Timestamp, json_name: "createTime"
@@ -97,7 +97,7 @@ end
 defmodule Temporal.Api.Deployment.V1.WorkerDeploymentVersionInfo.VersionTaskQueueInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :name, 1, type: :string
   field :type, 2, type: Temporal.Api.Enums.V1.TaskQueueType, enum: true
@@ -106,7 +106,7 @@ end
 defmodule Temporal.Api.Deployment.V1.WorkerDeploymentVersionInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :version, 1, type: :string
   field :deployment_name, 2, type: :string, json_name: "deploymentName"
@@ -131,7 +131,7 @@ end
 defmodule Temporal.Api.Deployment.V1.VersionDrainageInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :status, 1, type: Temporal.Api.Enums.V1.VersionDrainageStatus, enum: true
   field :last_changed_time, 2, type: Google.Protobuf.Timestamp, json_name: "lastChangedTime"
@@ -141,7 +141,7 @@ end
 defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo.WorkerDeploymentVersionSummary do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :version, 1, type: :string
   field :create_time, 2, type: Google.Protobuf.Timestamp, json_name: "createTime"
@@ -155,7 +155,7 @@ end
 defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :name, 1, type: :string
 
@@ -176,7 +176,7 @@ end
 defmodule Temporal.Api.Deployment.V1.VersionMetadata.EntriesEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Common.V1.Payload
@@ -185,7 +185,7 @@ end
 defmodule Temporal.Api.Deployment.V1.VersionMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :entries, 1,
     repeated: true,
@@ -196,7 +196,7 @@ end
 defmodule Temporal.Api.Deployment.V1.RoutingConfig do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :current_version, 1, type: :string, json_name: "currentVersion"
   field :ramping_version, 2, type: :string, json_name: "rampingVersion"
