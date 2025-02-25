@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo.DataEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -10,7 +10,7 @@ end
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :eager_workflow_start, 1, type: :bool, json_name: "eagerWorkflowStart"
   field :sync_update, 2, type: :bool, json_name: "syncUpdate"
@@ -20,7 +20,7 @@ end
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :name, 1, type: :string
   field :state, 2, type: Temporal.Api.Enums.V1.NamespaceState, enum: true
@@ -40,7 +40,7 @@ end
 defmodule Temporal.Api.Namespace.V1.NamespaceConfig.CustomSearchAttributeAliasesEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -49,7 +49,7 @@ end
 defmodule Temporal.Api.Namespace.V1.NamespaceConfig do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :workflow_execution_retention_ttl, 1,
     type: Google.Protobuf.Duration,
@@ -81,7 +81,7 @@ end
 defmodule Temporal.Api.Namespace.V1.BadBinaries.BinariesEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Namespace.V1.BadBinaryInfo
@@ -90,7 +90,7 @@ end
 defmodule Temporal.Api.Namespace.V1.BadBinaries do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :binaries, 1,
     repeated: true,
@@ -101,7 +101,7 @@ end
 defmodule Temporal.Api.Namespace.V1.BadBinaryInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :reason, 1, type: :string
   field :operator, 2, type: :string
@@ -111,7 +111,7 @@ end
 defmodule Temporal.Api.Namespace.V1.UpdateNamespaceInfo.DataEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -120,7 +120,7 @@ end
 defmodule Temporal.Api.Namespace.V1.UpdateNamespaceInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :description, 1, type: :string
   field :owner_email, 2, type: :string, json_name: "ownerEmail"
@@ -136,7 +136,7 @@ end
 defmodule Temporal.Api.Namespace.V1.NamespaceFilter do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :include_deleted, 1, type: :bool, json_name: "includeDeleted"
 end
