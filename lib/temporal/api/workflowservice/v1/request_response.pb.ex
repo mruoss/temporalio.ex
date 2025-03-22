@@ -236,6 +236,8 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest do
   field :on_conflict_options, 26,
     type: Temporal.Api.Workflow.V1.OnConflictOptions,
     json_name: "onConflictOptions"
+
+  field :priority, 27, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do
@@ -564,6 +566,8 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueResponse do
   field :poller_scaling_decision, 18,
     type: Temporal.Api.Taskqueue.V1.PollerScalingDecision,
     json_name: "pollerScalingDecision"
+
+  field :priority, 19, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatRequest do
@@ -864,6 +868,8 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionReques
   field :versioning_override, 25,
     type: Temporal.Api.Workflow.V1.VersioningOverride,
     json_name: "versioningOverride"
+
+  field :priority, 26, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionResponse do

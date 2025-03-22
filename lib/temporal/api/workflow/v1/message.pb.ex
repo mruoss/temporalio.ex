@@ -49,6 +49,7 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
     json_name: "versioningInfo"
 
   field :worker_deployment_name, 23, type: :string, json_name: "workerDeploymentName"
+  field :priority, 24, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo do
@@ -185,6 +186,8 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
   field :last_worker_deployment_version, 21,
     type: :string,
     json_name: "lastWorkerDeploymentVersion"
+
+  field :priority, 22, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingChildExecutionInfo do
@@ -284,6 +287,8 @@ defmodule Temporal.Api.Workflow.V1.NewWorkflowExecutionInfo do
   field :versioning_override, 15,
     type: Temporal.Api.Workflow.V1.VersioningOverride,
     json_name: "versioningOverride"
+
+  field :priority, 16, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.Workflow.V1.CallbackInfo.WorkflowClosed do

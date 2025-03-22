@@ -289,3 +289,11 @@ defmodule Temporal.Api.Common.V1.Link do
 
   field :batch_job, 2, type: Temporal.Api.Common.V1.Link.BatchJob, json_name: "batchJob", oneof: 0
 end
+
+defmodule Temporal.Api.Common.V1.Priority do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :priority_key, 1, type: :int32, json_name: "priorityKey"
+end

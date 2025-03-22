@@ -25,6 +25,7 @@ defmodule Temporal.Api.Command.V1.ScheduleActivityTaskCommandAttributes do
   field :retry_policy, 11, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
   field :request_eager_execution, 12, type: :bool, json_name: "requestEagerExecution"
   field :use_workflow_build_id, 13, type: :bool, json_name: "useWorkflowBuildId"
+  field :priority, 14, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.Command.V1.RequestCancelActivityTaskCommandAttributes do
@@ -226,6 +227,7 @@ defmodule Temporal.Api.Command.V1.StartChildWorkflowExecutionCommandAttributes d
     json_name: "searchAttributes"
 
   field :inherit_build_id, 17, type: :bool, json_name: "inheritBuildId"
+  field :priority, 18, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.Command.V1.ProtocolMessageCommandAttributes do
