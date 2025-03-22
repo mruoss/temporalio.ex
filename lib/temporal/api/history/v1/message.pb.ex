@@ -92,6 +92,8 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
   field :parent_pinned_worker_deployment_version, 34,
     type: :string,
     json_name: "parentPinnedWorkerDeploymentVersion"
+
+  field :priority, 35, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do
@@ -310,6 +312,7 @@ defmodule Temporal.Api.History.V1.ActivityTaskScheduledEventAttributes do
 
   field :retry_policy, 12, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
   field :use_workflow_build_id, 13, type: :bool, json_name: "useWorkflowBuildId"
+  field :priority, 14, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskStartedEventAttributes do
@@ -731,6 +734,7 @@ defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionInitiatedEventAttri
     json_name: "searchAttributes"
 
   field :inherit_build_id, 19, type: :bool, json_name: "inheritBuildId"
+  field :priority, 20, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionFailedEventAttributes do
