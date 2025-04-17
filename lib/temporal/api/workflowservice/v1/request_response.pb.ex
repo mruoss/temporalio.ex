@@ -2573,3 +2573,94 @@ defmodule Temporal.Api.Workflowservice.V1.GetDeploymentReachabilityResponse do
   field :reachability, 2, type: Temporal.Api.Enums.V1.DeploymentReachability, enum: true
   field :last_update_time, 3, type: Google.Protobuf.Timestamp, json_name: "lastUpdateTime"
 end
+
+defmodule Temporal.Api.Workflowservice.V1.CreateWorkflowRuleRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :spec, 2, type: Temporal.Api.Rules.V1.WorkflowRuleSpec
+  field :force_scan, 3, type: :bool, json_name: "forceScan"
+  field :request_id, 4, type: :string, json_name: "requestId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CreateWorkflowRuleResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :rule, 1, type: Temporal.Api.Rules.V1.WorkflowRule
+  field :job_id, 2, type: :string, json_name: "jobId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DescribeWorkflowRuleRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :rule_id, 2, type: :string, json_name: "ruleId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DescribeWorkflowRuleResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :rule, 1, type: Temporal.Api.Rules.V1.WorkflowRule
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DeleteWorkflowRuleRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :rule_id, 2, type: :string, json_name: "ruleId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DeleteWorkflowRuleResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ListWorkflowRulesRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ListWorkflowRulesResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :rules, 1, repeated: true, type: Temporal.Api.Rules.V1.WorkflowRule
+  field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.TriggerWorkflowRuleRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  oneof :rule, 0
+
+  field :namespace, 1, type: :string
+  field :execution, 2, type: Temporal.Api.Common.V1.WorkflowExecution
+  field :id, 4, type: :string, oneof: 0
+  field :spec, 5, type: Temporal.Api.Rules.V1.WorkflowRuleSpec, oneof: 0
+end
+
+defmodule Temporal.Api.Workflowservice.V1.TriggerWorkflowRuleResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :applied, 1, type: :bool
+end

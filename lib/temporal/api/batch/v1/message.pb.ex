@@ -88,3 +88,15 @@ defmodule Temporal.Api.Batch.V1.BatchOperationUnpauseActivities do
   field :reset_heartbeat, 5, type: :bool, json_name: "resetHeartbeat"
   field :jitter, 6, type: Google.Protobuf.Duration
 end
+
+defmodule Temporal.Api.Batch.V1.BatchOperationTriggerWorkflowRule do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  oneof :rule, 0
+
+  field :identity, 1, type: :string
+  field :id, 2, type: :string, oneof: 0
+  field :spec, 3, type: Temporal.Api.Rules.V1.WorkflowRuleSpec, oneof: 0
+end

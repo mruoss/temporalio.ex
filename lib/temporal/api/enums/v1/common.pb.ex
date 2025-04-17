@@ -73,3 +73,13 @@ defmodule Temporal.Api.Enums.V1.NexusOperationCancellationState do
   field :NEXUS_OPERATION_CANCELLATION_STATE_TIMED_OUT, 5
   field :NEXUS_OPERATION_CANCELLATION_STATE_BLOCKED, 6
 end
+
+defmodule Temporal.Api.Enums.V1.WorkflowRuleActionScope do
+  @moduledoc false
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :WORKFLOW_RULE_ACTION_SCOPE_UNSPECIFIED, 0
+  field :WORKFLOW_RULE_ACTION_SCOPE_WORKFLOW, 1
+  field :WORKFLOW_RULE_ACTION_SCOPE_ACTIVITY, 2
+end

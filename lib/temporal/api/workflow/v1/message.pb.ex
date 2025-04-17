@@ -65,6 +65,7 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo do
   field :cancel_requested, 3, type: :bool, json_name: "cancelRequested"
   field :last_reset_time, 4, type: Google.Protobuf.Timestamp, json_name: "lastResetTime"
   field :original_start_time, 5, type: Google.Protobuf.Timestamp, json_name: "originalStartTime"
+  field :reset_run_id, 6, type: :string, json_name: "resetRunId"
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do
