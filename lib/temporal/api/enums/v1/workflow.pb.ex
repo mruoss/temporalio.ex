@@ -67,6 +67,8 @@ defmodule Temporal.Api.Enums.V1.PendingActivityState do
   field :PENDING_ACTIVITY_STATE_SCHEDULED, 1
   field :PENDING_ACTIVITY_STATE_STARTED, 2
   field :PENDING_ACTIVITY_STATE_CANCEL_REQUESTED, 3
+  field :PENDING_ACTIVITY_STATE_PAUSED, 4
+  field :PENDING_ACTIVITY_STATE_PAUSE_REQUESTED, 5
 end
 
 defmodule Temporal.Api.Enums.V1.PendingWorkflowTaskState do

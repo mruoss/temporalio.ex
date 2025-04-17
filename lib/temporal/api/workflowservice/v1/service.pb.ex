@@ -332,6 +332,26 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :ResetActivity,
       Temporal.Api.Workflowservice.V1.ResetActivityRequest,
       Temporal.Api.Workflowservice.V1.ResetActivityResponse
+
+  rpc :CreateWorkflowRule,
+      Temporal.Api.Workflowservice.V1.CreateWorkflowRuleRequest,
+      Temporal.Api.Workflowservice.V1.CreateWorkflowRuleResponse
+
+  rpc :DescribeWorkflowRule,
+      Temporal.Api.Workflowservice.V1.DescribeWorkflowRuleRequest,
+      Temporal.Api.Workflowservice.V1.DescribeWorkflowRuleResponse
+
+  rpc :DeleteWorkflowRule,
+      Temporal.Api.Workflowservice.V1.DeleteWorkflowRuleRequest,
+      Temporal.Api.Workflowservice.V1.DeleteWorkflowRuleResponse
+
+  rpc :ListWorkflowRules,
+      Temporal.Api.Workflowservice.V1.ListWorkflowRulesRequest,
+      Temporal.Api.Workflowservice.V1.ListWorkflowRulesResponse
+
+  rpc :TriggerWorkflowRule,
+      Temporal.Api.Workflowservice.V1.TriggerWorkflowRuleRequest,
+      Temporal.Api.Workflowservice.V1.TriggerWorkflowRuleResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do

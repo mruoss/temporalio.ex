@@ -1072,6 +1072,32 @@ defmodule Temporal.Api.History.V1.NexusOperationCancelRequestedEventAttributes d
     json_name: "workflowTaskCompletedEventId"
 end
 
+defmodule Temporal.Api.History.V1.NexusOperationCancelRequestCompletedEventAttributes do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :requested_event_id, 1, type: :int64, json_name: "requestedEventId"
+
+  field :workflow_task_completed_event_id, 2,
+    type: :int64,
+    json_name: "workflowTaskCompletedEventId"
+end
+
+defmodule Temporal.Api.History.V1.NexusOperationCancelRequestFailedEventAttributes do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :requested_event_id, 1, type: :int64, json_name: "requestedEventId"
+
+  field :workflow_task_completed_event_id, 2,
+    type: :int64,
+    json_name: "workflowTaskCompletedEventId"
+
+  field :failure, 3, type: Temporal.Api.Failure.V1.Failure
+end
+
 defmodule Temporal.Api.History.V1.HistoryEvent do
   @moduledoc false
 
@@ -1361,6 +1387,16 @@ defmodule Temporal.Api.History.V1.HistoryEvent do
   field :workflow_execution_options_updated_event_attributes, 60,
     type: Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes,
     json_name: "workflowExecutionOptionsUpdatedEventAttributes",
+    oneof: 0
+
+  field :nexus_operation_cancel_request_completed_event_attributes, 61,
+    type: Temporal.Api.History.V1.NexusOperationCancelRequestCompletedEventAttributes,
+    json_name: "nexusOperationCancelRequestCompletedEventAttributes",
+    oneof: 0
+
+  field :nexus_operation_cancel_request_failed_event_attributes, 62,
+    type: Temporal.Api.History.V1.NexusOperationCancelRequestFailedEventAttributes,
+    json_name: "nexusOperationCancelRequestFailedEventAttributes",
     oneof: 0
 end
 
