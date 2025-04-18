@@ -1082,6 +1082,8 @@ defmodule Temporal.Api.History.V1.NexusOperationCancelRequestCompletedEventAttri
   field :workflow_task_completed_event_id, 2,
     type: :int64,
     json_name: "workflowTaskCompletedEventId"
+
+  field :scheduled_event_id, 3, type: :int64, json_name: "scheduledEventId"
 end
 
 defmodule Temporal.Api.History.V1.NexusOperationCancelRequestFailedEventAttributes do
@@ -1096,6 +1098,7 @@ defmodule Temporal.Api.History.V1.NexusOperationCancelRequestFailedEventAttribut
     json_name: "workflowTaskCompletedEventId"
 
   field :failure, 3, type: Temporal.Api.Failure.V1.Failure
+  field :scheduled_event_id, 4, type: :int64, json_name: "scheduledEventId"
 end
 
 defmodule Temporal.Api.History.V1.HistoryEvent do

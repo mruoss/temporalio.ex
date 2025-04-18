@@ -2193,6 +2193,7 @@ defmodule Temporal.Api.Workflowservice.V1.PauseActivityRequest do
   field :identity, 3, type: :string
   field :id, 4, type: :string, oneof: 0
   field :type, 5, type: :string, oneof: 0
+  field :reason, 6, type: :string
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PauseActivityResponse do
@@ -2655,6 +2656,7 @@ defmodule Temporal.Api.Workflowservice.V1.TriggerWorkflowRuleRequest do
   field :execution, 2, type: Temporal.Api.Common.V1.WorkflowExecution
   field :id, 4, type: :string, oneof: 0
   field :spec, 5, type: Temporal.Api.Rules.V1.WorkflowRuleSpec, oneof: 0
+  field :identity, 3, type: :string
 end
 
 defmodule Temporal.Api.Workflowservice.V1.TriggerWorkflowRuleResponse do

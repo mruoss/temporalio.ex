@@ -83,3 +83,12 @@ defmodule Temporal.Api.Enums.V1.WorkflowRuleActionScope do
   field :WORKFLOW_RULE_ACTION_SCOPE_WORKFLOW, 1
   field :WORKFLOW_RULE_ACTION_SCOPE_ACTIVITY, 2
 end
+
+defmodule Temporal.Api.Enums.V1.ApplicationErrorCategory do
+  @moduledoc false
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :APPLICATION_ERROR_CATEGORY_UNSPECIFIED, 0
+  field :APPLICATION_ERROR_CATEGORY_BENIGN, 1
+end
