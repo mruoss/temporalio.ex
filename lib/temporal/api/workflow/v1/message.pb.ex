@@ -127,6 +127,27 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionConfig do
   field :user_metadata, 5, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
 end
 
+defmodule Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo.Manual do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :identity, 1, type: :string
+  field :reason, 2, type: :string
+end
+
+defmodule Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  oneof :paused_by, 0
+
+  field :pause_time, 1, type: Google.Protobuf.Timestamp, json_name: "pauseTime"
+  field :manual, 2, type: Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo.Manual, oneof: 0
+  field :rule_id, 3, type: :string, json_name: "ruleId", oneof: 0
+end
+
 defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
   @moduledoc false
 
@@ -189,6 +210,10 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
     json_name: "lastWorkerDeploymentVersion"
 
   field :priority, 22, type: Temporal.Api.Common.V1.Priority
+
+  field :pause_info, 23,
+    type: Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo,
+    json_name: "pauseInfo"
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingChildExecutionInfo do
