@@ -52,6 +52,15 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
   field :priority, 24, type: Temporal.Api.Common.V1.Priority
 end
 
+defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo.RequestIdInfosEntry do
+  @moduledoc false
+
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: Temporal.Api.Workflow.V1.RequestIdInfo
+end
+
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo do
   @moduledoc false
 
@@ -66,6 +75,12 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo do
   field :last_reset_time, 4, type: Google.Protobuf.Timestamp, json_name: "lastResetTime"
   field :original_start_time, 5, type: Google.Protobuf.Timestamp, json_name: "originalStartTime"
   field :reset_run_id, 6, type: :string, json_name: "resetRunId"
+
+  field :request_id_infos, 7,
+    repeated: true,
+    type: Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo.RequestIdInfosEntry,
+    json_name: "requestIdInfos",
+    map: true
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do
@@ -136,6 +151,16 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo.Manual do
   field :reason, 2, type: :string
 end
 
+defmodule Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo.Rule do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :rule_id, 1, type: :string, json_name: "ruleId"
+  field :identity, 2, type: :string
+  field :reason, 3, type: :string
+end
+
 defmodule Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo do
   @moduledoc false
 
@@ -145,7 +170,7 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo do
 
   field :pause_time, 1, type: Google.Protobuf.Timestamp, json_name: "pauseTime"
   field :manual, 2, type: Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo.Manual, oneof: 0
-  field :rule_id, 3, type: :string, json_name: "ruleId", oneof: 0
+  field :rule, 4, type: Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo.Rule, oneof: 0
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
@@ -453,4 +478,14 @@ defmodule Temporal.Api.Workflow.V1.OnConflictOptions do
   field :attach_request_id, 1, type: :bool, json_name: "attachRequestId"
   field :attach_completion_callbacks, 2, type: :bool, json_name: "attachCompletionCallbacks"
   field :attach_links, 3, type: :bool, json_name: "attachLinks"
+end
+
+defmodule Temporal.Api.Workflow.V1.RequestIdInfo do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :event_type, 1, type: Temporal.Api.Enums.V1.EventType, json_name: "eventType", enum: true
+  field :event_id, 2, type: :int64, json_name: "eventId"
+  field :buffered, 3, type: :bool
 end
