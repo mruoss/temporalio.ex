@@ -247,10 +247,13 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do
 
   field :run_id, 1, type: :string, json_name: "runId"
   field :started, 3, type: :bool
+  field :status, 5, type: Temporal.Api.Enums.V1.WorkflowExecutionStatus, enum: true
 
   field :eager_workflow_task, 2,
     type: Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueResponse,
     json_name: "eagerWorkflowTask"
+
+  field :link, 4, type: Temporal.Api.Common.V1.Link
 end
 
 defmodule Temporal.Api.Workflowservice.V1.GetWorkflowExecutionHistoryRequest do
@@ -2584,6 +2587,8 @@ defmodule Temporal.Api.Workflowservice.V1.CreateWorkflowRuleRequest do
   field :spec, 2, type: Temporal.Api.Rules.V1.WorkflowRuleSpec
   field :force_scan, 3, type: :bool, json_name: "forceScan"
   field :request_id, 4, type: :string, json_name: "requestId"
+  field :identity, 5, type: :string
+  field :description, 6, type: :string
 end
 
 defmodule Temporal.Api.Workflowservice.V1.CreateWorkflowRuleResponse do
