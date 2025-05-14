@@ -108,7 +108,12 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentVersionInfo do
 
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
-  field :version, 1, type: :string
+  field :version, 1, type: :string, deprecated: true
+
+  field :deployment_version, 11,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "deploymentVersion"
+
   field :deployment_name, 2, type: :string, json_name: "deploymentName"
   field :create_time, 3, type: Google.Protobuf.Timestamp, json_name: "createTime"
   field :routing_changed_time, 4, type: Google.Protobuf.Timestamp, json_name: "routingChangedTime"
@@ -143,7 +148,12 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo.WorkerDeploymentVersio
 
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
-  field :version, 1, type: :string
+  field :version, 1, type: :string, deprecated: true
+
+  field :deployment_version, 4,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "deploymentVersion"
+
   field :create_time, 2, type: Google.Protobuf.Timestamp, json_name: "createTime"
 
   field :drainage_status, 3,
@@ -173,6 +183,15 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo do
   field :last_modifier_identity, 5, type: :string, json_name: "lastModifierIdentity"
 end
 
+defmodule Temporal.Api.Deployment.V1.WorkerDeploymentVersion do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :build_id, 1, type: :string, json_name: "buildId"
+  field :deployment_name, 2, type: :string, json_name: "deploymentName"
+end
+
 defmodule Temporal.Api.Deployment.V1.VersionMetadata.EntriesEntry do
   @moduledoc false
 
@@ -198,8 +217,17 @@ defmodule Temporal.Api.Deployment.V1.RoutingConfig do
 
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
-  field :current_version, 1, type: :string, json_name: "currentVersion"
-  field :ramping_version, 2, type: :string, json_name: "rampingVersion"
+  field :current_deployment_version, 7,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "currentDeploymentVersion"
+
+  field :current_version, 1, type: :string, json_name: "currentVersion", deprecated: true
+
+  field :ramping_deployment_version, 9,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "rampingDeploymentVersion"
+
+  field :ramping_version, 2, type: :string, json_name: "rampingVersion", deprecated: true
   field :ramping_version_percentage, 3, type: :float, json_name: "rampingVersionPercentage"
 
   field :current_version_changed_time, 4,
