@@ -58,6 +58,11 @@ defmodule Temporal.Api.Batch.V1.BatchOperationReset do
     type: Temporal.Api.Enums.V1.ResetReapplyType,
     json_name: "resetReapplyType",
     enum: true
+
+  field :post_reset_operations, 5,
+    repeated: true,
+    type: Temporal.Api.Workflow.V1.PostResetOperation,
+    json_name: "postResetOperations"
 end
 
 defmodule Temporal.Api.Batch.V1.BatchOperationUpdateWorkflowExecutionOptions do

@@ -91,7 +91,12 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
 
   field :parent_pinned_worker_deployment_version, 34,
     type: :string,
-    json_name: "parentPinnedWorkerDeploymentVersion"
+    json_name: "parentPinnedWorkerDeploymentVersion",
+    deprecated: true
+
+  field :parent_pinned_deployment_version, 36,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "parentPinnedDeploymentVersion"
 
   field :priority, 35, type: Temporal.Api.Common.V1.Priority
 end
@@ -209,9 +214,13 @@ defmodule Temporal.Api.History.V1.WorkflowTaskStartedEventAttributes do
 
   field :worker_version, 6,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
+    json_name: "workerVersion",
+    deprecated: true
 
-  field :build_id_redirect_counter, 7, type: :int64, json_name: "buildIdRedirectCounter"
+  field :build_id_redirect_counter, 7,
+    type: :int64,
+    json_name: "buildIdRedirectCounter",
+    deprecated: true
 end
 
 defmodule Temporal.Api.History.V1.WorkflowTaskCompletedEventAttributes do
@@ -222,11 +231,12 @@ defmodule Temporal.Api.History.V1.WorkflowTaskCompletedEventAttributes do
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :started_event_id, 2, type: :int64, json_name: "startedEventId"
   field :identity, 3, type: :string
-  field :binary_checksum, 4, type: :string, json_name: "binaryChecksum"
+  field :binary_checksum, 4, type: :string, json_name: "binaryChecksum", deprecated: true
 
   field :worker_version, 5,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
+    json_name: "workerVersion",
+    deprecated: true
 
   field :sdk_metadata, 6,
     type: Temporal.Api.Sdk.V1.WorkflowTaskCompletedMetadata,
@@ -243,8 +253,16 @@ defmodule Temporal.Api.History.V1.WorkflowTaskCompletedEventAttributes do
     json_name: "versioningBehavior",
     enum: true
 
-  field :worker_deployment_version, 9, type: :string, json_name: "workerDeploymentVersion"
+  field :worker_deployment_version, 9,
+    type: :string,
+    json_name: "workerDeploymentVersion",
+    deprecated: true
+
   field :worker_deployment_name, 10, type: :string, json_name: "workerDeploymentName"
+
+  field :deployment_version, 11,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "deploymentVersion"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowTaskTimedOutEventAttributes do
@@ -274,11 +292,12 @@ defmodule Temporal.Api.History.V1.WorkflowTaskFailedEventAttributes do
   field :base_run_id, 6, type: :string, json_name: "baseRunId"
   field :new_run_id, 7, type: :string, json_name: "newRunId"
   field :fork_event_version, 8, type: :int64, json_name: "forkEventVersion"
-  field :binary_checksum, 9, type: :string, json_name: "binaryChecksum"
+  field :binary_checksum, 9, type: :string, json_name: "binaryChecksum", deprecated: true
 
   field :worker_version, 10,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
+    json_name: "workerVersion",
+    deprecated: true
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskScheduledEventAttributes do
@@ -311,7 +330,7 @@ defmodule Temporal.Api.History.V1.ActivityTaskScheduledEventAttributes do
     json_name: "workflowTaskCompletedEventId"
 
   field :retry_policy, 12, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
-  field :use_workflow_build_id, 13, type: :bool, json_name: "useWorkflowBuildId"
+  field :use_workflow_build_id, 13, type: :bool, json_name: "useWorkflowBuildId", deprecated: true
   field :priority, 14, type: Temporal.Api.Common.V1.Priority
 end
 
@@ -328,9 +347,13 @@ defmodule Temporal.Api.History.V1.ActivityTaskStartedEventAttributes do
 
   field :worker_version, 6,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
+    json_name: "workerVersion",
+    deprecated: true
 
-  field :build_id_redirect_counter, 7, type: :int64, json_name: "buildIdRedirectCounter"
+  field :build_id_redirect_counter, 7,
+    type: :int64,
+    json_name: "buildIdRedirectCounter",
+    deprecated: true
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskCompletedEventAttributes do
@@ -345,7 +368,8 @@ defmodule Temporal.Api.History.V1.ActivityTaskCompletedEventAttributes do
 
   field :worker_version, 5,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
+    json_name: "workerVersion",
+    deprecated: true
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskFailedEventAttributes do
@@ -365,7 +389,8 @@ defmodule Temporal.Api.History.V1.ActivityTaskFailedEventAttributes do
 
   field :worker_version, 6,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
+    json_name: "workerVersion",
+    deprecated: true
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskTimedOutEventAttributes do
@@ -412,7 +437,8 @@ defmodule Temporal.Api.History.V1.ActivityTaskCanceledEventAttributes do
 
   field :worker_version, 6,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "workerVersion"
+    json_name: "workerVersion",
+    deprecated: true
 end
 
 defmodule Temporal.Api.History.V1.TimerStartedEventAttributes do

@@ -1,3 +1,12 @@
+defmodule Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverrideBehavior do
+  @moduledoc false
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :PINNED_OVERRIDE_BEHAVIOR_UNSPECIFIED, 0
+  field :PINNED_OVERRIDE_BEHAVIOR_PINNED, 1
+end
+
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
   @moduledoc false
 
@@ -40,8 +49,8 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
     type: Temporal.Api.Common.V1.WorkflowExecution,
     json_name: "rootExecution"
 
-  field :assigned_build_id, 19, type: :string, json_name: "assignedBuildId"
-  field :inherited_build_id, 20, type: :string, json_name: "inheritedBuildId"
+  field :assigned_build_id, 19, type: :string, json_name: "assignedBuildId", deprecated: true
+  field :inherited_build_id, 20, type: :string, json_name: "inheritedBuildId", deprecated: true
   field :first_run_id, 21, type: :string, json_name: "firstRunId"
 
   field :versioning_info, 22,
@@ -90,7 +99,11 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do
 
   field :behavior, 1, type: Temporal.Api.Enums.V1.VersioningBehavior, enum: true
   field :deployment, 2, type: Temporal.Api.Deployment.V1.Deployment, deprecated: true
-  field :version, 5, type: :string
+  field :version, 5, type: :string, deprecated: true
+
+  field :deployment_version, 7,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "deploymentVersion"
 
   field :versioning_override, 3,
     type: Temporal.Api.Workflow.V1.VersioningOverride,
@@ -119,7 +132,11 @@ defmodule Temporal.Api.Workflow.V1.DeploymentVersionTransition do
 
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
-  field :version, 1, type: :string
+  field :version, 1, type: :string, deprecated: true
+
+  field :deployment_version, 2,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "deploymentVersion"
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionConfig do
@@ -200,16 +217,19 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
   field :use_workflow_build_id, 13,
     type: Google.Protobuf.Empty,
     json_name: "useWorkflowBuildId",
-    oneof: 0
+    oneof: 0,
+    deprecated: true
 
   field :last_independently_assigned_build_id, 14,
     type: :string,
     json_name: "lastIndependentlyAssignedBuildId",
-    oneof: 0
+    oneof: 0,
+    deprecated: true
 
   field :last_worker_version_stamp, 15,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "lastWorkerVersionStamp"
+    json_name: "lastWorkerVersionStamp",
+    deprecated: true
 
   field :current_retry_interval, 16,
     type: Google.Protobuf.Duration,
@@ -232,13 +252,22 @@ defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
 
   field :last_worker_deployment_version, 21,
     type: :string,
-    json_name: "lastWorkerDeploymentVersion"
+    json_name: "lastWorkerDeploymentVersion",
+    deprecated: true
+
+  field :last_deployment_version, 25,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "lastDeploymentVersion"
 
   field :priority, 22, type: Temporal.Api.Common.V1.Priority
 
   field :pause_info, 23,
     type: Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo,
     json_name: "pauseInfo"
+
+  field :activity_options, 24,
+    type: Temporal.Api.Activity.V1.ActivityOptions,
+    json_name: "activityOptions"
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingChildExecutionInfo do
@@ -287,7 +316,7 @@ defmodule Temporal.Api.Workflow.V1.ResetPointInfo do
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :build_id, 7, type: :string, json_name: "buildId"
-  field :binary_checksum, 1, type: :string, json_name: "binaryChecksum"
+  field :binary_checksum, 1, type: :string, json_name: "binaryChecksum", deprecated: true
   field :run_id, 2, type: :string, json_name: "runId"
 
   field :first_workflow_task_completed_id, 3,
@@ -460,14 +489,30 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionOptions do
     json_name: "versioningOverride"
 end
 
+defmodule Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverride do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :behavior, 1,
+    type: Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverrideBehavior,
+    enum: true
+
+  field :version, 2, type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion
+end
+
 defmodule Temporal.Api.Workflow.V1.VersioningOverride do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
-  field :behavior, 1, type: Temporal.Api.Enums.V1.VersioningBehavior, enum: true
+  oneof :override, 0
+
+  field :pinned, 3, type: Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverride, oneof: 0
+  field :auto_upgrade, 4, type: :bool, json_name: "autoUpgrade", oneof: 0
+  field :behavior, 1, type: Temporal.Api.Enums.V1.VersioningBehavior, enum: true, deprecated: true
   field :deployment, 2, type: Temporal.Api.Deployment.V1.Deployment, deprecated: true
-  field :pinned_version, 9, type: :string, json_name: "pinnedVersion"
+  field :pinned_version, 9, type: :string, json_name: "pinnedVersion", deprecated: true
 end
 
 defmodule Temporal.Api.Workflow.V1.OnConflictOptions do
@@ -488,4 +533,45 @@ defmodule Temporal.Api.Workflow.V1.RequestIdInfo do
   field :event_type, 1, type: Temporal.Api.Enums.V1.EventType, json_name: "eventType", enum: true
   field :event_id, 2, type: :int64, json_name: "eventId"
   field :buffered, 3, type: :bool
+end
+
+defmodule Temporal.Api.Workflow.V1.PostResetOperation.SignalWorkflow do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :signal_name, 1, type: :string, json_name: "signalName"
+  field :input, 2, type: Temporal.Api.Common.V1.Payloads
+  field :header, 3, type: Temporal.Api.Common.V1.Header
+  field :links, 4, repeated: true, type: Temporal.Api.Common.V1.Link
+end
+
+defmodule Temporal.Api.Workflow.V1.PostResetOperation.UpdateWorkflowOptions do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :workflow_execution_options, 1,
+    type: Temporal.Api.Workflow.V1.WorkflowExecutionOptions,
+    json_name: "workflowExecutionOptions"
+
+  field :update_mask, 2, type: Google.Protobuf.FieldMask, json_name: "updateMask"
+end
+
+defmodule Temporal.Api.Workflow.V1.PostResetOperation do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  oneof :variant, 0
+
+  field :signal_workflow, 1,
+    type: Temporal.Api.Workflow.V1.PostResetOperation.SignalWorkflow,
+    json_name: "signalWorkflow",
+    oneof: 0
+
+  field :update_workflow_options, 2,
+    type: Temporal.Api.Workflow.V1.PostResetOperation.UpdateWorkflowOptions,
+    json_name: "updateWorkflowOptions",
+    oneof: 0
 end
