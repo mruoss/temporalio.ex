@@ -104,7 +104,7 @@ defmodule Temporal.Api.Failure.V1.NexusOperationFailureInfo do
   field :endpoint, 2, type: :string
   field :service, 3, type: :string
   field :operation, 4, type: :string
-  field :operation_id, 5, type: :string, json_name: "operationId"
+  field :operation_id, 5, type: :string, json_name: "operationId", deprecated: true
   field :operation_token, 6, type: :string, json_name: "operationToken"
 end
 

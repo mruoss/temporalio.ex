@@ -72,7 +72,8 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
 
   field :source_version_stamp, 29,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "sourceVersionStamp"
+    json_name: "sourceVersionStamp",
+    deprecated: true
 
   field :completion_callbacks, 30,
     repeated: true,
@@ -83,7 +84,7 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
     type: Temporal.Api.Common.V1.WorkflowExecution,
     json_name: "rootWorkflowExecution"
 
-  field :inherited_build_id, 32, type: :string, json_name: "inheritedBuildId"
+  field :inherited_build_id, 32, type: :string, json_name: "inheritedBuildId", deprecated: true
 
   field :versioning_override, 33,
     type: Temporal.Api.Workflow.V1.VersioningOverride,
@@ -94,11 +95,11 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
     json_name: "parentPinnedWorkerDeploymentVersion",
     deprecated: true
 
-  field :parent_pinned_deployment_version, 36,
-    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
-    json_name: "parentPinnedDeploymentVersion"
-
   field :priority, 35, type: Temporal.Api.Common.V1.Priority
+
+  field :inherited_pinned_version, 37,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "inheritedPinnedVersion"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do
@@ -171,7 +172,7 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionContinuedAsNewEventAttributes
     json_name: "backoffStartInterval"
 
   field :initiator, 9, type: Temporal.Api.Enums.V1.ContinueAsNewInitiator, enum: true
-  field :failure, 10, type: Temporal.Api.Failure.V1.Failure
+  field :failure, 10, type: Temporal.Api.Failure.V1.Failure, deprecated: true
 
   field :last_completion_result, 11,
     type: Temporal.Api.Common.V1.Payloads,
@@ -184,7 +185,7 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionContinuedAsNewEventAttributes
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
 
-  field :inherit_build_id, 15, type: :bool, json_name: "inheritBuildId"
+  field :inherit_build_id, 15, type: :bool, json_name: "inheritBuildId", deprecated: true
 end
 
 defmodule Temporal.Api.History.V1.WorkflowTaskScheduledEventAttributes do
@@ -580,7 +581,7 @@ defmodule Temporal.Api.History.V1.RequestCancelExternalWorkflowExecutionInitiate
     type: Temporal.Api.Common.V1.WorkflowExecution,
     json_name: "workflowExecution"
 
-  field :control, 4, type: :string
+  field :control, 4, type: :string, deprecated: true
   field :child_workflow_only, 5, type: :bool, json_name: "childWorkflowOnly"
   field :reason, 6, type: :string
 end
@@ -606,7 +607,7 @@ defmodule Temporal.Api.History.V1.RequestCancelExternalWorkflowExecutionFailedEv
     json_name: "workflowExecution"
 
   field :initiated_event_id, 5, type: :int64, json_name: "initiatedEventId"
-  field :control, 6, type: :string
+  field :control, 6, type: :string, deprecated: true
 end
 
 defmodule Temporal.Api.History.V1.ExternalWorkflowExecutionCancelRequestedEventAttributes do
@@ -641,7 +642,7 @@ defmodule Temporal.Api.History.V1.SignalExternalWorkflowExecutionInitiatedEventA
 
   field :signal_name, 4, type: :string, json_name: "signalName"
   field :input, 5, type: Temporal.Api.Common.V1.Payloads
-  field :control, 6, type: :string
+  field :control, 6, type: :string, deprecated: true
   field :child_workflow_only, 7, type: :bool, json_name: "childWorkflowOnly"
   field :header, 8, type: Temporal.Api.Common.V1.Header
 end
@@ -667,7 +668,7 @@ defmodule Temporal.Api.History.V1.SignalExternalWorkflowExecutionFailedEventAttr
     json_name: "workflowExecution"
 
   field :initiated_event_id, 5, type: :int64, json_name: "initiatedEventId"
-  field :control, 6, type: :string
+  field :control, 6, type: :string, deprecated: true
 end
 
 defmodule Temporal.Api.History.V1.ExternalWorkflowExecutionSignaledEventAttributes do
@@ -683,7 +684,7 @@ defmodule Temporal.Api.History.V1.ExternalWorkflowExecutionSignaledEventAttribut
     type: Temporal.Api.Common.V1.WorkflowExecution,
     json_name: "workflowExecution"
 
-  field :control, 4, type: :string
+  field :control, 4, type: :string, deprecated: true
 end
 
 defmodule Temporal.Api.History.V1.UpsertWorkflowSearchAttributesEventAttributes do
@@ -739,7 +740,7 @@ defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionInitiatedEventAttri
     json_name: "parentClosePolicy",
     enum: true
 
-  field :control, 10, type: :string
+  field :control, 10, type: :string, deprecated: true
 
   field :workflow_task_completed_event_id, 11,
     type: :int64,
@@ -759,7 +760,7 @@ defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionInitiatedEventAttri
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
 
-  field :inherit_build_id, 19, type: :bool, json_name: "inheritBuildId"
+  field :inherit_build_id, 19, type: :bool, json_name: "inheritBuildId", deprecated: true
   field :priority, 20, type: Temporal.Api.Common.V1.Priority
 end
 
@@ -773,7 +774,7 @@ defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionFailedEventAttribut
   field :workflow_id, 2, type: :string, json_name: "workflowId"
   field :workflow_type, 3, type: Temporal.Api.Common.V1.WorkflowType, json_name: "workflowType"
   field :cause, 4, type: Temporal.Api.Enums.V1.StartChildWorkflowExecutionFailedCause, enum: true
-  field :control, 5, type: :string
+  field :control, 5, type: :string, deprecated: true
   field :initiated_event_id, 6, type: :int64, json_name: "initiatedEventId"
 
   field :workflow_task_completed_event_id, 7,
@@ -1041,7 +1042,7 @@ defmodule Temporal.Api.History.V1.NexusOperationStartedEventAttributes do
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
-  field :operation_id, 3, type: :string, json_name: "operationId"
+  field :operation_id, 3, type: :string, json_name: "operationId", deprecated: true
   field :request_id, 4, type: :string, json_name: "requestId"
   field :operation_token, 5, type: :string, json_name: "operationToken"
 end

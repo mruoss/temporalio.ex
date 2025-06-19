@@ -352,6 +352,14 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :TriggerWorkflowRule,
       Temporal.Api.Workflowservice.V1.TriggerWorkflowRuleRequest,
       Temporal.Api.Workflowservice.V1.TriggerWorkflowRuleResponse
+
+  rpc :RecordWorkerHeartbeat,
+      Temporal.Api.Workflowservice.V1.RecordWorkerHeartbeatRequest,
+      Temporal.Api.Workflowservice.V1.RecordWorkerHeartbeatResponse
+
+  rpc :ListWorkers,
+      Temporal.Api.Workflowservice.V1.ListWorkersRequest,
+      Temporal.Api.Workflowservice.V1.ListWorkersResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do

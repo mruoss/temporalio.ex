@@ -41,7 +41,8 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
 
   field :most_recent_worker_version_stamp, 16,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
-    json_name: "mostRecentWorkerVersionStamp"
+    json_name: "mostRecentWorkerVersionStamp",
+    deprecated: true
 
   field :execution_duration, 17, type: Google.Protobuf.Duration, json_name: "executionDuration"
 
@@ -424,7 +425,7 @@ defmodule Temporal.Api.Workflow.V1.PendingNexusOperationInfo do
   field :endpoint, 1, type: :string
   field :service, 2, type: :string
   field :operation, 3, type: :string
-  field :operation_id, 4, type: :string, json_name: "operationId"
+  field :operation_id, 4, type: :string, json_name: "operationId", deprecated: true
 
   field :schedule_to_close_timeout, 5,
     type: Google.Protobuf.Duration,
