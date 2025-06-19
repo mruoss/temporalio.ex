@@ -85,7 +85,7 @@ defmodule Temporal.Api.Nexus.V1.CancelOperationRequest do
 
   field :service, 1, type: :string
   field :operation, 2, type: :string
-  field :operation_id, 3, type: :string, json_name: "operationId"
+  field :operation_id, 3, type: :string, json_name: "operationId", deprecated: true
   field :operation_token, 4, type: :string, json_name: "operationToken"
 end
 
@@ -133,7 +133,7 @@ defmodule Temporal.Api.Nexus.V1.StartOperationResponse.Async do
 
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
-  field :operation_id, 1, type: :string, json_name: "operationId"
+  field :operation_id, 1, type: :string, json_name: "operationId", deprecated: true
   field :links, 2, repeated: true, type: Temporal.Api.Nexus.V1.Link
   field :operation_token, 3, type: :string, json_name: "operationToken"
 end

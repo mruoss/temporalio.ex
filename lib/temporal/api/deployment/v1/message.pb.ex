@@ -109,6 +109,7 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentVersionInfo do
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :version, 1, type: :string, deprecated: true
+  field :status, 14, type: Temporal.Api.Enums.V1.WorkerDeploymentVersionStatus, enum: true
 
   field :deployment_version, 11,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
@@ -119,6 +120,15 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentVersionInfo do
   field :routing_changed_time, 4, type: Google.Protobuf.Timestamp, json_name: "routingChangedTime"
   field :current_since_time, 5, type: Google.Protobuf.Timestamp, json_name: "currentSinceTime"
   field :ramping_since_time, 6, type: Google.Protobuf.Timestamp, json_name: "rampingSinceTime"
+
+  field :first_activation_time, 12,
+    type: Google.Protobuf.Timestamp,
+    json_name: "firstActivationTime"
+
+  field :last_deactivation_time, 13,
+    type: Google.Protobuf.Timestamp,
+    json_name: "lastDeactivationTime"
+
   field :ramp_percentage, 7, type: :float, json_name: "rampPercentage"
 
   field :task_queue_infos, 8,
@@ -149,6 +159,7 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo.WorkerDeploymentVersio
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :version, 1, type: :string, deprecated: true
+  field :status, 11, type: Temporal.Api.Enums.V1.WorkerDeploymentVersionStatus, enum: true
 
   field :deployment_version, 4,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
@@ -160,6 +171,22 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo.WorkerDeploymentVersio
     type: Temporal.Api.Enums.V1.VersionDrainageStatus,
     json_name: "drainageStatus",
     enum: true
+
+  field :drainage_info, 5,
+    type: Temporal.Api.Deployment.V1.VersionDrainageInfo,
+    json_name: "drainageInfo"
+
+  field :current_since_time, 6, type: Google.Protobuf.Timestamp, json_name: "currentSinceTime"
+  field :ramping_since_time, 7, type: Google.Protobuf.Timestamp, json_name: "rampingSinceTime"
+  field :routing_update_time, 8, type: Google.Protobuf.Timestamp, json_name: "routingUpdateTime"
+
+  field :first_activation_time, 9,
+    type: Google.Protobuf.Timestamp,
+    json_name: "firstActivationTime"
+
+  field :last_deactivation_time, 10,
+    type: Google.Protobuf.Timestamp,
+    json_name: "lastDeactivationTime"
 end
 
 defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo do

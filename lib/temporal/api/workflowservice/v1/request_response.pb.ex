@@ -329,6 +329,10 @@ defmodule Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueRequest do
   field :deployment_options, 6,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "deploymentOptions"
+
+  field :worker_heartbeat, 7,
+    type: Temporal.Api.Worker.V1.WorkerHeartbeat,
+    json_name: "workerHeartbeat"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueResponse.QueriesEntry do
@@ -522,6 +526,10 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueRequest do
   field :deployment_options, 6,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "deploymentOptions"
+
+  field :worker_heartbeat, 7,
+    type: Temporal.Api.Worker.V1.WorkerHeartbeat,
+    json_name: "workerHeartbeat"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueResponse do
@@ -813,7 +821,7 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWorkflowExecutionRequest do
   field :input, 4, type: Temporal.Api.Common.V1.Payloads
   field :identity, 5, type: :string
   field :request_id, 6, type: :string, json_name: "requestId"
-  field :control, 7, type: :string
+  field :control, 7, type: :string, deprecated: true
   field :header, 8, type: Temporal.Api.Common.V1.Header
   field :links, 10, repeated: true, type: Temporal.Api.Common.V1.Link
 end
@@ -860,7 +868,7 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionReques
 
   field :signal_name, 12, type: :string, json_name: "signalName"
   field :signal_input, 13, type: Temporal.Api.Common.V1.Payloads, json_name: "signalInput"
-  field :control, 14, type: :string
+  field :control, 14, type: :string, deprecated: true
   field :retry_policy, 15, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
   field :cron_schedule, 16, type: :string, json_name: "cronSchedule"
   field :memo, 17, type: Temporal.Api.Common.V1.Memo
@@ -908,7 +916,8 @@ defmodule Temporal.Api.Workflowservice.V1.ResetWorkflowExecutionRequest do
   field :reset_reapply_type, 6,
     type: Temporal.Api.Enums.V1.ResetReapplyType,
     json_name: "resetReapplyType",
-    enum: true
+    enum: true,
+    deprecated: true
 
   field :reset_reapply_exclude_types, 7,
     repeated: true,
@@ -1215,6 +1224,10 @@ defmodule Temporal.Api.Workflowservice.V1.ShutdownWorkerRequest do
   field :sticky_task_queue, 2, type: :string, json_name: "stickyTaskQueue"
   field :identity, 3, type: :string
   field :reason, 4, type: :string
+
+  field :worker_heartbeat, 5,
+    type: Temporal.Api.Worker.V1.WorkerHeartbeat,
+    json_name: "workerHeartbeat"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ShutdownWorkerResponse do
@@ -1308,24 +1321,34 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeTaskQueueRequest do
     json_name: "taskQueueType",
     enum: true
 
-  field :include_task_queue_status, 4, type: :bool, json_name: "includeTaskQueueStatus"
+  field :report_stats, 8, type: :bool, json_name: "reportStats"
+
+  field :include_task_queue_status, 4,
+    type: :bool,
+    json_name: "includeTaskQueueStatus",
+    deprecated: true
 
   field :api_mode, 5,
     type: Temporal.Api.Enums.V1.DescribeTaskQueueMode,
     json_name: "apiMode",
-    enum: true
+    enum: true,
+    deprecated: true
 
-  field :versions, 6, type: Temporal.Api.Taskqueue.V1.TaskQueueVersionSelection
+  field :versions, 6, type: Temporal.Api.Taskqueue.V1.TaskQueueVersionSelection, deprecated: true
 
   field :task_queue_types, 7,
     repeated: true,
     type: Temporal.Api.Enums.V1.TaskQueueType,
     json_name: "taskQueueTypes",
-    enum: true
+    enum: true,
+    deprecated: true
 
-  field :report_stats, 8, type: :bool, json_name: "reportStats"
-  field :report_pollers, 9, type: :bool, json_name: "reportPollers"
-  field :report_task_reachability, 10, type: :bool, json_name: "reportTaskReachability"
+  field :report_pollers, 9, type: :bool, json_name: "reportPollers", deprecated: true
+
+  field :report_task_reachability, 10,
+    type: :bool,
+    json_name: "reportTaskReachability",
+    deprecated: true
 end
 
 defmodule Temporal.Api.Workflowservice.V1.DescribeTaskQueueResponse.VersionsInfoEntry do
@@ -1343,20 +1366,23 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeTaskQueueResponse do
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :pollers, 1, repeated: true, type: Temporal.Api.Taskqueue.V1.PollerInfo
+  field :stats, 5, type: Temporal.Api.Taskqueue.V1.TaskQueueStats
+
+  field :versioning_info, 4,
+    type: Temporal.Api.Taskqueue.V1.TaskQueueVersioningInfo,
+    json_name: "versioningInfo"
 
   field :task_queue_status, 2,
     type: Temporal.Api.Taskqueue.V1.TaskQueueStatus,
-    json_name: "taskQueueStatus"
+    json_name: "taskQueueStatus",
+    deprecated: true
 
   field :versions_info, 3,
     repeated: true,
     type: Temporal.Api.Workflowservice.V1.DescribeTaskQueueResponse.VersionsInfoEntry,
     json_name: "versionsInfo",
-    map: true
-
-  field :versioning_info, 4,
-    type: Temporal.Api.Taskqueue.V1.TaskQueueVersioningInfo,
-    json_name: "versioningInfo"
+    map: true,
+    deprecated: true
 end
 
 defmodule Temporal.Api.Workflowservice.V1.GetClusterInfoRequest do
@@ -2058,6 +2084,10 @@ defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueRequest do
   field :deployment_options, 6,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "deploymentOptions"
+
+  field :worker_heartbeat, 7,
+    type: Temporal.Api.Worker.V1.WorkerHeartbeat,
+    json_name: "workerHeartbeat"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueResponse do
@@ -2183,6 +2213,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateActivityOptionsRequest do
   field :update_mask, 5, type: Google.Protobuf.FieldMask, json_name: "updateMask"
   field :id, 6, type: :string, oneof: 0
   field :type, 7, type: :string, oneof: 0
+  field :restore_original, 8, type: :bool, json_name: "restoreOriginal"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateActivityOptionsResponse do
@@ -2255,6 +2286,7 @@ defmodule Temporal.Api.Workflowservice.V1.ResetActivityRequest do
   field :reset_heartbeat, 6, type: :bool, json_name: "resetHeartbeat"
   field :keep_paused, 7, type: :bool, json_name: "keepPaused"
   field :jitter, 8, type: Google.Protobuf.Duration
+  field :restore_original_options, 9, type: :bool, json_name: "restoreOriginalOptions"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ResetActivityResponse do
@@ -2480,6 +2512,18 @@ defmodule Temporal.Api.Workflowservice.V1.ListWorkerDeploymentsResponse.WorkerDe
   field :routing_config, 3,
     type: Temporal.Api.Deployment.V1.RoutingConfig,
     json_name: "routingConfig"
+
+  field :latest_version_summary, 4,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentInfo.WorkerDeploymentVersionSummary,
+    json_name: "latestVersionSummary"
+
+  field :current_version_summary, 5,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentInfo.WorkerDeploymentVersionSummary,
+    json_name: "currentVersionSummary"
+
+  field :ramping_version_summary, 6,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentInfo.WorkerDeploymentVersionSummary,
+    json_name: "rampingVersionSummary"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ListWorkerDeploymentsResponse do
@@ -2562,6 +2606,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionMetadataR
     map: true
 
   field :remove_entries, 4, repeated: true, type: :string, json_name: "removeEntries"
+  field :identity, 6, type: :string
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionMetadataResponse do
@@ -2705,4 +2750,47 @@ defmodule Temporal.Api.Workflowservice.V1.TriggerWorkflowRuleResponse do
   use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
 
   field :applied, 1, type: :bool
+end
+
+defmodule Temporal.Api.Workflowservice.V1.RecordWorkerHeartbeatRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :identity, 2, type: :string
+
+  field :worker_heartbeat, 3,
+    type: Temporal.Api.Worker.V1.WorkerHeartbeat,
+    json_name: "workerHeartbeat"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.RecordWorkerHeartbeatResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ListWorkersRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :page_size, 2, type: :int32, json_name: "pageSize"
+  field :next_page_token, 3, type: :bytes, json_name: "nextPageToken"
+  field :query, 4, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ListWorkersResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+
+  field :workers_info, 1,
+    repeated: true,
+    type: Temporal.Api.Worker.V1.WorkerInfo,
+    json_name: "workersInfo"
+
+  field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
 end

@@ -189,7 +189,8 @@ defmodule Temporal.Api.Common.V1.ResetOptions do
   field :reset_reapply_type, 10,
     type: Temporal.Api.Enums.V1.ResetReapplyType,
     json_name: "resetReapplyType",
-    enum: true
+    enum: true,
+    deprecated: true
 
   field :current_run_only, 11, type: :bool, json_name: "currentRunOnly"
 

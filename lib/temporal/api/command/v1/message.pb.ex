@@ -85,7 +85,7 @@ defmodule Temporal.Api.Command.V1.RequestCancelExternalWorkflowExecutionCommandA
   field :namespace, 1, type: :string
   field :workflow_id, 2, type: :string, json_name: "workflowId"
   field :run_id, 3, type: :string, json_name: "runId"
-  field :control, 4, type: :string
+  field :control, 4, type: :string, deprecated: true
   field :child_workflow_only, 5, type: :bool, json_name: "childWorkflowOnly"
   field :reason, 6, type: :string
 end
@@ -99,7 +99,7 @@ defmodule Temporal.Api.Command.V1.SignalExternalWorkflowExecutionCommandAttribut
   field :execution, 2, type: Temporal.Api.Common.V1.WorkflowExecution
   field :signal_name, 3, type: :string, json_name: "signalName"
   field :input, 4, type: Temporal.Api.Common.V1.Payloads
-  field :control, 5, type: :string
+  field :control, 5, type: :string, deprecated: true
   field :child_workflow_only, 6, type: :bool, json_name: "childWorkflowOnly"
   field :header, 7, type: Temporal.Api.Common.V1.Header
 end
@@ -181,7 +181,7 @@ defmodule Temporal.Api.Command.V1.ContinueAsNewWorkflowExecutionCommandAttribute
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
 
-  field :inherit_build_id, 15, type: :bool, json_name: "inheritBuildId"
+  field :inherit_build_id, 15, type: :bool, json_name: "inheritBuildId", deprecated: true
 end
 
 defmodule Temporal.Api.Command.V1.StartChildWorkflowExecutionCommandAttributes do
@@ -226,7 +226,7 @@ defmodule Temporal.Api.Command.V1.StartChildWorkflowExecutionCommandAttributes d
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
 
-  field :inherit_build_id, 17, type: :bool, json_name: "inheritBuildId"
+  field :inherit_build_id, 17, type: :bool, json_name: "inheritBuildId", deprecated: true
   field :priority, 18, type: Temporal.Api.Common.V1.Priority
 end
 
