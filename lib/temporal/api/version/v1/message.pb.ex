@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Version.V1.ReleaseInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :version, 1, type: :string
   field :release_time, 2, type: Google.Protobuf.Timestamp, json_name: "releaseTime"
@@ -11,7 +11,7 @@ end
 defmodule Temporal.Api.Version.V1.Alert do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :message, 1, type: :string
   field :severity, 2, type: Temporal.Api.Enums.V1.Severity, enum: true
@@ -20,7 +20,7 @@ end
 defmodule Temporal.Api.Version.V1.VersionInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :current, 1, type: Temporal.Api.Version.V1.ReleaseInfo
   field :recommended, 2, type: Temporal.Api.Version.V1.ReleaseInfo
