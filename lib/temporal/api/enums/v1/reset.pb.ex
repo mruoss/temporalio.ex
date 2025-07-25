@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Enums.V1.ResetReapplyExcludeType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :RESET_REAPPLY_EXCLUDE_TYPE_UNSPECIFIED, 0
   field :RESET_REAPPLY_EXCLUDE_TYPE_SIGNAL, 1
@@ -13,7 +13,7 @@ end
 defmodule Temporal.Api.Enums.V1.ResetReapplyType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :RESET_REAPPLY_TYPE_UNSPECIFIED, 0
   field :RESET_REAPPLY_TYPE_SIGNAL, 1
@@ -24,7 +24,7 @@ end
 defmodule Temporal.Api.Enums.V1.ResetType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :RESET_TYPE_UNSPECIFIED, 0
   field :RESET_TYPE_FIRST_WORKFLOW_TASK, 1

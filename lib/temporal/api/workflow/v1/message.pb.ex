@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverrideBehavior do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :PINNED_OVERRIDE_BEHAVIOR_UNSPECIFIED, 0
   field :PINNED_OVERRIDE_BEHAVIOR_PINNED, 1
@@ -10,7 +10,7 @@ end
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :execution, 1, type: Temporal.Api.Common.V1.WorkflowExecution
   field :type, 2, type: Temporal.Api.Common.V1.WorkflowType
@@ -65,7 +65,7 @@ end
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo.RequestIdInfosEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Workflow.V1.RequestIdInfo
@@ -74,7 +74,7 @@ end
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :execution_expiration_time, 1,
     type: Google.Protobuf.Timestamp,
@@ -96,7 +96,7 @@ end
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :behavior, 1, type: Temporal.Api.Enums.V1.VersioningBehavior, enum: true
   field :deployment, 2, type: Temporal.Api.Deployment.V1.Deployment, deprecated: true
@@ -123,7 +123,7 @@ end
 defmodule Temporal.Api.Workflow.V1.DeploymentTransition do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :deployment, 1, type: Temporal.Api.Deployment.V1.Deployment
 end
@@ -131,7 +131,7 @@ end
 defmodule Temporal.Api.Workflow.V1.DeploymentVersionTransition do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :version, 1, type: :string, deprecated: true
 
@@ -143,7 +143,7 @@ end
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionConfig do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :task_queue, 1, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
 
@@ -163,7 +163,7 @@ end
 defmodule Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo.Manual do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :identity, 1, type: :string
   field :reason, 2, type: :string
@@ -172,7 +172,7 @@ end
 defmodule Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo.Rule do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :rule_id, 1, type: :string, json_name: "ruleId"
   field :identity, 2, type: :string
@@ -182,7 +182,7 @@ end
 defmodule Temporal.Api.Workflow.V1.PendingActivityInfo.PauseInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   oneof :paused_by, 0
 
@@ -194,7 +194,7 @@ end
 defmodule Temporal.Api.Workflow.V1.PendingActivityInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   oneof :assigned_build_id, 0
 
@@ -274,7 +274,7 @@ end
 defmodule Temporal.Api.Workflow.V1.PendingChildExecutionInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :workflow_id, 1, type: :string, json_name: "workflowId"
   field :run_id, 2, type: :string, json_name: "runId"
@@ -290,7 +290,7 @@ end
 defmodule Temporal.Api.Workflow.V1.PendingWorkflowTaskInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :state, 1, type: Temporal.Api.Enums.V1.PendingWorkflowTaskState, enum: true
   field :scheduled_time, 2, type: Google.Protobuf.Timestamp, json_name: "scheduledTime"
@@ -306,7 +306,7 @@ end
 defmodule Temporal.Api.Workflow.V1.ResetPoints do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :points, 1, repeated: true, type: Temporal.Api.Workflow.V1.ResetPointInfo
 end
@@ -314,7 +314,7 @@ end
 defmodule Temporal.Api.Workflow.V1.ResetPointInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :build_id, 7, type: :string, json_name: "buildId"
   field :binary_checksum, 1, type: :string, json_name: "binaryChecksum", deprecated: true
@@ -332,7 +332,7 @@ end
 defmodule Temporal.Api.Workflow.V1.NewWorkflowExecutionInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :workflow_id, 1, type: :string, json_name: "workflowId"
   field :workflow_type, 2, type: Temporal.Api.Common.V1.WorkflowType, json_name: "workflowType"
@@ -375,13 +375,13 @@ end
 defmodule Temporal.Api.Workflow.V1.CallbackInfo.WorkflowClosed do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 end
 
 defmodule Temporal.Api.Workflow.V1.CallbackInfo.Trigger do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   oneof :variant, 0
 
@@ -394,7 +394,7 @@ end
 defmodule Temporal.Api.Workflow.V1.CallbackInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :callback, 1, type: Temporal.Api.Common.V1.Callback
   field :trigger, 2, type: Temporal.Api.Workflow.V1.CallbackInfo.Trigger
@@ -420,7 +420,7 @@ end
 defmodule Temporal.Api.Workflow.V1.PendingNexusOperationInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :endpoint, 1, type: :string
   field :service, 2, type: :string
@@ -459,7 +459,7 @@ end
 defmodule Temporal.Api.Workflow.V1.NexusOperationCancellationInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :requested_time, 1, type: Google.Protobuf.Timestamp, json_name: "requestedTime"
   field :state, 2, type: Temporal.Api.Enums.V1.NexusOperationCancellationState, enum: true
@@ -483,7 +483,7 @@ end
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionOptions do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :versioning_override, 1,
     type: Temporal.Api.Workflow.V1.VersioningOverride,
@@ -493,7 +493,7 @@ end
 defmodule Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverride do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :behavior, 1,
     type: Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverrideBehavior,
@@ -505,7 +505,7 @@ end
 defmodule Temporal.Api.Workflow.V1.VersioningOverride do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   oneof :override, 0
 
@@ -519,7 +519,7 @@ end
 defmodule Temporal.Api.Workflow.V1.OnConflictOptions do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :attach_request_id, 1, type: :bool, json_name: "attachRequestId"
   field :attach_completion_callbacks, 2, type: :bool, json_name: "attachCompletionCallbacks"
@@ -529,7 +529,7 @@ end
 defmodule Temporal.Api.Workflow.V1.RequestIdInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :event_type, 1, type: Temporal.Api.Enums.V1.EventType, json_name: "eventType", enum: true
   field :event_id, 2, type: :int64, json_name: "eventId"
@@ -539,7 +539,7 @@ end
 defmodule Temporal.Api.Workflow.V1.PostResetOperation.SignalWorkflow do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :signal_name, 1, type: :string, json_name: "signalName"
   field :input, 2, type: Temporal.Api.Common.V1.Payloads
@@ -550,7 +550,7 @@ end
 defmodule Temporal.Api.Workflow.V1.PostResetOperation.UpdateWorkflowOptions do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :workflow_execution_options, 1,
     type: Temporal.Api.Workflow.V1.WorkflowExecutionOptions,
@@ -562,7 +562,7 @@ end
 defmodule Temporal.Api.Workflow.V1.PostResetOperation do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   oneof :variant, 0
 

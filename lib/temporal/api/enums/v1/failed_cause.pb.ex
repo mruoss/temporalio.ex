@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Enums.V1.WorkflowTaskFailedCause do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :WORKFLOW_TASK_FAILED_CAUSE_UNSPECIFIED, 0
   field :WORKFLOW_TASK_FAILED_CAUSE_UNHANDLED_COMMAND, 1
@@ -45,7 +45,7 @@ end
 defmodule Temporal.Api.Enums.V1.StartChildWorkflowExecutionFailedCause do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :START_CHILD_WORKFLOW_EXECUTION_FAILED_CAUSE_UNSPECIFIED, 0
   field :START_CHILD_WORKFLOW_EXECUTION_FAILED_CAUSE_WORKFLOW_ALREADY_EXISTS, 1
@@ -55,7 +55,7 @@ end
 defmodule Temporal.Api.Enums.V1.CancelExternalWorkflowExecutionFailedCause do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :CANCEL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_UNSPECIFIED, 0
   field :CANCEL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_EXTERNAL_WORKFLOW_EXECUTION_NOT_FOUND, 1
@@ -65,7 +65,7 @@ end
 defmodule Temporal.Api.Enums.V1.SignalExternalWorkflowExecutionFailedCause do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_UNSPECIFIED, 0
   field :SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_EXTERNAL_WORKFLOW_EXECUTION_NOT_FOUND, 1
@@ -76,7 +76,7 @@ end
 defmodule Temporal.Api.Enums.V1.ResourceExhaustedCause do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :RESOURCE_EXHAUSTED_CAUSE_UNSPECIFIED, 0
   field :RESOURCE_EXHAUSTED_CAUSE_RPS_LIMIT, 1
@@ -93,7 +93,7 @@ end
 defmodule Temporal.Api.Enums.V1.ResourceExhaustedScope do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :RESOURCE_EXHAUSTED_SCOPE_UNSPECIFIED, 0
   field :RESOURCE_EXHAUSTED_SCOPE_NAMESPACE, 1

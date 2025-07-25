@@ -3,7 +3,7 @@ defmodule Temporal.Api.Operatorservice.V1.OperatorService.Service do
 
   use GRPC.Service,
     name: "temporal.api.operatorservice.v1.OperatorService",
-    protoc_gen_elixir_version: "0.14.1"
+    protoc_gen_elixir_version: "0.15.0"
 
   rpc :AddSearchAttributes,
       Temporal.Api.Operatorservice.V1.AddSearchAttributesRequest,

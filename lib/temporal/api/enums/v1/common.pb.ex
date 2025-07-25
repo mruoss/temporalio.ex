@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Enums.V1.EncodingType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :ENCODING_TYPE_UNSPECIFIED, 0
   field :ENCODING_TYPE_PROTO3, 1
@@ -11,7 +11,7 @@ end
 defmodule Temporal.Api.Enums.V1.IndexedValueType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :INDEXED_VALUE_TYPE_UNSPECIFIED, 0
   field :INDEXED_VALUE_TYPE_TEXT, 1
@@ -26,7 +26,7 @@ end
 defmodule Temporal.Api.Enums.V1.Severity do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :SEVERITY_UNSPECIFIED, 0
   field :SEVERITY_HIGH, 1
@@ -37,7 +37,7 @@ end
 defmodule Temporal.Api.Enums.V1.CallbackState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :CALLBACK_STATE_UNSPECIFIED, 0
   field :CALLBACK_STATE_STANDBY, 1
@@ -51,7 +51,7 @@ end
 defmodule Temporal.Api.Enums.V1.PendingNexusOperationState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :PENDING_NEXUS_OPERATION_STATE_UNSPECIFIED, 0
   field :PENDING_NEXUS_OPERATION_STATE_SCHEDULED, 1
@@ -63,7 +63,7 @@ end
 defmodule Temporal.Api.Enums.V1.NexusOperationCancellationState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :NEXUS_OPERATION_CANCELLATION_STATE_UNSPECIFIED, 0
   field :NEXUS_OPERATION_CANCELLATION_STATE_SCHEDULED, 1
@@ -77,7 +77,7 @@ end
 defmodule Temporal.Api.Enums.V1.WorkflowRuleActionScope do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :WORKFLOW_RULE_ACTION_SCOPE_UNSPECIFIED, 0
   field :WORKFLOW_RULE_ACTION_SCOPE_WORKFLOW, 1
@@ -87,7 +87,7 @@ end
 defmodule Temporal.Api.Enums.V1.ApplicationErrorCategory do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :APPLICATION_ERROR_CATEGORY_UNSPECIFIED, 0
   field :APPLICATION_ERROR_CATEGORY_BENIGN, 1
@@ -96,7 +96,7 @@ end
 defmodule Temporal.Api.Enums.V1.WorkerStatus do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.14.1", syntax: :proto3
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :WORKER_STATUS_UNSPECIFIED, 0
   field :WORKER_STATUS_RUNNING, 1
