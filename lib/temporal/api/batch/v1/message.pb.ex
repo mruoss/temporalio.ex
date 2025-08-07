@@ -111,39 +111,3 @@ defmodule Temporal.Api.Batch.V1.BatchOperationTriggerWorkflowRule do
   field :id, 2, type: :string, oneof: 0
   field :spec, 3, type: Temporal.Api.Rules.V1.WorkflowRuleSpec, oneof: 0
 end
-
-defmodule Temporal.Api.Batch.V1.BatchOperationResetActivities do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
-
-  oneof :activity, 0
-
-  field :identity, 1, type: :string
-  field :type, 2, type: :string, oneof: 0
-  field :match_all, 3, type: :bool, json_name: "matchAll", oneof: 0
-  field :reset_attempts, 4, type: :bool, json_name: "resetAttempts"
-  field :reset_heartbeat, 5, type: :bool, json_name: "resetHeartbeat"
-  field :keep_paused, 6, type: :bool, json_name: "keepPaused"
-  field :jitter, 7, type: Google.Protobuf.Duration
-  field :restore_original_options, 8, type: :bool, json_name: "restoreOriginalOptions"
-end
-
-defmodule Temporal.Api.Batch.V1.BatchOperationUpdateActivityOptions do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
-
-  oneof :activity, 0
-
-  field :identity, 1, type: :string
-  field :type, 2, type: :string, oneof: 0
-  field :match_all, 3, type: :bool, json_name: "matchAll", oneof: 0
-
-  field :activity_options, 4,
-    type: Temporal.Api.Activity.V1.ActivityOptions,
-    json_name: "activityOptions"
-
-  field :update_mask, 5, type: Google.Protobuf.FieldMask, json_name: "updateMask"
-  field :restore_original, 6, type: :bool, json_name: "restoreOriginal"
-end

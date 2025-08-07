@@ -312,16 +312,4 @@ defmodule Temporal.Api.Common.V1.Priority do
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :priority_key, 1, type: :int32, json_name: "priorityKey"
-  field :fairness_key, 2, type: :string, json_name: "fairnessKey"
-  field :fairness_weight, 3, type: :float, json_name: "fairnessWeight"
-end
-
-defmodule Temporal.Api.Common.V1.WorkerSelector do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
-
-  oneof :selector, 0
-
-  field :worker_instance_key, 1, type: :string, json_name: "workerInstanceKey", oneof: 0
 end

@@ -360,18 +360,6 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :ListWorkers,
       Temporal.Api.Workflowservice.V1.ListWorkersRequest,
       Temporal.Api.Workflowservice.V1.ListWorkersResponse
-
-  rpc :UpdateTaskQueueConfig,
-      Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest,
-      Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigResponse
-
-  rpc :FetchWorkerConfig,
-      Temporal.Api.Workflowservice.V1.FetchWorkerConfigRequest,
-      Temporal.Api.Workflowservice.V1.FetchWorkerConfigResponse
-
-  rpc :UpdateWorkerConfig,
-      Temporal.Api.Workflowservice.V1.UpdateWorkerConfigRequest,
-      Temporal.Api.Workflowservice.V1.UpdateWorkerConfigResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do
