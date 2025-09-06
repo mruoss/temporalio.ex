@@ -32,6 +32,7 @@ defmodule Temporal.Api.Worker.V1.WorkerHostInfo do
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :host_name, 1, type: :string, json_name: "hostName"
+  field :process_key, 5, type: :string, json_name: "processKey"
   field :process_id, 2, type: :string, json_name: "processId"
   field :current_host_cpu_usage, 3, type: :float, json_name: "currentHostCpuUsage"
   field :current_host_mem_usage, 4, type: :float, json_name: "currentHostMemUsage"
@@ -96,6 +97,7 @@ defmodule Temporal.Api.Worker.V1.WorkerHeartbeat do
   field :total_sticky_cache_hit, 20, type: :int32, json_name: "totalStickyCacheHit"
   field :total_sticky_cache_miss, 21, type: :int32, json_name: "totalStickyCacheMiss"
   field :current_sticky_cache_size, 22, type: :int32, json_name: "currentStickyCacheSize"
+  field :plugins, 23, repeated: true, type: Temporal.Api.Worker.V1.PluginInfo
 end
 
 defmodule Temporal.Api.Worker.V1.WorkerInfo do
@@ -106,4 +108,13 @@ defmodule Temporal.Api.Worker.V1.WorkerInfo do
   field :worker_heartbeat, 1,
     type: Temporal.Api.Worker.V1.WorkerHeartbeat,
     json_name: "workerHeartbeat"
+end
+
+defmodule Temporal.Api.Worker.V1.PluginInfo do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :name, 1, type: :string
+  field :version, 2, type: :string
 end

@@ -208,6 +208,7 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo do
     json_name: "routingConfig"
 
   field :last_modifier_identity, 5, type: :string, json_name: "lastModifierIdentity"
+  field :manager_identity, 6, type: :string, json_name: "managerIdentity"
 end
 
 defmodule Temporal.Api.Deployment.V1.WorkerDeploymentVersion do

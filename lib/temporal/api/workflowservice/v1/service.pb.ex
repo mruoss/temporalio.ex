@@ -277,6 +277,10 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionMetadataRequest,
       Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionMetadataResponse
 
+  rpc :SetWorkerDeploymentManager,
+      Temporal.Api.Workflowservice.V1.SetWorkerDeploymentManagerRequest,
+      Temporal.Api.Workflowservice.V1.SetWorkerDeploymentManagerResponse
+
   rpc :UpdateWorkflowExecution,
       Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionRequest,
       Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionResponse
@@ -360,6 +364,22 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :ListWorkers,
       Temporal.Api.Workflowservice.V1.ListWorkersRequest,
       Temporal.Api.Workflowservice.V1.ListWorkersResponse
+
+  rpc :UpdateTaskQueueConfig,
+      Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest,
+      Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigResponse
+
+  rpc :FetchWorkerConfig,
+      Temporal.Api.Workflowservice.V1.FetchWorkerConfigRequest,
+      Temporal.Api.Workflowservice.V1.FetchWorkerConfigResponse
+
+  rpc :UpdateWorkerConfig,
+      Temporal.Api.Workflowservice.V1.UpdateWorkerConfigRequest,
+      Temporal.Api.Workflowservice.V1.UpdateWorkerConfigResponse
+
+  rpc :DescribeWorker,
+      Temporal.Api.Workflowservice.V1.DescribeWorkerRequest,
+      Temporal.Api.Workflowservice.V1.DescribeWorkerResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do
