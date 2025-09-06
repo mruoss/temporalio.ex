@@ -248,3 +248,44 @@ defmodule Temporal.Api.Taskqueue.V1.PollerScalingDecision do
 
   field :poll_request_delta_suggestion, 1, type: :int32, json_name: "pollRequestDeltaSuggestion"
 end
+
+defmodule Temporal.Api.Taskqueue.V1.RateLimit do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :requests_per_second, 1, type: :float, json_name: "requestsPerSecond"
+end
+
+defmodule Temporal.Api.Taskqueue.V1.ConfigMetadata do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :reason, 1, type: :string
+  field :update_identity, 2, type: :string, json_name: "updateIdentity"
+  field :update_time, 3, type: Google.Protobuf.Timestamp, json_name: "updateTime"
+end
+
+defmodule Temporal.Api.Taskqueue.V1.RateLimitConfig do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :rate_limit, 1, type: Temporal.Api.Taskqueue.V1.RateLimit, json_name: "rateLimit"
+  field :metadata, 2, type: Temporal.Api.Taskqueue.V1.ConfigMetadata
+end
+
+defmodule Temporal.Api.Taskqueue.V1.TaskQueueConfig do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :queue_rate_limit, 1,
+    type: Temporal.Api.Taskqueue.V1.RateLimitConfig,
+    json_name: "queueRateLimit"
+
+  field :fairness_keys_rate_limit_default, 2,
+    type: Temporal.Api.Taskqueue.V1.RateLimitConfig,
+    json_name: "fairnessKeysRateLimitDefault"
+end

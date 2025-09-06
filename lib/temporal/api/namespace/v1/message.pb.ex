@@ -15,6 +15,7 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities do
   field :eager_workflow_start, 1, type: :bool, json_name: "eagerWorkflowStart"
   field :sync_update, 2, type: :bool, json_name: "syncUpdate"
   field :async_update, 3, type: :bool, json_name: "asyncUpdate"
+  field :worker_heartbeats, 4, type: :bool, json_name: "workerHeartbeats"
 end
 
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo do

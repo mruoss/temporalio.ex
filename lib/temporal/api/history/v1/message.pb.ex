@@ -100,6 +100,8 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
   field :inherited_pinned_version, 37,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
     json_name: "inheritedPinnedVersion"
+
+  field :eager_execution_accepted, 38, type: :bool, json_name: "eagerExecutionAccepted"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do
