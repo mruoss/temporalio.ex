@@ -238,6 +238,10 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest do
     json_name: "onConflictOptions"
 
   field :priority, 27, type: Temporal.Api.Common.V1.Priority
+
+  field :eager_worker_deployment_options, 28,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
+    json_name: "eagerWorkerDeploymentOptions"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do

@@ -16,6 +16,10 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities do
   field :sync_update, 2, type: :bool, json_name: "syncUpdate"
   field :async_update, 3, type: :bool, json_name: "asyncUpdate"
   field :worker_heartbeats, 4, type: :bool, json_name: "workerHeartbeats"
+
+  field :reported_problems_search_attribute, 5,
+    type: :bool,
+    json_name: "reportedProblemsSearchAttribute"
 end
 
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo do
