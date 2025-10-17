@@ -117,6 +117,8 @@ defmodule Temporal.Api.Nexus.V1.Request do
     type: Temporal.Api.Nexus.V1.CancelOperationRequest,
     json_name: "cancelOperation",
     oneof: 0
+
+  field :endpoint, 10, type: :string
 end
 
 defmodule Temporal.Api.Nexus.V1.StartOperationResponse.Sync do

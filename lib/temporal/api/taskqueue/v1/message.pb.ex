@@ -276,6 +276,15 @@ defmodule Temporal.Api.Taskqueue.V1.RateLimitConfig do
   field :metadata, 2, type: Temporal.Api.Taskqueue.V1.ConfigMetadata
 end
 
+defmodule Temporal.Api.Taskqueue.V1.TaskQueueConfig.FairnessWeightOverridesEntry do
+  @moduledoc false
+
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :float
+end
+
 defmodule Temporal.Api.Taskqueue.V1.TaskQueueConfig do
   @moduledoc false
 
@@ -288,4 +297,10 @@ defmodule Temporal.Api.Taskqueue.V1.TaskQueueConfig do
   field :fairness_keys_rate_limit_default, 2,
     type: Temporal.Api.Taskqueue.V1.RateLimitConfig,
     json_name: "fairnessKeysRateLimitDefault"
+
+  field :fairness_weight_overrides, 3,
+    repeated: true,
+    type: Temporal.Api.Taskqueue.V1.TaskQueueConfig.FairnessWeightOverridesEntry,
+    json_name: "fairnessWeightOverrides",
+    map: true
 end

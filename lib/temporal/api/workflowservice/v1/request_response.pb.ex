@@ -333,10 +333,6 @@ defmodule Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueRequest do
   field :deployment_options, 6,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "deploymentOptions"
-
-  field :worker_heartbeat, 7,
-    type: Temporal.Api.Worker.V1.WorkerHeartbeat,
-    json_name: "workerHeartbeat"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueResponse.QueriesEntry do
@@ -530,10 +526,6 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueRequest do
   field :deployment_options, 6,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "deploymentOptions"
-
-  field :worker_heartbeat, 7,
-    type: Temporal.Api.Worker.V1.WorkerHeartbeat,
-    json_name: "workerHeartbeat"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueResponse do
@@ -2922,6 +2914,15 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest.RateLimit
   field :reason, 2, type: :string
 end
 
+defmodule Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest.SetFairnessWeightOverridesEntry do
+  @moduledoc false
+
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :float
+end
+
 defmodule Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest do
   @moduledoc false
 
@@ -2943,6 +2944,18 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest do
   field :update_fairness_key_rate_limit_default, 6,
     type: Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest.RateLimitUpdate,
     json_name: "updateFairnessKeyRateLimitDefault"
+
+  field :set_fairness_weight_overrides, 7,
+    repeated: true,
+    type:
+      Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest.SetFairnessWeightOverridesEntry,
+    json_name: "setFairnessWeightOverrides",
+    map: true
+
+  field :unset_fairness_weight_overrides, 8,
+    repeated: true,
+    type: :string,
+    json_name: "unsetFairnessWeightOverrides"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigResponse do
