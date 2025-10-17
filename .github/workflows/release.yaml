@@ -2,7 +2,7 @@ name: Create Release
 
 permissions:
   contents: write
-  
+
 on:
   workflow_dispatch:
   pull_request:
@@ -21,26 +21,24 @@ jobs:
           fetch-depth: 0
           submodules: true
 
+      - name: Setup Mise JDX
+        run: |
+          curl https://mise.run | sh
+          echo "$HOME/.local/share/mise/bin" >> $GITHUB_PATH
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+          echo "eval \"\$(mise activate bash)\"" >> ~/.bash_profile
+
       - name: get latest tags
         id: tags
         run: |
           echo "new_tag=$(cd src/temporalio_api && git describe --abbrev=0 --tags)" >> "$GITHUB_OUTPUT"
 
-      - name: Setup elixir
-        id: beam
-        uses: erlef/setup-beam@v1
-        with:
-          version-file: .tool-versions
-          version-type: strict
-          install-rebar: true
-          install-hex: true
-
       - name: Publish to Hex.pm
         env:
           HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
         run: |
-          mix deps.get
-          mix hex.publish --yes
+          mise x erlang elixir -- mix deps.get
+          mise x erlang elixir -- mix hex.publish --yes
 
       - name: Create Release
         id: create_release

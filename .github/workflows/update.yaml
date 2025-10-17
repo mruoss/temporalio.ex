@@ -2,7 +2,7 @@ name: Update Sources
 
 on:
   schedule:
-    - cron: '0 5 * * *'
+    - cron: "0 5 * * *"
   workflow_dispatch:
 
 permissions:
@@ -20,30 +20,22 @@ jobs:
           fetch-depth: 0
           submodules: true
 
-      - name: Install Protoc
-        uses: arduino/setup-protoc@v1
-        with: 
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-
-      - name: Setup elixir
-        id: beam
-        uses: erlef/setup-beam@v1
-        with:
-          version-file: .tool-versions
-          version-type: strict
-          install-rebar: true
-          install-hex: true
+      - name: Setup Mise JDX
+        run: |
+          curl https://mise.run | sh
+          echo "$HOME/.local/share/mise/bin" >> $GITHUB_PATH
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+          echo "eval \"\$(mise activate bash)\"" >> ~/.bash_profile
 
       - name: Setup protoc-gen-elixir
         id: protobuf
         run: |
-          mix escript.install hex protobuf --force
-          
+          mise x erlang elixir -- mix escript.install hex protobuf --force
+
       - name: Init repository
         id: init-repo
-        run: make init
-          
+        run: mise init
+
       - name: get latest tags
         id: tags
         run: |
@@ -56,7 +48,7 @@ jobs:
       - name: Get latest versions and update protocol buffers
         id: get-and-update
         if: ${{ steps.tags.outputs.current_tag != steps.tags.outputs.new_tag }}
-        run: make
+        run: mise compile
 
       - name: Update version in mix.exs
         if: ${{ steps.tags.outputs.current_tag != steps.tags.outputs.new_tag }}
@@ -67,17 +59,16 @@ jobs:
       - name: Create Pull Request
         if: ${{ steps.tags.outputs.current_tag != steps.tags.outputs.new_tag }}
         uses: peter-evans/create-pull-request@v7
-        with: 
+        with:
           branch: upgrade-on-upstream
           base: main
           delete-branch: true
-          title: 'New Upstream Version ${{ steps.tags.outputs.new_tag }}'
+          title: "New Upstream Version ${{ steps.tags.outputs.new_tag }}"
           assignees: mruoss
           body: |
-            There is a new tag ${{ steps.tags.outputs.new_tag }} in the [upstream repository][1] 
-            
+            There is a new tag ${{ steps.tags.outputs.new_tag }} in the [upstream repository][1]
+
             [1]: https://github.com/temporalio/api
           draft: false
           labels: |
             release
-

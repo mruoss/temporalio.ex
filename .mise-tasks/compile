@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#MISE description="Compile protobuf files"
+#MISE env={ERL_AFLAGS = "-kernel standard_io_encoding latin1"}
+#MISE sources=["src/temporalio_api/temporal/**/*.proto"]
+#MISE outputs=["lib/temporal/**/*.pb.ex"]
+#MISE depends=["init"]
+
+shopt -s globstar
+
+mise x protoc -- protoc --proto_path=./src/temporalio_api --proto_path=./src/googleapis --elixir_out=plugins=grpc:./lib src/temporalio_api/temporal/**/*.proto

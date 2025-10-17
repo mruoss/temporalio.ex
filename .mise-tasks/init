@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Checkout the latest tag from temporal.io"
+
+REF=$(cd src/temporalio_api && git describe --tags `git rev-list --tags --max-count=1`)
+(cd src/temporalio_api && git checkout ${REF})
