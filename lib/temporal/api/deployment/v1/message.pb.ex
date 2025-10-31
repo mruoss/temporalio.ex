@@ -209,6 +209,11 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo do
 
   field :last_modifier_identity, 5, type: :string, json_name: "lastModifierIdentity"
   field :manager_identity, 6, type: :string, json_name: "managerIdentity"
+
+  field :routing_config_update_state, 7,
+    type: Temporal.Api.Enums.V1.RoutingConfigUpdateState,
+    json_name: "routingConfigUpdateState",
+    enum: true
 end
 
 defmodule Temporal.Api.Deployment.V1.WorkerDeploymentVersion do
@@ -269,4 +274,6 @@ defmodule Temporal.Api.Deployment.V1.RoutingConfig do
   field :ramping_version_percentage_changed_time, 6,
     type: Google.Protobuf.Timestamp,
     json_name: "rampingVersionPercentageChangedTime"
+
+  field :revision_number, 10, type: :int64, json_name: "revisionNumber"
 end

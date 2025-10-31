@@ -118,6 +118,8 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do
   field :version_transition, 6,
     type: Temporal.Api.Workflow.V1.DeploymentVersionTransition,
     json_name: "versionTransition"
+
+  field :revision_number, 8, type: :int64, json_name: "revisionNumber"
 end
 
 defmodule Temporal.Api.Workflow.V1.DeploymentTransition do

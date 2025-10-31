@@ -2360,6 +2360,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionOptionsRequest 
     json_name: "workflowExecutionOptions"
 
   field :update_mask, 4, type: Google.Protobuf.FieldMask, json_name: "updateMask"
+  field :identity, 5, type: :string
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionOptionsResponse do

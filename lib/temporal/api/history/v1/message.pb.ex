@@ -915,6 +915,8 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes
     repeated: true,
     type: Temporal.Api.Common.V1.Callback,
     json_name: "attachedCompletionCallbacks"
+
+  field :identity, 5, type: :string
 end
 
 defmodule Temporal.Api.History.V1.WorkflowPropertiesModifiedExternallyEventAttributes do
