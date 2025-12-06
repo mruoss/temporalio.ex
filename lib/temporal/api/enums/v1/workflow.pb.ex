@@ -56,6 +56,7 @@ defmodule Temporal.Api.Enums.V1.WorkflowExecutionStatus do
   field :WORKFLOW_EXECUTION_STATUS_TERMINATED, 5
   field :WORKFLOW_EXECUTION_STATUS_CONTINUED_AS_NEW, 6
   field :WORKFLOW_EXECUTION_STATUS_TIMED_OUT, 7
+  field :WORKFLOW_EXECUTION_STATUS_PAUSED, 8
 end
 
 defmodule Temporal.Api.Enums.V1.PendingActivityState do

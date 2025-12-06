@@ -380,6 +380,14 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :DescribeWorker,
       Temporal.Api.Workflowservice.V1.DescribeWorkerRequest,
       Temporal.Api.Workflowservice.V1.DescribeWorkerResponse
+
+  rpc :PauseWorkflowExecution,
+      Temporal.Api.Workflowservice.V1.PauseWorkflowExecutionRequest,
+      Temporal.Api.Workflowservice.V1.PauseWorkflowExecutionResponse
+
+  rpc :UnpauseWorkflowExecution,
+      Temporal.Api.Workflowservice.V1.UnpauseWorkflowExecutionRequest,
+      Temporal.Api.Workflowservice.V1.UnpauseWorkflowExecutionResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do

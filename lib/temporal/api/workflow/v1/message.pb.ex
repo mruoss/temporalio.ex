@@ -91,6 +91,10 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo do
     type: Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo.RequestIdInfosEntry,
     json_name: "requestIdInfos",
     map: true
+
+  field :pause_info, 8,
+    type: Temporal.Api.Workflow.V1.WorkflowExecutionPauseInfo,
+    json_name: "pauseInfo"
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do
@@ -577,4 +581,14 @@ defmodule Temporal.Api.Workflow.V1.PostResetOperation do
     type: Temporal.Api.Workflow.V1.PostResetOperation.UpdateWorkflowOptions,
     json_name: "updateWorkflowOptions",
     oneof: 0
+end
+
+defmodule Temporal.Api.Workflow.V1.WorkflowExecutionPauseInfo do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :identity, 1, type: :string
+  field :paused_time, 2, type: Google.Protobuf.Timestamp, json_name: "pausedTime"
+  field :reason, 3, type: :string
 end
