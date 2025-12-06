@@ -277,3 +277,17 @@ defmodule Temporal.Api.Deployment.V1.RoutingConfig do
 
   field :revision_number, 10, type: :int64, json_name: "revisionNumber"
 end
+
+defmodule Temporal.Api.Deployment.V1.InheritedAutoUpgradeInfo do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :source_deployment_version, 1,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "sourceDeploymentVersion"
+
+  field :source_deployment_revision_number, 2,
+    type: :int64,
+    json_name: "sourceDeploymentRevisionNumber"
+end

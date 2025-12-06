@@ -2543,7 +2543,8 @@ defmodule Temporal.Api.Workflowservice.V1.SetWorkerDeploymentCurrentVersionRespo
 
   field :previous_deployment_version, 3,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
-    json_name: "previousDeploymentVersion"
+    json_name: "previousDeploymentVersion",
+    deprecated: true
 end
 
 defmodule Temporal.Api.Workflowservice.V1.SetWorkerDeploymentRampingVersionRequest do
@@ -2572,9 +2573,10 @@ defmodule Temporal.Api.Workflowservice.V1.SetWorkerDeploymentRampingVersionRespo
 
   field :previous_deployment_version, 4,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
-    json_name: "previousDeploymentVersion"
+    json_name: "previousDeploymentVersion",
+    deprecated: true
 
-  field :previous_percentage, 3, type: :float, json_name: "previousPercentage"
+  field :previous_percentage, 3, type: :float, json_name: "previousPercentage", deprecated: true
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ListWorkerDeploymentsRequest do
@@ -2724,7 +2726,11 @@ defmodule Temporal.Api.Workflowservice.V1.SetWorkerDeploymentManagerResponse do
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :conflict_token, 1, type: :bytes, json_name: "conflictToken"
-  field :previous_manager_identity, 2, type: :string, json_name: "previousManagerIdentity"
+
+  field :previous_manager_identity, 2,
+    type: :string,
+    json_name: "previousManagerIdentity",
+    deprecated: true
 end
 
 defmodule Temporal.Api.Workflowservice.V1.GetCurrentDeploymentRequest do
@@ -3027,4 +3033,42 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeWorkerResponse do
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :worker_info, 1, type: Temporal.Api.Worker.V1.WorkerInfo, json_name: "workerInfo"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PauseWorkflowExecutionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :workflow_id, 2, type: :string, json_name: "workflowId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :identity, 4, type: :string
+  field :reason, 5, type: :string
+  field :request_id, 6, type: :string, json_name: "requestId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PauseWorkflowExecutionResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UnpauseWorkflowExecutionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :workflow_id, 2, type: :string, json_name: "workflowId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :identity, 4, type: :string
+  field :reason, 5, type: :string
+  field :request_id, 6, type: :string, json_name: "requestId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UnpauseWorkflowExecutionResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 end

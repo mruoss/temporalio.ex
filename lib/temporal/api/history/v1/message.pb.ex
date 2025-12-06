@@ -101,6 +101,10 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
     type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
     json_name: "inheritedPinnedVersion"
 
+  field :inherited_auto_upgrade_info, 39,
+    type: Temporal.Api.Deployment.V1.InheritedAutoUpgradeInfo,
+    json_name: "inheritedAutoUpgradeInfo"
+
   field :eager_execution_accepted, 38, type: :bool, json_name: "eagerExecutionAccepted"
 end
 
@@ -1003,6 +1007,26 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionUpdateAdmittedEventAttributes
   field :origin, 2, type: Temporal.Api.Enums.V1.UpdateAdmittedEventOrigin, enum: true
 end
 
+defmodule Temporal.Api.History.V1.WorkflowExecutionPausedEventAttributes do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :identity, 1, type: :string
+  field :reason, 2, type: :string
+  field :request_id, 3, type: :string, json_name: "requestId"
+end
+
+defmodule Temporal.Api.History.V1.WorkflowExecutionUnpausedEventAttributes do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :identity, 1, type: :string
+  field :reason, 2, type: :string
+  field :request_id, 3, type: :string, json_name: "requestId"
+end
+
 defmodule Temporal.Api.History.V1.NexusOperationScheduledEventAttributes.NexusHeaderEntry do
   @moduledoc false
 
@@ -1431,6 +1455,16 @@ defmodule Temporal.Api.History.V1.HistoryEvent do
   field :nexus_operation_cancel_request_failed_event_attributes, 62,
     type: Temporal.Api.History.V1.NexusOperationCancelRequestFailedEventAttributes,
     json_name: "nexusOperationCancelRequestFailedEventAttributes",
+    oneof: 0
+
+  field :workflow_execution_paused_event_attributes, 63,
+    type: Temporal.Api.History.V1.WorkflowExecutionPausedEventAttributes,
+    json_name: "workflowExecutionPausedEventAttributes",
+    oneof: 0
+
+  field :workflow_execution_unpaused_event_attributes, 64,
+    type: Temporal.Api.History.V1.WorkflowExecutionUnpausedEventAttributes,
+    json_name: "workflowExecutionUnpausedEventAttributes",
     oneof: 0
 end
 
