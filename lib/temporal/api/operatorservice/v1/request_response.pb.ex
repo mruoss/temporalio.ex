@@ -134,6 +134,7 @@ defmodule Temporal.Api.Operatorservice.V1.AddOrUpdateRemoteClusterRequest do
     json_name: "enableRemoteClusterConnection"
 
   field :frontend_http_address, 3, type: :string, json_name: "frontendHttpAddress"
+  field :enable_replication, 4, type: :bool, json_name: "enableReplication"
 end
 
 defmodule Temporal.Api.Operatorservice.V1.AddOrUpdateRemoteClusterResponse do
@@ -186,6 +187,7 @@ defmodule Temporal.Api.Operatorservice.V1.ClusterMetadata do
   field :initial_failover_version, 4, type: :int64, json_name: "initialFailoverVersion"
   field :history_shard_count, 5, type: :int32, json_name: "historyShardCount"
   field :is_connection_enabled, 6, type: :bool, json_name: "isConnectionEnabled"
+  field :is_replication_enabled, 8, type: :bool, json_name: "isReplicationEnabled"
 end
 
 defmodule Temporal.Api.Operatorservice.V1.GetNexusEndpointRequest do

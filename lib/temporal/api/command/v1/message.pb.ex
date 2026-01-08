@@ -182,6 +182,11 @@ defmodule Temporal.Api.Command.V1.ContinueAsNewWorkflowExecutionCommandAttribute
     json_name: "searchAttributes"
 
   field :inherit_build_id, 15, type: :bool, json_name: "inheritBuildId", deprecated: true
+
+  field :initial_versioning_behavior, 16,
+    type: Temporal.Api.Enums.V1.ContinueAsNewVersioningBehavior,
+    json_name: "initialVersioningBehavior",
+    enum: true
 end
 
 defmodule Temporal.Api.Command.V1.StartChildWorkflowExecutionCommandAttributes do

@@ -28,6 +28,14 @@ defmodule Temporal.Api.Common.V1.Payload.MetadataEntry do
   field :value, 2, type: :bytes
 end
 
+defmodule Temporal.Api.Common.V1.Payload.ExternalPayloadDetails do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :size_bytes, 1, type: :int64, json_name: "sizeBytes"
+end
+
 defmodule Temporal.Api.Common.V1.Payload do
   @moduledoc false
 
@@ -39,6 +47,11 @@ defmodule Temporal.Api.Common.V1.Payload do
     map: true
 
   field :data, 2, type: :bytes
+
+  field :external_payloads, 3,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Payload.ExternalPayloadDetails,
+    json_name: "externalPayloads"
 end
 
 defmodule Temporal.Api.Common.V1.SearchAttributes.IndexedFieldsEntry do

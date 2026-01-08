@@ -3072,3 +3072,211 @@ defmodule Temporal.Api.Workflowservice.V1.UnpauseWorkflowExecutionResponse do
 
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 end
+
+defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :identity, 2, type: :string
+  field :request_id, 3, type: :string, json_name: "requestId"
+  field :activity_id, 4, type: :string, json_name: "activityId"
+  field :activity_type, 5, type: Temporal.Api.Common.V1.ActivityType, json_name: "activityType"
+  field :task_queue, 6, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
+
+  field :schedule_to_close_timeout, 7,
+    type: Google.Protobuf.Duration,
+    json_name: "scheduleToCloseTimeout"
+
+  field :schedule_to_start_timeout, 8,
+    type: Google.Protobuf.Duration,
+    json_name: "scheduleToStartTimeout"
+
+  field :start_to_close_timeout, 9,
+    type: Google.Protobuf.Duration,
+    json_name: "startToCloseTimeout"
+
+  field :heartbeat_timeout, 10, type: Google.Protobuf.Duration, json_name: "heartbeatTimeout"
+  field :retry_policy, 11, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
+  field :input, 12, type: Temporal.Api.Common.V1.Payloads
+
+  field :id_reuse_policy, 13,
+    type: Temporal.Api.Enums.V1.ActivityIdReusePolicy,
+    json_name: "idReusePolicy",
+    enum: true
+
+  field :id_conflict_policy, 14,
+    type: Temporal.Api.Enums.V1.ActivityIdConflictPolicy,
+    json_name: "idConflictPolicy",
+    enum: true
+
+  field :search_attributes, 15,
+    type: Temporal.Api.Common.V1.SearchAttributes,
+    json_name: "searchAttributes"
+
+  field :header, 16, type: Temporal.Api.Common.V1.Header
+  field :user_metadata, 17, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
+  field :priority, 18, type: Temporal.Api.Common.V1.Priority
+end
+
+defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :run_id, 1, type: :string, json_name: "runId"
+  field :started, 2, type: :bool
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DescribeActivityExecutionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :activity_id, 2, type: :string, json_name: "activityId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :include_input, 4, type: :bool, json_name: "includeInput"
+  field :include_outcome, 5, type: :bool, json_name: "includeOutcome"
+  field :long_poll_token, 6, type: :bytes, json_name: "longPollToken"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DescribeActivityExecutionResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :run_id, 1, type: :string, json_name: "runId"
+  field :info, 2, type: Temporal.Api.Activity.V1.ActivityExecutionInfo
+  field :input, 3, type: Temporal.Api.Common.V1.Payloads
+  field :outcome, 4, type: Temporal.Api.Activity.V1.ActivityExecutionOutcome
+  field :long_poll_token, 5, type: :bytes, json_name: "longPollToken"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PollActivityExecutionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :activity_id, 2, type: :string, json_name: "activityId"
+  field :run_id, 3, type: :string, json_name: "runId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PollActivityExecutionResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :run_id, 1, type: :string, json_name: "runId"
+  field :outcome, 2, type: Temporal.Api.Activity.V1.ActivityExecutionOutcome
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ListActivityExecutionsRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :page_size, 2, type: :int32, json_name: "pageSize"
+  field :next_page_token, 3, type: :bytes, json_name: "nextPageToken"
+  field :query, 4, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ListActivityExecutionsResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :executions, 1, repeated: true, type: Temporal.Api.Activity.V1.ActivityExecutionListInfo
+  field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountActivityExecutionsRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :query, 2, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountActivityExecutionsResponse.AggregationGroup do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :group_values, 1,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Payload,
+    json_name: "groupValues"
+
+  field :count, 2, type: :int64
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountActivityExecutionsResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :count, 1, type: :int64
+
+  field :groups, 2,
+    repeated: true,
+    type: Temporal.Api.Workflowservice.V1.CountActivityExecutionsResponse.AggregationGroup
+end
+
+defmodule Temporal.Api.Workflowservice.V1.RequestCancelActivityExecutionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :activity_id, 2, type: :string, json_name: "activityId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :identity, 4, type: :string
+  field :request_id, 5, type: :string, json_name: "requestId"
+  field :reason, 6, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.RequestCancelActivityExecutionResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.TerminateActivityExecutionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :activity_id, 2, type: :string, json_name: "activityId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :identity, 4, type: :string
+  field :request_id, 5, type: :string, json_name: "requestId"
+  field :reason, 6, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.TerminateActivityExecutionResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DeleteActivityExecutionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :activity_id, 2, type: :string, json_name: "activityId"
+  field :run_id, 3, type: :string, json_name: "runId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DeleteActivityExecutionResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+end

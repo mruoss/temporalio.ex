@@ -192,6 +192,11 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionContinuedAsNewEventAttributes
     json_name: "searchAttributes"
 
   field :inherit_build_id, 15, type: :bool, json_name: "inheritBuildId", deprecated: true
+
+  field :initial_versioning_behavior, 16,
+    type: Temporal.Api.Enums.V1.ContinueAsNewVersioningBehavior,
+    json_name: "initialVersioningBehavior",
+    enum: true
 end
 
 defmodule Temporal.Api.History.V1.WorkflowTaskScheduledEventAttributes do
@@ -217,6 +222,13 @@ defmodule Temporal.Api.History.V1.WorkflowTaskStartedEventAttributes do
   field :identity, 2, type: :string
   field :request_id, 3, type: :string, json_name: "requestId"
   field :suggest_continue_as_new, 4, type: :bool, json_name: "suggestContinueAsNew"
+
+  field :suggest_continue_as_new_reasons, 8,
+    repeated: true,
+    type: Temporal.Api.Enums.V1.SuggestContinueAsNewReason,
+    json_name: "suggestContinueAsNewReasons",
+    enum: true
+
   field :history_size_bytes, 5, type: :int64, json_name: "historySizeBytes"
 
   field :worker_version, 6,
@@ -921,6 +933,7 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes
     json_name: "attachedCompletionCallbacks"
 
   field :identity, 5, type: :string
+  field :priority, 6, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.History.V1.WorkflowPropertiesModifiedExternallyEventAttributes do
