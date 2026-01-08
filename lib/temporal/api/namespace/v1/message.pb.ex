@@ -20,6 +20,17 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities do
   field :reported_problems_search_attribute, 5,
     type: :bool,
     json_name: "reportedProblemsSearchAttribute"
+
+  field :workflow_pause, 6, type: :bool, json_name: "workflowPause"
+end
+
+defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Limits do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :blob_size_limit_error, 1, type: :int64, json_name: "blobSizeLimitError"
+  field :memo_size_limit_error, 2, type: :int64, json_name: "memoSizeLimitError"
 end
 
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo do
@@ -39,6 +50,7 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo do
 
   field :id, 6, type: :string
   field :capabilities, 7, type: Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities
+  field :limits, 8, type: Temporal.Api.Namespace.V1.NamespaceInfo.Limits
   field :supports_schedules, 100, type: :bool, json_name: "supportsSchedules"
 end
 

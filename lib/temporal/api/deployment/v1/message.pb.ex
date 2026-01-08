@@ -125,6 +125,8 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentVersionInfo do
     type: Google.Protobuf.Timestamp,
     json_name: "firstActivationTime"
 
+  field :last_current_time, 15, type: Google.Protobuf.Timestamp, json_name: "lastCurrentTime"
+
   field :last_deactivation_time, 13,
     type: Google.Protobuf.Timestamp,
     json_name: "lastDeactivationTime"
@@ -183,6 +185,8 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo.WorkerDeploymentVersio
   field :first_activation_time, 9,
     type: Google.Protobuf.Timestamp,
     json_name: "firstActivationTime"
+
+  field :last_current_time, 12, type: Google.Protobuf.Timestamp, json_name: "lastCurrentTime"
 
   field :last_deactivation_time, 10,
     type: Google.Protobuf.Timestamp,

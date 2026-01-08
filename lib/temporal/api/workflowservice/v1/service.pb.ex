@@ -388,6 +388,38 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :UnpauseWorkflowExecution,
       Temporal.Api.Workflowservice.V1.UnpauseWorkflowExecutionRequest,
       Temporal.Api.Workflowservice.V1.UnpauseWorkflowExecutionResponse
+
+  rpc :StartActivityExecution,
+      Temporal.Api.Workflowservice.V1.StartActivityExecutionRequest,
+      Temporal.Api.Workflowservice.V1.StartActivityExecutionResponse
+
+  rpc :DescribeActivityExecution,
+      Temporal.Api.Workflowservice.V1.DescribeActivityExecutionRequest,
+      Temporal.Api.Workflowservice.V1.DescribeActivityExecutionResponse
+
+  rpc :PollActivityExecution,
+      Temporal.Api.Workflowservice.V1.PollActivityExecutionRequest,
+      Temporal.Api.Workflowservice.V1.PollActivityExecutionResponse
+
+  rpc :ListActivityExecutions,
+      Temporal.Api.Workflowservice.V1.ListActivityExecutionsRequest,
+      Temporal.Api.Workflowservice.V1.ListActivityExecutionsResponse
+
+  rpc :CountActivityExecutions,
+      Temporal.Api.Workflowservice.V1.CountActivityExecutionsRequest,
+      Temporal.Api.Workflowservice.V1.CountActivityExecutionsResponse
+
+  rpc :RequestCancelActivityExecution,
+      Temporal.Api.Workflowservice.V1.RequestCancelActivityExecutionRequest,
+      Temporal.Api.Workflowservice.V1.RequestCancelActivityExecutionResponse
+
+  rpc :TerminateActivityExecution,
+      Temporal.Api.Workflowservice.V1.TerminateActivityExecutionRequest,
+      Temporal.Api.Workflowservice.V1.TerminateActivityExecutionResponse
+
+  rpc :DeleteActivityExecution,
+      Temporal.Api.Workflowservice.V1.DeleteActivityExecutionRequest,
+      Temporal.Api.Workflowservice.V1.DeleteActivityExecutionResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do

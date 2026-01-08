@@ -60,6 +60,8 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionInfo do
 
   field :worker_deployment_name, 23, type: :string, json_name: "workerDeploymentName"
   field :priority, 24, type: Temporal.Api.Common.V1.Priority
+  field :external_payload_size_bytes, 25, type: :int64, json_name: "externalPayloadSizeBytes"
+  field :external_payload_count, 26, type: :int64, json_name: "externalPayloadCount"
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo.RequestIdInfosEntry do
@@ -494,6 +496,8 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionOptions do
   field :versioning_override, 1,
     type: Temporal.Api.Workflow.V1.VersioningOverride,
     json_name: "versioningOverride"
+
+  field :priority, 2, type: Temporal.Api.Common.V1.Priority
 end
 
 defmodule Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverride do
