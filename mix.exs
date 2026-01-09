@@ -27,7 +27,7 @@ defmodule Temporalio.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:protobuf, "~> 0.15.0"},
+      {:protobuf, "~> 0.16.0"},
       {:grpc, "~> 0.11.0"},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
