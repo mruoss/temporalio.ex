@@ -1,4 +1,4 @@
 [tools]
 erlang = "28.3"
 elixir = "1.19.5"
-protoc = "33.3"
+protoc = "33.4"
