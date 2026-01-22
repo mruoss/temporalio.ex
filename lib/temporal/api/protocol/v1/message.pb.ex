@@ -1,7 +1,10 @@
 defmodule Temporal.Api.Protocol.V1.Message do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.protocol.v1.Message",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :sequencing_id, 0
 

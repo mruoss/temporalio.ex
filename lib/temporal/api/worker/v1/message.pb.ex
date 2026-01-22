@@ -1,7 +1,10 @@
 defmodule Temporal.Api.Worker.V1.WorkerPollerInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.WorkerPollerInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :current_pollers, 1, type: :int32, json_name: "currentPollers"
 
@@ -15,7 +18,10 @@ end
 defmodule Temporal.Api.Worker.V1.WorkerSlotsInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.WorkerSlotsInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :current_available_slots, 1, type: :int32, json_name: "currentAvailableSlots"
   field :current_used_slots, 2, type: :int32, json_name: "currentUsedSlots"
@@ -29,7 +35,10 @@ end
 defmodule Temporal.Api.Worker.V1.WorkerHostInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.WorkerHostInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :host_name, 1, type: :string, json_name: "hostName"
   field :worker_grouping_key, 5, type: :string, json_name: "workerGroupingKey"
@@ -41,7 +50,10 @@ end
 defmodule Temporal.Api.Worker.V1.WorkerHeartbeat do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.WorkerHeartbeat",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :worker_instance_key, 1, type: :string, json_name: "workerInstanceKey"
   field :worker_identity, 2, type: :string, json_name: "workerIdentity"
@@ -103,7 +115,10 @@ end
 defmodule Temporal.Api.Worker.V1.WorkerInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.WorkerInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :worker_heartbeat, 1,
     type: Temporal.Api.Worker.V1.WorkerHeartbeat,
@@ -113,7 +128,10 @@ end
 defmodule Temporal.Api.Worker.V1.PluginInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.PluginInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string
   field :version, 2, type: :string

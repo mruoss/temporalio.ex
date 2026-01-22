@@ -1,7 +1,10 @@
 defmodule Temporal.Api.Activity.V1.ActivityExecutionOutcome do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.activity.v1.ActivityExecutionOutcome",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :value, 0
 
@@ -12,7 +15,10 @@ end
 defmodule Temporal.Api.Activity.V1.ActivityOptions do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.activity.v1.ActivityOptions",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :task_queue, 1, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
 
@@ -36,7 +42,10 @@ end
 defmodule Temporal.Api.Activity.V1.ActivityExecutionInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.activity.v1.ActivityExecutionInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :activity_id, 1, type: :string, json_name: "activityId"
   field :run_id, 2, type: :string, json_name: "runId"
@@ -111,7 +120,10 @@ end
 defmodule Temporal.Api.Activity.V1.ActivityExecutionListInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.activity.v1.ActivityExecutionListInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :activity_id, 1, type: :string, json_name: "activityId"
   field :run_id, 2, type: :string, json_name: "runId"

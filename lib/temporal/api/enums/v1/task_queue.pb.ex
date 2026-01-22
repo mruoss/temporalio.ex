@@ -1,7 +1,11 @@
 defmodule Temporal.Api.Enums.V1.TaskQueueKind do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.TaskQueueKind",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :TASK_QUEUE_KIND_UNSPECIFIED, 0
   field :TASK_QUEUE_KIND_NORMAL, 1
@@ -11,7 +15,11 @@ end
 defmodule Temporal.Api.Enums.V1.TaskQueueType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.TaskQueueType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :TASK_QUEUE_TYPE_UNSPECIFIED, 0
   field :TASK_QUEUE_TYPE_WORKFLOW, 1
@@ -22,7 +30,11 @@ end
 defmodule Temporal.Api.Enums.V1.TaskReachability do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.TaskReachability",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :TASK_REACHABILITY_UNSPECIFIED, 0
   field :TASK_REACHABILITY_NEW_WORKFLOWS, 1
@@ -34,7 +46,11 @@ end
 defmodule Temporal.Api.Enums.V1.BuildIdTaskReachability do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.BuildIdTaskReachability",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :BUILD_ID_TASK_REACHABILITY_UNSPECIFIED, 0
   field :BUILD_ID_TASK_REACHABILITY_REACHABLE, 1
@@ -45,7 +61,11 @@ end
 defmodule Temporal.Api.Enums.V1.DescribeTaskQueueMode do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.DescribeTaskQueueMode",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :DESCRIBE_TASK_QUEUE_MODE_UNSPECIFIED, 0
   field :DESCRIBE_TASK_QUEUE_MODE_ENHANCED, 1
@@ -54,7 +74,11 @@ end
 defmodule Temporal.Api.Enums.V1.RateLimitSource do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.RateLimitSource",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :RATE_LIMIT_SOURCE_UNSPECIFIED, 0
   field :RATE_LIMIT_SOURCE_API, 1
@@ -65,7 +89,11 @@ end
 defmodule Temporal.Api.Enums.V1.RoutingConfigUpdateState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.RoutingConfigUpdateState",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :ROUTING_CONFIG_UPDATE_STATE_UNSPECIFIED, 0
   field :ROUTING_CONFIG_UPDATE_STATE_IN_PROGRESS, 1

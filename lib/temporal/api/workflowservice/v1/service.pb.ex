@@ -3,7 +3,7 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
 
   use GRPC.Service,
     name: "temporal.api.workflowservice.v1.WorkflowService",
-    protoc_gen_elixir_version: "0.15.0"
+    protoc_gen_elixir_version: "0.16.0"
 
   rpc :RegisterNamespace,
       Temporal.Api.Workflowservice.V1.RegisterNamespaceRequest,

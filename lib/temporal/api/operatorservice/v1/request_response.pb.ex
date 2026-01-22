@@ -1,7 +1,11 @@
 defmodule Temporal.Api.Operatorservice.V1.AddSearchAttributesRequest.SearchAttributesEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.AddSearchAttributesRequest.SearchAttributesEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Enums.V1.IndexedValueType, enum: true
@@ -10,7 +14,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.AddSearchAttributesRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.AddSearchAttributesRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :search_attributes, 1,
     repeated: true,
@@ -24,13 +31,19 @@ end
 defmodule Temporal.Api.Operatorservice.V1.AddSearchAttributesResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.AddSearchAttributesResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Temporal.Api.Operatorservice.V1.RemoveSearchAttributesRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.RemoveSearchAttributesRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :search_attributes, 1, repeated: true, type: :string, json_name: "searchAttributes"
   field :namespace, 2, type: :string
@@ -39,13 +52,19 @@ end
 defmodule Temporal.Api.Operatorservice.V1.RemoveSearchAttributesResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.RemoveSearchAttributesResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Temporal.Api.Operatorservice.V1.ListSearchAttributesRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.ListSearchAttributesRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :namespace, 1, type: :string
 end
@@ -53,7 +72,12 @@ end
 defmodule Temporal.Api.Operatorservice.V1.ListSearchAttributesResponse.CustomAttributesEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name:
+      "temporal.api.operatorservice.v1.ListSearchAttributesResponse.CustomAttributesEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Enums.V1.IndexedValueType, enum: true
@@ -62,7 +86,12 @@ end
 defmodule Temporal.Api.Operatorservice.V1.ListSearchAttributesResponse.SystemAttributesEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name:
+      "temporal.api.operatorservice.v1.ListSearchAttributesResponse.SystemAttributesEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Temporal.Api.Enums.V1.IndexedValueType, enum: true
@@ -71,7 +100,11 @@ end
 defmodule Temporal.Api.Operatorservice.V1.ListSearchAttributesResponse.StorageSchemaEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.ListSearchAttributesResponse.StorageSchemaEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -80,7 +113,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.ListSearchAttributesResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.ListSearchAttributesResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :custom_attributes, 1,
     repeated: true,
@@ -104,7 +140,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.DeleteNamespaceRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.DeleteNamespaceRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :namespace, 1, type: :string
   field :namespace_id, 2, type: :string, json_name: "namespaceId"
@@ -117,7 +156,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.DeleteNamespaceResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.DeleteNamespaceResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :deleted_namespace, 1, type: :string, json_name: "deletedNamespace"
 end
@@ -125,7 +167,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.AddOrUpdateRemoteClusterRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.AddOrUpdateRemoteClusterRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :frontend_address, 1, type: :string, json_name: "frontendAddress"
 
@@ -140,13 +185,19 @@ end
 defmodule Temporal.Api.Operatorservice.V1.AddOrUpdateRemoteClusterResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.AddOrUpdateRemoteClusterResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Temporal.Api.Operatorservice.V1.RemoveRemoteClusterRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.RemoveRemoteClusterRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :cluster_name, 1, type: :string, json_name: "clusterName"
 end
@@ -154,13 +205,19 @@ end
 defmodule Temporal.Api.Operatorservice.V1.RemoveRemoteClusterResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.RemoveRemoteClusterResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Temporal.Api.Operatorservice.V1.ListClustersRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.ListClustersRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :page_size, 1, type: :int32, json_name: "pageSize"
   field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
@@ -169,7 +226,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.ListClustersResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.ListClustersResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :clusters, 1, repeated: true, type: Temporal.Api.Operatorservice.V1.ClusterMetadata
   field :next_page_token, 4, type: :bytes, json_name: "nextPageToken"
@@ -178,7 +238,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.ClusterMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.ClusterMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :cluster_name, 1, type: :string, json_name: "clusterName"
   field :cluster_id, 2, type: :string, json_name: "clusterId"
@@ -193,7 +256,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.GetNexusEndpointRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.GetNexusEndpointRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: :string
 end
@@ -201,7 +267,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.GetNexusEndpointResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.GetNexusEndpointResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :endpoint, 1, type: Temporal.Api.Nexus.V1.Endpoint
 end
@@ -209,7 +278,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.CreateNexusEndpointRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.CreateNexusEndpointRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :spec, 1, type: Temporal.Api.Nexus.V1.EndpointSpec
 end
@@ -217,7 +289,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.CreateNexusEndpointResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.CreateNexusEndpointResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :endpoint, 1, type: Temporal.Api.Nexus.V1.Endpoint
 end
@@ -225,7 +300,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.UpdateNexusEndpointRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.UpdateNexusEndpointRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: :string
   field :version, 2, type: :int64
@@ -235,7 +313,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.UpdateNexusEndpointResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.UpdateNexusEndpointResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :endpoint, 1, type: Temporal.Api.Nexus.V1.Endpoint
 end
@@ -243,7 +324,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.DeleteNexusEndpointRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.DeleteNexusEndpointRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: :string
   field :version, 2, type: :int64
@@ -252,13 +336,19 @@ end
 defmodule Temporal.Api.Operatorservice.V1.DeleteNexusEndpointResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.DeleteNexusEndpointResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Temporal.Api.Operatorservice.V1.ListNexusEndpointsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.ListNexusEndpointsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :page_size, 1, type: :int32, json_name: "pageSize"
   field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
@@ -268,7 +358,10 @@ end
 defmodule Temporal.Api.Operatorservice.V1.ListNexusEndpointsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.ListNexusEndpointsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :next_page_token, 1, type: :bytes, json_name: "nextPageToken"
   field :endpoints, 2, repeated: true, type: Temporal.Api.Nexus.V1.Endpoint
