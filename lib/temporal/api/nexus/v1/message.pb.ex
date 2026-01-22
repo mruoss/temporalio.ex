@@ -1,7 +1,11 @@
 defmodule Temporal.Api.Nexus.V1.Failure.MetadataEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.Failure.MetadataEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -10,7 +14,10 @@ end
 defmodule Temporal.Api.Nexus.V1.Failure do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.Failure",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :message, 1, type: :string
   field :metadata, 2, repeated: true, type: Temporal.Api.Nexus.V1.Failure.MetadataEntry, map: true
@@ -20,7 +27,10 @@ end
 defmodule Temporal.Api.Nexus.V1.HandlerError do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.HandlerError",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :error_type, 1, type: :string, json_name: "errorType"
   field :failure, 2, type: Temporal.Api.Nexus.V1.Failure
@@ -34,7 +44,10 @@ end
 defmodule Temporal.Api.Nexus.V1.UnsuccessfulOperationError do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.UnsuccessfulOperationError",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :operation_state, 1, type: :string, json_name: "operationState"
   field :failure, 2, type: Temporal.Api.Nexus.V1.Failure
@@ -43,7 +56,10 @@ end
 defmodule Temporal.Api.Nexus.V1.Link do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.Link",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :url, 1, type: :string
   field :type, 2, type: :string
@@ -52,7 +68,11 @@ end
 defmodule Temporal.Api.Nexus.V1.StartOperationRequest.CallbackHeaderEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.StartOperationRequest.CallbackHeaderEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -61,7 +81,10 @@ end
 defmodule Temporal.Api.Nexus.V1.StartOperationRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.StartOperationRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :service, 1, type: :string
   field :operation, 2, type: :string
@@ -81,7 +104,10 @@ end
 defmodule Temporal.Api.Nexus.V1.CancelOperationRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.CancelOperationRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :service, 1, type: :string
   field :operation, 2, type: :string
@@ -92,7 +118,11 @@ end
 defmodule Temporal.Api.Nexus.V1.Request.HeaderEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.Request.HeaderEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -101,7 +131,10 @@ end
 defmodule Temporal.Api.Nexus.V1.Request do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.Request",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :variant, 0
 
@@ -124,7 +157,10 @@ end
 defmodule Temporal.Api.Nexus.V1.StartOperationResponse.Sync do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.StartOperationResponse.Sync",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :payload, 1, type: Temporal.Api.Common.V1.Payload
   field :links, 2, repeated: true, type: Temporal.Api.Nexus.V1.Link
@@ -133,7 +169,10 @@ end
 defmodule Temporal.Api.Nexus.V1.StartOperationResponse.Async do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.StartOperationResponse.Async",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :operation_id, 1, type: :string, json_name: "operationId", deprecated: true
   field :links, 2, repeated: true, type: Temporal.Api.Nexus.V1.Link
@@ -143,7 +182,10 @@ end
 defmodule Temporal.Api.Nexus.V1.StartOperationResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.StartOperationResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :variant, 0
 
@@ -166,13 +208,19 @@ end
 defmodule Temporal.Api.Nexus.V1.CancelOperationResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.CancelOperationResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Temporal.Api.Nexus.V1.Response do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.Response",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :variant, 0
 
@@ -190,7 +238,10 @@ end
 defmodule Temporal.Api.Nexus.V1.Endpoint do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.Endpoint",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :version, 1, type: :int64
   field :id, 2, type: :string
@@ -203,7 +254,10 @@ end
 defmodule Temporal.Api.Nexus.V1.EndpointSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.EndpointSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string
   field :description, 2, type: Temporal.Api.Common.V1.Payload
@@ -213,7 +267,10 @@ end
 defmodule Temporal.Api.Nexus.V1.EndpointTarget.Worker do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.EndpointTarget.Worker",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :namespace, 1, type: :string
   field :task_queue, 2, type: :string, json_name: "taskQueue"
@@ -222,7 +279,10 @@ end
 defmodule Temporal.Api.Nexus.V1.EndpointTarget.External do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.EndpointTarget.External",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :url, 1, type: :string
 end
@@ -230,7 +290,10 @@ end
 defmodule Temporal.Api.Nexus.V1.EndpointTarget do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.EndpointTarget",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :variant, 0
 

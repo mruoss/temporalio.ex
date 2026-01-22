@@ -1,7 +1,11 @@
 defmodule Temporal.Api.Enums.V1.WorkflowIdReusePolicy do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.WorkflowIdReusePolicy",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :WORKFLOW_ID_REUSE_POLICY_UNSPECIFIED, 0
   field :WORKFLOW_ID_REUSE_POLICY_ALLOW_DUPLICATE, 1
@@ -13,7 +17,11 @@ end
 defmodule Temporal.Api.Enums.V1.WorkflowIdConflictPolicy do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.WorkflowIdConflictPolicy",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :WORKFLOW_ID_CONFLICT_POLICY_UNSPECIFIED, 0
   field :WORKFLOW_ID_CONFLICT_POLICY_FAIL, 1
@@ -24,7 +32,11 @@ end
 defmodule Temporal.Api.Enums.V1.ParentClosePolicy do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.ParentClosePolicy",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :PARENT_CLOSE_POLICY_UNSPECIFIED, 0
   field :PARENT_CLOSE_POLICY_TERMINATE, 1
@@ -35,7 +47,11 @@ end
 defmodule Temporal.Api.Enums.V1.ContinueAsNewInitiator do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.ContinueAsNewInitiator",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :CONTINUE_AS_NEW_INITIATOR_UNSPECIFIED, 0
   field :CONTINUE_AS_NEW_INITIATOR_WORKFLOW, 1
@@ -46,7 +62,11 @@ end
 defmodule Temporal.Api.Enums.V1.WorkflowExecutionStatus do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.WorkflowExecutionStatus",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :WORKFLOW_EXECUTION_STATUS_UNSPECIFIED, 0
   field :WORKFLOW_EXECUTION_STATUS_RUNNING, 1
@@ -62,7 +82,11 @@ end
 defmodule Temporal.Api.Enums.V1.PendingActivityState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.PendingActivityState",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :PENDING_ACTIVITY_STATE_UNSPECIFIED, 0
   field :PENDING_ACTIVITY_STATE_SCHEDULED, 1
@@ -75,7 +99,11 @@ end
 defmodule Temporal.Api.Enums.V1.PendingWorkflowTaskState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.PendingWorkflowTaskState",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :PENDING_WORKFLOW_TASK_STATE_UNSPECIFIED, 0
   field :PENDING_WORKFLOW_TASK_STATE_SCHEDULED, 1
@@ -85,7 +113,11 @@ end
 defmodule Temporal.Api.Enums.V1.HistoryEventFilterType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.HistoryEventFilterType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :HISTORY_EVENT_FILTER_TYPE_UNSPECIFIED, 0
   field :HISTORY_EVENT_FILTER_TYPE_ALL_EVENT, 1
@@ -95,7 +127,11 @@ end
 defmodule Temporal.Api.Enums.V1.RetryState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.RetryState",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :RETRY_STATE_UNSPECIFIED, 0
   field :RETRY_STATE_IN_PROGRESS, 1
@@ -110,7 +146,11 @@ end
 defmodule Temporal.Api.Enums.V1.TimeoutType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.TimeoutType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :TIMEOUT_TYPE_UNSPECIFIED, 0
   field :TIMEOUT_TYPE_START_TO_CLOSE, 1
@@ -122,7 +162,11 @@ end
 defmodule Temporal.Api.Enums.V1.VersioningBehavior do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.VersioningBehavior",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :VERSIONING_BEHAVIOR_UNSPECIFIED, 0
   field :VERSIONING_BEHAVIOR_PINNED, 1
@@ -132,7 +176,11 @@ end
 defmodule Temporal.Api.Enums.V1.ContinueAsNewVersioningBehavior do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.ContinueAsNewVersioningBehavior",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :CONTINUE_AS_NEW_VERSIONING_BEHAVIOR_UNSPECIFIED, 0
   field :CONTINUE_AS_NEW_VERSIONING_BEHAVIOR_AUTO_UPGRADE, 1
@@ -141,7 +189,11 @@ end
 defmodule Temporal.Api.Enums.V1.SuggestContinueAsNewReason do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.SuggestContinueAsNewReason",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :SUGGEST_CONTINUE_AS_NEW_REASON_UNSPECIFIED, 0
   field :SUGGEST_CONTINUE_AS_NEW_REASON_HISTORY_SIZE_TOO_LARGE, 1

@@ -1,7 +1,11 @@
 defmodule Temporal.Api.Enums.V1.ActivityExecutionStatus do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.ActivityExecutionStatus",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :ACTIVITY_EXECUTION_STATUS_UNSPECIFIED, 0
   field :ACTIVITY_EXECUTION_STATUS_RUNNING, 1
@@ -15,7 +19,11 @@ end
 defmodule Temporal.Api.Enums.V1.ActivityIdReusePolicy do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.ActivityIdReusePolicy",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :ACTIVITY_ID_REUSE_POLICY_UNSPECIFIED, 0
   field :ACTIVITY_ID_REUSE_POLICY_ALLOW_DUPLICATE, 1
@@ -26,7 +34,11 @@ end
 defmodule Temporal.Api.Enums.V1.ActivityIdConflictPolicy do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.ActivityIdConflictPolicy",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :ACTIVITY_ID_CONFLICT_POLICY_UNSPECIFIED, 0
   field :ACTIVITY_ID_CONFLICT_POLICY_FAIL, 1

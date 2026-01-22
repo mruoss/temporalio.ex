@@ -1,13 +1,19 @@
 defmodule Temporal.Api.Rules.V1.WorkflowRuleAction.ActionActivityPause do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.rules.v1.WorkflowRuleAction.ActionActivityPause",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Temporal.Api.Rules.V1.WorkflowRuleAction do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.rules.v1.WorkflowRuleAction",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :variant, 0
 
@@ -20,7 +26,10 @@ end
 defmodule Temporal.Api.Rules.V1.WorkflowRuleSpec.ActivityStartingTrigger do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.rules.v1.WorkflowRuleSpec.ActivityStartingTrigger",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :predicate, 1, type: :string
 end
@@ -28,7 +37,10 @@ end
 defmodule Temporal.Api.Rules.V1.WorkflowRuleSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.rules.v1.WorkflowRuleSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :trigger, 0
 
@@ -47,7 +59,10 @@ end
 defmodule Temporal.Api.Rules.V1.WorkflowRule do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.rules.v1.WorkflowRule",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :create_time, 1, type: Google.Protobuf.Timestamp, json_name: "createTime"
   field :spec, 2, type: Temporal.Api.Rules.V1.WorkflowRuleSpec

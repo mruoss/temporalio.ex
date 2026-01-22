@@ -1,7 +1,10 @@
 defmodule Temporal.Api.Failure.V1.ApplicationFailureInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.ApplicationFailureInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :type, 1, type: :string
   field :non_retryable, 2, type: :bool, json_name: "nonRetryable"
@@ -13,7 +16,10 @@ end
 defmodule Temporal.Api.Failure.V1.TimeoutFailureInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.TimeoutFailureInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :timeout_type, 1,
     type: Temporal.Api.Enums.V1.TimeoutType,
@@ -28,7 +34,10 @@ end
 defmodule Temporal.Api.Failure.V1.CanceledFailureInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.CanceledFailureInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :details, 1, type: Temporal.Api.Common.V1.Payloads
 end
@@ -36,13 +45,19 @@ end
 defmodule Temporal.Api.Failure.V1.TerminatedFailureInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.TerminatedFailureInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Temporal.Api.Failure.V1.ServerFailureInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.ServerFailureInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :non_retryable, 1, type: :bool, json_name: "nonRetryable"
 end
@@ -50,7 +65,10 @@ end
 defmodule Temporal.Api.Failure.V1.ResetWorkflowFailureInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.ResetWorkflowFailureInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :last_heartbeat_details, 1,
     type: Temporal.Api.Common.V1.Payloads,
@@ -60,7 +78,10 @@ end
 defmodule Temporal.Api.Failure.V1.ActivityFailureInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.ActivityFailureInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :started_event_id, 2, type: :int64, json_name: "startedEventId"
@@ -77,7 +98,10 @@ end
 defmodule Temporal.Api.Failure.V1.ChildWorkflowExecutionFailureInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.ChildWorkflowExecutionFailureInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :namespace, 1, type: :string
 
@@ -98,7 +122,10 @@ end
 defmodule Temporal.Api.Failure.V1.NexusOperationFailureInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.NexusOperationFailureInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :scheduled_event_id, 1, type: :int64, json_name: "scheduledEventId"
   field :endpoint, 2, type: :string
@@ -111,7 +138,10 @@ end
 defmodule Temporal.Api.Failure.V1.NexusHandlerFailureInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.NexusHandlerFailureInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :type, 1, type: :string
 
@@ -124,7 +154,10 @@ end
 defmodule Temporal.Api.Failure.V1.Failure do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.Failure",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :failure_info, 0
 
@@ -192,5 +225,8 @@ end
 defmodule Temporal.Api.Failure.V1.MultiOperationExecutionAborted do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "temporal.api.failure.v1.MultiOperationExecutionAborted",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
