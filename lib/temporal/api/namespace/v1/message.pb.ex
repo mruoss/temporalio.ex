@@ -29,6 +29,7 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities do
     json_name: "reportedProblemsSearchAttribute"
 
   field :workflow_pause, 6, type: :bool, json_name: "workflowPause"
+  field :standalone_activities, 7, type: :bool, json_name: "standaloneActivities"
 end
 
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Limits do

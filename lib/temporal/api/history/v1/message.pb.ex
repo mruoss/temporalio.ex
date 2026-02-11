@@ -1238,6 +1238,14 @@ defmodule Temporal.Api.History.V1.NexusOperationScheduledEventAttributes do
 
   field :request_id, 8, type: :string, json_name: "requestId"
   field :endpoint_id, 9, type: :string, json_name: "endpointId"
+
+  field :schedule_to_start_timeout, 10,
+    type: Google.Protobuf.Duration,
+    json_name: "scheduleToStartTimeout"
+
+  field :start_to_close_timeout, 11,
+    type: Google.Protobuf.Duration,
+    json_name: "startToCloseTimeout"
 end
 
 defmodule Temporal.Api.History.V1.NexusOperationStartedEventAttributes do
