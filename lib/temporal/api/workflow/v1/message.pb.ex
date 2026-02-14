@@ -527,6 +527,14 @@ defmodule Temporal.Api.Workflow.V1.PendingNexusOperationInfo do
   field :scheduled_event_id, 13, type: :int64, json_name: "scheduledEventId"
   field :blocked_reason, 14, type: :string, json_name: "blockedReason"
   field :operation_token, 15, type: :string, json_name: "operationToken"
+
+  field :schedule_to_start_timeout, 16,
+    type: Google.Protobuf.Duration,
+    json_name: "scheduleToStartTimeout"
+
+  field :start_to_close_timeout, 17,
+    type: Google.Protobuf.Duration,
+    json_name: "startToCloseTimeout"
 end
 
 defmodule Temporal.Api.Workflow.V1.NexusOperationCancellationInfo do
