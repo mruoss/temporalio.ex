@@ -205,6 +205,10 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.ListSchedulesRequest,
       Temporal.Api.Workflowservice.V1.ListSchedulesResponse
 
+  rpc :CountSchedules,
+      Temporal.Api.Workflowservice.V1.CountSchedulesRequest,
+      Temporal.Api.Workflowservice.V1.CountSchedulesResponse
+
   rpc :UpdateWorkerBuildIdCompatibility,
       Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRequest,
       Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityResponse

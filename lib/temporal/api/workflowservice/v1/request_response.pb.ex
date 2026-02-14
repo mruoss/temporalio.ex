@@ -378,6 +378,7 @@ defmodule Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueRequest do
   field :namespace, 1, type: :string
   field :task_queue, 2, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
   field :identity, 3, type: :string
+  field :worker_instance_key, 8, type: :string, json_name: "workerInstanceKey"
   field :binary_checksum, 4, type: :string, json_name: "binaryChecksum", deprecated: true
 
   field :worker_version_capabilities, 5,
@@ -598,6 +599,7 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueRequest do
   field :namespace, 1, type: :string
   field :task_queue, 2, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
   field :identity, 3, type: :string
+  field :worker_instance_key, 8, type: :string, json_name: "workerInstanceKey"
 
   field :task_queue_metadata, 4,
     type: Temporal.Api.Taskqueue.V1.TaskQueueMetadata,
@@ -663,6 +665,7 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueResponse do
     json_name: "pollerScalingDecision"
 
   field :priority, 19, type: Temporal.Api.Common.V1.Priority
+  field :activity_run_id, 20, type: :string, json_name: "activityRunId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatRequest do
@@ -1463,6 +1466,15 @@ defmodule Temporal.Api.Workflowservice.V1.ShutdownWorkerRequest do
   field :worker_heartbeat, 5,
     type: Temporal.Api.Worker.V1.WorkerHeartbeat,
     json_name: "workerHeartbeat"
+
+  field :worker_instance_key, 6, type: :string, json_name: "workerInstanceKey"
+  field :task_queue, 7, type: :string, json_name: "taskQueue"
+
+  field :task_queue_types, 8,
+    repeated: true,
+    type: Temporal.Api.Enums.V1.TaskQueueType,
+    json_name: "taskQueueTypes",
+    enum: true
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ShutdownWorkerResponse do
@@ -2003,6 +2015,49 @@ defmodule Temporal.Api.Workflowservice.V1.ListSchedulesResponse do
 
   field :schedules, 1, repeated: true, type: Temporal.Api.Schedule.V1.ScheduleListEntry
   field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountSchedulesRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CountSchedulesRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :query, 2, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountSchedulesResponse.AggregationGroup do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CountSchedulesResponse.AggregationGroup",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :group_values, 1,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Payload,
+    json_name: "groupValues"
+
+  field :count, 2, type: :int64
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountSchedulesResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CountSchedulesResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :count, 1, type: :int64
+
+  field :groups, 2,
+    repeated: true,
+    type: Temporal.Api.Workflowservice.V1.CountSchedulesResponse.AggregationGroup
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRequest.AddNewCompatibleVersion do
@@ -2560,6 +2615,7 @@ defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueRequest do
 
   field :namespace, 1, type: :string
   field :identity, 2, type: :string
+  field :worker_instance_key, 8, type: :string, json_name: "workerInstanceKey"
   field :task_queue, 3, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
 
   field :worker_version_capabilities, 4,
@@ -2627,7 +2683,8 @@ defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedRequest do
   field :namespace, 1, type: :string
   field :identity, 2, type: :string
   field :task_token, 3, type: :bytes, json_name: "taskToken"
-  field :error, 4, type: Temporal.Api.Nexus.V1.HandlerError
+  field :error, 4, type: Temporal.Api.Nexus.V1.HandlerError, deprecated: true
+  field :failure, 5, type: Temporal.Api.Failure.V1.Failure
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedResponse do
