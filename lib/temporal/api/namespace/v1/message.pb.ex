@@ -34,6 +34,8 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities do
   field :worker_poll_complete_on_shutdown, 8,
     type: :bool,
     json_name: "workerPollCompleteOnShutdown"
+
+  field :poller_autoscaling, 9, type: :bool, json_name: "pollerAutoscaling"
 end
 
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Limits do
