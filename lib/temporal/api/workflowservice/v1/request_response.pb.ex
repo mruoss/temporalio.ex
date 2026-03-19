@@ -500,6 +500,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskCompletedRequest do
     map: true
 
   field :namespace, 9, type: :string
+  field :resource_id, 18, type: :string, json_name: "resourceId"
 
   field :worker_version_stamp, 10,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
@@ -565,6 +566,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskFailedRequest do
   field :identity, 4, type: :string
   field :binary_checksum, 5, type: :string, json_name: "binaryChecksum", deprecated: true
   field :namespace, 6, type: :string
+  field :resource_id, 11, type: :string, json_name: "resourceId"
   field :messages, 7, repeated: true, type: Temporal.Api.Protocol.V1.Message
 
   field :worker_version, 8,
@@ -680,6 +682,7 @@ defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatRequest do
   field :details, 2, type: Temporal.Api.Common.V1.Payloads
   field :identity, 3, type: :string
   field :namespace, 4, type: :string
+  field :resource_id, 5, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatResponse do
@@ -709,6 +712,7 @@ defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatByIdRequest
   field :activity_id, 4, type: :string, json_name: "activityId"
   field :details, 5, type: Temporal.Api.Common.V1.Payloads
   field :identity, 6, type: :string
+  field :resource_id, 7, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatByIdResponse do
@@ -736,6 +740,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCompletedRequest do
   field :result, 2, type: Temporal.Api.Common.V1.Payloads
   field :identity, 3, type: :string
   field :namespace, 4, type: :string
+  field :resource_id, 8, type: :string, json_name: "resourceId"
 
   field :worker_version, 5,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
@@ -772,6 +777,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCompletedByIdReques
   field :activity_id, 4, type: :string, json_name: "activityId"
   field :result, 5, type: Temporal.Api.Common.V1.Payloads
   field :identity, 6, type: :string
+  field :resource_id, 7, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCompletedByIdResponse do
@@ -795,6 +801,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedRequest do
   field :failure, 2, type: Temporal.Api.Failure.V1.Failure
   field :identity, 3, type: :string
   field :namespace, 4, type: :string
+  field :resource_id, 9, type: :string, json_name: "resourceId"
 
   field :last_heartbeat_details, 5,
     type: Temporal.Api.Common.V1.Payloads,
@@ -841,6 +848,8 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedByIdRequest d
   field :last_heartbeat_details, 7,
     type: Temporal.Api.Common.V1.Payloads,
     json_name: "lastHeartbeatDetails"
+
+  field :resource_id, 8, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedByIdResponse do
@@ -866,6 +875,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCanceledRequest do
   field :details, 2, type: Temporal.Api.Common.V1.Payloads
   field :identity, 3, type: :string
   field :namespace, 4, type: :string
+  field :resource_id, 8, type: :string, json_name: "resourceId"
 
   field :worker_version, 5,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
@@ -906,6 +916,8 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCanceledByIdRequest
   field :deployment_options, 7,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "deploymentOptions"
+
+  field :resource_id, 8, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCanceledByIdResponse do
@@ -2730,6 +2742,8 @@ defmodule Temporal.Api.Workflowservice.V1.ExecuteMultiOperationRequest do
   field :operations, 2,
     repeated: true,
     type: Temporal.Api.Workflowservice.V1.ExecuteMultiOperationRequest.Operation
+
+  field :resource_id, 3, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ExecuteMultiOperationResponse.Response do
@@ -3569,6 +3583,8 @@ defmodule Temporal.Api.Workflowservice.V1.RecordWorkerHeartbeatRequest do
     repeated: true,
     type: Temporal.Api.Worker.V1.WorkerHeartbeat,
     json_name: "workerHeartbeat"
+
+  field :resource_id, 4, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordWorkerHeartbeatResponse do
@@ -3699,6 +3715,7 @@ defmodule Temporal.Api.Workflowservice.V1.FetchWorkerConfigRequest do
   field :identity, 2, type: :string
   field :reason, 3, type: :string
   field :selector, 6, type: Temporal.Api.Common.V1.WorkerSelector
+  field :resource_id, 7, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.FetchWorkerConfigResponse do
@@ -3726,6 +3743,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerConfigRequest do
   field :worker_config, 4, type: Temporal.Api.Sdk.V1.WorkerConfig, json_name: "workerConfig"
   field :update_mask, 5, type: Google.Protobuf.FieldMask, json_name: "updateMask"
   field :selector, 6, type: Temporal.Api.Common.V1.WorkerSelector
+  field :resource_id, 7, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerConfigResponse do
