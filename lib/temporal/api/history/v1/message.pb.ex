@@ -1403,6 +1403,7 @@ defmodule Temporal.Api.History.V1.HistoryEvent do
   field :worker_may_ignore, 300, type: :bool, json_name: "workerMayIgnore"
   field :user_metadata, 301, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
   field :links, 302, repeated: true, type: Temporal.Api.Common.V1.Link
+  field :principal, 303, type: Temporal.Api.Common.V1.Principal
 
   field :workflow_execution_started_event_attributes, 6,
     type: Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes,
