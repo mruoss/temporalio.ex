@@ -106,7 +106,7 @@ defmodule Temporal.Api.Command.V1.RequestCancelExternalWorkflowExecutionCommandA
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :namespace, 1, type: :string
+  field :namespace, 1, type: :string, deprecated: true
   field :workflow_id, 2, type: :string, json_name: "workflowId"
   field :run_id, 3, type: :string, json_name: "runId"
   field :control, 4, type: :string, deprecated: true
@@ -122,7 +122,7 @@ defmodule Temporal.Api.Command.V1.SignalExternalWorkflowExecutionCommandAttribut
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :namespace, 1, type: :string
+  field :namespace, 1, type: :string, deprecated: true
   field :execution, 2, type: Temporal.Api.Common.V1.WorkflowExecution
   field :signal_name, 3, type: :string, json_name: "signalName"
   field :input, 4, type: Temporal.Api.Common.V1.Payloads
@@ -240,7 +240,7 @@ defmodule Temporal.Api.Command.V1.StartChildWorkflowExecutionCommandAttributes d
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :namespace, 1, type: :string
+  field :namespace, 1, type: :string, deprecated: true
   field :workflow_id, 2, type: :string, json_name: "workflowId"
   field :workflow_type, 3, type: Temporal.Api.Common.V1.WorkflowType, json_name: "workflowType"
   field :task_queue, 4, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"

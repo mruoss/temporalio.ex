@@ -1921,6 +1921,8 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateScheduleRequest do
   field :search_attributes, 7,
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
+
+  field :memo, 8, type: Temporal.Api.Common.V1.Memo
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateScheduleResponse do
