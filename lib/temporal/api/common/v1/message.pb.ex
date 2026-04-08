@@ -408,18 +408,6 @@ defmodule Temporal.Api.Common.V1.Link do
   field :batch_job, 2, type: Temporal.Api.Common.V1.Link.BatchJob, json_name: "batchJob", oneof: 0
 end
 
-defmodule Temporal.Api.Common.V1.Principal do
-  @moduledoc false
-
-  use Protobuf,
-    full_name: "temporal.api.common.v1.Principal",
-    protoc_gen_elixir_version: "0.16.0",
-    syntax: :proto3
-
-  field :type, 1, type: :string
-  field :name, 2, type: :string
-end
-
 defmodule Temporal.Api.Common.V1.Priority do
   @moduledoc false
 

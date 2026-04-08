@@ -109,23 +109,6 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
     json_name: "inheritedAutoUpgradeInfo"
 
   field :eager_execution_accepted, 38, type: :bool, json_name: "eagerExecutionAccepted"
-
-  field :declined_target_version_upgrade, 40,
-    type: Temporal.Api.History.V1.DeclinedTargetVersionUpgrade,
-    json_name: "declinedTargetVersionUpgrade"
-end
-
-defmodule Temporal.Api.History.V1.DeclinedTargetVersionUpgrade do
-  @moduledoc false
-
-  use Protobuf,
-    full_name: "temporal.api.history.v1.DeclinedTargetVersionUpgrade",
-    protoc_gen_elixir_version: "0.16.0",
-    syntax: :proto3
-
-  field :deployment_version, 1,
-    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
-    json_name: "deploymentVersion"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do
@@ -266,10 +249,6 @@ defmodule Temporal.Api.History.V1.WorkflowTaskStartedEventAttributes do
     type: Temporal.Api.Enums.V1.SuggestContinueAsNewReason,
     json_name: "suggestContinueAsNewReasons",
     enum: true
-
-  field :target_worker_deployment_version_changed, 9,
-    type: :bool,
-    json_name: "targetWorkerDeploymentVersionChanged"
 
   field :history_size_bytes, 5, type: :int64, json_name: "historySizeBytes"
 
@@ -1403,7 +1382,6 @@ defmodule Temporal.Api.History.V1.HistoryEvent do
   field :worker_may_ignore, 300, type: :bool, json_name: "workerMayIgnore"
   field :user_metadata, 301, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
   field :links, 302, repeated: true, type: Temporal.Api.Common.V1.Link
-  field :principal, 303, type: Temporal.Api.Common.V1.Principal
 
   field :workflow_execution_started_event_attributes, 6,
     type: Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes,

@@ -30,12 +30,6 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities do
 
   field :workflow_pause, 6, type: :bool, json_name: "workflowPause"
   field :standalone_activities, 7, type: :bool, json_name: "standaloneActivities"
-
-  field :worker_poll_complete_on_shutdown, 8,
-    type: :bool,
-    json_name: "workerPollCompleteOnShutdown"
-
-  field :poller_autoscaling, 9, type: :bool, json_name: "pollerAutoscaling"
 end
 
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Limits do
