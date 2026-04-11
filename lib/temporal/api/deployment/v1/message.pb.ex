@@ -175,6 +175,12 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentVersionInfo do
     json_name: "drainageInfo"
 
   field :metadata, 10, type: Temporal.Api.Deployment.V1.VersionMetadata
+
+  field :compute_config, 16,
+    type: Temporal.Api.Compute.V1.ComputeConfig,
+    json_name: "computeConfig"
+
+  field :last_modifier_identity, 17, type: :string, json_name: "lastModifierIdentity"
 end
 
 defmodule Temporal.Api.Deployment.V1.VersionDrainageInfo do
@@ -229,6 +235,10 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo.WorkerDeploymentVersio
   field :last_deactivation_time, 10,
     type: Google.Protobuf.Timestamp,
     json_name: "lastDeactivationTime"
+
+  field :compute_config, 13,
+    type: Temporal.Api.Compute.V1.ComputeConfigSummary,
+    json_name: "computeConfig"
 end
 
 defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo do
@@ -351,4 +361,9 @@ defmodule Temporal.Api.Deployment.V1.InheritedAutoUpgradeInfo do
   field :source_deployment_revision_number, 2,
     type: :int64,
     json_name: "sourceDeploymentRevisionNumber"
+
+  field :continue_as_new_initial_versioning_behavior, 3,
+    type: Temporal.Api.Enums.V1.ContinueAsNewVersioningBehavior,
+    json_name: "continueAsNewInitialVersioningBehavior",
+    enum: true
 end
