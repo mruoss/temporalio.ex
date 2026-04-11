@@ -279,6 +279,10 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest do
   field :eager_worker_deployment_options, 28,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "eagerWorkerDeploymentOptions"
+
+  field :time_skipping_config, 29,
+    type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
+    json_name: "timeSkippingConfig"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do
@@ -378,6 +382,8 @@ defmodule Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueRequest do
   field :namespace, 1, type: :string
   field :task_queue, 2, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
   field :identity, 3, type: :string
+  field :worker_instance_key, 8, type: :string, json_name: "workerInstanceKey"
+  field :worker_control_task_queue, 9, type: :string, json_name: "workerControlTaskQueue"
   field :binary_checksum, 4, type: :string, json_name: "binaryChecksum", deprecated: true
 
   field :worker_version_capabilities, 5,
@@ -499,6 +505,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskCompletedRequest do
     map: true
 
   field :namespace, 9, type: :string
+  field :resource_id, 18, type: :string, json_name: "resourceId"
 
   field :worker_version_stamp, 10,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
@@ -528,6 +535,9 @@ defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskCompletedRequest do
   field :deployment_options, 17,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "deploymentOptions"
+
+  field :worker_instance_key, 19, type: :string, json_name: "workerInstanceKey"
+  field :worker_control_task_queue, 20, type: :string, json_name: "workerControlTaskQueue"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskCompletedResponse do
@@ -564,6 +574,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskFailedRequest do
   field :identity, 4, type: :string
   field :binary_checksum, 5, type: :string, json_name: "binaryChecksum", deprecated: true
   field :namespace, 6, type: :string
+  field :resource_id, 11, type: :string, json_name: "resourceId"
   field :messages, 7, repeated: true, type: Temporal.Api.Protocol.V1.Message
 
   field :worker_version, 8,
@@ -598,6 +609,8 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueRequest do
   field :namespace, 1, type: :string
   field :task_queue, 2, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
   field :identity, 3, type: :string
+  field :worker_instance_key, 8, type: :string, json_name: "workerInstanceKey"
+  field :worker_control_task_queue, 9, type: :string, json_name: "workerControlTaskQueue"
 
   field :task_queue_metadata, 4,
     type: Temporal.Api.Taskqueue.V1.TaskQueueMetadata,
@@ -678,6 +691,7 @@ defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatRequest do
   field :details, 2, type: Temporal.Api.Common.V1.Payloads
   field :identity, 3, type: :string
   field :namespace, 4, type: :string
+  field :resource_id, 5, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatResponse do
@@ -707,6 +721,7 @@ defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatByIdRequest
   field :activity_id, 4, type: :string, json_name: "activityId"
   field :details, 5, type: Temporal.Api.Common.V1.Payloads
   field :identity, 6, type: :string
+  field :resource_id, 7, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatByIdResponse do
@@ -734,6 +749,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCompletedRequest do
   field :result, 2, type: Temporal.Api.Common.V1.Payloads
   field :identity, 3, type: :string
   field :namespace, 4, type: :string
+  field :resource_id, 8, type: :string, json_name: "resourceId"
 
   field :worker_version, 5,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
@@ -770,6 +786,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCompletedByIdReques
   field :activity_id, 4, type: :string, json_name: "activityId"
   field :result, 5, type: Temporal.Api.Common.V1.Payloads
   field :identity, 6, type: :string
+  field :resource_id, 7, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCompletedByIdResponse do
@@ -793,6 +810,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedRequest do
   field :failure, 2, type: Temporal.Api.Failure.V1.Failure
   field :identity, 3, type: :string
   field :namespace, 4, type: :string
+  field :resource_id, 9, type: :string, json_name: "resourceId"
 
   field :last_heartbeat_details, 5,
     type: Temporal.Api.Common.V1.Payloads,
@@ -839,6 +857,8 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedByIdRequest d
   field :last_heartbeat_details, 7,
     type: Temporal.Api.Common.V1.Payloads,
     json_name: "lastHeartbeatDetails"
+
+  field :resource_id, 8, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedByIdResponse do
@@ -864,6 +884,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCanceledRequest do
   field :details, 2, type: Temporal.Api.Common.V1.Payloads
   field :identity, 3, type: :string
   field :namespace, 4, type: :string
+  field :resource_id, 8, type: :string, json_name: "resourceId"
 
   field :worker_version, 5,
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
@@ -904,6 +925,8 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCanceledByIdRequest
   field :deployment_options, 7,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "deploymentOptions"
+
+  field :resource_id, 8, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskCanceledByIdResponse do
@@ -1035,6 +1058,10 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionReques
     json_name: "versioningOverride"
 
   field :priority, 26, type: Temporal.Api.Common.V1.Priority
+
+  field :time_skipping_config, 27,
+    type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
+    json_name: "timeSkippingConfig"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionResponse do
@@ -1464,6 +1491,15 @@ defmodule Temporal.Api.Workflowservice.V1.ShutdownWorkerRequest do
   field :worker_heartbeat, 5,
     type: Temporal.Api.Worker.V1.WorkerHeartbeat,
     json_name: "workerHeartbeat"
+
+  field :worker_instance_key, 6, type: :string, json_name: "workerInstanceKey"
+  field :task_queue, 7, type: :string, json_name: "taskQueue"
+
+  field :task_queue_types, 8,
+    repeated: true,
+    type: Temporal.Api.Enums.V1.TaskQueueType,
+    json_name: "taskQueueTypes",
+    enum: true
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ShutdownWorkerResponse do
@@ -1772,6 +1808,7 @@ defmodule Temporal.Api.Workflowservice.V1.GetSystemInfoResponse.Capabilities do
     json_name: "countGroupByExecutionStatus"
 
   field :nexus, 11, type: :bool
+  field :server_scaled_deployments, 12, type: :bool, json_name: "serverScaledDeployments"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.GetSystemInfoResponse do
@@ -1898,6 +1935,8 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateScheduleRequest do
   field :search_attributes, 7,
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
+
+  field :memo, 8, type: Temporal.Api.Common.V1.Memo
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateScheduleResponse do
@@ -2004,6 +2043,49 @@ defmodule Temporal.Api.Workflowservice.V1.ListSchedulesResponse do
 
   field :schedules, 1, repeated: true, type: Temporal.Api.Schedule.V1.ScheduleListEntry
   field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountSchedulesRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CountSchedulesRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :query, 2, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountSchedulesResponse.AggregationGroup do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CountSchedulesResponse.AggregationGroup",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :group_values, 1,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Payload,
+    json_name: "groupValues"
+
+  field :count, 2, type: :int64
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountSchedulesResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CountSchedulesResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :count, 1, type: :int64
+
+  field :groups, 2,
+    repeated: true,
+    type: Temporal.Api.Workflowservice.V1.CountSchedulesResponse.AggregationGroup
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRequest.AddNewCompatibleVersion do
@@ -2561,6 +2643,7 @@ defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueRequest do
 
   field :namespace, 1, type: :string
   field :identity, 2, type: :string
+  field :worker_instance_key, 8, type: :string, json_name: "workerInstanceKey"
   field :task_queue, 3, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
 
   field :worker_version_capabilities, 4,
@@ -2628,7 +2711,8 @@ defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedRequest do
   field :namespace, 1, type: :string
   field :identity, 2, type: :string
   field :task_token, 3, type: :bytes, json_name: "taskToken"
-  field :error, 4, type: Temporal.Api.Nexus.V1.HandlerError
+  field :error, 4, type: Temporal.Api.Nexus.V1.HandlerError, deprecated: true
+  field :failure, 5, type: Temporal.Api.Failure.V1.Failure
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedResponse do
@@ -2674,6 +2758,8 @@ defmodule Temporal.Api.Workflowservice.V1.ExecuteMultiOperationRequest do
   field :operations, 2,
     repeated: true,
     type: Temporal.Api.Workflowservice.V1.ExecuteMultiOperationRequest.Operation
+
+  field :resource_id, 3, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ExecuteMultiOperationResponse.Response do
@@ -3128,6 +3214,31 @@ defmodule Temporal.Api.Workflowservice.V1.SetWorkerDeploymentRampingVersionRespo
   field :previous_percentage, 3, type: :float, json_name: "previousPercentage", deprecated: true
 end
 
+defmodule Temporal.Api.Workflowservice.V1.CreateWorkerDeploymentRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CreateWorkerDeploymentRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :deployment_name, 2, type: :string, json_name: "deploymentName"
+  field :identity, 4, type: :string
+  field :request_id, 5, type: :string, json_name: "requestId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CreateWorkerDeploymentResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CreateWorkerDeploymentResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :conflict_token, 1, type: :bytes, json_name: "conflictToken"
+end
+
 defmodule Temporal.Api.Workflowservice.V1.ListWorkerDeploymentsRequest do
   @moduledoc false
 
@@ -3186,6 +3297,37 @@ defmodule Temporal.Api.Workflowservice.V1.ListWorkerDeploymentsResponse do
     json_name: "workerDeployments"
 end
 
+defmodule Temporal.Api.Workflowservice.V1.CreateWorkerDeploymentVersionRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CreateWorkerDeploymentVersionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+
+  field :deployment_version, 2,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "deploymentVersion"
+
+  field :compute_config, 4,
+    type: Temporal.Api.Compute.V1.ComputeConfig,
+    json_name: "computeConfig"
+
+  field :identity, 3, type: :string
+  field :request_id, 5, type: :string, json_name: "requestId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CreateWorkerDeploymentVersionResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CreateWorkerDeploymentVersionResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
 defmodule Temporal.Api.Workflowservice.V1.DeleteWorkerDeploymentVersionRequest do
   @moduledoc false
 
@@ -3232,6 +3374,115 @@ defmodule Temporal.Api.Workflowservice.V1.DeleteWorkerDeploymentResponse do
 
   use Protobuf,
     full_name: "temporal.api.workflowservice.v1.DeleteWorkerDeploymentResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionComputeConfigRequest.ComputeConfigScalingGroupsEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name:
+      "temporal.api.workflowservice.v1.UpdateWorkerDeploymentVersionComputeConfigRequest.ComputeConfigScalingGroupsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: Temporal.Api.Compute.V1.ComputeConfigScalingGroupUpdate
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionComputeConfigRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name:
+      "temporal.api.workflowservice.v1.UpdateWorkerDeploymentVersionComputeConfigRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+
+  field :deployment_version, 2,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "deploymentVersion"
+
+  field :compute_config_scaling_groups, 6,
+    repeated: true,
+    type:
+      Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionComputeConfigRequest.ComputeConfigScalingGroupsEntry,
+    json_name: "computeConfigScalingGroups",
+    map: true
+
+  field :remove_compute_config_scaling_groups, 7,
+    repeated: true,
+    type: :string,
+    json_name: "removeComputeConfigScalingGroups"
+
+  field :identity, 3, type: :string
+  field :request_id, 4, type: :string, json_name: "requestId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionComputeConfigResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name:
+      "temporal.api.workflowservice.v1.UpdateWorkerDeploymentVersionComputeConfigResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ValidateWorkerDeploymentVersionComputeConfigRequest.ComputeConfigScalingGroupsEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name:
+      "temporal.api.workflowservice.v1.ValidateWorkerDeploymentVersionComputeConfigRequest.ComputeConfigScalingGroupsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: Temporal.Api.Compute.V1.ComputeConfigScalingGroupUpdate
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ValidateWorkerDeploymentVersionComputeConfigRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name:
+      "temporal.api.workflowservice.v1.ValidateWorkerDeploymentVersionComputeConfigRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+
+  field :deployment_version, 2,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "deploymentVersion"
+
+  field :compute_config_scaling_groups, 6,
+    repeated: true,
+    type:
+      Temporal.Api.Workflowservice.V1.ValidateWorkerDeploymentVersionComputeConfigRequest.ComputeConfigScalingGroupsEntry,
+    json_name: "computeConfigScalingGroups",
+    map: true
+
+  field :remove_compute_config_scaling_groups, 7,
+    repeated: true,
+    type: :string,
+    json_name: "removeComputeConfigScalingGroups"
+
+  field :identity, 3, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ValidateWorkerDeploymentVersionComputeConfigResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name:
+      "temporal.api.workflowservice.v1.ValidateWorkerDeploymentVersionComputeConfigResponse",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 end
@@ -3513,6 +3764,8 @@ defmodule Temporal.Api.Workflowservice.V1.RecordWorkerHeartbeatRequest do
     repeated: true,
     type: Temporal.Api.Worker.V1.WorkerHeartbeat,
     json_name: "workerHeartbeat"
+
+  field :resource_id, 4, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordWorkerHeartbeatResponse do
@@ -3549,8 +3802,10 @@ defmodule Temporal.Api.Workflowservice.V1.ListWorkersResponse do
   field :workers_info, 1,
     repeated: true,
     type: Temporal.Api.Worker.V1.WorkerInfo,
-    json_name: "workersInfo"
+    json_name: "workersInfo",
+    deprecated: true
 
+  field :workers, 3, repeated: true, type: Temporal.Api.Worker.V1.WorkerListInfo
   field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
 end
 
@@ -3641,6 +3896,7 @@ defmodule Temporal.Api.Workflowservice.V1.FetchWorkerConfigRequest do
   field :identity, 2, type: :string
   field :reason, 3, type: :string
   field :selector, 6, type: Temporal.Api.Common.V1.WorkerSelector
+  field :resource_id, 7, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.FetchWorkerConfigResponse do
@@ -3668,6 +3924,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerConfigRequest do
   field :worker_config, 4, type: Temporal.Api.Sdk.V1.WorkerConfig, json_name: "workerConfig"
   field :update_mask, 5, type: Google.Protobuf.FieldMask, json_name: "updateMask"
   field :selector, 6, type: Temporal.Api.Common.V1.WorkerSelector
+  field :resource_id, 7, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateWorkerConfigResponse do

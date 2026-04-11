@@ -20,8 +20,10 @@ defmodule Temporal.Api.Nexus.V1.Failure do
     syntax: :proto3
 
   field :message, 1, type: :string
+  field :stack_trace, 4, type: :string, json_name: "stackTrace"
   field :metadata, 2, repeated: true, type: Temporal.Api.Nexus.V1.Failure.MetadataEntry, map: true
   field :details, 3, type: :bytes
+  field :cause, 5, type: Temporal.Api.Nexus.V1.Failure
 end
 
 defmodule Temporal.Api.Nexus.V1.HandlerError do
@@ -115,6 +117,17 @@ defmodule Temporal.Api.Nexus.V1.CancelOperationRequest do
   field :operation_token, 4, type: :string, json_name: "operationToken"
 end
 
+defmodule Temporal.Api.Nexus.V1.Request.Capabilities do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.Request.Capabilities",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :temporal_failure_responses, 1, type: :bool, json_name: "temporalFailureResponses"
+end
+
 defmodule Temporal.Api.Nexus.V1.Request.HeaderEntry do
   @moduledoc false
 
@@ -140,6 +153,7 @@ defmodule Temporal.Api.Nexus.V1.Request do
 
   field :header, 1, repeated: true, type: Temporal.Api.Nexus.V1.Request.HeaderEntry, map: true
   field :scheduled_time, 2, type: Google.Protobuf.Timestamp, json_name: "scheduledTime"
+  field :capabilities, 100, type: Temporal.Api.Nexus.V1.Request.Capabilities
 
   field :start_operation, 3,
     type: Temporal.Api.Nexus.V1.StartOperationRequest,
@@ -202,7 +216,10 @@ defmodule Temporal.Api.Nexus.V1.StartOperationResponse do
   field :operation_error, 3,
     type: Temporal.Api.Nexus.V1.UnsuccessfulOperationError,
     json_name: "operationError",
-    oneof: 0
+    oneof: 0,
+    deprecated: true
+
+  field :failure, 4, type: Temporal.Api.Failure.V1.Failure, oneof: 0
 end
 
 defmodule Temporal.Api.Nexus.V1.CancelOperationResponse do

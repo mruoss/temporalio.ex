@@ -109,6 +109,23 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
     json_name: "inheritedAutoUpgradeInfo"
 
   field :eager_execution_accepted, 38, type: :bool, json_name: "eagerExecutionAccepted"
+
+  field :declined_target_version_upgrade, 40,
+    type: Temporal.Api.History.V1.DeclinedTargetVersionUpgrade,
+    json_name: "declinedTargetVersionUpgrade"
+end
+
+defmodule Temporal.Api.History.V1.DeclinedTargetVersionUpgrade do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.history.v1.DeclinedTargetVersionUpgrade",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :deployment_version, 1,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "deploymentVersion"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do
@@ -249,6 +266,10 @@ defmodule Temporal.Api.History.V1.WorkflowTaskStartedEventAttributes do
     type: Temporal.Api.Enums.V1.SuggestContinueAsNewReason,
     json_name: "suggestContinueAsNewReasons",
     enum: true
+
+  field :target_worker_deployment_version_changed, 9,
+    type: :bool,
+    json_name: "targetWorkerDeploymentVersionChanged"
 
   field :history_size_bytes, 5, type: :int64, json_name: "historySizeBytes"
 
@@ -1066,6 +1087,10 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes
 
   field :identity, 5, type: :string
   field :priority, 6, type: Temporal.Api.Common.V1.Priority
+
+  field :time_skipping_config, 7,
+    type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
+    json_name: "timeSkippingConfig"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowPropertiesModifiedExternallyEventAttributes do
@@ -1194,6 +1219,19 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionUnpausedEventAttributes do
   field :identity, 1, type: :string
   field :reason, 2, type: :string
   field :request_id, 3, type: :string, json_name: "requestId"
+end
+
+defmodule Temporal.Api.History.V1.WorkflowExecutionTimeSkippingTransitionedEventAttributes do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.history.v1.WorkflowExecutionTimeSkippingTransitionedEventAttributes",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :target_time, 1, type: Google.Protobuf.Timestamp, json_name: "targetTime"
+  field :disabled_after_bound, 2, type: :bool, json_name: "disabledAfterBound"
+  field :wall_clock_time, 3, type: Google.Protobuf.Timestamp, json_name: "wallClockTime"
 end
 
 defmodule Temporal.Api.History.V1.NexusOperationScheduledEventAttributes.NexusHeaderEntry do
@@ -1382,6 +1420,7 @@ defmodule Temporal.Api.History.V1.HistoryEvent do
   field :worker_may_ignore, 300, type: :bool, json_name: "workerMayIgnore"
   field :user_metadata, 301, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
   field :links, 302, repeated: true, type: Temporal.Api.Common.V1.Link
+  field :principal, 303, type: Temporal.Api.Common.V1.Principal
 
   field :workflow_execution_started_event_attributes, 6,
     type: Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes,
@@ -1676,6 +1715,11 @@ defmodule Temporal.Api.History.V1.HistoryEvent do
   field :workflow_execution_unpaused_event_attributes, 64,
     type: Temporal.Api.History.V1.WorkflowExecutionUnpausedEventAttributes,
     json_name: "workflowExecutionUnpausedEventAttributes",
+    oneof: 0
+
+  field :workflow_execution_time_skipping_transitioned_event_attributes, 65,
+    type: Temporal.Api.History.V1.WorkflowExecutionTimeSkippingTransitionedEventAttributes,
+    json_name: "workflowExecutionTimeSkippingTransitionedEventAttributes",
     oneof: 0
 end
 

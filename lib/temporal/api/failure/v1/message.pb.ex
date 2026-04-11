@@ -40,6 +40,7 @@ defmodule Temporal.Api.Failure.V1.CanceledFailureInfo do
     syntax: :proto3
 
   field :details, 1, type: Temporal.Api.Common.V1.Payloads
+  field :identity, 2, type: :string
 end
 
 defmodule Temporal.Api.Failure.V1.TerminatedFailureInfo do
@@ -49,6 +50,8 @@ defmodule Temporal.Api.Failure.V1.TerminatedFailureInfo do
     full_name: "temporal.api.failure.v1.TerminatedFailureInfo",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
+
+  field :identity, 1, type: :string
 end
 
 defmodule Temporal.Api.Failure.V1.ServerFailureInfo do

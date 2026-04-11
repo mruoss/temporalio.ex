@@ -205,6 +205,10 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.ListSchedulesRequest,
       Temporal.Api.Workflowservice.V1.ListSchedulesResponse
 
+  rpc :CountSchedules,
+      Temporal.Api.Workflowservice.V1.CountSchedulesRequest,
+      Temporal.Api.Workflowservice.V1.CountSchedulesResponse
+
   rpc :UpdateWorkerBuildIdCompatibility,
       Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityRequest,
       Temporal.Api.Workflowservice.V1.UpdateWorkerBuildIdCompatibilityResponse
@@ -272,6 +276,22 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :ListWorkerDeployments,
       Temporal.Api.Workflowservice.V1.ListWorkerDeploymentsRequest,
       Temporal.Api.Workflowservice.V1.ListWorkerDeploymentsResponse
+
+  rpc :CreateWorkerDeployment,
+      Temporal.Api.Workflowservice.V1.CreateWorkerDeploymentRequest,
+      Temporal.Api.Workflowservice.V1.CreateWorkerDeploymentResponse
+
+  rpc :CreateWorkerDeploymentVersion,
+      Temporal.Api.Workflowservice.V1.CreateWorkerDeploymentVersionRequest,
+      Temporal.Api.Workflowservice.V1.CreateWorkerDeploymentVersionResponse
+
+  rpc :UpdateWorkerDeploymentVersionComputeConfig,
+      Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionComputeConfigRequest,
+      Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionComputeConfigResponse
+
+  rpc :ValidateWorkerDeploymentVersionComputeConfig,
+      Temporal.Api.Workflowservice.V1.ValidateWorkerDeploymentVersionComputeConfigRequest,
+      Temporal.Api.Workflowservice.V1.ValidateWorkerDeploymentVersionComputeConfigResponse
 
   rpc :UpdateWorkerDeploymentVersionMetadata,
       Temporal.Api.Workflowservice.V1.UpdateWorkerDeploymentVersionMetadataRequest,
