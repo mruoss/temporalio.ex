@@ -10,6 +10,7 @@ defmodule Temporal.Api.Enums.V1.TaskQueueKind do
   field :TASK_QUEUE_KIND_UNSPECIFIED, 0
   field :TASK_QUEUE_KIND_NORMAL, 1
   field :TASK_QUEUE_KIND_STICKY, 2
+  field :TASK_QUEUE_KIND_WORKER_COMMANDS, 3
 end
 
 defmodule Temporal.Api.Enums.V1.TaskQueueType do

@@ -113,6 +113,10 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
   field :declined_target_version_upgrade, 40,
     type: Temporal.Api.History.V1.DeclinedTargetVersionUpgrade,
     json_name: "declinedTargetVersionUpgrade"
+
+  field :time_skipping_config, 41,
+    type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
+    json_name: "timeSkippingConfig"
 end
 
 defmodule Temporal.Api.History.V1.DeclinedTargetVersionUpgrade do
@@ -668,6 +672,8 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionSignaledEventAttributes do
   field :external_workflow_execution, 6,
     type: Temporal.Api.Common.V1.WorkflowExecution,
     json_name: "externalWorkflowExecution"
+
+  field :request_id, 7, type: :string, json_name: "requestId"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionTerminatedEventAttributes do
