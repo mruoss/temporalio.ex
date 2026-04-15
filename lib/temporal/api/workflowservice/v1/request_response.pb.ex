@@ -998,6 +998,8 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWorkflowExecutionResponse do
     full_name: "temporal.api.workflowservice.v1.SignalWorkflowExecutionResponse",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
+
+  field :link, 1, type: Temporal.Api.Common.V1.Link
 end
 
 defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionRequest do
@@ -1074,6 +1076,7 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionRespon
 
   field :run_id, 1, type: :string, json_name: "runId"
   field :started, 2, type: :bool
+  field :signal_link, 3, type: Temporal.Api.Common.V1.Link, json_name: "signalLink"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ResetWorkflowExecutionRequest do
@@ -4064,6 +4067,13 @@ defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionRequest do
   field :header, 16, type: Temporal.Api.Common.V1.Header
   field :user_metadata, 17, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
   field :priority, 18, type: Temporal.Api.Common.V1.Priority
+
+  field :completion_callbacks, 19,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Callback,
+    json_name: "completionCallbacks"
+
+  field :links, 20, repeated: true, type: Temporal.Api.Common.V1.Link
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionResponse do
@@ -4076,6 +4086,7 @@ defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionResponse do
 
   field :run_id, 1, type: :string, json_name: "runId"
   field :started, 2, type: :bool
+  field :link, 3, type: Temporal.Api.Common.V1.Link
 end
 
 defmodule Temporal.Api.Workflowservice.V1.DescribeActivityExecutionRequest do
@@ -4107,6 +4118,7 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeActivityExecutionResponse do
   field :input, 3, type: Temporal.Api.Common.V1.Payloads
   field :outcome, 4, type: Temporal.Api.Activity.V1.ActivityExecutionOutcome
   field :long_poll_token, 5, type: :bytes, json_name: "longPollToken"
+  field :callbacks, 6, repeated: true, type: Temporal.Api.Activity.V1.CallbackInfo
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PollActivityExecutionRequest do

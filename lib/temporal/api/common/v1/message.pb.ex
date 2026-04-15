@@ -390,6 +390,19 @@ defmodule Temporal.Api.Common.V1.Link.BatchJob do
   field :job_id, 1, type: :string, json_name: "jobId"
 end
 
+defmodule Temporal.Api.Common.V1.Link.Activity do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.Link.Activity",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :activity_id, 2, type: :string, json_name: "activityId"
+  field :run_id, 3, type: :string, json_name: "runId"
+end
+
 defmodule Temporal.Api.Common.V1.Link do
   @moduledoc false
 
@@ -406,6 +419,7 @@ defmodule Temporal.Api.Common.V1.Link do
     oneof: 0
 
   field :batch_job, 2, type: Temporal.Api.Common.V1.Link.BatchJob, json_name: "batchJob", oneof: 0
+  field :activity, 3, type: Temporal.Api.Common.V1.Link.Activity, oneof: 0
 end
 
 defmodule Temporal.Api.Common.V1.Principal do

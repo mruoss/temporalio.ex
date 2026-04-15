@@ -115,6 +115,7 @@ defmodule Temporal.Api.Activity.V1.ActivityExecutionInfo do
   field :header, 30, type: Temporal.Api.Common.V1.Header
   field :user_metadata, 31, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
   field :canceled_reason, 32, type: :string, json_name: "canceledReason"
+  field :links, 33, repeated: true, type: Temporal.Api.Common.V1.Link
 end
 
 defmodule Temporal.Api.Activity.V1.ActivityExecutionListInfo do
@@ -140,4 +141,41 @@ defmodule Temporal.Api.Activity.V1.ActivityExecutionListInfo do
   field :state_transition_count, 9, type: :int64, json_name: "stateTransitionCount"
   field :state_size_bytes, 10, type: :int64, json_name: "stateSizeBytes"
   field :execution_duration, 11, type: Google.Protobuf.Duration, json_name: "executionDuration"
+end
+
+defmodule Temporal.Api.Activity.V1.CallbackInfo.ActivityClosed do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.activity.v1.CallbackInfo.ActivityClosed",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
+defmodule Temporal.Api.Activity.V1.CallbackInfo.Trigger do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.activity.v1.CallbackInfo.Trigger",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  oneof :variant, 0
+
+  field :activity_closed, 1,
+    type: Temporal.Api.Activity.V1.CallbackInfo.ActivityClosed,
+    json_name: "activityClosed",
+    oneof: 0
+end
+
+defmodule Temporal.Api.Activity.V1.CallbackInfo do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.activity.v1.CallbackInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :trigger, 1, type: Temporal.Api.Activity.V1.CallbackInfo.Trigger
+  field :info, 2, type: Temporal.Api.Callback.V1.CallbackInfo
 end
