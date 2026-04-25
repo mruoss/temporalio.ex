@@ -381,6 +381,7 @@ defmodule Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueRequest do
 
   field :namespace, 1, type: :string
   field :task_queue, 2, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
+  field :poller_group_id, 10, type: :string, json_name: "pollerGroupId"
   field :identity, 3, type: :string
   field :worker_instance_key, 8, type: :string, json_name: "workerInstanceKey"
   field :worker_control_task_queue, 9, type: :string, json_name: "workerControlTaskQueue"
@@ -449,6 +450,13 @@ defmodule Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueResponse do
   field :poller_scaling_decision, 16,
     type: Temporal.Api.Taskqueue.V1.PollerScalingDecision,
     json_name: "pollerScalingDecision"
+
+  field :poller_group_id, 17, type: :string, json_name: "pollerGroupId"
+
+  field :poller_group_infos, 18,
+    repeated: true,
+    type: Temporal.Api.Taskqueue.V1.PollerGroupInfo,
+    json_name: "pollerGroupInfos"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskCompletedRequest.QueryResultsEntry do
@@ -608,6 +616,7 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueRequest do
 
   field :namespace, 1, type: :string
   field :task_queue, 2, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
+  field :poller_group_id, 10, type: :string, json_name: "pollerGroupId"
   field :identity, 3, type: :string
   field :worker_instance_key, 8, type: :string, json_name: "workerInstanceKey"
   field :worker_control_task_queue, 9, type: :string, json_name: "workerControlTaskQueue"
@@ -677,6 +686,11 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueResponse do
 
   field :priority, 19, type: Temporal.Api.Common.V1.Priority
   field :activity_run_id, 20, type: :string, json_name: "activityRunId"
+
+  field :poller_group_infos, 21,
+    repeated: true,
+    type: Temporal.Api.Taskqueue.V1.PollerGroupInfo,
+    json_name: "pollerGroupInfos"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatRequest do
@@ -1446,6 +1460,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondQueryTaskCompletedRequest do
   field :namespace, 6, type: :string
   field :failure, 7, type: Temporal.Api.Failure.V1.Failure
   field :cause, 8, type: Temporal.Api.Enums.V1.WorkflowTaskFailedCause, enum: true
+  field :poller_group_id, 9, type: :string, json_name: "pollerGroupId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondQueryTaskCompletedResponse do
@@ -2645,9 +2660,10 @@ defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueRequest do
     syntax: :proto3
 
   field :namespace, 1, type: :string
+  field :task_queue, 3, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
+  field :poller_group_id, 9, type: :string, json_name: "pollerGroupId"
   field :identity, 2, type: :string
   field :worker_instance_key, 8, type: :string, json_name: "workerInstanceKey"
-  field :task_queue, 3, type: Temporal.Api.Taskqueue.V1.TaskQueue, json_name: "taskQueue"
 
   field :worker_version_capabilities, 4,
     type: Temporal.Api.Common.V1.WorkerVersionCapabilities,
@@ -2678,6 +2694,13 @@ defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueResponse do
   field :poller_scaling_decision, 3,
     type: Temporal.Api.Taskqueue.V1.PollerScalingDecision,
     json_name: "pollerScalingDecision"
+
+  field :poller_group_id, 4, type: :string, json_name: "pollerGroupId"
+
+  field :poller_group_infos, 5,
+    repeated: true,
+    type: Temporal.Api.Taskqueue.V1.PollerGroupInfo,
+    json_name: "pollerGroupInfos"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskCompletedRequest do
@@ -2692,6 +2715,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskCompletedRequest do
   field :identity, 2, type: :string
   field :task_token, 3, type: :bytes, json_name: "taskToken"
   field :response, 4, type: Temporal.Api.Nexus.V1.Response
+  field :poller_group_id, 5, type: :string, json_name: "pollerGroupId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskCompletedResponse do
@@ -2716,6 +2740,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedRequest do
   field :task_token, 3, type: :bytes, json_name: "taskToken"
   field :error, 4, type: Temporal.Api.Nexus.V1.HandlerError, deprecated: true
   field :failure, 5, type: Temporal.Api.Failure.V1.Failure
+  field :poller_group_id, 6, type: :string, json_name: "pollerGroupId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskFailedResponse do
@@ -4074,6 +4099,12 @@ defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionRequest do
     json_name: "completionCallbacks"
 
   field :links, 20, repeated: true, type: Temporal.Api.Common.V1.Link
+
+  field :on_conflict_options, 21,
+    type: Temporal.Api.Common.V1.OnConflictOptions,
+    json_name: "onConflictOptions"
+
+  field :start_delay, 22, type: Google.Protobuf.Duration, json_name: "startDelay"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionResponse do
@@ -4172,6 +4203,188 @@ defmodule Temporal.Api.Workflowservice.V1.ListActivityExecutionsResponse do
   field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
 end
 
+defmodule Temporal.Api.Workflowservice.V1.StartNexusOperationExecutionRequest.NexusHeaderEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name:
+      "temporal.api.workflowservice.v1.StartNexusOperationExecutionRequest.NexusHeaderEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.StartNexusOperationExecutionRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.StartNexusOperationExecutionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :identity, 2, type: :string
+  field :request_id, 3, type: :string, json_name: "requestId"
+  field :operation_id, 4, type: :string, json_name: "operationId"
+  field :endpoint, 5, type: :string
+  field :service, 6, type: :string
+  field :operation, 7, type: :string
+
+  field :schedule_to_close_timeout, 8,
+    type: Google.Protobuf.Duration,
+    json_name: "scheduleToCloseTimeout"
+
+  field :schedule_to_start_timeout, 9,
+    type: Google.Protobuf.Duration,
+    json_name: "scheduleToStartTimeout"
+
+  field :start_to_close_timeout, 10,
+    type: Google.Protobuf.Duration,
+    json_name: "startToCloseTimeout"
+
+  field :input, 11, type: Temporal.Api.Common.V1.Payload
+
+  field :id_reuse_policy, 12,
+    type: Temporal.Api.Enums.V1.NexusOperationIdReusePolicy,
+    json_name: "idReusePolicy",
+    enum: true
+
+  field :id_conflict_policy, 13,
+    type: Temporal.Api.Enums.V1.NexusOperationIdConflictPolicy,
+    json_name: "idConflictPolicy",
+    enum: true
+
+  field :search_attributes, 14,
+    type: Temporal.Api.Common.V1.SearchAttributes,
+    json_name: "searchAttributes"
+
+  field :nexus_header, 15,
+    repeated: true,
+    type: Temporal.Api.Workflowservice.V1.StartNexusOperationExecutionRequest.NexusHeaderEntry,
+    json_name: "nexusHeader",
+    map: true
+
+  field :user_metadata, 16, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.StartNexusOperationExecutionResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.StartNexusOperationExecutionResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :run_id, 1, type: :string, json_name: "runId"
+  field :started, 2, type: :bool
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DescribeNexusOperationExecutionRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.DescribeNexusOperationExecutionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :operation_id, 2, type: :string, json_name: "operationId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :include_input, 4, type: :bool, json_name: "includeInput"
+  field :include_outcome, 5, type: :bool, json_name: "includeOutcome"
+  field :long_poll_token, 6, type: :bytes, json_name: "longPollToken"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DescribeNexusOperationExecutionResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.DescribeNexusOperationExecutionResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  oneof :outcome, 0
+
+  field :run_id, 1, type: :string, json_name: "runId"
+  field :info, 2, type: Temporal.Api.Nexus.V1.NexusOperationExecutionInfo
+  field :input, 3, type: Temporal.Api.Common.V1.Payload
+  field :result, 4, type: Temporal.Api.Common.V1.Payload, oneof: 0
+  field :failure, 5, type: Temporal.Api.Failure.V1.Failure, oneof: 0
+  field :long_poll_token, 6, type: :bytes, json_name: "longPollToken"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PollNexusOperationExecutionRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.PollNexusOperationExecutionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :operation_id, 2, type: :string, json_name: "operationId"
+  field :run_id, 3, type: :string, json_name: "runId"
+
+  field :wait_stage, 4,
+    type: Temporal.Api.Enums.V1.NexusOperationWaitStage,
+    json_name: "waitStage",
+    enum: true
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PollNexusOperationExecutionResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.PollNexusOperationExecutionResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  oneof :outcome, 0
+
+  field :run_id, 1, type: :string, json_name: "runId"
+
+  field :wait_stage, 2,
+    type: Temporal.Api.Enums.V1.NexusOperationWaitStage,
+    json_name: "waitStage",
+    enum: true
+
+  field :operation_token, 3, type: :string, json_name: "operationToken"
+  field :result, 4, type: Temporal.Api.Common.V1.Payload, oneof: 0
+  field :failure, 5, type: Temporal.Api.Failure.V1.Failure, oneof: 0
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ListNexusOperationExecutionsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.ListNexusOperationExecutionsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :page_size, 2, type: :int32, json_name: "pageSize"
+  field :next_page_token, 3, type: :bytes, json_name: "nextPageToken"
+  field :query, 4, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ListNexusOperationExecutionsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.ListNexusOperationExecutionsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :operations, 1,
+    repeated: true,
+    type: Temporal.Api.Nexus.V1.NexusOperationExecutionListInfo
+
+  field :next_page_token, 2, type: :bytes, json_name: "nextPageToken"
+end
+
 defmodule Temporal.Api.Workflowservice.V1.CountActivityExecutionsRequest do
   @moduledoc false
 
@@ -4213,6 +4426,50 @@ defmodule Temporal.Api.Workflowservice.V1.CountActivityExecutionsResponse do
   field :groups, 2,
     repeated: true,
     type: Temporal.Api.Workflowservice.V1.CountActivityExecutionsResponse.AggregationGroup
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountNexusOperationExecutionsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CountNexusOperationExecutionsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :query, 2, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountNexusOperationExecutionsResponse.AggregationGroup do
+  @moduledoc false
+
+  use Protobuf,
+    full_name:
+      "temporal.api.workflowservice.v1.CountNexusOperationExecutionsResponse.AggregationGroup",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :group_values, 1,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Payload,
+    json_name: "groupValues"
+
+  field :count, 2, type: :int64
+end
+
+defmodule Temporal.Api.Workflowservice.V1.CountNexusOperationExecutionsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.CountNexusOperationExecutionsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :count, 1, type: :int64
+
+  field :groups, 2,
+    repeated: true,
+    type: Temporal.Api.Workflowservice.V1.CountNexusOperationExecutionsResponse.AggregationGroup
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RequestCancelActivityExecutionRequest do
@@ -4283,6 +4540,78 @@ defmodule Temporal.Api.Workflowservice.V1.DeleteActivityExecutionResponse do
 
   use Protobuf,
     full_name: "temporal.api.workflowservice.v1.DeleteActivityExecutionResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.RequestCancelNexusOperationExecutionRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.RequestCancelNexusOperationExecutionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :operation_id, 2, type: :string, json_name: "operationId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :identity, 4, type: :string
+  field :request_id, 5, type: :string, json_name: "requestId"
+  field :reason, 6, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.RequestCancelNexusOperationExecutionResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.RequestCancelNexusOperationExecutionResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.TerminateNexusOperationExecutionRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.TerminateNexusOperationExecutionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :operation_id, 2, type: :string, json_name: "operationId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :identity, 4, type: :string
+  field :request_id, 5, type: :string, json_name: "requestId"
+  field :reason, 6, type: :string
+end
+
+defmodule Temporal.Api.Workflowservice.V1.TerminateNexusOperationExecutionResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.TerminateNexusOperationExecutionResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DeleteNexusOperationExecutionRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.DeleteNexusOperationExecutionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :operation_id, 2, type: :string, json_name: "operationId"
+  field :run_id, 3, type: :string, json_name: "runId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.DeleteNexusOperationExecutionResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.DeleteNexusOperationExecutionResponse",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 end

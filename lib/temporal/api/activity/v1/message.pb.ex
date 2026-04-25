@@ -116,6 +116,7 @@ defmodule Temporal.Api.Activity.V1.ActivityExecutionInfo do
   field :user_metadata, 31, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
   field :canceled_reason, 32, type: :string, json_name: "canceledReason"
   field :links, 33, repeated: true, type: Temporal.Api.Common.V1.Link
+  field :total_heartbeat_count, 34, type: :int64, json_name: "totalHeartbeatCount"
 end
 
 defmodule Temporal.Api.Activity.V1.ActivityExecutionListInfo do

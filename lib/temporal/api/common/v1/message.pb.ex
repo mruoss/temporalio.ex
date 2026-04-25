@@ -403,6 +403,19 @@ defmodule Temporal.Api.Common.V1.Link.Activity do
   field :run_id, 3, type: :string, json_name: "runId"
 end
 
+defmodule Temporal.Api.Common.V1.Link.NexusOperation do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.Link.NexusOperation",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :operation_id, 2, type: :string, json_name: "operationId"
+  field :run_id, 3, type: :string, json_name: "runId"
+end
+
 defmodule Temporal.Api.Common.V1.Link do
   @moduledoc false
 
@@ -420,6 +433,11 @@ defmodule Temporal.Api.Common.V1.Link do
 
   field :batch_job, 2, type: Temporal.Api.Common.V1.Link.BatchJob, json_name: "batchJob", oneof: 0
   field :activity, 3, type: Temporal.Api.Common.V1.Link.Activity, oneof: 0
+
+  field :nexus_operation, 4,
+    type: Temporal.Api.Common.V1.Link.NexusOperation,
+    json_name: "nexusOperation",
+    oneof: 0
 end
 
 defmodule Temporal.Api.Common.V1.Principal do
@@ -458,4 +476,17 @@ defmodule Temporal.Api.Common.V1.WorkerSelector do
   oneof :selector, 0
 
   field :worker_instance_key, 1, type: :string, json_name: "workerInstanceKey", oneof: 0
+end
+
+defmodule Temporal.Api.Common.V1.OnConflictOptions do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.OnConflictOptions",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :attach_request_id, 1, type: :bool, json_name: "attachRequestId"
+  field :attach_completion_callbacks, 2, type: :bool, json_name: "attachCompletionCallbacks"
+  field :attach_links, 3, type: :bool, json_name: "attachLinks"
 end

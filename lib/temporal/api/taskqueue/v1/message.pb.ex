@@ -305,6 +305,18 @@ defmodule Temporal.Api.Taskqueue.V1.TimestampedCompatibleBuildIdRedirectRule do
   field :create_time, 2, type: Google.Protobuf.Timestamp, json_name: "createTime"
 end
 
+defmodule Temporal.Api.Taskqueue.V1.PollerGroupInfo do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.taskqueue.v1.PollerGroupInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :id, 1, type: :string
+  field :weight, 2, type: :float
+end
+
 defmodule Temporal.Api.Taskqueue.V1.PollerScalingDecision do
   @moduledoc false
 

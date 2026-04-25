@@ -130,6 +130,8 @@ defmodule Temporal.Api.History.V1.DeclinedTargetVersionUpgrade do
   field :deployment_version, 1,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
     json_name: "deploymentVersion"
+
+  field :revision_number, 2, type: :int64, json_name: "revisionNumber"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowExecutionCompletedEventAttributes do

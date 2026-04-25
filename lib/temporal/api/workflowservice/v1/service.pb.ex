@@ -413,25 +413,49 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.StartActivityExecutionRequest,
       Temporal.Api.Workflowservice.V1.StartActivityExecutionResponse
 
+  rpc :StartNexusOperationExecution,
+      Temporal.Api.Workflowservice.V1.StartNexusOperationExecutionRequest,
+      Temporal.Api.Workflowservice.V1.StartNexusOperationExecutionResponse
+
   rpc :DescribeActivityExecution,
       Temporal.Api.Workflowservice.V1.DescribeActivityExecutionRequest,
       Temporal.Api.Workflowservice.V1.DescribeActivityExecutionResponse
+
+  rpc :DescribeNexusOperationExecution,
+      Temporal.Api.Workflowservice.V1.DescribeNexusOperationExecutionRequest,
+      Temporal.Api.Workflowservice.V1.DescribeNexusOperationExecutionResponse
 
   rpc :PollActivityExecution,
       Temporal.Api.Workflowservice.V1.PollActivityExecutionRequest,
       Temporal.Api.Workflowservice.V1.PollActivityExecutionResponse
 
+  rpc :PollNexusOperationExecution,
+      Temporal.Api.Workflowservice.V1.PollNexusOperationExecutionRequest,
+      Temporal.Api.Workflowservice.V1.PollNexusOperationExecutionResponse
+
   rpc :ListActivityExecutions,
       Temporal.Api.Workflowservice.V1.ListActivityExecutionsRequest,
       Temporal.Api.Workflowservice.V1.ListActivityExecutionsResponse
+
+  rpc :ListNexusOperationExecutions,
+      Temporal.Api.Workflowservice.V1.ListNexusOperationExecutionsRequest,
+      Temporal.Api.Workflowservice.V1.ListNexusOperationExecutionsResponse
 
   rpc :CountActivityExecutions,
       Temporal.Api.Workflowservice.V1.CountActivityExecutionsRequest,
       Temporal.Api.Workflowservice.V1.CountActivityExecutionsResponse
 
+  rpc :CountNexusOperationExecutions,
+      Temporal.Api.Workflowservice.V1.CountNexusOperationExecutionsRequest,
+      Temporal.Api.Workflowservice.V1.CountNexusOperationExecutionsResponse
+
   rpc :RequestCancelActivityExecution,
       Temporal.Api.Workflowservice.V1.RequestCancelActivityExecutionRequest,
       Temporal.Api.Workflowservice.V1.RequestCancelActivityExecutionResponse
+
+  rpc :RequestCancelNexusOperationExecution,
+      Temporal.Api.Workflowservice.V1.RequestCancelNexusOperationExecutionRequest,
+      Temporal.Api.Workflowservice.V1.RequestCancelNexusOperationExecutionResponse
 
   rpc :TerminateActivityExecution,
       Temporal.Api.Workflowservice.V1.TerminateActivityExecutionRequest,
@@ -440,6 +464,14 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :DeleteActivityExecution,
       Temporal.Api.Workflowservice.V1.DeleteActivityExecutionRequest,
       Temporal.Api.Workflowservice.V1.DeleteActivityExecutionResponse
+
+  rpc :TerminateNexusOperationExecution,
+      Temporal.Api.Workflowservice.V1.TerminateNexusOperationExecutionRequest,
+      Temporal.Api.Workflowservice.V1.TerminateNexusOperationExecutionResponse
+
+  rpc :DeleteNexusOperationExecution,
+      Temporal.Api.Workflowservice.V1.DeleteNexusOperationExecutionRequest,
+      Temporal.Api.Workflowservice.V1.DeleteNexusOperationExecutionResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do
