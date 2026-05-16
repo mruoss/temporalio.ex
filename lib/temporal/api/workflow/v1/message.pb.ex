@@ -599,7 +599,6 @@ defmodule Temporal.Api.Workflow.V1.TimeSkippingConfig do
   oneof :bound, 0
 
   field :enabled, 1, type: :bool
-  field :disable_propagation, 2, type: :bool, json_name: "disablePropagation"
 
   field :max_skipped_duration, 4,
     type: Google.Protobuf.Duration,
@@ -610,8 +609,6 @@ defmodule Temporal.Api.Workflow.V1.TimeSkippingConfig do
     type: Google.Protobuf.Duration,
     json_name: "maxElapsedDuration",
     oneof: 0
-
-  field :max_target_time, 6, type: Google.Protobuf.Timestamp, json_name: "maxTargetTime", oneof: 0
 end
 
 defmodule Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverride do
