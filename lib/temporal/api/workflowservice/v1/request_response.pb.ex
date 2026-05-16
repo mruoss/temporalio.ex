@@ -103,6 +103,7 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeNamespaceRequest do
 
   field :namespace, 1, type: :string
   field :id, 2, type: :string
+  field :weak_consistency, 3, type: :bool, json_name: "weakConsistency"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.DescribeNamespaceResponse do
@@ -2849,11 +2850,47 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateActivityOptionsRequest do
   field :restore_original, 8, type: :bool, json_name: "restoreOriginal"
 end
 
+defmodule Temporal.Api.Workflowservice.V1.UpdateActivityExecutionOptionsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.UpdateActivityExecutionOptionsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :workflow_id, 2, type: :string, json_name: "workflowId"
+  field :activity_id, 3, type: :string, json_name: "activityId"
+  field :run_id, 4, type: :string, json_name: "runId"
+  field :identity, 5, type: :string
+
+  field :activity_options, 6,
+    type: Temporal.Api.Activity.V1.ActivityOptions,
+    json_name: "activityOptions"
+
+  field :update_mask, 7, type: Google.Protobuf.FieldMask, json_name: "updateMask"
+  field :restore_original, 8, type: :bool, json_name: "restoreOriginal"
+  field :resource_id, 9, type: :string, json_name: "resourceId"
+end
+
 defmodule Temporal.Api.Workflowservice.V1.UpdateActivityOptionsResponse do
   @moduledoc false
 
   use Protobuf,
     full_name: "temporal.api.workflowservice.v1.UpdateActivityOptionsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :activity_options, 1,
+    type: Temporal.Api.Activity.V1.ActivityOptions,
+    json_name: "activityOptions"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UpdateActivityExecutionOptionsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.UpdateActivityExecutionOptionsResponse",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
@@ -2878,6 +2915,25 @@ defmodule Temporal.Api.Workflowservice.V1.PauseActivityRequest do
   field :id, 4, type: :string, oneof: 0
   field :type, 5, type: :string, oneof: 0
   field :reason, 6, type: :string
+  field :request_id, 7, type: :string, json_name: "requestId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PauseActivityExecutionRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.PauseActivityExecutionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :workflow_id, 2, type: :string, json_name: "workflowId"
+  field :activity_id, 3, type: :string, json_name: "activityId"
+  field :run_id, 4, type: :string, json_name: "runId"
+  field :identity, 5, type: :string
+  field :reason, 6, type: :string
+  field :resource_id, 7, type: :string, json_name: "resourceId"
+  field :request_id, 8, type: :string, json_name: "requestId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PauseActivityResponse do
@@ -2885,6 +2941,15 @@ defmodule Temporal.Api.Workflowservice.V1.PauseActivityResponse do
 
   use Protobuf,
     full_name: "temporal.api.workflowservice.v1.PauseActivityResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PauseActivityExecutionResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.PauseActivityExecutionResponse",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 end
@@ -2910,11 +2975,40 @@ defmodule Temporal.Api.Workflowservice.V1.UnpauseActivityRequest do
   field :jitter, 9, type: Google.Protobuf.Duration
 end
 
+defmodule Temporal.Api.Workflowservice.V1.UnpauseActivityExecutionRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.UnpauseActivityExecutionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :workflow_id, 2, type: :string, json_name: "workflowId"
+  field :activity_id, 3, type: :string, json_name: "activityId"
+  field :run_id, 4, type: :string, json_name: "runId"
+  field :identity, 5, type: :string
+  field :reset_attempts, 6, type: :bool, json_name: "resetAttempts"
+  field :reset_heartbeat, 7, type: :bool, json_name: "resetHeartbeat"
+  field :reason, 8, type: :string
+  field :jitter, 9, type: Google.Protobuf.Duration
+  field :resource_id, 10, type: :string, json_name: "resourceId"
+end
+
 defmodule Temporal.Api.Workflowservice.V1.UnpauseActivityResponse do
   @moduledoc false
 
   use Protobuf,
     full_name: "temporal.api.workflowservice.v1.UnpauseActivityResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.UnpauseActivityExecutionResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.UnpauseActivityExecutionResponse",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 end
@@ -2941,11 +3035,40 @@ defmodule Temporal.Api.Workflowservice.V1.ResetActivityRequest do
   field :restore_original_options, 9, type: :bool, json_name: "restoreOriginalOptions"
 end
 
+defmodule Temporal.Api.Workflowservice.V1.ResetActivityExecutionRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.ResetActivityExecutionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :workflow_id, 2, type: :string, json_name: "workflowId"
+  field :activity_id, 3, type: :string, json_name: "activityId"
+  field :run_id, 4, type: :string, json_name: "runId"
+  field :identity, 5, type: :string
+  field :reset_heartbeat, 6, type: :bool, json_name: "resetHeartbeat"
+  field :keep_paused, 7, type: :bool, json_name: "keepPaused"
+  field :jitter, 8, type: Google.Protobuf.Duration
+  field :restore_original_options, 9, type: :bool, json_name: "restoreOriginalOptions"
+  field :resource_id, 10, type: :string, json_name: "resourceId"
+end
+
 defmodule Temporal.Api.Workflowservice.V1.ResetActivityResponse do
   @moduledoc false
 
   use Protobuf,
     full_name: "temporal.api.workflowservice.v1.ResetActivityResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.ResetActivityExecutionResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.ResetActivityExecutionResponse",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 end
@@ -3817,6 +3940,7 @@ defmodule Temporal.Api.Workflowservice.V1.ListWorkersRequest do
   field :page_size, 2, type: :int32, json_name: "pageSize"
   field :next_page_token, 3, type: :bytes, json_name: "nextPageToken"
   field :query, 4, type: :string
+  field :include_system_workers, 5, type: :bool, json_name: "includeSystemWorkers"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ListWorkersResponse do

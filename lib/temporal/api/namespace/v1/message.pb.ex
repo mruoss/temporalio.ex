@@ -36,6 +36,8 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities do
     json_name: "workerPollCompleteOnShutdown"
 
   field :poller_autoscaling, 9, type: :bool, json_name: "pollerAutoscaling"
+  field :worker_commands, 10, type: :bool, json_name: "workerCommands"
+  field :standalone_nexus_operation, 11, type: :bool, json_name: "standaloneNexusOperation"
 end
 
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Limits do

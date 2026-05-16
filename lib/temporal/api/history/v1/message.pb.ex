@@ -117,6 +117,10 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
   field :time_skipping_config, 41,
     type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
     json_name: "timeSkippingConfig"
+
+  field :initial_skipped_duration, 42,
+    type: Google.Protobuf.Duration,
+    json_name: "initialSkippedDuration"
 end
 
 defmodule Temporal.Api.History.V1.DeclinedTargetVersionUpgrade do
@@ -917,6 +921,14 @@ defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionInitiatedEventAttri
 
   field :inherit_build_id, 19, type: :bool, json_name: "inheritBuildId", deprecated: true
   field :priority, 20, type: Temporal.Api.Common.V1.Priority
+
+  field :time_skipping_config, 21,
+    type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
+    json_name: "timeSkippingConfig"
+
+  field :initial_skipped_duration, 30,
+    type: Google.Protobuf.Duration,
+    json_name: "initialSkippedDuration"
 end
 
 defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionFailedEventAttributes do

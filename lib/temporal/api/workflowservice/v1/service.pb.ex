@@ -465,6 +465,22 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
       Temporal.Api.Workflowservice.V1.DeleteActivityExecutionRequest,
       Temporal.Api.Workflowservice.V1.DeleteActivityExecutionResponse
 
+  rpc :PauseActivityExecution,
+      Temporal.Api.Workflowservice.V1.PauseActivityExecutionRequest,
+      Temporal.Api.Workflowservice.V1.PauseActivityExecutionResponse
+
+  rpc :ResetActivityExecution,
+      Temporal.Api.Workflowservice.V1.ResetActivityExecutionRequest,
+      Temporal.Api.Workflowservice.V1.ResetActivityExecutionResponse
+
+  rpc :UnpauseActivityExecution,
+      Temporal.Api.Workflowservice.V1.UnpauseActivityExecutionRequest,
+      Temporal.Api.Workflowservice.V1.UnpauseActivityExecutionResponse
+
+  rpc :UpdateActivityExecutionOptions,
+      Temporal.Api.Workflowservice.V1.UpdateActivityExecutionOptionsRequest,
+      Temporal.Api.Workflowservice.V1.UpdateActivityExecutionOptionsResponse
+
   rpc :TerminateNexusOperationExecution,
       Temporal.Api.Workflowservice.V1.TerminateNexusOperationExecutionRequest,
       Temporal.Api.Workflowservice.V1.TerminateNexusOperationExecutionResponse
