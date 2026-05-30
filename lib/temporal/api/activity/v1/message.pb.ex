@@ -117,6 +117,8 @@ defmodule Temporal.Api.Activity.V1.ActivityExecutionInfo do
   field :canceled_reason, 32, type: :string, json_name: "canceledReason"
   field :links, 33, repeated: true, type: Temporal.Api.Common.V1.Link
   field :total_heartbeat_count, 34, type: :int64, json_name: "totalHeartbeatCount"
+  field :sdk_name, 35, type: :string, json_name: "sdkName"
+  field :sdk_version, 36, type: :string, json_name: "sdkVersion"
 end
 
 defmodule Temporal.Api.Activity.V1.ActivityExecutionListInfo do

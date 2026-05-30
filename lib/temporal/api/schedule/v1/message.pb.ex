@@ -263,6 +263,8 @@ defmodule Temporal.Api.Schedule.V1.ScheduleInfo do
     type: :string,
     json_name: "invalidScheduleError",
     deprecated: true
+
+  field :state_size_bytes, 12, type: :int64, json_name: "stateSizeBytes"
 end
 
 defmodule Temporal.Api.Schedule.V1.Schedule do
@@ -301,6 +303,8 @@ defmodule Temporal.Api.Schedule.V1.ScheduleListInfo do
     repeated: true,
     type: Google.Protobuf.Timestamp,
     json_name: "futureActionTimes"
+
+  field :state_size_bytes, 7, type: :int64, json_name: "stateSizeBytes"
 end
 
 defmodule Temporal.Api.Schedule.V1.ScheduleListEntry do

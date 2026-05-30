@@ -76,6 +76,14 @@ defmodule Temporal.Api.Update.V1.Request do
 
   field :meta, 1, type: Temporal.Api.Update.V1.Meta
   field :input, 2, type: Temporal.Api.Update.V1.Input
+  field :request_id, 3, type: :string, json_name: "requestId"
+
+  field :completion_callbacks, 4,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Callback,
+    json_name: "completionCallbacks"
+
+  field :links, 5, repeated: true, type: Temporal.Api.Common.V1.Link
 end
 
 defmodule Temporal.Api.Update.V1.Rejection do
