@@ -428,6 +428,7 @@ defmodule Temporal.Api.Nexus.V1.NexusOperationExecutionInfo do
   field :user_metadata, 26, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
   field :links, 27, repeated: true, type: Temporal.Api.Common.V1.Link
   field :identity, 28, type: :string
+  field :state_size_bytes, 29, type: :int64, json_name: "stateSizeBytes"
 end
 
 defmodule Temporal.Api.Nexus.V1.NexusOperationExecutionListInfo do
@@ -453,4 +454,5 @@ defmodule Temporal.Api.Nexus.V1.NexusOperationExecutionListInfo do
 
   field :state_transition_count, 10, type: :int64, json_name: "stateTransitionCount"
   field :execution_duration, 11, type: Google.Protobuf.Duration, json_name: "executionDuration"
+  field :state_size_bytes, 12, type: :int64, json_name: "stateSizeBytes"
 end

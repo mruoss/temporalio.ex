@@ -131,6 +131,11 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeNamespaceResponse do
     repeated: true,
     type: Temporal.Api.Replication.V1.FailoverStatus,
     json_name: "failoverHistory"
+
+  field :poller_group_infos, 7,
+    repeated: true,
+    type: Temporal.Api.Taskqueue.V1.PollerGroupInfo,
+    json_name: "pollerGroupInfos"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateNamespaceRequest do
@@ -2463,6 +2468,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionResponse do
   field :update_ref, 1, type: Temporal.Api.Update.V1.UpdateRef, json_name: "updateRef"
   field :outcome, 2, type: Temporal.Api.Update.V1.Outcome
   field :stage, 3, type: Temporal.Api.Enums.V1.UpdateWorkflowExecutionLifecycleStage, enum: true
+  field :link, 4, type: Temporal.Api.Common.V1.Link
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartBatchOperationRequest do

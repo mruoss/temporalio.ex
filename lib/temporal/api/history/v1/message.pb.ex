@@ -1085,6 +1085,24 @@ defmodule Temporal.Api.History.V1.ChildWorkflowExecutionTerminatedEventAttribute
   field :started_event_id, 5, type: :int64, json_name: "startedEventId"
 end
 
+defmodule Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes.WorkflowUpdateOptionsUpdate do
+  @moduledoc false
+
+  use Protobuf,
+    full_name:
+      "temporal.api.history.v1.WorkflowExecutionOptionsUpdatedEventAttributes.WorkflowUpdateOptionsUpdate",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :update_id, 1, type: :string, json_name: "updateId"
+  field :attached_request_id, 2, type: :string, json_name: "attachedRequestId"
+
+  field :attached_completion_callbacks, 3,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Callback,
+    json_name: "attachedCompletionCallbacks"
+end
+
 defmodule Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes do
   @moduledoc false
 
@@ -1111,6 +1129,12 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes
   field :time_skipping_config, 7,
     type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
     json_name: "timeSkippingConfig"
+
+  field :workflow_update_options, 8,
+    repeated: true,
+    type:
+      Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes.WorkflowUpdateOptionsUpdate,
+    json_name: "workflowUpdateOptions"
 end
 
 defmodule Temporal.Api.History.V1.WorkflowPropertiesModifiedExternallyEventAttributes do

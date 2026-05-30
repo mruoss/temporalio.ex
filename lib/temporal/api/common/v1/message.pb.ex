@@ -416,6 +416,20 @@ defmodule Temporal.Api.Common.V1.Link.NexusOperation do
   field :run_id, 3, type: :string, json_name: "runId"
 end
 
+defmodule Temporal.Api.Common.V1.Link.Workflow do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.Link.Workflow",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :workflow_id, 2, type: :string, json_name: "workflowId"
+  field :run_id, 3, type: :string, json_name: "runId"
+  field :reason, 4, type: :string
+end
+
 defmodule Temporal.Api.Common.V1.Link do
   @moduledoc false
 
@@ -438,6 +452,8 @@ defmodule Temporal.Api.Common.V1.Link do
     type: Temporal.Api.Common.V1.Link.NexusOperation,
     json_name: "nexusOperation",
     oneof: 0
+
+  field :workflow, 5, type: Temporal.Api.Common.V1.Link.Workflow, oneof: 0
 end
 
 defmodule Temporal.Api.Common.V1.Principal do

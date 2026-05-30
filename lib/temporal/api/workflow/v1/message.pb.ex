@@ -447,6 +447,17 @@ defmodule Temporal.Api.Workflow.V1.CallbackInfo.WorkflowClosed do
     syntax: :proto3
 end
 
+defmodule Temporal.Api.Workflow.V1.CallbackInfo.UpdateWorkflowExecutionCompleted do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflow.v1.CallbackInfo.UpdateWorkflowExecutionCompleted",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :update_id, 1, type: :string, json_name: "updateId"
+end
+
 defmodule Temporal.Api.Workflow.V1.CallbackInfo.Trigger do
   @moduledoc false
 
@@ -460,6 +471,11 @@ defmodule Temporal.Api.Workflow.V1.CallbackInfo.Trigger do
   field :workflow_closed, 1,
     type: Temporal.Api.Workflow.V1.CallbackInfo.WorkflowClosed,
     json_name: "workflowClosed",
+    oneof: 0
+
+  field :update_workflow_execution_completed, 2,
+    type: Temporal.Api.Workflow.V1.CallbackInfo.UpdateWorkflowExecutionCompleted,
+    json_name: "updateWorkflowExecutionCompleted",
     oneof: 0
 end
 
