@@ -1,7 +1,7 @@
 defmodule Temporal.Api.Protometa.V1.PbExtension do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.16.0"
+  use Protobuf, protoc_gen_elixir_version: "0.17.0"
 
   extend Google.Protobuf.MethodOptions, :request_header, 7_234_001,
     repeated: true,
