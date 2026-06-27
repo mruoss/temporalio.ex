@@ -600,31 +600,8 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionOptions do
   field :priority, 2, type: Temporal.Api.Common.V1.Priority
 
   field :time_skipping_config, 3,
-    type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
+    type: Temporal.Api.Common.V1.TimeSkippingConfig,
     json_name: "timeSkippingConfig"
-end
-
-defmodule Temporal.Api.Workflow.V1.TimeSkippingConfig do
-  @moduledoc false
-
-  use Protobuf,
-    full_name: "temporal.api.workflow.v1.TimeSkippingConfig",
-    protoc_gen_elixir_version: "0.17.0",
-    syntax: :proto3
-
-  oneof :bound, 0
-
-  field :enabled, 1, type: :bool
-
-  field :max_skipped_duration, 4,
-    type: Google.Protobuf.Duration,
-    json_name: "maxSkippedDuration",
-    oneof: 0
-
-  field :max_elapsed_duration, 5,
-    type: Google.Protobuf.Duration,
-    json_name: "maxElapsedDuration",
-    oneof: 0
 end
 
 defmodule Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverride do
@@ -642,6 +619,19 @@ defmodule Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverride do
   field :version, 2, type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion
 end
 
+defmodule Temporal.Api.Workflow.V1.VersioningOverride.OneTimeOverride do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflow.v1.VersioningOverride.OneTimeOverride",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :target_deployment_version, 1,
+    type: Temporal.Api.Deployment.V1.WorkerDeploymentVersion,
+    json_name: "targetDeploymentVersion"
+end
+
 defmodule Temporal.Api.Workflow.V1.VersioningOverride do
   @moduledoc false
 
@@ -654,6 +644,12 @@ defmodule Temporal.Api.Workflow.V1.VersioningOverride do
 
   field :pinned, 3, type: Temporal.Api.Workflow.V1.VersioningOverride.PinnedOverride, oneof: 0
   field :auto_upgrade, 4, type: :bool, json_name: "autoUpgrade", oneof: 0
+
+  field :one_time, 5,
+    type: Temporal.Api.Workflow.V1.VersioningOverride.OneTimeOverride,
+    json_name: "oneTime",
+    oneof: 0
+
   field :behavior, 1, type: Temporal.Api.Enums.V1.VersioningBehavior, enum: true, deprecated: true
   field :deployment, 2, type: Temporal.Api.Deployment.V1.Deployment, deprecated: true
   field :pinned_version, 9, type: :string, json_name: "pinnedVersion", deprecated: true

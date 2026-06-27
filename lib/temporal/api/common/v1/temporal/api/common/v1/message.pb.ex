@@ -506,3 +506,33 @@ defmodule Temporal.Api.Common.V1.OnConflictOptions do
   field :attach_completion_callbacks, 2, type: :bool, json_name: "attachCompletionCallbacks"
   field :attach_links, 3, type: :bool, json_name: "attachLinks"
 end
+
+defmodule Temporal.Api.Common.V1.TimeSkippingConfig do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.TimeSkippingConfig",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :enabled, 1, type: :bool
+  field :fast_forward, 2, type: Google.Protobuf.Duration, json_name: "fastForward"
+  field :disable_child_propagation, 3, type: :bool, json_name: "disableChildPropagation"
+end
+
+defmodule Temporal.Api.Common.V1.TimeSkippingStatePropagation do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.TimeSkippingStatePropagation",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :initial_skipped_duration, 1,
+    type: Google.Protobuf.Duration,
+    json_name: "initialSkippedDuration"
+
+  field :fast_forward_target_time, 2,
+    type: Google.Protobuf.Timestamp,
+    json_name: "fastForwardTargetTime"
+end

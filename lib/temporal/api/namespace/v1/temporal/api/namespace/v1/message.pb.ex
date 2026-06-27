@@ -39,6 +39,7 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities do
   field :worker_commands, 10, type: :bool, json_name: "workerCommands"
   field :standalone_nexus_operation, 11, type: :bool, json_name: "standaloneNexusOperation"
   field :workflow_update_callbacks, 12, type: :bool, json_name: "workflowUpdateCallbacks"
+  field :poller_autoscaling_auto_enroll, 13, type: :bool, json_name: "pollerAutoscalingAutoEnroll"
 end
 
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Limits do

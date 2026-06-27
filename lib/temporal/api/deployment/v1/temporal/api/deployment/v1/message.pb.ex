@@ -196,6 +196,31 @@ defmodule Temporal.Api.Deployment.V1.VersionDrainageInfo do
   field :last_checked_time, 3, type: Google.Protobuf.Timestamp, json_name: "lastCheckedTime"
 end
 
+defmodule Temporal.Api.Deployment.V1.ComputeStatus.ProviderValidationStatus do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.deployment.v1.ComputeStatus.ProviderValidationStatus",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :error_message, 1, type: :string, json_name: "errorMessage"
+  field :last_check_time, 2, type: Google.Protobuf.Timestamp, json_name: "lastCheckTime"
+end
+
+defmodule Temporal.Api.Deployment.V1.ComputeStatus do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.deployment.v1.ComputeStatus",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :provider_validation, 1,
+    type: Temporal.Api.Deployment.V1.ComputeStatus.ProviderValidationStatus,
+    json_name: "providerValidation"
+end
+
 defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo.WorkerDeploymentVersionSummary do
   @moduledoc false
 
@@ -239,6 +264,10 @@ defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo.WorkerDeploymentVersio
   field :compute_config, 13,
     type: Temporal.Api.Compute.V1.ComputeConfigSummary,
     json_name: "computeConfig"
+
+  field :compute_status, 14,
+    type: Temporal.Api.Deployment.V1.ComputeStatus,
+    json_name: "computeStatus"
 end
 
 defmodule Temporal.Api.Deployment.V1.WorkerDeploymentInfo do
