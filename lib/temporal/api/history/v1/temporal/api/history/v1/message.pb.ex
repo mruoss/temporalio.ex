@@ -115,12 +115,12 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
     json_name: "declinedTargetVersionUpgrade"
 
   field :time_skipping_config, 41,
-    type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
+    type: Temporal.Api.Common.V1.TimeSkippingConfig,
     json_name: "timeSkippingConfig"
 
-  field :initial_skipped_duration, 42,
-    type: Google.Protobuf.Duration,
-    json_name: "initialSkippedDuration"
+  field :time_skipping_state_propagation, 43,
+    type: Temporal.Api.Common.V1.TimeSkippingStatePropagation,
+    json_name: "timeSkippingStatePropagation"
 end
 
 defmodule Temporal.Api.History.V1.DeclinedTargetVersionUpgrade do
@@ -923,12 +923,12 @@ defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionInitiatedEventAttri
   field :priority, 20, type: Temporal.Api.Common.V1.Priority
 
   field :time_skipping_config, 21,
-    type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
+    type: Temporal.Api.Common.V1.TimeSkippingConfig,
     json_name: "timeSkippingConfig"
 
-  field :initial_skipped_duration, 30,
-    type: Google.Protobuf.Duration,
-    json_name: "initialSkippedDuration"
+  field :time_skipping_state_propagation, 23,
+    type: Temporal.Api.Common.V1.TimeSkippingStatePropagation,
+    json_name: "timeSkippingStatePropagation"
 end
 
 defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionFailedEventAttributes do
@@ -1127,8 +1127,10 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionOptionsUpdatedEventAttributes
   field :priority, 6, type: Temporal.Api.Common.V1.Priority
 
   field :time_skipping_config, 7,
-    type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
+    type: Temporal.Api.Common.V1.TimeSkippingConfig,
     json_name: "timeSkippingConfig"
+
+  field :time_skipping_config_updated, 9, type: :bool, json_name: "timeSkippingConfigUpdated"
 
   field :workflow_update_options, 8,
     repeated: true,
@@ -1274,7 +1276,7 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionTimeSkippingTransitionedEvent
     syntax: :proto3
 
   field :target_time, 1, type: Google.Protobuf.Timestamp, json_name: "targetTime"
-  field :disabled_after_bound, 2, type: :bool, json_name: "disabledAfterBound"
+  field :disabled_after_fast_forward, 2, type: :bool, json_name: "disabledAfterFastForward"
   field :wall_clock_time, 3, type: Google.Protobuf.Timestamp, json_name: "wallClockTime"
 end
 

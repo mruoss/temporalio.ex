@@ -287,7 +287,7 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest do
     json_name: "eagerWorkerDeploymentOptions"
 
   field :time_skipping_config, 29,
-    type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
+    type: Temporal.Api.Common.V1.TimeSkippingConfig,
     json_name: "timeSkippingConfig"
 end
 
@@ -1082,7 +1082,7 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionReques
   field :priority, 26, type: Temporal.Api.Common.V1.Priority
 
   field :time_skipping_config, 27,
-    type: Temporal.Api.Workflow.V1.TimeSkippingConfig,
+    type: Temporal.Api.Common.V1.TimeSkippingConfig,
     json_name: "timeSkippingConfig"
 end
 
@@ -3112,6 +3112,8 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionOptionsResponse
   field :workflow_execution_options, 1,
     type: Temporal.Api.Workflow.V1.WorkflowExecutionOptions,
     json_name: "workflowExecutionOptions"
+
+  field :update_time, 2, type: Google.Protobuf.Timestamp, json_name: "updateTime"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.DescribeDeploymentRequest do
