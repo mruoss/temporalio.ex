@@ -135,7 +135,12 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeNamespaceResponse do
   field :poller_group_infos, 7,
     repeated: true,
     type: Temporal.Api.Taskqueue.V1.PollerGroupInfo,
-    json_name: "pollerGroupInfos"
+    json_name: "pollerGroupInfos",
+    deprecated: true
+
+  field :poller_groups_info, 8,
+    type: Temporal.Api.Taskqueue.V1.PollerGroupsInfo,
+    json_name: "pollerGroupsInfo"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateNamespaceRequest do
@@ -462,7 +467,12 @@ defmodule Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueResponse do
   field :poller_group_infos, 18,
     repeated: true,
     type: Temporal.Api.Taskqueue.V1.PollerGroupInfo,
-    json_name: "pollerGroupInfos"
+    json_name: "pollerGroupInfos",
+    deprecated: true
+
+  field :poller_groups_info, 19,
+    type: Temporal.Api.Taskqueue.V1.PollerGroupsInfo,
+    json_name: "pollerGroupsInfo"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskCompletedRequest.QueryResultsEntry do
@@ -552,6 +562,8 @@ defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskCompletedRequest do
 
   field :worker_instance_key, 19, type: :string, json_name: "workerInstanceKey"
   field :worker_control_task_queue, 20, type: :string, json_name: "workerControlTaskQueue"
+  field :page_number, 21, type: :int32, json_name: "pageNumber"
+  field :intermediate_page, 22, type: :bool, json_name: "intermediatePage"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondWorkflowTaskCompletedResponse do
@@ -696,7 +708,12 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueResponse do
   field :poller_group_infos, 21,
     repeated: true,
     type: Temporal.Api.Taskqueue.V1.PollerGroupInfo,
-    json_name: "pollerGroupInfos"
+    json_name: "pollerGroupInfos",
+    deprecated: true
+
+  field :poller_groups_info, 22,
+    type: Temporal.Api.Taskqueue.V1.PollerGroupsInfo,
+    json_name: "pollerGroupsInfo"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatRequest do
@@ -1833,6 +1850,10 @@ defmodule Temporal.Api.Workflowservice.V1.GetSystemInfoResponse.Capabilities do
 
   field :nexus, 11, type: :bool
   field :server_scaled_deployments, 12, type: :bool, json_name: "serverScaledDeployments"
+
+  field :server_scaled_provider_cloud_run, 13,
+    type: :bool,
+    json_name: "serverScaledProviderCloudRun"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.GetSystemInfoResponse do
@@ -2707,7 +2728,12 @@ defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueResponse do
   field :poller_group_infos, 5,
     repeated: true,
     type: Temporal.Api.Taskqueue.V1.PollerGroupInfo,
-    json_name: "pollerGroupInfos"
+    json_name: "pollerGroupInfos",
+    deprecated: true
+
+  field :poller_groups_info, 6,
+    type: Temporal.Api.Taskqueue.V1.PollerGroupsInfo,
+    json_name: "pollerGroupsInfo"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondNexusTaskCompletedRequest do

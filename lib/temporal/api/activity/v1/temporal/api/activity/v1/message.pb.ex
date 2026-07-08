@@ -37,6 +37,7 @@ defmodule Temporal.Api.Activity.V1.ActivityOptions do
   field :heartbeat_timeout, 5, type: Google.Protobuf.Duration, json_name: "heartbeatTimeout"
   field :retry_policy, 6, type: Temporal.Api.Common.V1.RetryPolicy, json_name: "retryPolicy"
   field :priority, 7, type: Temporal.Api.Common.V1.Priority
+  field :start_delay, 8, type: Google.Protobuf.Duration, json_name: "startDelay"
 end
 
 defmodule Temporal.Api.Activity.V1.ActivityExecutionInfo do
@@ -120,6 +121,7 @@ defmodule Temporal.Api.Activity.V1.ActivityExecutionInfo do
   field :sdk_name, 35, type: :string, json_name: "sdkName"
   field :sdk_version, 36, type: :string, json_name: "sdkVersion"
   field :start_delay, 37, type: Google.Protobuf.Duration, json_name: "startDelay"
+  field :execution_time, 38, type: Google.Protobuf.Timestamp, json_name: "executionTime"
 end
 
 defmodule Temporal.Api.Activity.V1.ActivityExecutionListInfo do
