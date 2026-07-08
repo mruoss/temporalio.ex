@@ -121,6 +121,7 @@ defmodule Temporal.Api.Taskqueue.V1.TaskQueueStats do
 
   field :tasks_add_rate, 3, type: :float, json_name: "tasksAddRate"
   field :tasks_dispatch_rate, 4, type: :float, json_name: "tasksDispatchRate"
+  field :rate_limiting_active, 5, type: :bool, json_name: "rateLimitingActive"
 end
 
 defmodule Temporal.Api.Taskqueue.V1.TaskQueueStatus do
@@ -315,6 +316,22 @@ defmodule Temporal.Api.Taskqueue.V1.PollerGroupInfo do
 
   field :id, 1, type: :string
   field :weight, 2, type: :float
+end
+
+defmodule Temporal.Api.Taskqueue.V1.PollerGroupsInfo do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.taskqueue.v1.PollerGroupsInfo",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :version, 1, type: :int64
+
+  field :poller_groups, 2,
+    repeated: true,
+    type: Temporal.Api.Taskqueue.V1.PollerGroupInfo,
+    json_name: "pollerGroups"
 end
 
 defmodule Temporal.Api.Taskqueue.V1.PollerScalingDecision do
