@@ -517,7 +517,7 @@ defmodule Temporal.Api.Common.V1.TimeSkippingConfig do
 
   field :enabled, 1, type: :bool
   field :fast_forward, 2, type: Google.Protobuf.Duration, json_name: "fastForward"
-  field :disable_child_propagation, 3, type: :bool, json_name: "disableChildPropagation"
+  field :disable_propagation, 3, type: :bool, json_name: "disablePropagation"
 end
 
 defmodule Temporal.Api.Common.V1.TimeSkippingStatePropagation do
