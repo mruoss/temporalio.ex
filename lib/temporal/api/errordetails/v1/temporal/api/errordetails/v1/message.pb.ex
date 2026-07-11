@@ -20,6 +20,7 @@ defmodule Temporal.Api.Errordetails.V1.WorkflowExecutionAlreadyStartedFailure do
 
   field :start_request_id, 1, type: :string, json_name: "startRequestId"
   field :run_id, 2, type: :string, json_name: "runId"
+  field :first_execution_run_id, 3, type: :string, json_name: "firstExecutionRunId"
 end
 
 defmodule Temporal.Api.Errordetails.V1.NamespaceNotActiveFailure do

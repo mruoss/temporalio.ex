@@ -305,6 +305,7 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do
     syntax: :proto3
 
   field :run_id, 1, type: :string, json_name: "runId"
+  field :first_execution_run_id, 6, type: :string, json_name: "firstExecutionRunId"
   field :started, 3, type: :bool
   field :status, 5, type: Temporal.Api.Enums.V1.WorkflowExecutionStatus, enum: true
 
@@ -1112,6 +1113,7 @@ defmodule Temporal.Api.Workflowservice.V1.SignalWithStartWorkflowExecutionRespon
     syntax: :proto3
 
   field :run_id, 1, type: :string, json_name: "runId"
+  field :first_execution_run_id, 4, type: :string, json_name: "firstExecutionRunId"
   field :started, 2, type: :bool
   field :signal_link, 3, type: Temporal.Api.Common.V1.Link, json_name: "signalLink"
 end
