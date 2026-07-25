@@ -14,6 +14,7 @@ defmodule Temporal.Api.Enums.V1.ActivityExecutionStatus do
   field :ACTIVITY_EXECUTION_STATUS_CANCELED, 4
   field :ACTIVITY_EXECUTION_STATUS_TERMINATED, 5
   field :ACTIVITY_EXECUTION_STATUS_TIMED_OUT, 6
+  field :ACTIVITY_EXECUTION_STATUS_PAUSED, 7
 end
 
 defmodule Temporal.Api.Enums.V1.ActivityIdReusePolicy do

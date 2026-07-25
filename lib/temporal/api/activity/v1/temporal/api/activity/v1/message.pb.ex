@@ -147,6 +147,7 @@ defmodule Temporal.Api.Activity.V1.ActivityExecutionListInfo do
   field :state_transition_count, 9, type: :int64, json_name: "stateTransitionCount"
   field :state_size_bytes, 10, type: :int64, json_name: "stateSizeBytes"
   field :execution_duration, 11, type: Google.Protobuf.Duration, json_name: "executionDuration"
+  field :execution_time, 12, type: Google.Protobuf.Timestamp, json_name: "executionTime"
 end
 
 defmodule Temporal.Api.Activity.V1.CallbackInfo.ActivityClosed do

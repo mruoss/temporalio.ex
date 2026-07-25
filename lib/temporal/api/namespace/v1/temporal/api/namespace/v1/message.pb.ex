@@ -44,6 +44,18 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Capabilities do
   field :workflow_task_completion_pagination, 14,
     type: :bool,
     json_name: "workflowTaskCompletionPagination"
+
+  field :standalone_activity_start_delay, 15,
+    type: :bool,
+    json_name: "standaloneActivityStartDelay"
+
+  field :standalone_activity_batch_operations, 16,
+    type: :bool,
+    json_name: "standaloneActivityBatchOperations"
+
+  field :standalone_activity_operator_commands, 17,
+    type: :bool,
+    json_name: "standaloneActivityOperatorCommands"
 end
 
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Limits do
