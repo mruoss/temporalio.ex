@@ -139,3 +139,17 @@ defmodule Temporal.Api.Enums.V1.WorkerStatus do
   field :WORKER_STATUS_SHUTTING_DOWN, 2
   field :WORKER_STATUS_SHUTDOWN, 3
 end
+
+defmodule Temporal.Api.Enums.V1.ExecutionType do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.ExecutionType",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :EXECUTION_TYPE_UNSPECIFIED, 0
+  field :EXECUTION_TYPE_WORKFLOW, 1
+  field :EXECUTION_TYPE_ACTIVITY, 2
+end

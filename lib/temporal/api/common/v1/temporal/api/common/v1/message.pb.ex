@@ -158,6 +158,19 @@ defmodule Temporal.Api.Common.V1.WorkflowExecution do
   field :run_id, 2, type: :string, json_name: "runId"
 end
 
+defmodule Temporal.Api.Common.V1.Execution do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.Execution",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :type, 1, type: Temporal.Api.Enums.V1.ExecutionType, enum: true
+  field :business_id, 2, type: :string, json_name: "businessId"
+  field :run_id, 3, type: :string, json_name: "runId"
+end
+
 defmodule Temporal.Api.Common.V1.WorkflowType do
   @moduledoc false
 

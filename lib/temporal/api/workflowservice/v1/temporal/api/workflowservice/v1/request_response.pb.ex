@@ -2508,7 +2508,17 @@ defmodule Temporal.Api.Workflowservice.V1.StartBatchOperationRequest do
   field :visibility_query, 2, type: :string, json_name: "visibilityQuery"
   field :job_id, 3, type: :string, json_name: "jobId"
   field :reason, 4, type: :string
-  field :executions, 5, repeated: true, type: Temporal.Api.Common.V1.WorkflowExecution
+
+  field :executions, 5,
+    repeated: true,
+    type: Temporal.Api.Common.V1.WorkflowExecution,
+    deprecated: true
+
+  field :target_executions, 22,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Execution,
+    json_name: "targetExecutions"
+
   field :max_operations_per_second, 6, type: :float, json_name: "maxOperationsPerSecond"
 
   field :termination_operation, 10,
@@ -2554,6 +2564,21 @@ defmodule Temporal.Api.Workflowservice.V1.StartBatchOperationRequest do
   field :update_activity_options_operation, 18,
     type: Temporal.Api.Batch.V1.BatchOperationUpdateActivityOptions,
     json_name: "updateActivityOptionsOperation",
+    oneof: 0
+
+  field :cancel_activities_operation, 19,
+    type: Temporal.Api.Batch.V1.BatchOperationCancelActivities,
+    json_name: "cancelActivitiesOperation",
+    oneof: 0
+
+  field :terminate_activities_operation, 20,
+    type: Temporal.Api.Batch.V1.BatchOperationTerminateActivities,
+    json_name: "terminateActivitiesOperation",
+    oneof: 0
+
+  field :delete_activities_operation, 21,
+    type: Temporal.Api.Batch.V1.BatchOperationDeleteActivities,
+    json_name: "deleteActivitiesOperation",
     oneof: 0
 end
 
@@ -2623,6 +2648,8 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeBatchOperationResponse do
   field :failure_operation_count, 8, type: :int64, json_name: "failureOperationCount"
   field :identity, 9, type: :string
   field :reason, 10, type: :string
+  field :query, 11, type: :string
+  field :executions, 12, repeated: true, type: Temporal.Api.Common.V1.Execution
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ListBatchOperationsRequest do
@@ -3082,11 +3109,10 @@ defmodule Temporal.Api.Workflowservice.V1.ResetActivityExecutionRequest do
   field :activity_id, 3, type: :string, json_name: "activityId"
   field :run_id, 4, type: :string, json_name: "runId"
   field :identity, 5, type: :string
-  field :reset_heartbeat, 6, type: :bool, json_name: "resetHeartbeat"
-  field :keep_paused, 7, type: :bool, json_name: "keepPaused"
-  field :jitter, 8, type: Google.Protobuf.Duration
-  field :restore_original_options, 9, type: :bool, json_name: "restoreOriginalOptions"
-  field :resource_id, 10, type: :string, json_name: "resourceId"
+  field :keep_paused, 6, type: :bool, json_name: "keepPaused"
+  field :jitter, 7, type: Google.Protobuf.Duration
+  field :restore_original_options, 8, type: :bool, json_name: "restoreOriginalOptions"
+  field :resource_id, 9, type: :string, json_name: "resourceId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ResetActivityResponse do

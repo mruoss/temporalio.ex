@@ -10,6 +10,11 @@ defmodule Temporal.Api.Batch.V1.BatchOperationInfo do
   field :state, 2, type: Temporal.Api.Enums.V1.BatchOperationState, enum: true
   field :start_time, 3, type: Google.Protobuf.Timestamp, json_name: "startTime"
   field :close_time, 4, type: Google.Protobuf.Timestamp, json_name: "closeTime"
+
+  field :operation_type, 5,
+    type: Temporal.Api.Enums.V1.BatchOperationType,
+    json_name: "operationType",
+    enum: true
 end
 
 defmodule Temporal.Api.Batch.V1.BatchOperationTermination do
@@ -22,6 +27,18 @@ defmodule Temporal.Api.Batch.V1.BatchOperationTermination do
 
   field :details, 1, type: Temporal.Api.Common.V1.Payloads
   field :identity, 2, type: :string
+end
+
+defmodule Temporal.Api.Batch.V1.BatchOperationTerminateActivities do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.batch.v1.BatchOperationTerminateActivities",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :identity, 1, type: :string
+  field :reason, 2, type: :string
 end
 
 defmodule Temporal.Api.Batch.V1.BatchOperationSignal do
@@ -49,6 +66,18 @@ defmodule Temporal.Api.Batch.V1.BatchOperationCancellation do
   field :identity, 1, type: :string
 end
 
+defmodule Temporal.Api.Batch.V1.BatchOperationCancelActivities do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.batch.v1.BatchOperationCancelActivities",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :identity, 1, type: :string
+  field :reason, 2, type: :string
+end
+
 defmodule Temporal.Api.Batch.V1.BatchOperationDeletion do
   @moduledoc false
 
@@ -58,6 +87,15 @@ defmodule Temporal.Api.Batch.V1.BatchOperationDeletion do
     syntax: :proto3
 
   field :identity, 1, type: :string
+end
+
+defmodule Temporal.Api.Batch.V1.BatchOperationDeleteActivities do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.batch.v1.BatchOperationDeleteActivities",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
 end
 
 defmodule Temporal.Api.Batch.V1.BatchOperationReset do

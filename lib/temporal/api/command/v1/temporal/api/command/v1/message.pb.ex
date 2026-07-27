@@ -279,6 +279,10 @@ defmodule Temporal.Api.Command.V1.StartChildWorkflowExecutionCommandAttributes d
 
   field :inherit_build_id, 17, type: :bool, json_name: "inheritBuildId", deprecated: true
   field :priority, 18, type: Temporal.Api.Common.V1.Priority
+
+  field :versioning_override, 19,
+    type: Temporal.Api.Workflow.V1.VersioningOverride,
+    json_name: "versioningOverride"
 end
 
 defmodule Temporal.Api.Command.V1.ProtocolMessageCommandAttributes do

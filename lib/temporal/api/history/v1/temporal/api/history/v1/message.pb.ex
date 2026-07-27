@@ -929,6 +929,10 @@ defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionInitiatedEventAttri
   field :time_skipping_state_propagation, 23,
     type: Temporal.Api.Common.V1.TimeSkippingStatePropagation,
     json_name: "timeSkippingStatePropagation"
+
+  field :versioning_override, 24,
+    type: Temporal.Api.Workflow.V1.VersioningOverride,
+    json_name: "versioningOverride"
 end
 
 defmodule Temporal.Api.History.V1.StartChildWorkflowExecutionFailedEventAttributes do
