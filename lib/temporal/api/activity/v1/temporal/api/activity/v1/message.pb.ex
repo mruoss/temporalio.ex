@@ -10,6 +10,11 @@ defmodule Temporal.Api.Activity.V1.ActivityExecutionOutcome do
 
   field :result, 1, type: Temporal.Api.Common.V1.Payloads, oneof: 0
   field :failure, 2, type: Temporal.Api.Failure.V1.Failure, oneof: 0
+
+  field :retry_state, 3,
+    type: Temporal.Api.Enums.V1.RetryState,
+    json_name: "retryState",
+    enum: true
 end
 
 defmodule Temporal.Api.Activity.V1.ActivityOptions do

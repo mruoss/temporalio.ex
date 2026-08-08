@@ -68,6 +68,10 @@ defmodule Temporal.Api.Namespace.V1.NamespaceInfo.Limits do
 
   field :blob_size_limit_error, 1, type: :int64, json_name: "blobSizeLimitError"
   field :memo_size_limit_error, 2, type: :int64, json_name: "memoSizeLimitError"
+
+  field :workflow_task_completion_size_limit_error, 3,
+    type: :int64,
+    json_name: "workflowTaskCompletionSizeLimitError"
 end
 
 defmodule Temporal.Api.Namespace.V1.NamespaceInfo do

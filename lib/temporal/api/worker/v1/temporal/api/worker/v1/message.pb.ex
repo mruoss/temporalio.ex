@@ -1,3 +1,90 @@
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo.Architecture do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo.Architecture",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :ARCHITECTURE_UNSPECIFIED, 0
+  field :ARCHITECTURE_AMD64, 1
+  field :ARCHITECTURE_ARM64, 2
+end
+
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo.Runtime.RuntimeType do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo.Runtime.RuntimeType",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :RUNTIME_TYPE_UNSPECIFIED, 0
+  field :RUNTIME_TYPE_JVM, 1
+  field :RUNTIME_TYPE_CPYTHON, 2
+  field :RUNTIME_TYPE_NODE, 3
+  field :RUNTIME_TYPE_BUN, 4
+  field :RUNTIME_TYPE_CRUBY, 5
+  field :RUNTIME_TYPE_GO, 6
+  field :RUNTIME_TYPE_DOTNET_FRAMEWORK, 7
+  field :RUNTIME_TYPE_DOTNET_CORE, 8
+  field :RUNTIME_TYPE_NATIVE, 9
+  field :RUNTIME_TYPE_ROADRUNNER, 10
+end
+
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo.HostingEnvironment.HostingEnvironmentType do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo.HostingEnvironment.HostingEnvironmentType",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :HOSTING_ENVIRONMENT_TYPE_UNSPECIFIED, 0
+  field :HOSTING_ENVIRONMENT_TYPE_DOCKER, 1
+  field :HOSTING_ENVIRONMENT_TYPE_K8S, 2
+  field :HOSTING_ENVIRONMENT_TYPE_AWS_LAMBDA, 3
+  field :HOSTING_ENVIRONMENT_TYPE_AWS_ECS, 4
+  field :HOSTING_ENVIRONMENT_TYPE_GOOGLE_CLOUD_RUN, 6
+  field :HOSTING_ENVIRONMENT_TYPE_GOOGLE_APP_ENGINE, 7
+  field :HOSTING_ENVIRONMENT_TYPE_AZURE_APP_SERVICE, 8
+  field :HOSTING_ENVIRONMENT_TYPE_AZURE_FUNCTIONS, 9
+  field :HOSTING_ENVIRONMENT_TYPE_AZURE_CONTAINER_APPS, 10
+end
+
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo.LinuxPlatform.Libc do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo.LinuxPlatform.Libc",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :LIBC_UNSPECIFIED, 0
+  field :LIBC_GLIBC, 1
+  field :LIBC_MUSL, 2
+end
+
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo.WindowsPlatform.Crt do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo.WindowsPlatform.Crt",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :CRT_UNSPECIFIED, 0
+  field :CRT_UCRT, 1
+  field :CRT_MSVCRT, 2
+  field :CRT_MINGW, 3
+  field :CRT_CYGWIN, 4
+end
+
 defmodule Temporal.Api.Worker.V1.WorkerPollerInfo do
   @moduledoc false
 
@@ -111,6 +198,7 @@ defmodule Temporal.Api.Worker.V1.WorkerHeartbeat do
   field :current_sticky_cache_size, 22, type: :int32, json_name: "currentStickyCacheSize"
   field :plugins, 23, repeated: true, type: Temporal.Api.Worker.V1.PluginInfo
   field :drivers, 24, repeated: true, type: Temporal.Api.Worker.V1.StorageDriverInfo
+  field :environment, 25, type: Temporal.Api.Worker.V1.EnvironmentInfo
 end
 
 defmodule Temporal.Api.Worker.V1.WorkerInfo do
@@ -174,6 +262,104 @@ defmodule Temporal.Api.Worker.V1.StorageDriverInfo do
     syntax: :proto3
 
   field :type, 1, type: :string
+end
+
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo.Runtime do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo.Runtime",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :type, 1, type: Temporal.Api.Worker.V1.EnvironmentInfo.Runtime.RuntimeType, enum: true
+  field :version, 2, type: :string
+end
+
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo.HostingEnvironment do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo.HostingEnvironment",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :type, 1,
+    type: Temporal.Api.Worker.V1.EnvironmentInfo.HostingEnvironment.HostingEnvironmentType,
+    enum: true
+
+  field :version, 2, type: :string
+end
+
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo.Platform do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo.Platform",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  oneof :variant, 0
+
+  field :linux, 1, type: Temporal.Api.Worker.V1.EnvironmentInfo.LinuxPlatform, oneof: 0
+  field :macos, 2, type: Temporal.Api.Worker.V1.EnvironmentInfo.MacOSPlatform, oneof: 0
+  field :windows, 3, type: Temporal.Api.Worker.V1.EnvironmentInfo.WindowsPlatform, oneof: 0
+end
+
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo.LinuxPlatform do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo.LinuxPlatform",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :version, 1, type: :string
+  field :architecture, 2, type: Temporal.Api.Worker.V1.EnvironmentInfo.Architecture, enum: true
+  field :libc, 3, type: Temporal.Api.Worker.V1.EnvironmentInfo.LinuxPlatform.Libc, enum: true
+end
+
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo.MacOSPlatform do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo.MacOSPlatform",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :version, 1, type: :string
+  field :architecture, 2, type: Temporal.Api.Worker.V1.EnvironmentInfo.Architecture, enum: true
+end
+
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo.WindowsPlatform do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo.WindowsPlatform",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :version, 1, type: :string
+  field :architecture, 2, type: Temporal.Api.Worker.V1.EnvironmentInfo.Architecture, enum: true
+  field :crt, 3, type: Temporal.Api.Worker.V1.EnvironmentInfo.WindowsPlatform.Crt, enum: true
+end
+
+defmodule Temporal.Api.Worker.V1.EnvironmentInfo do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.worker.v1.EnvironmentInfo",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :runtimes, 1, repeated: true, type: Temporal.Api.Worker.V1.EnvironmentInfo.Runtime
+
+  field :hosting_environments, 2,
+    repeated: true,
+    type: Temporal.Api.Worker.V1.EnvironmentInfo.HostingEnvironment,
+    json_name: "hostingEnvironments"
+
+  field :platform, 3, type: Temporal.Api.Worker.V1.EnvironmentInfo.Platform
 end
 
 defmodule Temporal.Api.Worker.V1.WorkerCommand do
