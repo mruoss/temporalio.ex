@@ -492,6 +492,10 @@ defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Service do
   rpc :DeleteNexusOperationExecution,
       Temporal.Api.Workflowservice.V1.DeleteNexusOperationExecutionRequest,
       Temporal.Api.Workflowservice.V1.DeleteNexusOperationExecutionResponse
+
+  rpc :PollWorkflowExecutionTimeSkipping,
+      Temporal.Api.Workflowservice.V1.PollWorkflowExecutionTimeSkippingRequest,
+      Temporal.Api.Workflowservice.V1.PollWorkflowExecutionTimeSkippingResponse
 end
 
 defmodule Temporal.Api.Workflowservice.V1.WorkflowService.Stub do

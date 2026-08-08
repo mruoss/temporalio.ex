@@ -1582,6 +1582,7 @@ defmodule Temporal.Api.Workflowservice.V1.QueryWorkflowResponse do
 
   field :query_result, 1, type: Temporal.Api.Common.V1.Payloads, json_name: "queryResult"
   field :query_rejected, 2, type: Temporal.Api.Query.V1.QueryRejected, json_name: "queryRejected"
+  field :link, 3, type: Temporal.Api.Common.V1.Link
 end
 
 defmodule Temporal.Api.Workflowservice.V1.DescribeWorkflowExecutionRequest do
@@ -2932,6 +2933,7 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateActivityExecutionOptionsRequest 
   field :update_mask, 7, type: Google.Protobuf.FieldMask, json_name: "updateMask"
   field :restore_original, 8, type: :bool, json_name: "restoreOriginal"
   field :resource_id, 9, type: :string, json_name: "resourceId"
+  field :request_id, 10, type: :string, json_name: "requestId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateActivityOptionsResponse do
@@ -3049,11 +3051,10 @@ defmodule Temporal.Api.Workflowservice.V1.UnpauseActivityExecutionRequest do
   field :activity_id, 3, type: :string, json_name: "activityId"
   field :run_id, 4, type: :string, json_name: "runId"
   field :identity, 5, type: :string
-  field :reset_attempts, 6, type: :bool, json_name: "resetAttempts"
-  field :reset_heartbeat, 7, type: :bool, json_name: "resetHeartbeat"
   field :reason, 8, type: :string
   field :jitter, 9, type: Google.Protobuf.Duration
   field :resource_id, 10, type: :string, json_name: "resourceId"
+  field :request_id, 11, type: :string, json_name: "requestId"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UnpauseActivityResponse do
@@ -3113,6 +3114,8 @@ defmodule Temporal.Api.Workflowservice.V1.ResetActivityExecutionRequest do
   field :jitter, 7, type: Google.Protobuf.Duration
   field :restore_original_options, 8, type: :bool, json_name: "restoreOriginalOptions"
   field :resource_id, 9, type: :string, json_name: "resourceId"
+  field :request_id, 10, type: :string, json_name: "requestId"
+  field :reset_heartbeat, 11, type: :bool, json_name: "resetHeartbeat"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ResetActivityResponse do
@@ -4826,4 +4829,41 @@ defmodule Temporal.Api.Workflowservice.V1.DeleteNexusOperationExecutionResponse 
     full_name: "temporal.api.workflowservice.v1.DeleteNexusOperationExecutionResponse",
     protoc_gen_elixir_version: "0.17.0",
     syntax: :proto3
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PollWorkflowExecutionTimeSkippingRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.PollWorkflowExecutionTimeSkippingRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+
+  field :workflow_execution, 2,
+    type: Temporal.Api.Common.V1.WorkflowExecution,
+    json_name: "workflowExecution"
+
+  field :fast_forward_id, 3, type: :string, json_name: "fastForwardId"
+end
+
+defmodule Temporal.Api.Workflowservice.V1.PollWorkflowExecutionTimeSkippingResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.workflowservice.v1.PollWorkflowExecutionTimeSkippingResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :fast_forward_polling_result, 1,
+    type: Temporal.Api.Enums.V1.FastForwardPollingResult,
+    json_name: "fastForwardPollingResult",
+    enum: true
+
+  field :failed_reason, 2, type: :string, json_name: "failedReason"
+
+  field :fast_forward_info, 3,
+    type: Temporal.Api.Common.V1.TimeSkippingFastForwardInfo,
+    json_name: "fastForwardInfo"
 end

@@ -111,6 +111,10 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo do
   field :pause_info, 8,
     type: Temporal.Api.Workflow.V1.WorkflowExecutionPauseInfo,
     json_name: "pauseInfo"
+
+  field :time_skipping_info, 9,
+    type: Temporal.Api.Common.V1.TimeSkippingInfo,
+    json_name: "timeSkippingInfo"
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do

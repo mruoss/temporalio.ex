@@ -529,8 +529,25 @@ defmodule Temporal.Api.Common.V1.TimeSkippingConfig do
     syntax: :proto3
 
   field :enabled, 1, type: :bool
-  field :fast_forward, 2, type: Google.Protobuf.Duration, json_name: "fastForward"
+
+  field :fast_forward_config, 2,
+    type: Temporal.Api.Common.V1.FastForwardConfig,
+    json_name: "fastForwardConfig"
+
   field :disable_propagation, 3, type: :bool, json_name: "disablePropagation"
+  field :max_session_skip_count, 4, type: :int32, json_name: "maxSessionSkipCount"
+end
+
+defmodule Temporal.Api.Common.V1.FastForwardConfig do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.FastForwardConfig",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :id, 1, type: :string
+  field :duration, 2, type: Google.Protobuf.Duration
 end
 
 defmodule Temporal.Api.Common.V1.TimeSkippingStatePropagation do
@@ -548,4 +565,44 @@ defmodule Temporal.Api.Common.V1.TimeSkippingStatePropagation do
   field :fast_forward_target_time, 2,
     type: Google.Protobuf.Timestamp,
     json_name: "fastForwardTargetTime"
+
+  field :initial_skip_count, 3, type: :int32, json_name: "initialSkipCount"
+end
+
+defmodule Temporal.Api.Common.V1.TimeSkippingInfo do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.TimeSkippingInfo",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :current_time, 1, type: Google.Protobuf.Timestamp, json_name: "currentTime"
+
+  field :effective_config, 2,
+    type: Temporal.Api.Common.V1.TimeSkippingConfig,
+    json_name: "effectiveConfig"
+
+  field :fast_forward_info, 4,
+    type: Temporal.Api.Common.V1.TimeSkippingFastForwardInfo,
+    json_name: "fastForwardInfo"
+
+  field :current_session_skip_count, 6, type: :int32, json_name: "currentSessionSkipCount"
+end
+
+defmodule Temporal.Api.Common.V1.TimeSkippingFastForwardInfo do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.TimeSkippingFastForwardInfo",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :fast_forward_duration, 1,
+    type: Google.Protobuf.Duration,
+    json_name: "fastForwardDuration"
+
+  field :fast_forward_id, 2, type: :string, json_name: "fastForwardId"
+  field :target_time, 3, type: Google.Protobuf.Timestamp, json_name: "targetTime"
+  field :has_completed, 4, type: :bool, json_name: "hasCompleted"
 end
