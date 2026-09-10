@@ -30,7 +30,11 @@ jobs:
       - name: Setup protoc-gen-elixir
         id: protobuf
         run: |
-          mise x erlang elixir -- mix escript.install hex protobuf --force
+          # Pinned: protobuf 0.17.0 doubles the output directory for any proto
+          # whose package mirrors its path, which is every file here
+          # (elixir-protobuf/protobuf#445). The fix is on protobuf main but
+          # unreleased; drop the pin once a release above 0.17.0 carries it.
+          mise x erlang elixir -- mix escript.install hex protobuf 0.16.1 --force
 
       - name: Init repository
         id: init-repo
