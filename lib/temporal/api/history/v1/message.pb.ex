@@ -483,6 +483,8 @@ defmodule Temporal.Api.History.V1.ActivityTaskFailedEventAttributes do
     type: Temporal.Api.Common.V1.WorkerVersionStamp,
     json_name: "workerVersion",
     deprecated: true
+
+  field :cause, 7, type: Temporal.Api.Enums.V1.ActivityTaskFailedCause, enum: true
 end
 
 defmodule Temporal.Api.History.V1.ActivityTaskTimedOutEventAttributes do

@@ -152,4 +152,5 @@ defmodule Temporal.Api.Enums.V1.ExecutionType do
   field :EXECUTION_TYPE_UNSPECIFIED, 0
   field :EXECUTION_TYPE_WORKFLOW, 1
   field :EXECUTION_TYPE_ACTIVITY, 2
+  field :EXECUTION_TYPE_NEXUS_OPERATION, 3
 end
