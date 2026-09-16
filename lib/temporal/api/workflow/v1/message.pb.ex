@@ -510,6 +510,7 @@ defmodule Temporal.Api.Workflow.V1.CallbackInfo do
     json_name: "nextAttemptScheduleTime"
 
   field :blocked_reason, 9, type: :string, json_name: "blockedReason"
+  field :request_id, 10, type: :string, json_name: "requestId"
 end
 
 defmodule Temporal.Api.Workflow.V1.PendingNexusOperationInfo do

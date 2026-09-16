@@ -50,6 +50,21 @@ defmodule Temporal.Api.Enums.V1.WorkflowTaskFailedCause do
   field :WORKFLOW_TASK_FAILED_CAUSE_REQUEST_TOO_LARGE, 40
 end
 
+defmodule Temporal.Api.Enums.V1.ActivityTaskFailedCause do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.ActivityTaskFailedCause",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :ACTIVITY_TASK_FAILED_CAUSE_UNSPECIFIED, 0
+  field :ACTIVITY_TASK_FAILED_CAUSE_PAYLOADS_TOO_LARGE, 1
+  field :ACTIVITY_TASK_FAILED_CAUSE_EXTERNAL_STORAGE_FAILURE, 2
+  field :ACTIVITY_TASK_FAILED_CAUSE_ACTIVITY_WORKER_UNHANDLED_FAILURE, 3
+end
+
 defmodule Temporal.Api.Enums.V1.StartChildWorkflowExecutionFailedCause do
   @moduledoc false
 

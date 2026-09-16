@@ -24,4 +24,5 @@ defmodule Temporal.Api.Callback.V1.CallbackInfo do
     json_name: "nextAttemptScheduleTime"
 
   field :blocked_reason, 8, type: :string, json_name: "blockedReason"
+  field :request_id, 9, type: :string, json_name: "requestId"
 end

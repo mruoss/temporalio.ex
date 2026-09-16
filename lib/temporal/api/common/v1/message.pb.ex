@@ -328,6 +328,20 @@ defmodule Temporal.Api.Common.V1.Callback.Internal do
   field :data, 1, type: :bytes
 end
 
+defmodule Temporal.Api.Common.V1.Callback.NexusHandler do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.Callback.NexusHandler",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :task_queue_name, 1, type: :string, json_name: "taskQueueName"
+  field :service, 2, type: :string
+  field :operation, 3, type: :string
+  field :source_context, 4, type: Temporal.Api.Common.V1.Payload, json_name: "sourceContext"
+end
+
 defmodule Temporal.Api.Common.V1.Callback do
   @moduledoc false
 
@@ -340,6 +354,12 @@ defmodule Temporal.Api.Common.V1.Callback do
 
   field :nexus, 2, type: Temporal.Api.Common.V1.Callback.Nexus, oneof: 0
   field :internal, 3, type: Temporal.Api.Common.V1.Callback.Internal, oneof: 0
+
+  field :nexus_handler, 4,
+    type: Temporal.Api.Common.V1.Callback.NexusHandler,
+    json_name: "nexusHandler",
+    oneof: 0
+
   field :links, 100, repeated: true, type: Temporal.Api.Common.V1.Link
 end
 
@@ -443,6 +463,20 @@ defmodule Temporal.Api.Common.V1.Link.Workflow do
   field :reason, 4, type: :string
 end
 
+defmodule Temporal.Api.Common.V1.Link.Callback do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.Link.Callback",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :execution, 2, type: Temporal.Api.Common.V1.Execution
+  field :component_path, 3, repeated: true, type: :string, json_name: "componentPath"
+  field :request_id, 4, type: :string, json_name: "requestId"
+end
+
 defmodule Temporal.Api.Common.V1.Link do
   @moduledoc false
 
@@ -467,6 +501,7 @@ defmodule Temporal.Api.Common.V1.Link do
     oneof: 0
 
   field :workflow, 5, type: Temporal.Api.Common.V1.Link.Workflow, oneof: 0
+  field :callback, 6, type: Temporal.Api.Common.V1.Link.Callback, oneof: 0
 end
 
 defmodule Temporal.Api.Common.V1.Principal do

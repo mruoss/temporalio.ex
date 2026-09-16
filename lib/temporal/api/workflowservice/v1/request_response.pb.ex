@@ -864,6 +864,8 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedRequest do
   field :deployment_options, 8,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "deploymentOptions"
+
+  field :cause, 10, type: Temporal.Api.Enums.V1.ActivityTaskFailedCause, enum: true
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedResponse do
@@ -897,6 +899,7 @@ defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedByIdRequest d
     json_name: "lastHeartbeatDetails"
 
   field :resource_id, 8, type: :string, json_name: "resourceId"
+  field :cause, 9, type: Temporal.Api.Enums.V1.ActivityTaskFailedCause, enum: true
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RespondActivityTaskFailedByIdResponse do
@@ -4472,6 +4475,10 @@ defmodule Temporal.Api.Workflowservice.V1.StartNexusOperationExecutionRequest do
     json_name: "idConflictPolicy",
     enum: true
 
+  field :on_conflict_options, 17,
+    type: Temporal.Api.Nexusoperation.V1.OnConflictOptions,
+    json_name: "onConflictOptions"
+
   field :search_attributes, 14,
     type: Temporal.Api.Common.V1.SearchAttributes,
     json_name: "searchAttributes"
@@ -4483,6 +4490,13 @@ defmodule Temporal.Api.Workflowservice.V1.StartNexusOperationExecutionRequest do
     map: true
 
   field :user_metadata, 16, type: Temporal.Api.Sdk.V1.UserMetadata, json_name: "userMetadata"
+
+  field :completion_callbacks, 18,
+    repeated: true,
+    type: Temporal.Api.Common.V1.Callback,
+    json_name: "completionCallbacks"
+
+  field :links, 19, repeated: true, type: Temporal.Api.Common.V1.Link
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartNexusOperationExecutionResponse do
@@ -4529,6 +4543,11 @@ defmodule Temporal.Api.Workflowservice.V1.DescribeNexusOperationExecutionRespons
   field :result, 4, type: Temporal.Api.Common.V1.Payload, oneof: 0
   field :failure, 5, type: Temporal.Api.Failure.V1.Failure, oneof: 0
   field :long_poll_token, 6, type: :bytes, json_name: "longPollToken"
+
+  field :completion_callbacks, 7,
+    repeated: true,
+    type: Temporal.Api.Nexusoperation.V1.CallbackInfo,
+    json_name: "completionCallbacks"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PollNexusOperationExecutionRequest do

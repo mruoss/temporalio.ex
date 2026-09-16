@@ -7,6 +7,10 @@ defmodule Temporal.Api.Replication.V1.ClusterReplicationConfig do
     syntax: :proto3
 
   field :cluster_name, 1, type: :string, json_name: "clusterName"
+
+  field :replication_ramp_duration, 2,
+    type: Google.Protobuf.Duration,
+    json_name: "replicationRampDuration"
 end
 
 defmodule Temporal.Api.Replication.V1.NamespaceReplicationConfig do
