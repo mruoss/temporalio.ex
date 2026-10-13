@@ -32,6 +32,8 @@ defmodule Temporal.Api.Worker.V1.EnvironmentInfo.Runtime.RuntimeType do
   field :RUNTIME_TYPE_DOTNET_CORE, 8
   field :RUNTIME_TYPE_NATIVE, 9
   field :RUNTIME_TYPE_ROADRUNNER, 10
+  field :RUNTIME_TYPE_GRAAL_AOT, 11
+  field :RUNTIME_TYPE_KOTLIN, 12
 end
 
 defmodule Temporal.Api.Worker.V1.EnvironmentInfo.HostingEnvironment.HostingEnvironmentType do

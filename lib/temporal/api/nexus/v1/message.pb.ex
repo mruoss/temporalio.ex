@@ -1,3 +1,16 @@
+defmodule Temporal.Api.Nexus.V1.PropagatedSerializationContext do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.nexus.v1.PropagatedSerializationContext",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :endpoint, 1, type: :string
+  field :service, 2, type: :string
+  field :operation, 3, type: :string
+end
+
 defmodule Temporal.Api.Nexus.V1.Failure.MetadataEntry do
   @moduledoc false
 

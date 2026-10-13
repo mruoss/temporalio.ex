@@ -19,3 +19,26 @@ defmodule Temporal.Api.Export.V1.WorkflowExecutions do
 
   field :items, 1, repeated: true, type: Temporal.Api.Export.V1.WorkflowExecution
 end
+
+defmodule Temporal.Api.Export.V1.ActivityExecution do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.export.v1.ActivityExecution",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :activity, 1, type: Temporal.Api.Workflowservice.V1.DescribeActivityExecutionResponse
+end
+
+defmodule Temporal.Api.Export.V1.ExportedExecutions do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.export.v1.ExportedExecutions",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :workflows, 1, repeated: true, type: Temporal.Api.Export.V1.WorkflowExecution
+  field :activities, 2, repeated: true, type: Temporal.Api.Export.V1.ActivityExecution
+end
