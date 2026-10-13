@@ -84,6 +84,10 @@ defmodule Temporal.Api.Update.V1.Request do
     json_name: "completionCallbacks"
 
   field :links, 5, repeated: true, type: Temporal.Api.Common.V1.Link
+
+  field :propagated_nexus_serialization_context, 6,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
 end
 
 defmodule Temporal.Api.Update.V1.Rejection do

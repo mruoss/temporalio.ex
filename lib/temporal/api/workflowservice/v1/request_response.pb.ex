@@ -294,6 +294,10 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest do
   field :time_skipping_config, 29,
     type: Temporal.Api.Common.V1.TimeSkippingConfig,
     json_name: "timeSkippingConfig"
+
+  field :propagated_nexus_serialization_context, 30,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do
@@ -355,6 +359,10 @@ defmodule Temporal.Api.Workflowservice.V1.GetWorkflowExecutionHistoryResponse do
 
   field :next_page_token, 3, type: :bytes, json_name: "nextPageToken"
   field :archived, 4, type: :bool
+
+  field :propagated_nexus_serialization_context, 5,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.GetWorkflowExecutionHistoryReverseRequest do
@@ -715,6 +723,10 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueResponse do
   field :poller_groups_info, 22,
     type: Temporal.Api.Taskqueue.V1.PollerGroupsInfo,
     json_name: "pollerGroupsInfo"
+
+  field :propagated_nexus_serialization_context, 23,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.RecordActivityTaskHeartbeatRequest do
@@ -4321,6 +4333,10 @@ defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionRequest do
     json_name: "onConflictOptions"
 
   field :start_delay, 22, type: Google.Protobuf.Duration, json_name: "startDelay"
+
+  field :propagated_nexus_serialization_context, 23,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionResponse do
@@ -4393,6 +4409,10 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityExecutionResponse do
 
   field :run_id, 1, type: :string, json_name: "runId"
   field :outcome, 2, type: Temporal.Api.Activity.V1.ActivityExecutionOutcome
+
+  field :propagated_nexus_serialization_context, 3,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.ListActivityExecutionsRequest do
@@ -4586,6 +4606,11 @@ defmodule Temporal.Api.Workflowservice.V1.PollNexusOperationExecutionResponse do
     enum: true
 
   field :operation_token, 3, type: :string, json_name: "operationToken"
+
+  field :propagated_nexus_serialization_context, 6,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
+
   field :result, 4, type: Temporal.Api.Common.V1.Payload, oneof: 0
   field :failure, 5, type: Temporal.Api.Failure.V1.Failure, oneof: 0
 end

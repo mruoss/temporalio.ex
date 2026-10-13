@@ -115,6 +115,10 @@ defmodule Temporal.Api.Workflow.V1.WorkflowExecutionExtendedInfo do
   field :time_skipping_info, 9,
     type: Temporal.Api.Common.V1.TimeSkippingInfo,
     json_name: "timeSkippingInfo"
+
+  field :propagated_nexus_serialization_context, 10,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
 end
 
 defmodule Temporal.Api.Workflow.V1.WorkflowExecutionVersioningInfo do

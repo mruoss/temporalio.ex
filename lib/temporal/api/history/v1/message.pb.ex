@@ -121,6 +121,10 @@ defmodule Temporal.Api.History.V1.WorkflowExecutionStartedEventAttributes do
   field :time_skipping_state_propagation, 43,
     type: Temporal.Api.Common.V1.TimeSkippingStatePropagation,
     json_name: "timeSkippingStatePropagation"
+
+  field :propagated_nexus_serialization_context, 44,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
 end
 
 defmodule Temporal.Api.History.V1.DeclinedTargetVersionUpgrade do

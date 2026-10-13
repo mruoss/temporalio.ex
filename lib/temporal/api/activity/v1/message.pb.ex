@@ -127,6 +127,10 @@ defmodule Temporal.Api.Activity.V1.ActivityExecutionInfo do
   field :sdk_version, 36, type: :string, json_name: "sdkVersion"
   field :start_delay, 37, type: Google.Protobuf.Duration, json_name: "startDelay"
   field :execution_time, 38, type: Google.Protobuf.Timestamp, json_name: "executionTime"
+
+  field :propagated_nexus_serialization_context, 39,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
 end
 
 defmodule Temporal.Api.Activity.V1.ActivityExecutionListInfo do
