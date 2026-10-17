@@ -131,6 +131,20 @@ defmodule Temporal.Api.Activity.V1.ActivityExecutionInfo do
   field :propagated_nexus_serialization_context, 39,
     type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
     json_name: "propagatedNexusSerializationContext"
+
+  field :eager_execution_accepted, 40, type: :bool, json_name: "eagerExecutionAccepted"
+
+  field :started_by_principal, 41,
+    type: Temporal.Api.Common.V1.ResolvedPrincipal,
+    json_name: "startedByPrincipal"
+
+  field :closed_by_principal, 42,
+    type: Temporal.Api.Common.V1.ResolvedPrincipal,
+    json_name: "closedByPrincipal"
+
+  field :last_worker_principal, 43,
+    type: Temporal.Api.Common.V1.ResolvedPrincipal,
+    json_name: "lastWorkerPrincipal"
 end
 
 defmodule Temporal.Api.Activity.V1.ActivityExecutionListInfo do

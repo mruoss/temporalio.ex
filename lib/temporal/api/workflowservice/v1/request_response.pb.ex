@@ -298,6 +298,10 @@ defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionRequest do
   field :propagated_nexus_serialization_context, 30,
     type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
     json_name: "propagatedNexusSerializationContext"
+
+  field :time_skipping_state_propagation, 31,
+    type: Temporal.Api.Common.V1.TimeSkippingStatePropagation,
+    json_name: "timeSkippingStatePropagation"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartWorkflowExecutionResponse do
@@ -2508,6 +2512,10 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateWorkflowExecutionResponse do
   field :outcome, 2, type: Temporal.Api.Update.V1.Outcome
   field :stage, 3, type: Temporal.Api.Enums.V1.UpdateWorkflowExecutionLifecycleStage, enum: true
   field :link, 4, type: Temporal.Api.Common.V1.Link
+
+  field :propagated_nexus_serialization_context, 5,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartBatchOperationRequest do
@@ -2722,6 +2730,10 @@ defmodule Temporal.Api.Workflowservice.V1.PollWorkflowExecutionUpdateResponse do
   field :outcome, 1, type: Temporal.Api.Update.V1.Outcome
   field :stage, 2, type: Temporal.Api.Enums.V1.UpdateWorkflowExecutionLifecycleStage, enum: true
   field :update_ref, 3, type: Temporal.Api.Update.V1.UpdateRef, json_name: "updateRef"
+
+  field :propagated_nexus_serialization_context, 4,
+    type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
+    json_name: "propagatedNexusSerializationContext"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueRequest do
@@ -4337,6 +4349,8 @@ defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionRequest do
   field :propagated_nexus_serialization_context, 23,
     type: Temporal.Api.Nexus.V1.PropagatedSerializationContext,
     json_name: "propagatedNexusSerializationContext"
+
+  field :request_eager_execution, 24, type: :bool, json_name: "requestEagerExecution"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionResponse do
@@ -4350,6 +4364,10 @@ defmodule Temporal.Api.Workflowservice.V1.StartActivityExecutionResponse do
   field :run_id, 1, type: :string, json_name: "runId"
   field :started, 2, type: :bool
   field :link, 3, type: Temporal.Api.Common.V1.Link
+
+  field :eager_activity_task, 4,
+    type: Temporal.Api.Workflowservice.V1.PollActivityTaskQueueResponse,
+    json_name: "eagerActivityTask"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.DescribeActivityExecutionRequest do
