@@ -225,6 +225,10 @@ defmodule Temporal.Api.Schedule.V1.SchedulePatch do
 
   field :pause, 3, type: :string
   field :unpause, 4, type: :string
+
+  field :time_skipping_config, 5,
+    type: Temporal.Api.Common.V1.TimeSkippingConfig,
+    json_name: "timeSkippingConfig"
 end
 
 defmodule Temporal.Api.Schedule.V1.ScheduleInfo do
@@ -265,6 +269,10 @@ defmodule Temporal.Api.Schedule.V1.ScheduleInfo do
     deprecated: true
 
   field :state_size_bytes, 12, type: :int64, json_name: "stateSizeBytes"
+
+  field :time_skipping_info, 13,
+    type: Temporal.Api.Common.V1.TimeSkippingInfo,
+    json_name: "timeSkippingInfo"
 end
 
 defmodule Temporal.Api.Schedule.V1.Schedule do

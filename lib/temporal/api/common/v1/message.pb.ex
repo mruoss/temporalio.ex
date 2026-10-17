@@ -516,6 +516,18 @@ defmodule Temporal.Api.Common.V1.Principal do
   field :name, 2, type: :string
 end
 
+defmodule Temporal.Api.Common.V1.ResolvedPrincipal do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.common.v1.ResolvedPrincipal",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :type, 1, type: :string
+  field :name_at_write_time, 2, type: :string, json_name: "nameAtWriteTime"
+end
+
 defmodule Temporal.Api.Common.V1.Priority do
   @moduledoc false
 

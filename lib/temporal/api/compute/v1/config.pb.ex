@@ -12,6 +12,7 @@ defmodule Temporal.Api.Compute.V1.ComputeConfigScalingGroup do
     json_name: "taskQueueTypes",
     enum: true
 
+  field :region_ids, 2, repeated: true, type: :string, json_name: "regionIds"
   field :provider, 3, type: Temporal.Api.Compute.V1.ComputeProvider
   field :scaler, 4, type: Temporal.Api.Compute.V1.ComputeScaler
 end
@@ -102,4 +103,5 @@ defmodule Temporal.Api.Compute.V1.ComputeConfigScalingGroupSummary do
     enum: true
 
   field :provider_type, 2, type: :string, json_name: "providerType"
+  field :region_ids, 3, repeated: true, type: :string, json_name: "regionIds"
 end
