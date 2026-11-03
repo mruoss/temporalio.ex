@@ -4065,6 +4065,22 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest.RateLimit
   field :reason, 2, type: :string
 end
 
+defmodule Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest.ConcurrencyLimitUpdate do
+  @moduledoc false
+
+  use Protobuf,
+    full_name:
+      "temporal.api.workflowservice.v1.UpdateTaskQueueConfigRequest.ConcurrencyLimitUpdate",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :concurrency_limit, 1,
+    type: Temporal.Api.Taskqueue.V1.ConcurrencyLimit,
+    json_name: "concurrencyLimit"
+
+  field :reason, 2, type: :string
+end
+
 defmodule Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest.SetFairnessWeightOverridesEntry do
   @moduledoc false
 
@@ -4115,6 +4131,10 @@ defmodule Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest do
     repeated: true,
     type: :string,
     json_name: "unsetFairnessWeightOverrides"
+
+  field :update_queue_concurrency_limit, 9,
+    type: Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigRequest.ConcurrencyLimitUpdate,
+    json_name: "updateQueueConcurrencyLimit"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.UpdateTaskQueueConfigResponse do
