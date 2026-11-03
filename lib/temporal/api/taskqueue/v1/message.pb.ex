@@ -356,6 +356,17 @@ defmodule Temporal.Api.Taskqueue.V1.RateLimit do
   field :requests_per_second, 1, type: :float, json_name: "requestsPerSecond"
 end
 
+defmodule Temporal.Api.Taskqueue.V1.ConcurrencyLimit do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.taskqueue.v1.ConcurrencyLimit",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :concurrent_tasks, 1, type: :int32, json_name: "concurrentTasks"
+end
+
 defmodule Temporal.Api.Taskqueue.V1.ConfigMetadata do
   @moduledoc false
 
@@ -378,6 +389,21 @@ defmodule Temporal.Api.Taskqueue.V1.RateLimitConfig do
     syntax: :proto3
 
   field :rate_limit, 1, type: Temporal.Api.Taskqueue.V1.RateLimit, json_name: "rateLimit"
+  field :metadata, 2, type: Temporal.Api.Taskqueue.V1.ConfigMetadata
+end
+
+defmodule Temporal.Api.Taskqueue.V1.ConcurrencyLimitConfig do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.taskqueue.v1.ConcurrencyLimitConfig",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :concurrency_limit, 1,
+    type: Temporal.Api.Taskqueue.V1.ConcurrencyLimit,
+    json_name: "concurrencyLimit"
+
   field :metadata, 2, type: Temporal.Api.Taskqueue.V1.ConfigMetadata
 end
 
@@ -415,4 +441,8 @@ defmodule Temporal.Api.Taskqueue.V1.TaskQueueConfig do
     type: Temporal.Api.Taskqueue.V1.TaskQueueConfig.FairnessWeightOverridesEntry,
     json_name: "fairnessWeightOverrides",
     map: true
+
+  field :queue_concurrency_limit, 4,
+    type: Temporal.Api.Taskqueue.V1.ConcurrencyLimitConfig,
+    json_name: "queueConcurrencyLimit"
 end
