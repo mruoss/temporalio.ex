@@ -419,6 +419,10 @@ defmodule Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueRequest do
   field :deployment_options, 6,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "deploymentOptions"
+
+  field :poller_pool_info, 11,
+    type: Temporal.Api.Taskqueue.V1.PollerPoolInfo,
+    json_name: "pollerPoolInfo"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PollWorkflowTaskQueueResponse.QueriesEntry do
@@ -664,6 +668,10 @@ defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueRequest do
   field :deployment_options, 6,
     type: Temporal.Api.Deployment.V1.WorkerDeploymentOptions,
     json_name: "deploymentOptions"
+
+  field :poller_pool_info, 11,
+    type: Temporal.Api.Taskqueue.V1.PollerPoolInfo,
+    json_name: "pollerPoolInfo"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PollActivityTaskQueueResponse do
@@ -2763,6 +2771,10 @@ defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueRequest do
     repeated: true,
     type: Temporal.Api.Worker.V1.WorkerHeartbeat,
     json_name: "workerHeartbeat"
+
+  field :poller_pool_info, 10,
+    type: Temporal.Api.Taskqueue.V1.PollerPoolInfo,
+    json_name: "pollerPoolInfo"
 end
 
 defmodule Temporal.Api.Workflowservice.V1.PollNexusTaskQueueResponse do

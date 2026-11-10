@@ -102,6 +102,7 @@ defmodule Temporal.Api.Worker.V1.WorkerPollerInfo do
     json_name: "lastSuccessfulPollTime"
 
   field :is_autoscaling, 3, type: :bool, json_name: "isAutoscaling"
+  field :target_pollers, 4, type: :int32, json_name: "targetPollers"
 end
 
 defmodule Temporal.Api.Worker.V1.WorkerSlotsInfo do
