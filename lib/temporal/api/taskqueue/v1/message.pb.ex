@@ -24,6 +24,17 @@ defmodule Temporal.Api.Taskqueue.V1.TaskQueueMetadata do
     json_name: "maxTasksPerSecond"
 end
 
+defmodule Temporal.Api.Taskqueue.V1.PollerPoolInfo do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.taskqueue.v1.PollerPoolInfo",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :target_pollers, 1, type: :int32, json_name: "targetPollers"
+end
+
 defmodule Temporal.Api.Taskqueue.V1.TaskQueueVersioningInfo do
   @moduledoc false
 

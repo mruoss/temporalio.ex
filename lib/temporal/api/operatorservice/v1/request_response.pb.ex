@@ -164,6 +164,81 @@ defmodule Temporal.Api.Operatorservice.V1.DeleteNamespaceResponse do
   field :deleted_namespace, 1, type: :string, json_name: "deletedNamespace"
 end
 
+defmodule Temporal.Api.Operatorservice.V1.SoftDeleteNamespaceRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.SoftDeleteNamespaceRequest",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :namespace_id, 2, type: :string, json_name: "namespaceId"
+end
+
+defmodule Temporal.Api.Operatorservice.V1.SoftDeleteNamespaceResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.SoftDeleteNamespaceResponse",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+end
+
+defmodule Temporal.Api.Operatorservice.V1.RestoreNamespaceRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.RestoreNamespaceRequest",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :namespace_id, 2, type: :string, json_name: "namespaceId"
+end
+
+defmodule Temporal.Api.Operatorservice.V1.RestoreNamespaceResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.RestoreNamespaceResponse",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+end
+
+defmodule Temporal.Api.Operatorservice.V1.DescribeNamespaceRestoreRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.DescribeNamespaceRestoreRequest",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :namespace, 1, type: :string
+  field :namespace_id, 2, type: :string, json_name: "namespaceId"
+end
+
+defmodule Temporal.Api.Operatorservice.V1.DescribeNamespaceRestoreResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "temporal.api.operatorservice.v1.DescribeNamespaceRestoreResponse",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :state, 1, type: Temporal.Api.Enums.V1.NamespaceRestoreState, enum: true
+  field :host_cluster, 2, type: :string, json_name: "hostCluster"
+  field :start_time, 3, type: Google.Protobuf.Timestamp, json_name: "startTime"
+  field :close_time, 4, type: Google.Protobuf.Timestamp, json_name: "closeTime"
+  field :run_id, 5, type: :string, json_name: "runId"
+  field :total_execution_count, 6, type: :int64, json_name: "totalExecutionCount"
+  field :processed_execution_count, 7, type: :int64, json_name: "processedExecutionCount"
+
+  field :estimated_completion_time, 8,
+    type: Google.Protobuf.Timestamp,
+    json_name: "estimatedCompletionTime"
+end
+
 defmodule Temporal.Api.Operatorservice.V1.AddOrUpdateRemoteClusterRequest do
   @moduledoc false
 

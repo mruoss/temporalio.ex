@@ -21,6 +21,18 @@ defmodule Temporal.Api.Operatorservice.V1.OperatorService.Service do
       Temporal.Api.Operatorservice.V1.DeleteNamespaceRequest,
       Temporal.Api.Operatorservice.V1.DeleteNamespaceResponse
 
+  rpc :SoftDeleteNamespace,
+      Temporal.Api.Operatorservice.V1.SoftDeleteNamespaceRequest,
+      Temporal.Api.Operatorservice.V1.SoftDeleteNamespaceResponse
+
+  rpc :RestoreNamespace,
+      Temporal.Api.Operatorservice.V1.RestoreNamespaceRequest,
+      Temporal.Api.Operatorservice.V1.RestoreNamespaceResponse
+
+  rpc :DescribeNamespaceRestore,
+      Temporal.Api.Operatorservice.V1.DescribeNamespaceRestoreRequest,
+      Temporal.Api.Operatorservice.V1.DescribeNamespaceRestoreResponse
+
   rpc :AddOrUpdateRemoteCluster,
       Temporal.Api.Operatorservice.V1.AddOrUpdateRemoteClusterRequest,
       Temporal.Api.Operatorservice.V1.AddOrUpdateRemoteClusterResponse

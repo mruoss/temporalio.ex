@@ -131,6 +131,7 @@ defmodule Temporal.Api.Enums.V1.ResourceExhaustedCause do
   field :RESOURCE_EXHAUSTED_CAUSE_WORKER_DEPLOYMENT_LIMITS, 10
   field :RESOURCE_EXHAUSTED_CAUSE_BANDWIDTH_LIMIT, 11
   field :RESOURCE_EXHAUSTED_CAUSE_CALLER_RPS_LIMIT, 12
+  field :RESOURCE_EXHAUSTED_CAUSE_SHARD_PERSISTENCE_LIMIT, 13
 end
 
 defmodule Temporal.Api.Enums.V1.ResourceExhaustedScope do

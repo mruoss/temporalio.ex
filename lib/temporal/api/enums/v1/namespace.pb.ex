@@ -11,6 +11,22 @@ defmodule Temporal.Api.Enums.V1.NamespaceState do
   field :NAMESPACE_STATE_REGISTERED, 1
   field :NAMESPACE_STATE_DEPRECATED, 2
   field :NAMESPACE_STATE_DELETED, 3
+  field :NAMESPACE_STATE_SOFT_DELETED, 4
+end
+
+defmodule Temporal.Api.Enums.V1.NamespaceRestoreState do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "temporal.api.enums.v1.NamespaceRestoreState",
+    protoc_gen_elixir_version: "0.16.1",
+    syntax: :proto3
+
+  field :NAMESPACE_RESTORE_STATE_UNSPECIFIED, 0
+  field :NAMESPACE_RESTORE_STATE_RUNNING, 1
+  field :NAMESPACE_RESTORE_STATE_COMPLETED, 2
+  field :NAMESPACE_RESTORE_STATE_FAILED, 3
 end
 
 defmodule Temporal.Api.Enums.V1.ArchivalState do
